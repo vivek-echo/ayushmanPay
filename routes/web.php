@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Home\HomePageController;
+use App\Http\Controllers\Pannel\AdminIndexController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +16,7 @@ use App\Http\Controllers\Home\HomePageController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
 
 Route::get('/',[HomePageController::class, 'index']);
+Route::get('/login',[LoginController::class, 'index']);
