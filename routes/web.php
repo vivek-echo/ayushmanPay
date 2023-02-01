@@ -17,5 +17,6 @@ Route::get('/', [App\Http\Controllers\Home\HomePageController::class, 'index']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/getState', [App\Http\Controllers\CommonController::class, 'getState']);
 Route::get('/dashboard', [App\Http\Controllers\InnerPannel\DashboardController::class, 'index'])->middleware('auth');
 
