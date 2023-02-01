@@ -1,9 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Home\HomePageController;
-use App\Http\Controllers\Pannel\AdminIndexController;
-use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +13,9 @@ use App\Http\Controllers\Auth\LoginController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', [App\Http\Controllers\Home\HomePageController::class, 'index']);
+Auth::routes();
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [App\Http\Controllers\InnerPannel\DashboardController::class, 'index'])->middleware('auth');
 
-
-Route::get('/',[HomePageController::class, 'index']);
-Route::get('/login',[LoginController::class, 'index']);
