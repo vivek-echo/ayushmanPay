@@ -33,6 +33,7 @@
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/sweetalert2.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-datepicker3.min.css') }}">
 </head>
 
 <body>
@@ -60,7 +61,7 @@
                                 <p class="text-center">Enter your personal details to create account</p>
                                 <div class="row">
                                     <div class="form-group col-6">
-                                        <label class="col-form-label">Member Type</label>
+                                        <label class="col-form-label">Member Type</label><span class="text-danger fa-lg font-weight-500"> *</span>
                                         <select name="memberType" id="memberType" class="form-select">
                                             <option value="0">--Select--</option>
                                             <option value="1">District Mananger</option>
@@ -72,54 +73,60 @@
                                 <hr>
                                 <div class="row">
                                     <div class="form-group col-6">
-                                        <label class="col-form-label">First Name</label>
+                                        <label class="col-form-label">First Name</label><span class="text-danger fa-lg font-weight-500"> *</span>
                                         <input name="firstName" id="firstName" class="form-control" type="text" placeholder="First name" required="">
 
                                     </div>
 
                                     <div class="form-group col-6">
-                                        <label class="col-form-label">Last Name</label>
-                                        <input name="lastName" id="lastName" class="form-control" type="text" placeholder="First name">
+                                        <label class="col-form-label">Last Name</label><span class="text-danger fa-lg font-weight-500"> *</span>
+                                        <input name="lastName" id="lastName" class="form-control" type="text" placeholder="Last name">
 
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-6">
-                                        <label class="col-form-label">Email</label>
+                                        <label class="col-form-label">Email</label><span class="text-danger fa-lg font-weight-500"> *</span>
                                         <input name="email" id="email" class="form-control" type="text" placeholder="Email">
 
                                     </div>
 
                                     <div class="form-group col-6">
-                                        <label class="col-form-label">Shop Name</label>
+                                        <label class="col-form-label">Shop Name</label><span class="text-danger fa-lg font-weight-500"> *</span>
                                         <input name="ShopName" id="ShopName" class="form-control" type="text" placeholder="Shop name">
 
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-6">
-                                        <label class="col-form-label">Date Of Birth</label>
+                                        <label class="col-form-label">Date Of Birth</label><span class="text-danger fa-lg font-weight-500"> *</span>
+                                        <div class="input-group">
                                         <input name="dateOfBirth" id="dateOfBirth" class="form-control" type="text" placeholder="Date Of Birth">
-
+                                            <div class="input-group-text" id="btnGroupAddon"><i class="text-secondary" data-feather="calendar"></i></div>
+                                        </div>
                                     </div>
 
                                     <div class="form-group col-6">
-                                        <label class="col-form-label">Pin Code</label>
-                                        <input name="pinCode" id="pinCode" class="form-control" type="text" placeholder="Pin Code">
+                                        <label class="col-form-label">Pin Code</label><span class="text-danger fa-lg font-weight-500"> *</span> 
+                                        <div class="input-group">
+                                            <input name="pinCode" id="pinCode" class="form-control" type="text" placeholder="Pin Code">
+                                            <div class="input-group-append">
+                                                <div class="form-group col-1 mb-0"> <img src="{{ asset('images/loader-5.gif') }}"
+                                                alt="" width="45" id="loading" style="display:none;">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <!-- <div class="form-group col-1"> <img src="{{ asset('images/loading.gif') }}"
-                                            alt="" width="80" id="loading" style="display: none">
-                                    </div> -->
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-6">
-                                        <label class="col-form-label">State</label>
+                                        <label class="col-form-label">State</label><span class="text-danger fa-lg font-weight-500"> *</span>
                                         <input name="state" id="state" class="form-control" type="text"  placeholder="State">
                                         <input name="stateId" id="stateId" class="form-control" type="hidden"  placeholder="State">
                                     </div>
 
                                     <div class="form-group col-6">
-                                        <label class="col-form-label">City</label>
+                                        <label class="col-form-label">City</label><span class="text-danger fa-lg font-weight-500"> *</span>
                                         <input name="city" id="city" class="form-control" type="text"  placeholder="City">
                                         <input name="cityId" id="cityId" class="form-control" type="hidden"  placeholder="City">
 
@@ -144,7 +151,12 @@
                                         <div class="input-group">
                                             <input type="text" class="form-control" id="captchaCode" placeholder="Enter User Captcha">
                                             <div class="input-group-append">
-                                                <a href="javascript:void(0)" id="refreshCaptch" type="button" class="p-3" style="font-size: 1rem;"><i data-feather="refresh-cw"></i></a>
+                                                <div class="form-group col-1 mb-0">
+                                                    <div class="form-group col-1 mb-0 p-2"> 
+                                                        <a href="javascript:void(0)" id="refreshCaptch" type="button"><img src="{{ asset('images/reload.png') }}" alt="" width="30"></a>
+                                                    </div>
+                                                    
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -182,6 +194,7 @@
         <!-- Template js-->
         <script src="{{ asset('js/script.js') }}"></script>
         <script src="{{ asset('js/main.js') }}"></script>
+        <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
         <script>
             $(document).ready(function() {
 
@@ -306,6 +319,12 @@
                     $('#formSubmit').submit();
                 })
                 }
+
+
+                //FOR DATEPICKER
+                $('#dateOfBirth').datepicker({
+                    format: "dd/mm/yyyy"
+                });
 
             });
         </script>

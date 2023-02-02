@@ -1,11 +1,4 @@
-/*! -----------------------------------------------------------------------------------
-
-    Template Name: Tivo Admin
-    Template URI: http://admin.pixelstrap.com/Tivo/theme
-    Description: This is Admin theme
-    Author: Pixelstrap
-    Author URI: https://themeforest.net/user/pixelstrap
-
+/*! 
 -----------------------------------------------------------------------------------
 01. Update CSS
 02. Reset CSS
@@ -25997,7 +25990,7 @@ footer {
 	-ms-flex-pack: center;
 	justify-content: center;
 	margin: 0 auto;
-	background: url("../images/login/login_bg.jpg");
+	background: url("../images/login/login_bg_2.jpg");
 	padding: 30px 12px
 }
 
@@ -46120,4 +46113,22 @@ html[dir="rtl"] body.dark-only .page-wrapper .page-body-wrapper .page-body .card
 	}
 }
 
-/*# sourceMappingURL=style.css.map */
+.input-group:not(.has-validation)>:not(:last-child):not(.dropdown-toggle):not(.dropdown-menu), .input-group:not(.has-validation)>.dropdown-toggle:nth-last-child(n+3) {
+    border-top-right-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+}
+
+.form-select,
+.form-control {
+	line-height: 1;
+}
+
+.font-weight-500 {
+	font-weight: 500;
+}
+
+.datepicker table tr td.active.active, .datepicker table tr td.active.highlighted.active, .datepicker table tr td.active.highlighted:active, .datepicker table tr td.active:active {
+    color: #fff;
+    background-color: #1eaeae !important;
+    border-color: #1eaeae !important;
+}
