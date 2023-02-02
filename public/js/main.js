@@ -10,7 +10,7 @@ function errorAlert(name, sentense, ctrlId) {
                     'border-color': '',
                     'box-shadow': ''
                 });
-            }, 2000)
+            }, 1000)
         }
     });
 }

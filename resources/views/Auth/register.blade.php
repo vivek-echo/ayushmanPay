@@ -7,19 +7,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="tivo admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
-    <meta name="keywords"
-        content="admin template, Tivo admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="description" content="tivo admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
+    <meta name="keywords" content="admin template, Tivo admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="{{ asset('images/favicon/favicon.png') }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ asset('images/favicon/favicon.png') }}" type="image/x-icon">
     <title>ABP</title>
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/font-awesome.css') }}">
     <!-- ico-font-->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/icofont.css') }}">
@@ -55,11 +51,10 @@
             <div class="col-12 p-0">
                 <div class="login-card">
                     <div>
-                        <div><a class="logo text-center" href="index.html"><img class="img-fluid for-light"
-                                    src="{{ asset('images/logo/ABP.png') }}" alt="looginpage" width="320"></a></div>
+                        <div><a class="logo text-center" href="index.html"><img class="img-fluid for-light" src="{{ asset('images/logo/ABP.png') }}" alt="looginpage" width="320"></a></div>
                         <div class="login-main">
-                            <div class="theme-form">
-
+                            <form class="theme-form" id="formSubmit" method="POST" novalidate action="{{route('register')}}" enctype="multipart/form-data">
+                                {{ csrf_field() }}
 
                                 <h4 class="text-center">Create your account</h4>
                                 <p class="text-center">Enter your personal details to create account</p>
@@ -76,135 +71,96 @@
                                 </div>
                                 <hr>
                                 <div class="row">
-                                    <div class="form-group col-5">
+                                    <div class="form-group col-6">
                                         <label class="col-form-label">First Name</label>
-                                        <input name="firstName" id="firstName" class="form-control" type="text"
-                                            placeholder="First name">
+                                        <input name="firstName" id="firstName" class="form-control" type="text" placeholder="First name" required="">
 
                                     </div>
-                                    <div class="col-1"></div>
-                                    <div class="form-group col-5">
+
+                                    <div class="form-group col-6">
                                         <label class="col-form-label">Last Name</label>
-                                        <input name="lastName" id="lastName" class="form-control" type="text"
-                                            placeholder="First name">
+                                        <input name="lastName" id="lastName" class="form-control" type="text" placeholder="First name">
 
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-5">
+                                    <div class="form-group col-6">
                                         <label class="col-form-label">Email</label>
-                                        <input name="email" id="email" class="form-control" type="text"
-                                            placeholder="Email">
+                                        <input name="email" id="email" class="form-control" type="text" placeholder="Email">
 
                                     </div>
-                                    <div class="col-1"></div>
-                                    <div class="form-group col-5">
+
+                                    <div class="form-group col-6">
                                         <label class="col-form-label">Shop Name</label>
-                                        <input name="ShopName" id="ShopName" class="form-control" type="text"
-                                            placeholder="Shop name">
+                                        <input name="ShopName" id="ShopName" class="form-control" type="text" placeholder="Shop name">
 
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-5">
+                                    <div class="form-group col-6">
                                         <label class="col-form-label">Date Of Birth</label>
-                                        <input name="dateOfBirth" id="dateOfBirth" class="form-control"
-                                            type="text" placeholder="Date Of Birth">
+                                        <input name="dateOfBirth" id="dateOfBirth" class="form-control" type="text" placeholder="Date Of Birth">
 
                                     </div>
-                                    <div class="col-1"></div>
-                                    <div class="form-group col-5">
+
+                                    <div class="form-group col-6">
                                         <label class="col-form-label">Pin Code</label>
-                                        <input name="pinCode" id="pinCode" class="form-control" type="text"
-                                            placeholder="Pin Code">
+                                        <input name="pinCode" id="pinCode" class="form-control" type="text" placeholder="Pin Code">
                                     </div>
-                                    <div class="form-group col-1"> <img src="{{ asset('images/loading.gif') }}"
+                                    <!-- <div class="form-group col-1"> <img src="{{ asset('images/loading.gif') }}"
                                             alt="" width="80" id="loading" style="display: none">
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-5">
+                                    <div class="form-group col-6">
                                         <label class="col-form-label">State</label>
-                                        <input name="state" id="state" class="form-control" type="text"
-                                            disabled placeholder="State">
-                                        <input name="stateId" id="stateId" class="form-control" type="hidden"
-                                            disabled placeholder="State">
+                                        <input name="state" id="state" class="form-control" type="text"  placeholder="State">
+                                        <input name="stateId" id="stateId" class="form-control" type="hidden"  placeholder="State">
                                     </div>
-                                    <div class="col-1"></div>
-                                    <div class="form-group col-5">
+
+                                    <div class="form-group col-6">
                                         <label class="col-form-label">City</label>
-                                        <input name="city" id="city" class="form-control" type="text"
-                                            disabled placeholder="City">
-                                        <input name="cityId" id="cityId" class="form-control" type="hidden"
-                                            disabled placeholder="City">
+                                        <input name="city" id="city" class="form-control" type="text"  placeholder="City">
+                                        <input name="cityId" id="cityId" class="form-control" type="hidden"  placeholder="City">
 
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-5">
+                                    <div class="form-group col-6">
                                         <label class="col-form-label">Address</label>
-                                        <input name="address" id="address" class="form-control" type="text"
-                                            placeholder="Address">
+                                        <input name="address" id="address" class="form-control" type="text" placeholder="Address">
 
                                     </div>
-                                    <div class="col-1"></div>
-                                    <div class="form-group col-5">
+
+                                    <div class="form-group col-6">
                                         <label class="col-form-label">Referral Code</label>
-                                        <input name="referralCode" id="referralCode" class="form-control"
-                                            type="text" placeholder="Enter Referral Code">
+                                        <input name="referralCode" id="referralCode" class="form-control" type="text" placeholder="Enter Referral Code">
 
                                     </div>
                                 </div>
                                 <div class="row mt-3">
                                     <div class="form-group col-6">
-                                        <label class="col-form-label">Let's solve this math problem : <span
-                                                id="capLable"></span></label>
+                                        <label class="col-form-label">Let's solve this math problem : <span id="capLable"></span></label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" id="captchaCode"
-                                                placeholder="Enter User Captcha">
+                                            <input type="text" class="form-control" id="captchaCode" placeholder="Enter User Captcha">
                                             <div class="input-group-append">
-                                                <a href="javascript:void(0)" id="refreshCaptch" type="button"
-                                                    class="p-3" style="font-size: 1rem;"><i
-                                                        data-feather="refresh-cw"></i></a>
+                                                <a href="javascript:void(0)" id="refreshCaptch" type="button" class="p-3" style="font-size: 1rem;"><i data-feather="refresh-cw"></i></a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div class="form-group">
-                                    <label class="col-form-label pt-0">Your Name</label>
-                                    <div class="row g-2">
-                                        <div class="col-6">
-                                            <input class="form-control" type="text"  placeholder="First name">
-                                        </div>
-                                        <div class="col-6">
-                                            <input class="form-control" type="text"  placeholder="Last name">
-                                        </div>
-                                    </div>
-                                </div> -->
-
-                                <!-- <div class="form-group">
-                                    <div class="checkbox p-0">
-                                        <input id="checkbox1" type="checkbox">
-                                        <label class="text-muted" for="checkbox1">Agree with<a class="ms-2" href="javascript:void(0)">Privacy Policy</a></label>
-                                    </div>
-                                </div> -->
-
-                                <div class="form-group text-center mt-2">
-                                    <button class="btn btn-primary" id="submitButton">Create
-                                        Account</button>
-                                </div>
-                                <hr>
-                                <div class="form-group">
-                                    <!-- <ul class="login-social">
-                      <li><a href="https://www.linkedin.com/" target="_blank"><i data-feather="linkedin"></i></a></li>
-                      <li><a href="https://twitter.com/" target="_blank"><i data-feather="twitter"></i></a></li>
-                      <li><a href="https://www.facebook.com/" target="_blank"><i data-feather="facebook"></i></a></li>
-                      <li><a href="https://www.instagram.com/" target="_blank"><i data-feather="instagram"></i></a></li>
-                    </ul> -->
-                                </div>
-                                <p class="mt-4 mb-0 text-center">Already have an account?<a class="ms-2"
-                                        href="login.html">Sign in</a></p>
+                             
+                            </form>
+                            <div class="form-group text-center mt-2">
+                                <button class="btn btn-primary" id="submitButton">Create
+                                    Account</button>
                             </div>
+                            <hr>
+                            <div class="form-group">
+
+                            </div>
+                            <p class="mt-4 mb-0 text-center">Already have an account?<a class="ms-2" href="login.html">Sign in</a></p>
+
                         </div>
                     </div>
                 </div>
@@ -254,13 +210,13 @@
                                     $('#city').val(res.data.district);
                                     $('#cityId').val(res.data.districtId);
                                     $('#loading').hide();
-                                }else{
-                                   
-                                $('#loading').hide();
-                                errorAlert("Invalid", "Please enter the valid pin code", "pinCode");
-                                return false;
+                                } else {
+
+                                    $('#loading').hide();
+                                    errorAlert("Invalid", "Please enter the valid pin code", "pinCode");
+                                    return false;
                                 }
-                               
+
                             }
                         });
                     }
@@ -335,9 +291,20 @@
                             return false;
                         }
                     }
-
-
-
+                    submitForm();
+                    // $('#formSubmit').submit();
+                }
+                function submitForm(){
+                    swal({
+                    title: "Are you sure?",
+                    text: "Are you sure you want to create a account?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    $('#formSubmit').submit();
+                })
                 }
 
             });
