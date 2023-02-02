@@ -238,20 +238,33 @@
                 $("#pinCode").focusout(function() {
                     $('#loading').show();
                     var pinCode = $(this).val();
+                    if (pinCode.length != 6) {
+                        errorAlert("Invalid", "Please enter the valid pin code", "pinCode");
+                        return false;
+                    } else {
+                        $.ajax({
+                            url: "{{ url('/getState') }}",
+                            data: {
+                                pinCode: pinCode
+                            },
+                            success: function(res) {
+                                if (res) {
+                                    $('#state').val(res.data.state);
+                                    $('#stateId').val(res.data.stateId);
+                                    $('#city').val(res.data.district);
+                                    $('#cityId').val(res.data.districtId);
+                                    $('#loading').hide();
+                                }else{
+                                   
+                                $('#loading').hide();
+                                errorAlert("Invalid", "Please enter the valid pin code", "pinCode");
+                                return false;
+                                }
+                               
+                            }
+                        });
+                    }
 
-                    $.ajax({
-                        url: "{{ url('/getState') }}",
-                        data: {
-                            pinCode: pinCode
-                        },
-                        success: function(res) {
-                            $('#state').val(res.data.state);
-                            $('#stateId').val(res.data.stateId);
-                            $('#city').val(res.data.district);
-                            $('#cityId').val(res.data.districtId);
-                            $('#loading').hide();
-                        }
-                    });
                 });
 
                 function captcha() {
@@ -273,16 +286,56 @@
                 });
 
                 function submitValidator() {
-                    if($('#memberType').val() == 0 ){
+
+                    if ($('#memberType').val() == 0) {
                         errorAlert("Required", "Please select Member Type", "memberType");
                         return false;
                     }
-                    /**validate captcha**/
-                    var captchaValidat = resCaptcha[0].captchaA * resCaptcha[0].captchaB;
-                    if (captchaValidat != $('#captchaCode').val()) {
-                        errorAlert("Captcha", "Worng Answer", "captchaCode");
+                    if ($('#firstName').val() == "") {
+                        errorAlert("Required", "Please enter first name", "firstName");
                         return false;
                     }
+                    if ($('#lastName').val() == "") {
+                        errorAlert("Required", "Please enter last name", "lastName");
+                        return false;
+                    }
+                    if ($('#email').val() == "") {
+                        errorAlert("Required", "Please enter email", "email");
+                        return false;
+                    }
+                    if ($('#ShopName').val() == "") {
+                        errorAlert("Required", "Please enter Shop Name", "ShopName");
+                        return false;
+                    }
+                    if ($('#dateOfBirth').val() == "") {
+                        errorAlert("Required", "Please enter Date of Birth", "dateOfBirth");
+                        return false;
+                    }
+
+                    if ($('#pinCode').val() == "") {
+                        errorAlert("Required", "Please enter Pin Code", "pinCode");
+                        return false;
+                    }
+                    if ($('#state').val() == "") {
+                        errorAlert("Required", "Please enter State", "state");
+                        return false;
+                    }
+                    if ($('#city').val() == "") {
+                        errorAlert("Required", "Please enter city", "city");
+                        return false;
+                    }
+                    /**validate captcha**/
+                    if ($('#captchaCode').val() == "") {
+                        errorAlert("Required", "Please enter the captcha", "captchaCode");
+                        return false;
+                    } else {
+                        var captchaValidat = resCaptcha[0].captchaA * resCaptcha[0].captchaB;
+                        if (captchaValidat != $('#captchaCode').val()) {
+                            errorAlert("Captcha", "Worng Answer", "captchaCode");
+                            return false;
+                        }
+                    }
+
 
 
                 }
