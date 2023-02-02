@@ -1,3 +1,5 @@
+
+
 (function ($) {
     "use strict";
 
@@ -264,6 +266,7 @@ function translate(tnum, index) {
     }
 }
 
+
 var trans = [{
         en: 'General',
         pt: 'Geral',
@@ -339,6 +342,9 @@ var trans = [{
     },
 
 ];
+
+
+
 
 })(jQuery);
 

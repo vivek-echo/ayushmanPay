@@ -26023,7 +26023,7 @@ footer {
 }
 
 .login-card .login-main {
-	width: 800px;
+	width: 900px;
 	padding: 40px;
 	border-radius: 10px;
 	-webkit-box-shadow: 0 0 37px rgba(8, 21, 66, 0.05);
@@ -26099,7 +26099,8 @@ footer {
 	-webkit-box-shadow: none !important;
 	box-shadow: none !important;
 	-webkit-transition: all 0.3s ease;
-	transition: all 0.3s ease
+	transition: all 0.3s ease;
+	border-color: #1eaeae;
 }
 
 .login-card .login-main .theme-form p {
