@@ -93,7 +93,7 @@
 
                                     <div class="form-group col-6">
                                         <label class="col-form-label">Shop Name</label><span class="text-danger fa-lg font-weight-500"> *</span>
-                                        <input name="ShopName" id="ShopName" class="form-control" type="text" placeholder="Shop name">
+                                        <input name="shopName" id="shopName" class="form-control" type="text" placeholder="Shop name">
 
                                     </div>
                                 </div>
@@ -101,7 +101,7 @@
                                     <div class="form-group col-6">
                                         <label class="col-form-label">Date Of Birth</label><span class="text-danger fa-lg font-weight-500"> *</span>
                                         <div class="input-group">
-                                        <input name="dateOfBirth" id="dateOfBirth" class="form-control" type="text" placeholder="Date Of Birth">
+                                        <input name="dateOfBirth" id="dateOfBirth" class="form-control" type="text" placeholder="Date Of Birth" readonly>
                                             <div class="input-group-text" id="btnGroupAddon"><i class="text-secondary" data-feather="calendar"></i></div>
                                         </div>
                                     </div>
@@ -121,13 +121,13 @@
                                 <div class="row">
                                     <div class="form-group col-6">
                                         <label class="col-form-label">State</label><span class="text-danger fa-lg font-weight-500"> *</span>
-                                        <input name="state" id="state" class="form-control" type="text"  placeholder="State">
+                                        <input name="state" id="state" class="form-control" type="text"  placeholder="State" readonly>
                                         <input name="stateId" id="stateId" class="form-control" type="hidden"  placeholder="State">
                                     </div>
 
                                     <div class="form-group col-6">
                                         <label class="col-form-label">City</label><span class="text-danger fa-lg font-weight-500"> *</span>
-                                        <input name="city" id="city" class="form-control" type="text"  placeholder="City">
+                                        <input name="city" id="city" class="form-control" type="text"  placeholder="City" readonly>
                                         <input name="cityId" id="cityId" class="form-control" type="hidden"  placeholder="City">
 
                                     </div>
