@@ -26,5 +26,7 @@ Route::get('/getState', [App\Http\Controllers\CommonController::class, 'getState
 
 Route::get('/dashboard', [App\Http\Controllers\InnerPannel\DashboardController::class, 'index'])->middleware('auth');
 
-Route::match(['GET', 'POST'],'/createAccount', [App\Http\Controllers\Auth\OtpController::class, 'index']);
+Route::match(['GET', 'POST'],'/vialidateOtpPage', [App\Http\Controllers\Auth\OtpController::class, 'vialidateOtpPage']);
+Route::match(['GET', 'POST'],'/viewOtpPage', [App\Http\Controllers\Auth\OtpController::class, 'viewOtpPage']);
 Route::match(['GET', 'POST'],'/validateOtp', [App\Http\Controllers\Auth\OtpController::class, 'validateOtp']);
+Route::match(['GET', 'POST'],'/createAccount', [App\Http\Controllers\Auth\OtpController::class, 'index']);

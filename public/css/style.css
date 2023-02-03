@@ -7447,6 +7447,7 @@ input[type="file"] {
 	font-weight: 500
 }
 
+
 .loader-wrapper {
 	position: fixed;
 	z-index: 999999;
@@ -7528,6 +7529,94 @@ input[type="file"] {
 }
 
 .loader-wrapper .dot:nth-child(5)::before {
+	-webkit-animation-delay: 1s;
+	animation-delay: 1s
+}
+
+
+
+
+.pageLoader {
+	position: fixed;
+	z-index: 999999;
+	background: #ffffff6e;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center
+}
+
+.pageLoader .dot {
+	position: relative;
+	width: 22px;
+	height: 22px;
+	margin: 8px;
+	border-radius: 50%
+}
+
+.pageLoader .dot::before {
+	position: absolute;
+	content: "";
+	width: 100%;
+	height: 100%;
+	background: inherit;
+	border-radius: inherit;
+	-webkit-animation: wave 2s ease infinite;
+	animation: wave 2s ease infinite
+}
+
+.pageLoader .dot:nth-child(1) {
+	background: rgba(92, 97, 242, 0.2)
+}
+
+.pageLoader .dot:nth-child(1)::before {
+	-webkit-animation-delay: .2s;
+	animation-delay: .2s
+}
+
+.pageLoader .dot:nth-child(2) {
+	background: rgba(238, 184, 47, 0.4)
+}
+
+.pageLoader .dot:nth-child(2)::before {
+	-webkit-animation-delay: .4s;
+	animation-delay: .4s
+}
+
+.pageLoader .dot:nth-child(3) {
+	background: rgba(92, 97, 242, 0.6)
+}
+
+.pageLoader .dot:nth-child(3)::before {
+	-webkit-animation-delay: .6s;
+	animation-delay: .6s
+}
+
+.pageLoader .dot:nth-child(4) {
+	background: rgba(238, 184, 47, 0.8)
+}
+
+.pageLoader .dot:nth-child(4)::before {
+	-webkit-animation-delay: .8s;
+	animation-delay: .8s
+}
+
+.pageLoader .dot:nth-child(5) {
+	background: #5c61f2
+}
+
+.pageLoader .dot:nth-child(5)::before {
 	-webkit-animation-delay: 1s;
 	animation-delay: 1s
 }
@@ -36063,6 +36152,14 @@ body.dark-only .loader-wrapper {
 }
 
 body.dark-only .loader-wrapper .loader {
+	background-color: #10101c !important
+}
+
+body.dark-only .pageLoader {
+	background-color: #10101c
+}
+
+body.dark-only .pageLoader .loader {
 	background-color: #10101c !important
 }
 
