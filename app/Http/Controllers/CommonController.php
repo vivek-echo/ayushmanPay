@@ -7,12 +7,13 @@ use Illuminate\Support\Facades\Http;
 
 class CommonController extends Controller
 {
-    public function getState(){
+    public function getState()
+    {
         $getData = request()->all();
-      
-        $response = Http::get('https://api.worldpostallocations.com/pincode?postalcode='.$getData['pinCode'].'&countrycode=IN');
+
+        $response = Http::get('https://api.worldpostallocations.com/pincode?postalcode=' . $getData['pinCode'] . '&countrycode=IN');
         return response()->json([
-            'data'=>$response['result'][0]
+            'data' => $response['result'][0]
         ]);
         // if($response['status'] != false)
         // {

@@ -31957,35 +31957,35 @@ footer {
 	box-shadow: 1.5px 0.33px 16px 0px rgba(92, 97, 242, 0.6)
 }
 
-.page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links .simplebar-wrapper .simplebar-mask .simplebar-content-wrapper .simplebar-content .menu-box>ul>li .sidebar-link.active {
+.page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links .simplebar-wrapper .simplebar-mask .simplebar-content-wrapper .simplebar-content .menu-box>ul>li .sidebar-link.activeLink {
 	-webkit-transition: all 0.5s ease;
 	transition: all 0.5s ease;
 	position: relative;
 	background-color: rgba(0, 0, 0, 0)
 }
 
-.page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links .simplebar-wrapper .simplebar-mask .simplebar-content-wrapper .simplebar-content .menu-box>ul>li .sidebar-link.active::before {
+.page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links .simplebar-wrapper .simplebar-mask .simplebar-content-wrapper .simplebar-content .menu-box>ul>li .sidebar-link.activeLink::before {
 	opacity: 1
 }
 
-.page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links .simplebar-wrapper .simplebar-mask .simplebar-content-wrapper .simplebar-content .menu-box>ul>li .sidebar-link.active:hover span {
+.page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links .simplebar-wrapper .simplebar-mask .simplebar-content-wrapper .simplebar-content .menu-box>ul>li .sidebar-link.activeLink:hover span {
 	color: #5c61f2;
 	-webkit-transition: all 0.3s ease;
 	transition: all 0.3s ease
 }
 
-.page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links .simplebar-wrapper .simplebar-mask .simplebar-content-wrapper .simplebar-content .menu-box>ul>li .sidebar-link.active .according-menu i {
+.page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links .simplebar-wrapper .simplebar-mask .simplebar-content-wrapper .simplebar-content .menu-box>ul>li .sidebar-link.activeLink .according-menu i {
 	color: #fff
 }
 
-.page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links .simplebar-wrapper .simplebar-mask .simplebar-content-wrapper .simplebar-content .menu-box>ul>li .sidebar-link.active svg {
+.page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links .simplebar-wrapper .simplebar-mask .simplebar-content-wrapper .simplebar-content .menu-box>ul>li .sidebar-link.activeLink svg {
 	color: #fff;
 	stroke: #fff;
 	-webkit-transition: all 0.3s ease;
 	transition: all 0.3s ease
 }
 
-.page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links .simplebar-wrapper .simplebar-mask .simplebar-content-wrapper .simplebar-content .menu-box>ul>li .sidebar-link.active span {
+.page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links .simplebar-wrapper .simplebar-mask .simplebar-content-wrapper .simplebar-content .menu-box>ul>li .sidebar-link.activeLink span {
 	color: #fff;
 	-webkit-transition: all 0.3s ease;
 	transition: all 0.3s ease
@@ -34778,7 +34778,7 @@ body.dark-only .page-wrapper .page-body-wrapper {
 	background-color: #10101c
 }
 
-body.dark-only .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links .sidebar-link.active svg {
+body.dark-only .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links .sidebar-link.activeLink svg {
 	stroke: var(--theme-deafult)
 }
 
@@ -34790,7 +34790,7 @@ body.dark-only .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrap
 	stroke: rgba(255, 255, 255, 0.8)
 }
 
-body.dark-only .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links .simplebar-wrapper .simplebar-mask .simplebar-content-wrapper .simplebar-content>li .sidebar-link.active svg {
+body.dark-only .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links .simplebar-wrapper .simplebar-mask .simplebar-content-wrapper .simplebar-content>li .sidebar-link.activeLink svg {
 	color: var(--theme-deafult)
 }
 
@@ -40837,7 +40837,7 @@ html[dir="rtl"] .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wra
 	right: unset !important
 }
 
-html[dir="rtl"] .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links .simplebar-wrapper .simplebar-mask .simplebar-content-wrapper .simplebar-content .menu-box>ul>li .sidebar-link.active {
+html[dir="rtl"] .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links .simplebar-wrapper .simplebar-mask .simplebar-content-wrapper .simplebar-content .menu-box>ul>li .sidebar-link.activeLink {
 	border-left: unset
 }
 
