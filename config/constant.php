@@ -1,0 +1,4 @@
+<?php
+return [
+    'JWT_SECRET' =>"UFMwMDIyMzA3OGE0MGIwOThhMDJjN2E1OTMzOGY2NTJhZjEwMjBl"
+];
