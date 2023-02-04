@@ -46245,3 +46245,7 @@ html[dir="rtl"] body.dark-only .page-wrapper .page-body-wrapper .page-body .card
     border: 1px solid #bfbfbf;
     color: #878787;
 }
+
+.card .card-body h4 {
+	font-size: 20px;
+}
