@@ -31468,7 +31468,8 @@ footer {
 
 .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .logo-wrapper,
 .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .logo-icon-wrapper {
-	padding: 16px 20px;
+	/* padding: 16px 20px; */
+	padding: 30px 20px;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.07)
 }
 
