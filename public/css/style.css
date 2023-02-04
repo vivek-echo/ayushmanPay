@@ -22454,7 +22454,8 @@ ul.pro-services li:nth-child(n+2) {
 	background-color: rgba(92, 97, 242, 0.05);
 	border: 1px solid #eee;
 	padding: 20px 24px;
-	border-radius: 5px
+	border-radius: 5px;
+	width: 150px;
 }
 
 .quick-file li .quick-box i {

@@ -28,7 +28,7 @@ Route::match(['GET', 'POST'], '/wallet', [App\Http\Controllers\Wallet\WalletCont
 Route::match(['GET', 'POST'], '/Wallet/UpdateWallet', [App\Http\Controllers\Wallet\WalletController::class, 'updateWallet'])->middleware('auth');
 
 Route::get('/services', function () {
-    return view('InnerPannel.services');
+    return view('InnerPannel.Services');
 });
 
 
