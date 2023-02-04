@@ -30,3 +30,4 @@ Route::match(['GET', 'POST'],'/vialidateOtpPage', [App\Http\Controllers\Auth\Otp
 Route::match(['GET', 'POST'],'/viewOtpPage', [App\Http\Controllers\Auth\OtpController::class, 'viewOtpPage']);
 Route::match(['GET', 'POST'],'/validateOtp', [App\Http\Controllers\Auth\OtpController::class, 'validateOtp']);
 Route::match(['GET', 'POST'],'/createAccount', [App\Http\Controllers\Auth\OtpController::class, 'index']);
+Route::match(['GET', 'POST'],'/Services/aepService', [App\Http\Controllers\Services\AepServiceController::class, 'index']);
