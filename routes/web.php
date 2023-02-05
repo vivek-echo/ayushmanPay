@@ -27,3 +27,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(['GET', 'POST'], '/wallet', [App\Http\Controllers\Wallet\WalletController::class, 'index'])->middleware('auth');
     Route::match(['GET', 'POST'], '/Wallet/UpdateWallet', [App\Http\Controllers\Wallet\WalletController::class, 'updateWallet'])->middleware('auth');
 });
+
+
+//FOR MOBILE RECHARGE
+Route::get('/services/mobileRecharge', function(){
+    return view('InnerPannel/Services/BtwoBServices/MobileRechargeService');
+});
