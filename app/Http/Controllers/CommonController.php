@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CommonController extends Controller
 {
@@ -48,10 +50,27 @@ class CommonController extends Controller
             'Token'=> $token
         ])->withBody(json_encode($param),'application/json')
         ->post('https://paysprint.in/service-api/api/v1/service/recharge/hlrapi/browseplan')->json();
+        $mainmenu = array_keys($plans['info']);
         return response()->json([
             'status'=>$plans['status'],
             'message'=>$plans['message'],
-            'data' => $plans['info']
+            'data' => $mainmenu,
+            'plans'=>$plans['info']
+        ]);
+    }
+    public function profileData(){
+        $data = Auth ::user();
+        $walletAmount = 0;
+        if($data)
+        {
+            $wallet = DB::table('user_wallet')->where('userId',$data->id)->where('deletedFlag',0)->first();
+            if($wallet)
+            {
+                $walletAmount = $wallet->walletAmount;
+            }
+        }
+        return response()->json([
+            'walletAmount'=>$walletAmount
         ]);
     }
 }
