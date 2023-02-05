@@ -3130,6 +3130,10 @@ fieldset .input-group-lg .touchspin {
 	line-height: 1.5
 }
 
+.form-check {
+    margin-bottom: 0.8rem;
+}
+
 .animated-modal .form-select {
 	display: inline-block;
 	width: auto;
@@ -9913,8 +9917,8 @@ input[type="file"] {
 }
 
 .checkbox input[type="checkbox"]:checked+label::before {
-	font-family: themify;
-	content: "\e64c";
+	font-family: 'custom-icomoon' !important;
+	content: "\eb33";
 	text-align: center;
 	line-height: 1.2
 }
@@ -12214,7 +12218,7 @@ th {
 	height: 30px;
 	padding: 5px;
 	border-radius: 8px;
-	margin-right: 10px
+	/* margin-right: 10px */
 }
 
 .hover tbody tr:nth-child(even):hover {

@@ -13,7 +13,8 @@ class DashboardController extends Controller
 
     public function index()
     {
+        $viewVar['walet']=30;
         // dd(Controller::getToken());
-        return view('InnerPannel.Dashboard.Dashboard');
+        return view('InnerPannel.Dashboard.Dashboard',$viewVar);
     }
 }

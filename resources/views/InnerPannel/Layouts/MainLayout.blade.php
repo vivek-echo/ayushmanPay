@@ -87,7 +87,7 @@
                 <div class="left-header col horizontal-wrapper ps-0">
                     <div class="left-menu-header">
                         <ul class="header-left">
-                            <li class=""><span class="f-w-600">Wallet Balance: Rs. 0.00</span>
+                            <li class=""><span class="f-w-600" id="walletId">Wallet Balance: </span>
                             </li>
                         </ul>
                     </div>
@@ -319,6 +319,20 @@
     <!-- <script src="{{ asset('js/dashboard/dashboard_2.js') }}"></script> -->
     <!-- Template js-->
     <script src="{{ asset('js/script.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: "{{ url('/profileData') }}",
+                success: function(res) {
+                    if(res)
+                    {
+                        $('#walletId').html("Wallet Balance: " +res.walletAmount);
+                    }
+                }
+            });
+        })
+        </script>
+    
     <!-- login js-->
 </body>
 

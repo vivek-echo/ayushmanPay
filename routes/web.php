@@ -29,6 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(['GET', 'POST'], '/Wallet/UpdateWallet', [App\Http\Controllers\Wallet\WalletController::class, 'updateWallet']);
     Route::match(['GET', 'POST'], '/getPerpaidOperatorList', [App\Http\Controllers\CommonController::class, 'getPrepaidOperatorList']);
     Route::match(['GET', 'POST'], '/getPerpaidOperatorPlan', [App\Http\Controllers\CommonController::class, 'getPerpaidOperatorPlan']);
+    Route::match(['GET', 'POST'], '/profileData', [App\Http\Controllers\CommonController::class, 'profileData']);
 });
 Route::get('/services/fastTag', function(){
     return view('InnerPannel/Services/BtwoBServices/FastTagService');
