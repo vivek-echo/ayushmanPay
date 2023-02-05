@@ -53,7 +53,7 @@
                                 <div class="file-manager">
                                     <ul class="quick-file d-flex flex-row">
                                         <li>
-                                            <a href="{{ url('/services/mobileRecharge') }}"><div class="quick-box"><i class="myicon-mobile-payment"></i></div>
+                                            <a href="{{ url('/services/b2bServices/mobileRechare') }}"><div class="quick-box"><i class="myicon-mobile-payment"></i></div>
                                             <h6>Recharge</h6></a>   
                                         </li>
                                         <li>

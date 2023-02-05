@@ -171,94 +171,401 @@
         <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Popular</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Plans</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col"></th>
-                                    <th scope="col">Talktime</th>
-                                    <th scope="col">Validity</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Price</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="d-flex align-items-center"> <i class="bg-light-success font-success"
-                                            data-feather="check-circle"></i><span class="font-success"></span>
-                                    </td>
-                                    <td>NA</td>
-                                    <td>28 Days</td>
-                                    <td>ISD Talktime: Rs. 424.58 and 5 ISD SMS, Talktime can be used only for making ISD
-                                        calls
-                                        and ISD SMS while in India.Validity: 28 Days | For ISD Call rates,visit
-                                        https://www.jio.com/jio-isd-recharge-plans</td>
-                                    <td>
-                                        <h5><span class="badge badge-sm badge-primary">Rs.501</span></h5>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="d-flex align-items-center"> <i class="bg-light-success font-success"
-                                            data-feather="check-circle"></i><span class="font-success"></span>
-                                    </td>
-                                    <td>NA</td>
-                                    <td>28 Days</td>
-                                    <td>ISD Talktime: Rs. 424.58 and 5 ISD SMS, Talktime can be used only for making ISD
-                                        calls
-                                        and ISD SMS while in India.Validity: 28 Days | For ISD Call rates,visit
-                                        https://www.jio.com/jio-isd-recharge-plans</td>
-                                    <td>
-                                        <h5><span class="badge badge-sm badge-primary">Rs.501</span></h5>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="d-flex align-items-center"> <i class="bg-light-success font-success"
-                                            data-feather="check-circle"></i><span class="font-success"></span>
-                                    </td>
-                                    <td>NA</td>
-                                    <td>28 Days</td>
-                                    <td>ISD Talktime: Rs. 424.58 and 5 ISD SMS, Talktime can be used only for making ISD
-                                        calls
-                                        and ISD SMS while in India.Validity: 28 Days | For ISD Call rates,visit
-                                        https://www.jio.com/jio-isd-recharge-plans</td>
-                                    <td>
-                                        <h5><span class="badge badge-sm badge-primary">Rs.501</span></h5>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="d-flex align-items-center"> <i class="bg-light-success font-success"
-                                            data-feather="check-circle"></i><span class="font-success"></span>
-                                    </td>
-                                    <td>NA</td>
-                                    <td>28 Days</td>
-                                    <td>ISD Talktime: Rs. 424.58 and 5 ISD SMS, Talktime can be used only for making ISD
-                                        calls
-                                        and ISD SMS while in India.Validity: 28 Days | For ISD Call rates,visit
-                                        https://www.jio.com/jio-isd-recharge-plans</td>
-                                    <td>
-                                        <h5><span class="badge badge-sm badge-primary">Rs.501</span></h5>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="d-flex align-items-center"> <i class="bg-light-success font-success"
-                                            data-feather="check-circle"></i><span class="font-success"></span>
-                                    </td>
-                                    <td>NA</td>
-                                    <td>28 Days</td>
-                                    <td>ISD Talktime: Rs. 424.58 and 5 ISD SMS, Talktime can be used only for making ISD
-                                        calls
-                                        and ISD SMS while in India.Validity: 28 Days | For ISD Call rates,visit
-                                        https://www.jio.com/jio-isd-recharge-plans</td>
-                                    <td>
-                                        <h5><span class="badge badge-sm badge-primary">Rs.501</span></h5>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <ul class="nav nav-pills mb-3 mt-4" id="pills-tab" role="tablist">
+                        <li class="nav-item me-2" role="presentation">
+                            <button class="nav-link active" id="popular-tab" data-bs-toggle="pill"
+                                data-bs-target="#popular" type="button" role="tab" aria-controls="popular"
+                                aria-selected="true">Popular Plans</button>
+                        </li>
+                        <li class="nav-item me-2" role="presentation">
+                            <button class="nav-link" id="annual-tab" data-bs-toggle="pill"
+                                data-bs-target="#annual" type="button" role="tab"
+                                aria-controls="annual" aria-selected="false">Annual Plans</button>
+                        </li>
+                        <li class="nav-item me-2" role="presentation">
+                            <button class="nav-link" id="data-add-tab" data-bs-toggle="pill"
+                                data-bs-target="#data-add" type="button" role="tab"
+                                aria-controls="data-add" aria-selected="false">Data Add-On</button>
+                        </li>
+                        <li class="nav-item me-2" role="presentation">
+                            <button class="nav-link" id="voucher-tab" data-bs-toggle="pill"
+                                data-bs-target="#voucher" type="button" role="tab"
+                                aria-controls="voucher" aria-selected="false">4G/5G Vouchers</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content mt-4" id="pills-tabContent">
+
+                        <!-- FOR POPULAR -->
+                        <div class="tab-pane fade show active" id="popular" role="tabpanel"
+                            aria-labelledby="pills-popular">
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col"></th>
+                                                <th scope="col">Talktime</th>
+                                                <th scope="col">Validity</th>
+                                                <th scope="col">Description</th>
+                                                <th scope="col">Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="d-flex align-items-center"> <i class="bg-light-success font-success"
+                                                        data-feather="check-circle"></i><span class="font-success"></span>
+                                                </td>
+                                                <td>NA</td>
+                                                <td>28 Days</td>
+                                                <td>ISD Talktime: Rs. 424.58 and 5 ISD SMS, Talktime can be used only for making ISD
+                                                    calls
+                                                    and ISD SMS while in India.Validity: 28 Days | For ISD Call rates,visit
+                                                    https://www.jio.com/jio-isd-recharge-plans</td>
+                                                <td>
+                                                    <h5><span class="badge badge-sm badge-primary">Rs.501</span></h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="d-flex align-items-center"> <i class="bg-light-success font-success"
+                                                        data-feather="check-circle"></i><span class="font-success"></span>
+                                                </td>
+                                                <td>NA</td>
+                                                <td>28 Days</td>
+                                                <td>ISD Talktime: Rs. 424.58 and 5 ISD SMS, Talktime can be used only for making ISD
+                                                    calls
+                                                    and ISD SMS while in India.Validity: 28 Days | For ISD Call rates,visit
+                                                    https://www.jio.com/jio-isd-recharge-plans</td>
+                                                <td>
+                                                    <h5><span class="badge badge-sm badge-primary">Rs.501</span></h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="d-flex align-items-center"> <i class="bg-light-success font-success"
+                                                        data-feather="check-circle"></i><span class="font-success"></span>
+                                                </td>
+                                                <td>NA</td>
+                                                <td>28 Days</td>
+                                                <td>ISD Talktime: Rs. 424.58 and 5 ISD SMS, Talktime can be used only for making ISD
+                                                    calls
+                                                    and ISD SMS while in India.Validity: 28 Days | For ISD Call rates,visit
+                                                    https://www.jio.com/jio-isd-recharge-plans</td>
+                                                <td>
+                                                    <h5><span class="badge badge-sm badge-primary">Rs.501</span></h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="d-flex align-items-center"> <i class="bg-light-success font-success"
+                                                        data-feather="check-circle"></i><span class="font-success"></span>
+                                                </td>
+                                                <td>NA</td>
+                                                <td>28 Days</td>
+                                                <td>ISD Talktime: Rs. 424.58 and 5 ISD SMS, Talktime can be used only for making ISD
+                                                    calls
+                                                    and ISD SMS while in India.Validity: 28 Days | For ISD Call rates,visit
+                                                    https://www.jio.com/jio-isd-recharge-plans</td>
+                                                <td>
+                                                    <h5><span class="badge badge-sm badge-primary">Rs.501</span></h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="d-flex align-items-center"> <i class="bg-light-success font-success"
+                                                        data-feather="check-circle"></i><span class="font-success"></span>
+                                                </td>
+                                                <td>NA</td>
+                                                <td>28 Days</td>
+                                                <td>ISD Talktime: Rs. 424.58 and 5 ISD SMS, Talktime can be used only for making ISD
+                                                    calls
+                                                    and ISD SMS while in India.Validity: 28 Days | For ISD Call rates,visit
+                                                    https://www.jio.com/jio-isd-recharge-plans</td>
+                                                <td>
+                                                    <h5><span class="badge badge-sm badge-primary">Rs.501</span></h5>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FOR ANNUAL -->
+                        <div class="tab-pane fade" id="annual" role="tabpanel"
+                            aria-labelledby="pills-annual">
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col"></th>
+                                                <th scope="col">Talktime</th>
+                                                <th scope="col">Validity</th>
+                                                <th scope="col">Description</th>
+                                                <th scope="col">Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="d-flex align-items-center"> <i class="bg-light-success font-success"
+                                                        data-feather="check-circle"></i><span class="font-success"></span>
+                                                </td>
+                                                <td>NA</td>
+                                                <td>28 Days</td>
+                                                <td>ISD Talktime: Rs. 424.58 and 5 ISD SMS, Talktime can be used only for making ISD
+                                                    calls
+                                                    and ISD SMS while in India.Validity: 28 Days | For ISD Call rates,visit
+                                                    https://www.jio.com/jio-isd-recharge-plans</td>
+                                                <td>
+                                                    <h5><span class="badge badge-sm badge-primary">Rs.501</span></h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="d-flex align-items-center"> <i class="bg-light-success font-success"
+                                                        data-feather="check-circle"></i><span class="font-success"></span>
+                                                </td>
+                                                <td>NA</td>
+                                                <td>28 Days</td>
+                                                <td>ISD Talktime: Rs. 424.58 and 5 ISD SMS, Talktime can be used only for making ISD
+                                                    calls
+                                                    and ISD SMS while in India.Validity: 28 Days | For ISD Call rates,visit
+                                                    https://www.jio.com/jio-isd-recharge-plans</td>
+                                                <td>
+                                                    <h5><span class="badge badge-sm badge-primary">Rs.501</span></h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="d-flex align-items-center"> <i class="bg-light-success font-success"
+                                                        data-feather="check-circle"></i><span class="font-success"></span>
+                                                </td>
+                                                <td>NA</td>
+                                                <td>28 Days</td>
+                                                <td>ISD Talktime: Rs. 424.58 and 5 ISD SMS, Talktime can be used only for making ISD
+                                                    calls
+                                                    and ISD SMS while in India.Validity: 28 Days | For ISD Call rates,visit
+                                                    https://www.jio.com/jio-isd-recharge-plans</td>
+                                                <td>
+                                                    <h5><span class="badge badge-sm badge-primary">Rs.501</span></h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="d-flex align-items-center"> <i class="bg-light-success font-success"
+                                                        data-feather="check-circle"></i><span class="font-success"></span>
+                                                </td>
+                                                <td>NA</td>
+                                                <td>28 Days</td>
+                                                <td>ISD Talktime: Rs. 424.58 and 5 ISD SMS, Talktime can be used only for making ISD
+                                                    calls
+                                                    and ISD SMS while in India.Validity: 28 Days | For ISD Call rates,visit
+                                                    https://www.jio.com/jio-isd-recharge-plans</td>
+                                                <td>
+                                                    <h5><span class="badge badge-sm badge-primary">Rs.501</span></h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="d-flex align-items-center"> <i class="bg-light-success font-success"
+                                                        data-feather="check-circle"></i><span class="font-success"></span>
+                                                </td>
+                                                <td>NA</td>
+                                                <td>28 Days</td>
+                                                <td>ISD Talktime: Rs. 424.58 and 5 ISD SMS, Talktime can be used only for making ISD
+                                                    calls
+                                                    and ISD SMS while in India.Validity: 28 Days | For ISD Call rates,visit
+                                                    https://www.jio.com/jio-isd-recharge-plans</td>
+                                                <td>
+                                                    <h5><span class="badge badge-sm badge-primary">Rs.501</span></h5>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FOR DATA ADD-ON -->
+                        <div class="tab-pane fade" id="data-add" role="tabpanel"
+                            aria-labelledby="pills-data-add">
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col"></th>
+                                                <th scope="col">Talktime</th>
+                                                <th scope="col">Validity</th>
+                                                <th scope="col">Description</th>
+                                                <th scope="col">Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="d-flex align-items-center"> <i class="bg-light-success font-success"
+                                                        data-feather="check-circle"></i><span class="font-success"></span>
+                                                </td>
+                                                <td>NA</td>
+                                                <td>28 Days</td>
+                                                <td>ISD Talktime: Rs. 424.58 and 5 ISD SMS, Talktime can be used only for making ISD
+                                                    calls
+                                                    and ISD SMS while in India.Validity: 28 Days | For ISD Call rates,visit
+                                                    https://www.jio.com/jio-isd-recharge-plans</td>
+                                                <td>
+                                                    <h5><span class="badge badge-sm badge-primary">Rs.501</span></h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="d-flex align-items-center"> <i class="bg-light-success font-success"
+                                                        data-feather="check-circle"></i><span class="font-success"></span>
+                                                </td>
+                                                <td>NA</td>
+                                                <td>28 Days</td>
+                                                <td>ISD Talktime: Rs. 424.58 and 5 ISD SMS, Talktime can be used only for making ISD
+                                                    calls
+                                                    and ISD SMS while in India.Validity: 28 Days | For ISD Call rates,visit
+                                                    https://www.jio.com/jio-isd-recharge-plans</td>
+                                                <td>
+                                                    <h5><span class="badge badge-sm badge-primary">Rs.501</span></h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="d-flex align-items-center"> <i class="bg-light-success font-success"
+                                                        data-feather="check-circle"></i><span class="font-success"></span>
+                                                </td>
+                                                <td>NA</td>
+                                                <td>28 Days</td>
+                                                <td>ISD Talktime: Rs. 424.58 and 5 ISD SMS, Talktime can be used only for making ISD
+                                                    calls
+                                                    and ISD SMS while in India.Validity: 28 Days | For ISD Call rates,visit
+                                                    https://www.jio.com/jio-isd-recharge-plans</td>
+                                                <td>
+                                                    <h5><span class="badge badge-sm badge-primary">Rs.501</span></h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="d-flex align-items-center"> <i class="bg-light-success font-success"
+                                                        data-feather="check-circle"></i><span class="font-success"></span>
+                                                </td>
+                                                <td>NA</td>
+                                                <td>28 Days</td>
+                                                <td>ISD Talktime: Rs. 424.58 and 5 ISD SMS, Talktime can be used only for making ISD
+                                                    calls
+                                                    and ISD SMS while in India.Validity: 28 Days | For ISD Call rates,visit
+                                                    https://www.jio.com/jio-isd-recharge-plans</td>
+                                                <td>
+                                                    <h5><span class="badge badge-sm badge-primary">Rs.501</span></h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="d-flex align-items-center"> <i class="bg-light-success font-success"
+                                                        data-feather="check-circle"></i><span class="font-success"></span>
+                                                </td>
+                                                <td>NA</td>
+                                                <td>28 Days</td>
+                                                <td>ISD Talktime: Rs. 424.58 and 5 ISD SMS, Talktime can be used only for making ISD
+                                                    calls
+                                                    and ISD SMS while in India.Validity: 28 Days | For ISD Call rates,visit
+                                                    https://www.jio.com/jio-isd-recharge-plans</td>
+                                                <td>
+                                                    <h5><span class="badge badge-sm badge-primary">Rs.501</span></h5>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FOR DATA ADD-ON -->
+                        <div class="tab-pane fade" id="voucher" role="tabpanel"
+                            aria-labelledby="pills-voucher">
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col"></th>
+                                                <th scope="col">Talktime</th>
+                                                <th scope="col">Validity</th>
+                                                <th scope="col">Description</th>
+                                                <th scope="col">Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="d-flex align-items-center"> <i class="bg-light-success font-success"
+                                                        data-feather="check-circle"></i><span class="font-success"></span>
+                                                </td>
+                                                <td>NA</td>
+                                                <td>28 Days</td>
+                                                <td>ISD Talktime: Rs. 424.58 and 5 ISD SMS, Talktime can be used only for making ISD
+                                                    calls
+                                                    and ISD SMS while in India.Validity: 28 Days | For ISD Call rates,visit
+                                                    https://www.jio.com/jio-isd-recharge-plans</td>
+                                                <td>
+                                                    <h5><span class="badge badge-sm badge-primary">Rs.501</span></h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="d-flex align-items-center"> <i class="bg-light-success font-success"
+                                                        data-feather="check-circle"></i><span class="font-success"></span>
+                                                </td>
+                                                <td>NA</td>
+                                                <td>28 Days</td>
+                                                <td>ISD Talktime: Rs. 424.58 and 5 ISD SMS, Talktime can be used only for making ISD
+                                                    calls
+                                                    and ISD SMS while in India.Validity: 28 Days | For ISD Call rates,visit
+                                                    https://www.jio.com/jio-isd-recharge-plans</td>
+                                                <td>
+                                                    <h5><span class="badge badge-sm badge-primary">Rs.501</span></h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="d-flex align-items-center"> <i class="bg-light-success font-success"
+                                                        data-feather="check-circle"></i><span class="font-success"></span>
+                                                </td>
+                                                <td>NA</td>
+                                                <td>28 Days</td>
+                                                <td>ISD Talktime: Rs. 424.58 and 5 ISD SMS, Talktime can be used only for making ISD
+                                                    calls
+                                                    and ISD SMS while in India.Validity: 28 Days | For ISD Call rates,visit
+                                                    https://www.jio.com/jio-isd-recharge-plans</td>
+                                                <td>
+                                                    <h5><span class="badge badge-sm badge-primary">Rs.501</span></h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="d-flex align-items-center"> <i class="bg-light-success font-success"
+                                                        data-feather="check-circle"></i><span class="font-success"></span>
+                                                </td>
+                                                <td>NA</td>
+                                                <td>28 Days</td>
+                                                <td>ISD Talktime: Rs. 424.58 and 5 ISD SMS, Talktime can be used only for making ISD
+                                                    calls
+                                                    and ISD SMS while in India.Validity: 28 Days | For ISD Call rates,visit
+                                                    https://www.jio.com/jio-isd-recharge-plans</td>
+                                                <td>
+                                                    <h5><span class="badge badge-sm badge-primary">Rs.501</span></h5>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="d-flex align-items-center"> <i class="bg-light-success font-success"
+                                                        data-feather="check-circle"></i><span class="font-success"></span>
+                                                </td>
+                                                <td>NA</td>
+                                                <td>28 Days</td>
+                                                <td>ISD Talktime: Rs. 424.58 and 5 ISD SMS, Talktime can be used only for making ISD
+                                                    calls
+                                                    and ISD SMS while in India.Validity: 28 Days | For ISD Call rates,visit
+                                                    https://www.jio.com/jio-isd-recharge-plans</td>
+                                                <td>
+                                                    <h5><span class="badge badge-sm badge-primary">Rs.501</span></h5>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- <div class="modal-footer">
