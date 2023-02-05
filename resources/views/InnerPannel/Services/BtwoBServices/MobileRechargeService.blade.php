@@ -48,25 +48,23 @@
                                     <div class="tab-pane fade show active" id="prepaid" role="tabpanel"
                                         aria-labelledby="pills-prepaid">
                                         <div class="row">
-                                            <div class="form-group col-6">
-                                                <label class="col-form-label">Prepaid Mobile
-                                                    Number</label><span class="text-danger fa-lg font-weight-500">
-                                                    *</span>
-                                                <input name="Pre-mobile" id="Pre-mobile" class="form-control" type="text"
-                                                    placeholder="Enter Prepaid Mobile Number" autocomplete="off">
-
-                                            </div>
 
                                             <div class="form-group col-6">
                                                 <label class="col-form-label">Prepaid
                                                     Operator</label><span class="text-danger fa-lg font-weight-500">
                                                     *</span>
                                                 <select name="perpaidOperator" id="perpaidOperator" class="form-select">
-                                                    <option value="0">--Select Prepaid Operator--
-                                                    </option>
-                                                    <option value="1">Airtel</option>
-                                                    <option value="2">Jio</option>
-                                                    <option value="3">BSNL Special</option>
+
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">Circle</label><span
+                                                    class="text-danger fa-lg font-weight-500"> *</span>
+                                                <select name="circle" id="circle" class="form-select">
+                                                    <option value="0">--Select Circle--</option>
+                                                    {{-- <option value="1">Jharkhand</option>
+                                                    <option value="2">Gujrat</option> --}}
+                                                    <option value="Delhi NCR">Delhi NCR</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -74,14 +72,12 @@
                                         <div class="row">
 
                                             <div class="form-group col-6">
-                                                <label class="col-form-label">Circle</label><span
-                                                    class="text-danger fa-lg font-weight-500"> *</span>
-                                                <select name="Circle" id="Circle" class="form-select">
-                                                    <option value="0">--Select Circle--</option>
-                                                    <option value="1">Jharkhand</option>
-                                                    <option value="2">Gujrat</option>
-                                                    <option value="3">Odisha</option>
-                                                </select>
+                                                <label class="col-form-label">Prepaid Mobile
+                                                    Number</label><span class="text-danger fa-lg font-weight-500">
+                                                    *</span>
+                                                <input name="Pre-mobile" id="Pre-mobile" class="form-control" type="text"
+                                                    placeholder="Enter Prepaid Mobile Number" autocomplete="off">
+
                                             </div>
                                             <div class="form-group col-6">
                                                 <label class="col-form-label">Recharge
@@ -266,9 +262,9 @@
                     </div>
                 </div>
                 <!-- <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                                        </div> -->
+                                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                                                </div> -->
             </div>
         </div>
     </div>
@@ -276,6 +272,47 @@
     <script>
         $(document).ready(function() {
             $('#serviceLink').addClass('activeLink');
+
+            $.ajax({
+                url: "{{ url('/getPerpaidOperatorList') }}",
+                success: function(res) {
+                    var optionOperator = ['<option >--Select--</option>'];
+                    var optionLengthOperator = res.data.length;
+
+                    for (var i = 0; i < optionLengthOperator; i++) {
+                        var resOptionOperator = '<option value=' + res.data[i].name + ' >' + res.data[i]
+                            .name + '</option>'
+                        optionOperator.push(resOptionOperator);
+                    }
+                    $('#perpaidOperator').html(optionOperator);
+                }
+            });
+
+            $('#circle').on('change', function() {
+                var circle = $('#circle').val();
+                var operator = $('#perpaidOperator').val();
+                console.log(circle+"----"+operator);
+                $.ajax({
+                    url: "{{ url('/getPerpaidOperatorPlan') }}",
+                    data: {
+                        circle: circle,
+                        op: operator
+                    },
+                    success: function(res) {
+console.log(res)
+                        // var optionOperator = ['<option >--Select--</option>'];
+                        // var optionLengthOperator = res.data.length;
+
+                        // for (var i = 0; i < optionLengthOperator; i++) {
+                        //     var resOptionOperator = '<option value=' + res.data[i].name + ' >' +
+                        //         res.data[i]
+                        //         .name + '</option>'
+                        //     optionOperator.push(resOptionOperator);
+                        // }
+                        // $('#perpaidOperator').html(optionOperator);
+                    }
+                });
+            })
         });
     </script>
 @endsection

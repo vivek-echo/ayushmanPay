@@ -53,11 +53,11 @@
                                 <div class="file-manager">
                                     <ul class="quick-file d-flex flex-row">
                                         <li>
-                                            <a href="#"><div class="quick-box"><i class="myicon-mobile-payment"></i></div>
+                                            <a href="{{url('/services/b2bServices/mobileRechare')}}"><div class="quick-box"><i class="myicon-mobile-payment"></i></div>
                                             <h6>Recharge</h6></a>   
                                         </li>
                                         <li>
-                                            <a href="#"><div class="quick-box"><i class="myicon-online-banking-2"></i></div>
+                                            <a href="#"><div class="quick-box"><i class="myicon-online-banking-2" ></i></div>
                                             <h6>Money Transfer</h6></a>
                                         </li>
                                     </ul>

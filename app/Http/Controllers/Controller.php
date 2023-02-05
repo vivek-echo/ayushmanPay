@@ -10,12 +10,13 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    
     protected function getToken()
     {
         $header = json_encode(['typ' => 'JWT', 'alg' => 'HS256']);
 
         // Create token payload as a JSON string
-        $payload = json_encode(['timestamp' => time(), 'partnerId' => "PS00223", "reqid" => 1281376381649712]);
+        $payload = json_encode(['timestamp' => time(), 'partnerId' => config('constant.PATNER_ID'), "reqid" => mt_rand(10000000, 99999999)]);
 
         // Encode Header to Base64Url String
         $base64UrlHeader = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($header));
