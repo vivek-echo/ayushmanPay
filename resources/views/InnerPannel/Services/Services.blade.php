@@ -94,7 +94,7 @@
 
                                 <div class="file-manager">
                                     <ul class="quick-file d-flex flex-row">
-                                        <li>
+                                        {{-- <li>
                                             <div class="quick-box"><i class="fa fa-youtube-play font-danger"></i></div>
                                             <h6>Videos</h6>
                                         </li>
@@ -125,7 +125,7 @@
                                         <li>
                                             <div class="quick-box"><i class="fa fa-trash font-danger"></i></div>
                                             <h6>Trash</h6>
-                                        </li>
+                                        </li> --}}
                                     </ul>
                                 </div>
                             </div>

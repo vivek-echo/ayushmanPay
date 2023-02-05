@@ -334,7 +334,7 @@
                 success: function(res) {
                     if(res)
                     {
-                        $('#walletId').html("Wallet Balance: " +res.walletAmount);
+                        $('#walletId').html("Wallet Balance: Rs. " +res.walletAmount);
                     }
                 }
             });
