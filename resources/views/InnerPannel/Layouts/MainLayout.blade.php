@@ -39,6 +39,9 @@
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/sweetalert2.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-datepicker3.min.css') }}">
+
 
     <!-- latest jquery-->
     <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
@@ -77,7 +80,8 @@
                     </div>
                 </form>
                 <div class="header-logo-wrapper col-auto p-0">
-                    <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid"> </i>
+                    <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid">
+                        </i>
                     </div>
                     <div class="logo-header-main"><a href="{{ url('/dashboard') }}"><img
                                 class="img-fluid for-light img-100" src="{{ asset('images/favicon/favicon.png') }}"
@@ -292,7 +296,7 @@
             </footer>
         </div>
     </div>
-    
+
     <!-- Bootstrap js-->
     <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
     <!-- feather icon js-->
@@ -317,6 +321,10 @@
     <script src="{{ asset('js/datepicker/date-picker/datepicker.custom.js') }}"></script>
     <script src="{{ asset('js/owlcarousel/owl.carousel.js') }}"></script>
     <!-- <script src="{{ asset('js/dashboard/dashboard_2.js') }}"></script> -->
+
+    <script src="{{ asset('js/sweet-alert/sweetalert.min.js') }}"></script>
+
+    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
     <!-- Template js-->
     <script src="{{ asset('js/script.js') }}"></script>
     <!-- login js-->

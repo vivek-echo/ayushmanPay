@@ -68,6 +68,14 @@
                                             <a href="/services/emiBill"><div class="quick-box"><i class="myicon-correct"></i></div>
                                             <h6>EMI Bill Pay</h6></a>
                                         </li>
+                                        <li>
+                                            <a href="/services/hospital"><div class="quick-box"><i class="myicon-plus1"></i></div>
+                                            <h6>Hospital</h6></a>
+                                        </li>
+                                        <li>
+                                            <a href="/services/broadband"><div class="quick-box"><i class="myicon-wifi"></i></div>
+                                            <h6>Broadband</h6></a>
+                                        </li>
                                         {{-- <li>
                                             <a href="/services/emiBill"><div class="quick-box"><i class="myicon-correct"></i></div>
                                             <h6>Hathway Recharge</h6></a>

@@ -36,3 +36,9 @@ Route::get('/services/fastTag', function(){
 Route::get('/services/emiBill', function(){
     return view('InnerPannel/Services/BtwoBServices/EmiBillService');
 });
+Route::get('/services/hospital', function(){
+    return view('InnerPannel/Services/BtwoBServices/HospitalService');
+});
+Route::get('/services/broadband', function(){
+    return view('InnerPannel/Services/BtwoBServices/BroadbandService');
+});

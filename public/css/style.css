@@ -22474,6 +22474,7 @@ ul.pro-services li:nth-child(n+2) {
 .quick-file li .quick-box:hover {
 	border-color: #1eaeae;
 	/* width: 150px; */
+	background-color: #efffff;
 }
 
 .quick-file li .quick-box i {
