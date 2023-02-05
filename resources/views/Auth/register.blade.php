@@ -64,7 +64,7 @@
             <div class="col-12 p-0">
                 <div class="login-card">
                     <div>
-                        <div><a class="logo text-center" href="index.html"><img class="img-fluid for-light"
+                        <div><a class="logo text-center" href="#"><img class="img-fluid for-light"
                                     src="{{ asset('images/logo/ABP.png') }}" alt="looginpage" width="320"></a></div>
                         <div class="login-main">
                             <div class="theme-form">

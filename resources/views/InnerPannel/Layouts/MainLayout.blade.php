@@ -87,12 +87,7 @@
                 <div class="left-header col horizontal-wrapper ps-0">
                     <div class="left-menu-header">
                         <ul class="header-left">
-                            <li class="onhover-dropdown"><span class="f-w-600">Application</span><span><i
-                                        class="middle" data-feather="chevron-down"></i></span>
-                                <ul class="onhover-show-div left-dropdown">
-                                    <li> <a href="#">App 1</a></li>
-                                    <li> <a href="#">App 2</a></li>
-                                </ul>
+                            <li class=""><span class="f-w-600">Wallet Balance: Rs. 0.00</span>
                             </li>
                         </ul>
                     </div>

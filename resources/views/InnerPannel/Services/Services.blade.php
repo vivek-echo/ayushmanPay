@@ -53,13 +53,25 @@
                                 <div class="file-manager">
                                     <ul class="quick-file d-flex flex-row">
                                         <li>
-                                            <a href="{{url('/services/b2bServices/mobileRechare')}}"><div class="quick-box"><i class="myicon-mobile-payment"></i></div>
+                                            <a href="{{ url('/services/mobileRecharge') }}"><div class="quick-box"><i class="myicon-mobile-payment"></i></div>
                                             <h6>Recharge</h6></a>   
                                         </li>
                                         <li>
-                                            <a href="#"><div class="quick-box"><i class="myicon-online-banking-2" ></i></div>
+                                            <a href="#"><div class="quick-box"><i class="myicon-online-banking-2"></i></div>
                                             <h6>Money Transfer</h6></a>
                                         </li>
+                                        <li>
+                                            <a href="/services/fastTag"><div class="quick-box"><i class="myicon-barrier"></i></div>
+                                            <h6>Fast Tag</h6></a>
+                                        </li>
+                                        <li>
+                                            <a href="/services/emiBill"><div class="quick-box"><i class="myicon-correct"></i></div>
+                                            <h6>EMI Bill Pay</h6></a>
+                                        </li>
+                                        {{-- <li>
+                                            <a href="/services/emiBill"><div class="quick-box"><i class="myicon-correct"></i></div>
+                                            <h6>Hathway Recharge</h6></a>
+                                        </li> --}}
                                     </ul>
                                 </div>
 

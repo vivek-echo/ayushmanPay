@@ -29892,7 +29892,7 @@ footer {
 	color: #1eaeae
 }
 
-.left-header .left-menu-header ul.header-left li span.f-w-600:before {
+/* .left-header .left-menu-header ul.header-left li span.f-w-600:before {
 	position: absolute;
 	content: "";
 	top: -2px;
@@ -29904,7 +29904,7 @@ footer {
 	z-index: -1;
 	-webkit-transition: all 0.5s ease-in-out;
 	transition: all 0.5s ease-in-out
-}
+} */
 
 .left-header .left-menu-header ul.header-left li:nth-child(n+2)::before {
 	position: absolute;
