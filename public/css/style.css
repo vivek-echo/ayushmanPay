@@ -244,7 +244,7 @@
 }
 
 :root {
-	--theme-deafult: #5c61f2;
+	--theme-deafult: #1eaeae;
 	--theme-secondary: #eeb82f
 }
 
@@ -18007,6 +18007,14 @@ p.data-attributes svg {
 	min-height: 16px
 }
 
+.text-color-theme-1 {
+	color: #1eaeae;
+}
+
+.text-color-theme-2 {
+	color: #1eaeae;
+}
+
 @media only screen and (max-width: 1800px) {
 	.dashboard-2 .activity-timeline .d-flex+.d-flex {
 		margin-top: 26px
@@ -22446,7 +22454,7 @@ ul.pro-services li:nth-child(n+2) {
 .quick-file li h6 {
 	font-size: 14px;
 	text-align: center;
-	font-weight: 400;
+	font-weight: 500;
 	margin-top: 8px
 }
 
@@ -22455,11 +22463,21 @@ ul.pro-services li:nth-child(n+2) {
 	border: 1px solid #eee;
 	padding: 20px 24px;
 	border-radius: 5px;
-	width: 150px;
+	transition: .2s all ease-in-out;
+	-webkit-transition: .2s all ease-in-out;
+	-moz-transition: .2s all ease-in-out;
+	-ms-transition: .2s all ease-in-out;
+	-o-transition: .2s all ease-in-out;
+	/* width: 150px; */
+}
+
+.quick-file li .quick-box:hover {
+	border-color: #1eaeae;
+	/* width: 150px; */
 }
 
 .quick-file li .quick-box i {
-	font-size: 30px;
+	font-size: 60px;
 	margin-right: 0
 }
 
@@ -29871,7 +29889,7 @@ footer {
 
 .left-header .left-menu-header ul.header-left li span.f-w-600 {
 	position: relative;
-	color: #5c61f2
+	color: #1eaeae
 }
 
 .left-header .left-menu-header ul.header-left li span.f-w-600:before {
@@ -29881,7 +29899,7 @@ footer {
 	left: -9px;
 	width: 50px;
 	height: 24px;
-	background-color: rgba(92, 97, 242, 0.2);
+	background-color: rgba(30, 174, 174, 0.2);
 	border-radius: 4px;
 	z-index: -1;
 	-webkit-transition: all 0.5s ease-in-out;
@@ -31945,7 +31963,7 @@ footer {
 	content: '';
 	width: 35px;
 	height: 35px;
-	background-color: #5c61f2;
+	background-color: #1eaeae;
 	top: 6px;
 	left: 13px;
 	-webkit-transition: 0.8s;
@@ -31953,8 +31971,8 @@ footer {
 	z-index: -1;
 	border-radius: 8px;
 	opacity: 0;
-	-webkit-box-shadow: 1.5px 0.33px 16px 0px rgba(92, 97, 242, 0.6);
-	box-shadow: 1.5px 0.33px 16px 0px rgba(92, 97, 242, 0.6)
+	-webkit-box-shadow: 1.5px 0.33px 16px 0px rgba(30, 174, 174, 0.6);
+	box-shadow: 1.5px 0.33px 16px 0px rgba(30, 174, 174, 0.6)
 }
 
 .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links .simplebar-wrapper .simplebar-mask .simplebar-content-wrapper .simplebar-content .menu-box>ul>li .sidebar-link.activeLink {

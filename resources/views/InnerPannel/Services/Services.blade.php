@@ -53,12 +53,12 @@
                                 <div class="file-manager">
                                     <ul class="quick-file d-flex flex-row">
                                         <li>
-                                            <div class="quick-box"><i class="fa fa-youtube-play font-danger"></i></div>
-                                            <h6>Recharge</h6>
+                                            <a href="#"><div class="quick-box"><i class="myicon-mobile-payment"></i></div>
+                                            <h6>Recharge</h6></a>   
                                         </li>
                                         <li>
-                                            <div class="quick-box"><i class="fa fa-th font-info"></i></div>
-                                            <h6>Money Transfer</h6>
+                                            <a href="#"><div class="quick-box"><i class="myicon-online-banking-2"></i></div>
+                                            <h6>Money Transfer</h6></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -115,7 +115,8 @@
             </div>
         </div>
     </div>
-    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+
+    {{-- <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script> --}}
     <script>
         $(document).ready(function() {
             $('#serviceLink').addClass('activeLink');

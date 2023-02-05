@@ -25,6 +25,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/flag-icon.css') }}">
     <!-- Feather icon-->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/feather-icon.css') }}">
+    <!-- icomoon icon-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('custom-icomoon/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/scrollbar.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/animate.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/date-picker.css') }}">
@@ -36,6 +38,10 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
+
+
+    <!-- latest jquery-->
+    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
 </head>
 
 <body>
@@ -291,8 +297,7 @@
             </footer>
         </div>
     </div>
-    <!-- latest jquery-->
-    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+    
     <!-- Bootstrap js-->
     <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
     <!-- feather icon js-->
