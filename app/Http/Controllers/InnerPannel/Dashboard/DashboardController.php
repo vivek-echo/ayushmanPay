@@ -13,6 +13,7 @@ class DashboardController extends Controller
 
     public function index()
     {
+        dd(Controller::getToken());
         return view('InnerPannel.Dashboard.Dashboard');
     }
 }

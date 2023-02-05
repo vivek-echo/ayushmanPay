@@ -15,12 +15,6 @@ class CommonController extends Controller
         return response()->json([
             'data' => $response['result'][0]
         ]);
-        // if($response['status'] != false)
-        // {
-
-        //     echo json_encode($response['result'][0]['state']);
-        // }else{
-        //     echo json_encode(array('status'=>true,'result'=>  [])); 
-        // }
+       
     }
 }
