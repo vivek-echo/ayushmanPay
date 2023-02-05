@@ -15,7 +15,7 @@ class Controller extends BaseController
         $header = json_encode(['typ' => 'JWT', 'alg' => 'HS256']);
 
         // Create token payload as a JSON string
-        $payload = json_encode(['timestamp' => time(), 'partnerId' => "PS00223", "reqid" => 12115549712]);
+        $payload = json_encode(['timestamp' => time(), 'partnerId' => "PS00223", "reqid" => 1281376381649712]);
 
         // Encode Header to Base64Url String
         $base64UrlHeader = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($header));
