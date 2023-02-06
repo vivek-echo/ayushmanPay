@@ -44,3 +44,6 @@ Route::get('/services/hospital', function(){
 Route::get('/services/broadband', function(){
     return view('InnerPannel/Services/BtwoBServices/BroadbandService');
 });
+Route::get('/walletsection/walletsummary', function(){
+    return view('InnerPannel/WalletSection/WalletSummary');
+});

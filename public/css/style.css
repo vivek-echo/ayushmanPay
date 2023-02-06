@@ -245,7 +245,7 @@
 
 :root {
 	--theme-deafult: #1eaeae;
-	--theme-secondary: #eeb82f
+	--theme-secondary: #1eaeae;
 }
 
 .font-Montserrat {
@@ -5719,7 +5719,8 @@ div.DTS div.dataTables_scrollBody table {
 }
 
 .dataTables_wrapper .dataTables_filter input[type="search"] {
-	border: 1px solid #efefef;
+	/* border: 1px solid #efefef; */
+	border: 1px solid #e6e6e6;
 	padding: 0 10px;
 	margin-left: 10px;
 	height: 37px;
@@ -5993,7 +5994,7 @@ table.dataTable thead .sorting_desc_disabled:after {
 }
 
 .datepicker--day-name {
-	color: #eeb82f;
+	color: #1eaeae;
 	font-weight: bold
 }
 
@@ -7056,7 +7057,8 @@ form label {
 
 .form-control,
 .form-select {
-	border-color: #eee;
+	/* border-color: #eee; */
+	border-color: #e6e6e6;
 	font-size: 14px;
 	padding: 12px 15px
 }
@@ -31992,7 +31994,7 @@ footer {
 }
 
 .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .sidebar-main .sidebar-links .simplebar-wrapper .simplebar-mask .simplebar-content-wrapper .simplebar-content .menu-box>ul>li .sidebar-link.activeLink:hover span {
-	color: #5c61f2;
+	color: #1eaeae;
 	-webkit-transition: all 0.3s ease;
 	transition: all 0.3s ease
 }
@@ -46247,12 +46249,6 @@ html[dir="rtl"] body.dark-only .page-wrapper .page-body-wrapper .page-body .card
 
 .font-weight-500 {
 	font-weight: 500;
-}
-
-.datepicker table tr td.active.active, .datepicker table tr td.active.highlighted.active, .datepicker table tr td.active.highlighted:active, .datepicker table tr td.active:active {
-    color: #fff;
-    background-color: #1eaeae !important;
-    border-color: #1eaeae !important;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {

@@ -24,7 +24,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header pb-0">
-                        <h4>Choose Your Hospital Biller</h4><span></span>
+                        <h4>Choose Your Hospital Biller</h4>
                     </div>
                     <div class="card-body">
                         <div class="row m-0">

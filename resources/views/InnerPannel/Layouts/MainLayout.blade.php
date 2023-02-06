@@ -27,6 +27,10 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/feather-icon.css') }}">
     <!-- icomoon icon-->
     <link rel="stylesheet" type="text/css" href="{{ asset('custom-icomoon/style.css') }}">
+    <!-- Datatable-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/datatables.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/datatable-extension.css') }}">
+
     <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/scrollbar.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/animate.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/date-picker.css') }}">
@@ -40,7 +44,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/sweetalert2.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-datepicker3.min.css') }}">
 
 
     <!-- latest jquery-->
@@ -271,10 +274,10 @@
                                                 id="serviceLink" href="{{ url('/services') }}"><i
                                                     data-feather="grid"> </i><span>Services</span></a></li>
                                         <li class="sidebar-list"><a class="sidebar-link sidebar-title"
-                                                href="javascript:void(0)"><i data-feather="briefcase"></i><span>Wallet
+                                            id="walletLink" href="javascript:void(0)"><i data-feather="briefcase"></i><span>Wallet
                                                     Section</span></a>
                                             <ul class="sidebar-submenu">
-                                                <li><a href="#">Wallet Summary</a></li>
+                                                <li><a href="{{ url('/walletsection/walletsummary') }}">Wallet Summary</a></li>
                                                 <li><a href="#">Print My QR</a></li>
                                                 <li><a href="#">Settlement</a></li>
                                             </ul>
@@ -330,8 +333,29 @@
     <!-- <script src="{{ asset('js/dashboard/dashboard_2.js') }}"></script> -->
 
     <script src="{{ asset('js/sweet-alert/sweetalert.min.js') }}"></script>
-
-    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+    
+    <!-- Datatable-->
+    <script src="{{ asset('js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/jszip.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/buttons.colVis.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/dataTables.autoFill.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/dataTables.select.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/dataTables.keyTable.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/dataTables.colReorder.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/dataTables.fixedHeader.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/dataTables.rowReorder.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/dataTables.scroller.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/custom.js') }}"></script>
+    <script src="{{ asset('js/tooltip-init.js') }}"></script>
     <!-- Template js-->
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>

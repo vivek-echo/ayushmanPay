@@ -37,7 +37,7 @@
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/sweetalert2.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-datepicker3.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/date-picker.css') }}">
 </head>
 
 <body>
@@ -123,8 +123,9 @@
                                         <label class="col-form-label">Date Of Birth</label><span
                                             class="text-danger fa-lg font-weight-500"> *</span>
                                         <div class="input-group">
-                                            <input name="dateOfBirth" id="dateOfBirth" class="form-control"
-                                                type="text" placeholder="Date Of Birth" readonly>
+                                            <input name="dateOfBirth" id="dateOfBirth"
+                                                class="datepicker-here form-control digits" type="text"
+                                                data-language="en" placeholder="Date Of Birth" readonly>
                                             <div class="input-group-text" id="btnGroupAddon"><i
                                                     class="text-secondary" data-feather="calendar"></i></div>
                                         </div>
@@ -134,8 +135,8 @@
                                         <label class="col-form-label">Pin Code</label><span
                                             class="text-danger fa-lg font-weight-500"> *</span>
                                         <div class="input-group">
-                                            <input name="pinCode" id="pinCode" class="form-control" type="text" autocomplete="off"
-                                                placeholder="Pin Code">
+                                            <input name="pinCode" id="pinCode" class="form-control" type="text"
+                                                autocomplete="off" placeholder="Pin Code">
                                             <div class="input-group-append">
                                                 <div class="form-group col-1 mb-0"> <img
                                                         src="{{ asset('images/loader-5.gif') }}" alt=""
@@ -227,8 +228,8 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <img class="img-fluid for-light"
-                            src="{{ asset('images/logo/ABP.png') }}" alt="looginpage" width="320">
+                        <img class="img-fluid for-light" src="{{ asset('images/logo/ABP.png') }}" alt="looginpage"
+                            width="320">
                         <button class="btn-close" type="button" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                     </div>
@@ -250,15 +251,16 @@
                         <input name="referralCode" id="referralCodeModal" class="form-control" type="hidden">
                         <div class="row">
                             <div class="form-group col-10 mx-auto">
-                                <input name="otpValid" id="otpValid" class="form-control" type="number" autocomplete="off"
-                                    placeholder="Enter your OTP">
+                                <input name="otpValid" id="otpValid" class="form-control" type="number"
+                                    autocomplete="off" placeholder="Enter your OTP">
                                 <input name="otpValidEnc" id="otpValidEnc" class="form-control" type="hidden"
                                     placeholder="Enter your OTP">
 
-                                    <code class="text-danger fs-6 " id="InvalidOtp" style="display: none" >*Invalid Otp. Please enter valid otp. </code>
+                                <code class="text-danger fs-6 " id="InvalidOtp" style="display: none">*Invalid Otp.
+                                    Please enter valid otp. </code>
                             </div>
                         </div>
-                       
+
                     </div>
                     <div class="modal-footer">
 
@@ -283,10 +285,12 @@
         <!-- Template js-->
         <script src="{{ asset('js/script.js') }}"></script>
         <script src="{{ asset('js/main.js') }}"></script>
-        <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+        <script src="{{ asset('js/datepicker/date-picker/datepicker.js') }}"></script>
+        <script src="{{ asset('js/datepicker/date-picker/datepicker.en.js') }}"></script>
+        <script src="{{ asset('js/datepicker/date-picker/datepicker.custom.js') }}"></script>
         <script>
             $(document).ready(function() {
-                $('.btn-close').on('click',function(){
+                $('.btn-close').on('click', function() {
                     $('#otpValid').val('');
                 })
                 var resCaptcha = [];
@@ -471,11 +475,6 @@
                 }
 
 
-                //FOR DATEPICKER
-                $('#dateOfBirth').datepicker({
-                    format: "dd/mm/yyyy"
-                });
-
                 $('#createAccountSubmit').on('click', function() {
                     $('.pageLoader').fadeIn();
 
@@ -493,7 +492,7 @@
                             if (res.status == false) {
                                 $('.pageLoader').fadeOut();
                                 $('#InvalidOtp').show();
-                               
+
                             } else {
                                 createAccount();
                             }
