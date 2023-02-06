@@ -31,10 +31,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(['GET', 'POST'], '/getPerpaidOperatorList', [App\Http\Controllers\CommonController::class, 'getPrepaidOperatorList']);
     Route::match(['GET', 'POST'], '/getPerpaidOperatorPlan', [App\Http\Controllers\CommonController::class, 'getPerpaidOperatorPlan']);
     Route::match(['GET', 'POST'], '/profileData', [App\Http\Controllers\CommonController::class, 'profileData']);
+    //fasttag
+    Route::match(['GET', 'POST'], '/services/b2bServices/fasttag', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\FastTagServicesController::class, 'index']);
+    Route::match(['GET', 'POST'], '/getFastTagOperatorList', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\FastTagServicesController::class, 'getFastTagOperatorList']);
 });
-Route::get('/services/fastTag', function(){
-    return view('InnerPannel/Services/BtwoBServices/FastTagService');
-});
+
 Route::get('/services/emiBill', function(){
     return view('InnerPannel/Services/BtwoBServices/EmiBillService');
 });
