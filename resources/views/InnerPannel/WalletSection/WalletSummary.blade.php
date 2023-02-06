@@ -50,6 +50,9 @@
                                 </div>
 
                             </div>
+                            <div class="form-group col-4 m-t-35">
+                                <button class="btn btn-success" id="">Search</button>
+                            </div>
 
                         </div>
                         <hr>
