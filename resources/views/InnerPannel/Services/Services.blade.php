@@ -61,7 +61,7 @@
                                             <h6>Money Transfer</h6></a>
                                         </li>
                                         <li>
-                                            <a href="/services/fastTag"><div class="quick-box"><i class="myicon-barrier"></i></div>
+                                            <a href="/services/b2bServices/fasttag"><div class="quick-box"><i class="myicon-barrier"></i></div>
                                             <h6>Fast Tag</h6></a>
                                         </li>
                                         <li>

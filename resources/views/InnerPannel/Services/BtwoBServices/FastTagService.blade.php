@@ -30,23 +30,24 @@
                         <div class="row m-0">
                             <div class="form-group col-6">
                                 <label class="col-form-label">FastTag Biller Id
-                                    </label><span class="text-danger fa-lg font-weight-500">
+                                </label><span class="text-danger fa-lg font-weight-500">
                                     *</span>
-                                <select name="perpaidOperator" id="perpaidOperator" class="form-select">
-                                    <option value="0">--Select FastTag Biller Id--
-                                    </option>
-                                    <option value="1">Paytm Payments Bank FASTag</option>
-                                    <option value="2">IDBI Bank FASTag</option>
-                                    <option value="3">Axis Bank FASTag</option>
-                                    <option value="4">Jammu and Kashmir Bank FASTag</option>
-                                    <option value="5">Transcorp International Limited</option>
-                                    <option value="6">IOB FASTag</option>
-                                    <option value="7">Paul Merchants</option>
-                                    <option value="8">State Bank of India - NETC FASTag</option>
-                                </select>
+                                <div class="input-group">
+                                    <select name="billerId" id="billerId" class="form-select">
+                                        <option value="">Loading ....</option>
+                                    </select>
+                                    <div class="input-group-append">
+                                        <div class="form-group col-1 mb-0"> <img src="{{ asset('images/loader-5.gif') }}"
+                                                alt="" width="45" id="perpaidOperatorLoading"
+                                                style="display:none;">
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                             <div class="form-group col-6">
-                                <label class="col-form-label">Vehicle Registration Number / Wallet Number</label><span class="text-danger fa-lg font-weight-500">
+                                <label class="col-form-label">Vehicle Registration Number / Wallet Number</label><span
+                                    class="text-danger fa-lg font-weight-500">
                                     *</span>
                                 <input name="vehicleNo" id="vehicleNo" class="form-control" type="text"
                                     placeholder="Enter Registration Number / Wallet Number" autocomplete="off">
@@ -76,6 +77,26 @@
     <script>
         $(document).ready(function() {
             $('#serviceLink').addClass('activeLink');
+            $('#perpaidOperatorLoading').show();
+
+            $.ajax({
+                url: "{{ url('/getFastTagOperatorList') }}",
+                success: function(res) {
+                    
+                    var optionOperator = ['<option value="0" >--Select Operator--</option>'];
+                    var optionLengthOperator = res.data.length;
+
+                    for (var i = 0; i < optionLengthOperator; i++) {
+                        var resOptionOperator = '<option value=' + res.data[i].id + ' >' + res.data[i]
+                            .name + '</option>'
+                        optionOperator.push(resOptionOperator);
+                    }
+                    $('#billerId').html(optionOperator);
+                    $('#perpaidOperatorLoading').hide();
+                }
+            });
+
+
         });
     </script>
 @endsection
