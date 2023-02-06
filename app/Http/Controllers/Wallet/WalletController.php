@@ -40,7 +40,13 @@ class WalletController extends Controller
                 });
             } else {
                 $insertAllRecord = DB::transaction(function () use ( $getData, $userId) {
-                    DB::table('user_wallet')->insert([
+                   $insertId= DB::table('user_wallet')->insertGetId([
+                        'userId' =>  $userId,
+                        'walletAmount' => $getData['amount'],
+                        'createdOn' => date('y-m-d H:i:s'),
+                    ]);
+                    DB::table('user_wallet_log')->insert([
+                        'wId' =>  $insertId,
                         'userId' =>  $userId,
                         'walletAmount' => $getData['amount'],
                         'createdOn' => date('y-m-d H:i:s'),

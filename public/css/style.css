@@ -30586,7 +30586,7 @@ footer {
 }
 
 .page-wrapper .page-header .header-wrapper .nav-right>ul>li:nth-child(n+2):hover {
-	background-color: #5c61f2
+	background-color: #1eaeae
 }
 
 .page-wrapper .page-header .header-wrapper .nav-right>ul>li:nth-child(n+2):hover svg,
@@ -30722,7 +30722,7 @@ footer {
 }
 
 .page-wrapper .page-header .header-wrapper .nav-right .onhover-show-div:not(.profile-dropdown) li:first-child h6 {
-	color: #5c61f2
+	color: #1eaeae
 }
 
 .page-wrapper .page-header .header-wrapper .nav-right .onhover-show-div:not(.profile-dropdown) li:first-child svg {
@@ -30810,7 +30810,7 @@ footer {
 }
 
 .page-wrapper .page-header .header-wrapper .nav-right .notification-dropdown li .d-flex .flex-shrink-0 svg {
-	stroke: #5c61f2;
+	stroke: #1eaeae;
 	position: absolute;
 	top: 50%;
 	-webkit-transform: translate(-50%, -50%);
@@ -30949,7 +30949,7 @@ footer {
 	height: 49px;
 	border-radius: 15px;
 	color: #fff;
-	background-color: #5c61f2;
+	background-color: #1eaeae;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;

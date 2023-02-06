@@ -59,6 +59,13 @@
         <div class="dot"> </div>
         <div class="dot"></div>
     </div>
+    <div class="pageLoader" style="display: none;">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"> </div>
+        <div class="dot"></div>
+    </div>
     <!-- Loader ends-->
     <!-- page-wrapper Start-->
     <div class="page-wrapper compact-wrapper" id="pageWrapper">
@@ -327,6 +334,7 @@
     <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
     <!-- Template js-->
     <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
     <script>
         $(document).ready(function() {
             $.ajax({
