@@ -64,8 +64,8 @@
                         </div>
 
                         <div class="form-group mt-4">
-                            <button class="btn btn-warning" id="" data-bs-toggle="modal"
-                                data-bs-target="#fetchBill">Fetch Bill</button>
+                            <button class="btn btn-warning" id="fetchBillData" data-bs-toggle="modal"
+                                >Fetch Bill</button>
                             <button class="btn btn-primary" id="">Pay Bill</button>
                         </div>
                     </div>
@@ -88,47 +88,51 @@
                         <div class="form-group col-4">
                             <label class="col-form-label">Name</label><span class="text-danger fa-lg font-weight-500">
                                 *</span>
-                            <input name="userName" id="userName" class="form-control" type="text"
-                                placeholder="Enter Name" autocomplete="off">
+                            <input name="userName" id="userNameFetch" class="form-control" type="text"
+                                placeholder="Enter Name" autocomplete="off" readonly>
 
                         </div>
                         <div class="form-group col-4">
                             <label class="col-form-label">Due Date</label><span class="text-danger fa-lg font-weight-500">
                                 *</span>
                             <div class="input-group">
-                                <input class="datepicker-here form-control digits" type="text" data-language="en"
-                                    placeholder="Due Date">
+                                <input class="form-control" type="text" data-language="en" id="dueDate"
+                                    placeholder="Due Date" readonly>
                                 <div class="input-group-text" id=""><i class="text-secondary"
                                         data-feather="calendar"></i></div>
                             </div>
 
                         </div>
                         <div class="form-group col-4">
-                            <label class="col-form-label">Bill Amount</label><span class="text-danger fa-lg font-weight-500">
+                            <label class="col-form-label">Bill Amount</label><span
+                                class="text-danger fa-lg font-weight-500">
                                 *</span>
                             <input name="billAmnt" id="billAmnt" class="form-control" type="text"
-                                placeholder="Enter Bill Amount" autocomplete="off">
+                                placeholder="Enter Bill Amount" autocomplete="off" readonly>
 
                         </div>
                         <div class="form-group col-4">
-                            <label class="col-form-label">Bill Net Amount</label><span class="text-danger fa-lg font-weight-500">
+                            <label class="col-form-label">Bill Net Amount</label><span
+                                class="text-danger fa-lg font-weight-500">
                                 *</span>
                             <input name="billNetAmnt" id="billNetAmnt" class="form-control" type="text"
-                                placeholder="Enter Bill Net Amount" autocomplete="off">
+                                placeholder="Enter Bill Net Amount" autocomplete="off" readonly>
 
                         </div>
                         <div class="form-group col-4">
-                            <label class="col-form-label">Max Net Amount</label><span class="text-danger fa-lg font-weight-500">
+                            <label class="col-form-label">Max Net Amount</label><span
+                                class="text-danger fa-lg font-weight-500">
                                 *</span>
                             <input name="maxNetAmnt" id="maxNetAmnt" class="form-control" type="text"
-                                placeholder="Enter Max Net Amount" autocomplete="off">
+                                placeholder="Enter Max Net Amount" autocomplete="off" readonly>
 
                         </div>
                         <div class="form-group col-4">
-                            <label class="col-form-label">Cell Number</label><span class="text-danger fa-lg font-weight-500">
+                            <label class="col-form-label">Cell Number</label><span
+                                class="text-danger fa-lg font-weight-500">
                                 *</span>
                             <input name="cellNo" id="cellNo" class="form-control" type="text"
-                                placeholder="DLXXXXXX" autocomplete="off">
+                                placeholder="DLXXXXXX" autocomplete="off" readonly>
 
                         </div>
 
@@ -161,6 +165,42 @@
                 }
             });
 
+
+            $('#fetchBillData').on('click', function() {
+
+                var billerId = $('#billerId').val();
+                var vehicleNo = $('#vehicleNo').val();
+                if (billerId == 0) {
+                    errorAlert("Required", "Please select the operator", "billerId");
+                    return false;
+                }
+                if (vehicleNo == "") {
+                    errorAlert("Required", "Please Enter wallet Number", "billerId");
+                    return false;
+                }
+                $('.pageLoader').fadeIn();
+                $.ajax({
+                    url: "{{ url('/getBillData') }}",
+                    data: {
+                        operator: billerId,canumber:vehicleNo
+                    },
+                    success: function(res) {
+                        $('.pageLoader').fadeOut();
+                        $('#fetchBill').modal('show');
+                        if(res){
+                            
+                            $('#userNameFetch').val(res.data.userName);
+                            $('#billAmnt').val(res.data.billAmount);
+                            $('#dueDate').val(res.data.dueDate);
+                            $('#billNetAmnt').val(res.data.billnetamount);
+                            $('#maxNetAmnt').val(res.data.maxBillAmount);
+                            // $('#cellNo').val(res.data.name);
+                            $('#cellNo').val(res.data.cellNumber);
+
+                        }
+                    }
+                });
+            })
 
         });
     </script>

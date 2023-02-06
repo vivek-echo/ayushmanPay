@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
     //fasttag
     Route::match(['GET', 'POST'], '/services/b2bServices/fasttag', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\FastTagServicesController::class, 'index']);
     Route::match(['GET', 'POST'], '/getFastTagOperatorList', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\FastTagServicesController::class, 'getFastTagOperatorList']);
+    Route::match(['GET', 'POST'], '/getBillData', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\FastTagServicesController::class, 'fetchBill']);
 });
 
 Route::get('/services/emiBill', function(){
