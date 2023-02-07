@@ -50,3 +50,6 @@ Route::get('/services/broadband', function(){
 Route::get('/walletsection/walletsummary', function(){
     return view('InnerPannel/WalletSection/WalletSummary');
 });
+Route::get('/walletsection/printMyQR', function(){
+    return view('InnerPannel/WalletSection/PrintQR');
+});
