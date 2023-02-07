@@ -35,11 +35,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(['GET', 'POST'], '/services/b2bServices/fasttag', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\FastTagServicesController::class, 'index']);
     Route::match(['GET', 'POST'], '/getFastTagOperatorList', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\FastTagServicesController::class, 'getFastTagOperatorList']);
     Route::match(['GET', 'POST'], '/getBillData', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\FastTagServicesController::class, 'fetchBill']);
+    Route::match(['GET', 'POST'], '/payBillFastTag', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\FastTagServicesController::class, 'payBillFastTag']);
+    //EMI bill
+    Route::match(['GET', 'POST'], '/services/b2bServices/EmiBill', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\EmiBillServicesController::class, 'index']);
 });
 
-Route::get('/services/emiBill', function(){
-    return view('InnerPannel/Services/BtwoBServices/EmiBillService');
-});
+
 Route::get('/services/hospital', function(){
     return view('InnerPannel/Services/BtwoBServices/HospitalService');
 });

@@ -50,4 +50,24 @@ class FastTagServicesController extends Controller
             'data' => $fetchBill['bill_fetch']
         ]);
     }
+
+    public function payBillFastTag(){
+        $getData = request()->all();
+        $apiKey = config('constant.API_KEY');
+        $token = Controller::getToken();
+        $params['operator'] = $getData['operator'];
+        $params['canumber'] = $getData['canumber'];
+        $params['amount'] = $getData['amount'];
+        $params['referenceid'] = mt_rand(10000000, 99999999);
+        $params['latitude'] = $getData['latitude'];
+        $params['longitude'] = $getData['longitude'];
+        $params['bill_fetch'] = $getData['billfetch'];
+        $payBill =  Http::withHeaders([
+            'accept' => 'application/json',
+            'Authorisedkey' => $apiKey,
+            'Token' => $token
+        ])->withBody(json_encode($params),'application/json')
+            ->post(''.config('constant.SERVICE_URL').'fastag/Fastag/recharge')->json();
+            dd($payBill);
+    }
 }

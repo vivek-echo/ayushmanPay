@@ -61,12 +61,13 @@
 
                             </div>
 
+
+
                         </div>
 
                         <div class="form-group mt-4">
-                            <button class="btn btn-warning" id="fetchBillData" data-bs-toggle="modal"
-                                >Fetch Bill</button>
-                            <button class="btn btn-primary" id="">Pay Bill</button>
+                            <button class="btn btn-warning" id="fetchBillData" data-bs-toggle="modal">Fetch Bill</button>
+                            <button class="btn btn-primary" id="payBill">Pay Bill</button>
                         </div>
                     </div>
                 </div>
@@ -147,7 +148,8 @@
         $(document).ready(function() {
             $('#serviceLink').addClass('activeLink');
             $('#perpaidOperatorLoading').show();
-
+            var fetcBillData;
+            var locationData;
             $.ajax({
                 url: "{{ url('/getFastTagOperatorList') }}",
                 success: function(res) {
@@ -167,6 +169,11 @@
 
 
             $('#fetchBillData').on('click', function() {
+                fetchBill();
+                $('#fetchBill').modal('show');
+            })
+
+            function fetchBill() {
 
                 var billerId = $('#billerId').val();
                 var vehicleNo = $('#vehicleNo').val();
@@ -182,25 +189,95 @@
                 $.ajax({
                     url: "{{ url('/getBillData') }}",
                     data: {
-                        operator: billerId,canumber:vehicleNo
+                        operator: billerId,
+                        canumber: vehicleNo
                     },
                     success: function(res) {
                         $('.pageLoader').fadeOut();
-                        $('#fetchBill').modal('show');
-                        if(res){
-                            
+
+                        if (res) {
                             $('#userNameFetch').val(res.data.userName);
                             $('#billAmnt').val(res.data.billAmount);
                             $('#dueDate').val(res.data.dueDate);
                             $('#billNetAmnt').val(res.data.billnetamount);
                             $('#maxNetAmnt').val(res.data.maxBillAmount);
-                            // $('#cellNo').val(res.data.name);
                             $('#cellNo').val(res.data.cellNumber);
+                            fetcBillData = res.data;
+                        }
+                    }
+                });
+            }
+
+            getLocation()
+
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                }
+
+            }
+
+            function showPosition(position) {
+
+                locationData = {
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude
+                }
+
+            }
+
+            $('#payBill').on('click', function() {
+
+                var billerId = $('#billerId').val();
+                var vehicleNo = $('#vehicleNo').val();
+                var amnt = $('#amnt').val();
+                if (billerId == 0) {
+                    errorAlert("Required", "Please select the operator", "billerId");
+                    return false;
+                }
+                if (vehicleNo == "") {
+                    errorAlert("Required", "Please Enter wallet Number", "billerId");
+                    return false;
+                }
+                if (amnt == "") {
+                    errorAlert("Required", "Please Enter your amount", "amnt");
+                    return false;
+                }
+                if (fetcBillData == "") {
+                    swal("Error", "unable to process the bill. Please try again later.", "error").then(
+                        function(res) {
+                            $('.pageLoader').fadeIn();
+                            if (res) {
+                                var loc = window.location;
+                                window.location = loc
+                                    .origin + "/services/b2bServices/fasttag"
+                            }
+                        }
+                    );
+                    
+                }
+                $('.pageLoader').fadeIn();
+                $.ajax({
+                    url: "{{ url('/payBillFastTag') }}",
+                    data: {
+                        operator: billerId,
+                        canumber: vehicleNo,
+                        amount: amnt,
+                        latitude: locationData.latitude,
+                        longitude: locationData.longitude,
+                        billfetch: fetcBillData
+                    },
+                    success: function(res) {
+                        $('.pageLoader').fadeOut();
+                        if (res) {
+
+
 
                         }
                     }
                 });
             })
+
 
         });
     </script>

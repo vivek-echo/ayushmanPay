@@ -65,7 +65,7 @@
                                             <h6>Fast Tag</h6></a>
                                         </li>
                                         <li>
-                                            <a href="/services/emiBill"><div class="quick-box"><i class="myicon-correct"></i></div>
+                                            <a href="/services/b2bServices/EmiBill"><div class="quick-box"><i class="myicon-correct"></i></div>
                                             <h6>EMI Bill Pay</h6></a>
                                         </li>
                                         <li>
