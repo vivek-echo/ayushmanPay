@@ -49,7 +49,7 @@
                                 <div class="file-manager">
                                     <ul class="quick-file d-flex flex-row">
                                         <li>
-                                            <a href="{{ url('/services/b2bServices/mobileRechare') }}"><div class="quick-box"><i class="myicon-mobile-payment"></i></div>
+                                            <a href="{{ url('/services/b2bServices/mobileRechare') }}"><div class="quick-box"><i class="myicon-payment-gateway-2"></i></div>
                                             <h6>Recharge</h6></a>   
                                         </li>
                                         <li>
@@ -102,7 +102,7 @@
                                             <h6>Health<br> Insurance</h6></a>
                                         </li>
                                         <li>
-                                            <a href="#"><div class="quick-box"><i class="myicon-payment-gateway-2"></i></div>
+                                            <a href="#"><div class="quick-box"><i class="myicon-mobile-payment"></i></div>
                                             <h6>Payments</h6></a>
                                         </li>
                                     </ul>
