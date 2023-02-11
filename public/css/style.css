@@ -7085,7 +7085,8 @@ form label {
 
 input[type="file"] {
 	height: auto;
-	padding: 0.375rem 0.75rem !important
+	/* padding: 0.375rem 0.75rem !important */
+	padding: 15px 20px !important
 }
 
 .form-control-color {
@@ -46273,6 +46274,8 @@ html[dir="rtl"] body.dark-only .page-wrapper .page-body-wrapper .page-body .card
 }
 
 
+/* QRCARD */
+
 .QRcard {
 	display: flex;
 	flex-direction: column;
@@ -46300,4 +46303,11 @@ html[dir="rtl"] body.dark-only .page-wrapper .page-body-wrapper .page-body .card
 
 .QRcard-content p {
 	color: #626262;
+}
+
+/* QRCARD ENDS */
+
+.custom-line-through {
+	text-decoration: line-through;
+	text-decoration-thickness: 1.2px;
 }

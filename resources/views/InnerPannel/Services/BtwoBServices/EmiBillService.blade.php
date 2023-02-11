@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <div class="row m-0">
                             <div class="form-group col-6">
-                                <label class="col-form-label">FastTag Biller Id
+                                <label class="col-form-label">Loan Repayment Biller Id
                                     </label><span class="text-danger fa-lg font-weight-500">
                                     *</span>
                                 <select name="perpaidOperator" id="perpaidOperator" class="form-select">

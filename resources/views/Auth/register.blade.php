@@ -229,7 +229,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <img class="img-fluid for-light" src="{{ asset('images/logo/ABP.png') }}" alt="looginpage"
-                            width="320">
+                            width="250">
                         <button class="btn-close" type="button" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                     </div>

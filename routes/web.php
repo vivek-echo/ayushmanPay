@@ -47,6 +47,18 @@ Route::get('/services/hospital', function(){
 Route::get('/services/broadband', function(){
     return view('InnerPannel/Services/BtwoBServices/BroadbandService');
 });
+Route::get('/services/lifeinsurance', function(){
+    return view('InnerPannel/Services/BtwoBServices/LifeInsuranceService');
+});
+Route::get('/services/LpgGasBooking', function(){
+    return view('InnerPannel/Services/BtwoBServices/LpgGasBookingService');
+});
+Route::get('/services/PancardUTI', function(){
+    return view('InnerPannel/Services/BtwoBServices/PanCardUTIService');
+});
+Route::get('/services/irctcservice', function(){
+    return view('InnerPannel/Services/BtwoBServices/IrctcService');
+});
 Route::get('/walletsection/walletsummary', function(){
     return view('InnerPannel/WalletSection/WalletSummary');
 });

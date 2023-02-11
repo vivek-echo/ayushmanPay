@@ -76,10 +76,10 @@
                                             <a href="/services/broadband"><div class="quick-box"><i class="myicon-wifi"></i></div>
                                             <h6>Broadband</h6></a>
                                         </li>
-                                        {{-- <li>
-                                            <a href="/services/emiBill"><div class="quick-box"><i class="myicon-correct"></i></div>
-                                            <h6>Hathway Recharge</h6></a>
-                                        </li> --}}
+                                        <li>
+                                            <a href="/services/irctcservice"><div class="quick-box"><i class="myicon-correct"></i></div>
+                                            <h6>IRCTC</h6></a>
+                                        </li>
                                     </ul>
                                 </div>
 
