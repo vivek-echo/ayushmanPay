@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'custom-icomoon';
-  src:  url('fonts/custom-icomoon.eot?245ymo');
-  src:  url('fonts/custom-icomoon.eot?245ymo#iefix') format('embedded-opentype'),
-    url('fonts/custom-icomoon.ttf?245ymo') format('truetype'),
-    url('fonts/custom-icomoon.woff?245ymo') format('woff'),
-    url('fonts/custom-icomoon.svg?245ymo#custom-icomoon') format('svg');
+  src:  url('fonts/custom-icomoon.eot?ot1ls2');
+  src:  url('fonts/custom-icomoon.eot?ot1ls2#iefix') format('embedded-opentype'),
+    url('fonts/custom-icomoon.ttf?ot1ls2') format('truetype'),
+    url('fonts/custom-icomoon.woff?ot1ls2') format('woff'),
+    url('fonts/custom-icomoon.svg?ot1ls2#custom-icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,30 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.myicon-health-insurance:before {
+  content: "\ec16";
+}
+.myicon-fd:before {
+  content: "\ec0f";
+}
+.myicon-family-insurance:before {
+  content: "\ec10";
+}
+.myicon-gas:before {
+  content: "\ec11";
+}
+.myicon-membership:before {
+  content: "\ec12";
+}
+.myicon-identification:before {
+  content: "\ec13";
+}
+.myicon-train:before {
+  content: "\ec14";
+}
+.myicon-payment-gateway-2:before {
+  content: "\ec15";
+}
 .myicon-barrier:before {
   content: "\ec0e";
 }

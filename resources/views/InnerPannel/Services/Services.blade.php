@@ -33,10 +33,6 @@
                                         aria-selected="false"><i data-feather="target"></i>Legal Services</a></li>
                             </ul>
                         </div>
-                        <div class="col-md-6 p-0">
-                            <div class="form-group mb-0 me-0"></div><a class="btn btn-primary" href="projectcreate.html"> <i
-                                    data-feather="plus-square"> </i>Create New Project</a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -58,7 +54,7 @@
                                         </li>
                                         <li>
                                             <a href="#"><div class="quick-box"><i class="myicon-online-banking-2"></i></div>
-                                            <h6>Money Transfer</h6></a>
+                                            <h6>Money<br> Transfer</h6></a>
                                         </li>
                                         <li>
                                             <a href="/services/b2bServices/fasttag"><div class="quick-box"><i class="myicon-barrier"></i></div>
@@ -77,20 +73,37 @@
                                             <h6>Broadband</h6></a>
                                         </li>
                                         <li>
-                                            <a href="/services/irctcservice"><div class="quick-box"><i class="myicon-pay"></i></div>
+                                            <a href="/services/irctcservice"><div class="quick-box"><i class="myicon-train"></i></div>
                                             <h6>IRCTC</h6></a>
                                         </li>
                                         <li>
-                                            <a href="/services/PancardUTI"><div class="quick-box"><i class="myicon-pay"></i></div>
+                                            <a href="/services/PancardUTI"><div class="quick-box"><i class="myicon-membership"></i></div>
                                             <h6>Pan Card(UTI)</h6></a>
                                         </li>
                                         <li>
-                                            <a href="/services/LpgGasBooking"><div class="quick-box"><i class="myicon-pay"></i></div>
+                                            <a href="/services/LpgGasBooking"><div class="quick-box"><i class="myicon-gas"></i></div>
                                             <h6>LPG Gas</h6></a>
                                         </li>
                                         <li>
-                                            <a href="/services/lifeinsurance"><div class="quick-box"><i class="myicon-pay"></i></div>
+                                            <a href="/services/lifeinsurance"><div class="quick-box"><i class="myicon-family-insurance"></i></div>
                                             <h6>LIC</h6></a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#"><div class="quick-box"><i class="myicon-fd"></i></div>
+                                            <h6>Fixed Deposit</h6></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><div class="quick-box"><i class="myicon-identification"></i></div>
+                                            <h6>AEPS</h6></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><div class="quick-box"><i class="myicon-health-insurance"></i></div>
+                                            <h6>Health<br> Insurance</h6></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><div class="quick-box"><i class="myicon-payment-gateway-2"></i></div>
+                                            <h6>Payments</h6></a>
                                         </li>
                                     </ul>
                                 </div>
