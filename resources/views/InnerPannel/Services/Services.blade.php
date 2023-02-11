@@ -77,8 +77,20 @@
                                             <h6>Broadband</h6></a>
                                         </li>
                                         <li>
-                                            <a href="/services/irctcservice"><div class="quick-box"><i class="myicon-correct"></i></div>
+                                            <a href="/services/irctcservice"><div class="quick-box"><i class="myicon-pay"></i></div>
                                             <h6>IRCTC</h6></a>
+                                        </li>
+                                        <li>
+                                            <a href="/services/PancardUTI"><div class="quick-box"><i class="myicon-pay"></i></div>
+                                            <h6>Pan Card(UTI)</h6></a>
+                                        </li>
+                                        <li>
+                                            <a href="/services/LpgGasBooking"><div class="quick-box"><i class="myicon-pay"></i></div>
+                                            <h6>LPG Gas</h6></a>
+                                        </li>
+                                        <li>
+                                            <a href="/services/lifeinsurance"><div class="quick-box"><i class="myicon-pay"></i></div>
+                                            <h6>LIC</h6></a>
                                         </li>
                                     </ul>
                                 </div>
