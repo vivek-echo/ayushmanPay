@@ -90,7 +90,7 @@
                                         </li>
 
                                         <li>
-                                            <a href="#"><div class="quick-box"><i class="myicon-fd"></i></div>
+                                            <a href="/services/fixeddepositservice"><div class="quick-box"><i class="myicon-fd"></i></div>
                                             <h6>Fixed Deposit</h6></a>
                                         </li>
                                         <li>
@@ -119,38 +119,18 @@
 
                                 <div class="file-manager">
                                     <ul class="quick-file d-flex flex-row">
-                                        {{-- <li>
-                                            <div class="quick-box"><i class="fa fa-youtube-play font-danger"></i></div>
-                                            <h6>Videos</h6>
+                                        <li>
+                                            <a href="/services/birthcertificate"><div class="quick-box"><i class="myicon-mobile-payment"></i></div>
+                                            <h6>Birth<br> Certificate</h6></a>
                                         </li>
                                         <li>
-                                            <div class="quick-box"><i class="fa fa-th font-info"></i></div>
-                                            <h6>Apps</h6>
+                                            <a href="/services/deathcertificate"><div class="quick-box"><i class="myicon-mobile-payment"></i></div>
+                                            <h6>Death<br> Certificate</h6></a>
                                         </li>
                                         <li>
-                                            <div class="quick-box"><i class="fa fa-file-text-o font-secondary"></i></div>
-                                            <h6>Document</h6>
+                                            <a href="/services/nsdlpancenter"><div class="quick-box"><i class="myicon-mobile-payment"></i></div>
+                                            <h6>NSDL Pan<br> Center</h6></a>
                                         </li>
-                                        <li>
-                                            <div class="quick-box"><i class="fa fa-music font-warning"></i></div>
-                                            <h6>Music</h6>
-                                        </li>
-                                        <li>
-                                            <div class="quick-box"><i class="fa fa-download font-primary"></i></div>
-                                            <h6>Download</h6>
-                                        </li>
-                                        <li>
-                                            <div class="quick-box"><i class="fa fa-folder font-info"></i></div>
-                                            <h6>Folder</h6>
-                                        </li>
-                                        <li>
-                                            <div class="quick-box"><i class="fa fa-file-archive-o font-secondary"></i></div>
-                                            <h6>Zip File</h6>
-                                        </li>
-                                        <li>
-                                            <div class="quick-box"><i class="fa fa-trash font-danger"></i></div>
-                                            <h6>Trash</h6>
-                                        </li> --}}
                                     </ul>
                                 </div>
                             </div>

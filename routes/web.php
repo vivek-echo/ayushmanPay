@@ -40,7 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(['GET', 'POST'], '/services/b2bServices/EmiBill', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\EmiBillServicesController::class, 'index']);
 });
 
-
+//B2BService
 Route::get('/services/hospital', function(){
     return view('InnerPannel/Services/BtwoBServices/HospitalService');
 });
@@ -59,9 +59,28 @@ Route::get('/services/PancardUTI', function(){
 Route::get('/services/irctcservice', function(){
     return view('InnerPannel/Services/BtwoBServices/IrctcService');
 });
+Route::get('/services/fixeddepositservice', function(){
+    return view('InnerPannel/Services/BtwoBServices/FixedDeposit');
+});
+
+//LegalService
+Route::get('/services/birthcertificate', function(){
+    return view('InnerPannel/Services/LegalServices/BirthCertificateService');
+});
+Route::get('/services/deathcertificate', function(){
+    return view('InnerPannel/Services/LegalServices/DeathCertificateService');
+});
+Route::get('/services/nsdlpancenter', function(){
+    return view('InnerPannel/Services/LegalServices/NsdlPanCenterService');
+});
+
+
+
 Route::get('/walletsection/walletsummary', function(){
     return view('InnerPannel/WalletSection/WalletSummary');
 });
 Route::get('/walletsection/printMyQR', function(){
     return view('InnerPannel/WalletSection/PrintQR');
 });
+
+
