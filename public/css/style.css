@@ -11998,7 +11998,8 @@ th {
 }
 
 .table td {
-	color: #2b2b2b
+	color: #2b2b2b;
+	vertical-align: middle;
 }
 
 .table [class*="bg-"] {

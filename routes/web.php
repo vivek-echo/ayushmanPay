@@ -50,6 +50,9 @@ Route::group(['middleware' => 'auth'], function () {
     //BroadBand
     Route::match(['GET', 'POST'], '/services/b2bServices/Broadband', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\BroadbandServicesController::class, 'index']);
     Route::match(['GET', 'POST'], '/fetchBroadbandBill', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\BroadbandServicesController::class, 'fetchBroadbandBill']);
+    //Money Transfer
+    Route::match(['GET', 'POST'], '/services/b2bServices/MoneyTransfer', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'index']);
+    Route::match(['GET', 'POST'], '/getBankList', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'getBankList']);
 });
 //B2BService
 Route::get('/services/hospital', function () {

@@ -53,7 +53,7 @@
                                             <h6>Recharge</h6></a>   
                                         </li>
                                         <li>
-                                            <a href="#"><div class="quick-box"><i class="myicon-online-banking-2"></i></div>
+                                            <a href="/services/b2bServices/MoneyTransfer"><div class="quick-box"><i class="myicon-online-banking-2"></i></div>
                                             <h6>Money<br> Transfer</h6></a>
                                         </li>
                                         <li>
