@@ -351,12 +351,13 @@
                     .then((willSubmit) => {
                         $('.pageLoader').fadeIn();
                         var perpaidOperator = $('#perpaidOperator').val();
+                        var perpaidOperatorName = $('#perpaidOperator').text();
                         var mobileNo = $('#preMobile').val();
                         var rechargeAmount = $('#rechargeAmount').val();
                         $.ajax({
                             url: "{{ url('/submitRecharge') }}",
                             data:{
-                                operator:perpaidOperator,canumber:mobileNo,amount:rechargeAmount
+                                operator:perpaidOperator,canumber:mobileNo,amount:rechargeAmount,perpaidOperatorName:perpaidOperatorName
                             },
                             success: function(res) {
                                 $('.pageLoader').fadeOut();

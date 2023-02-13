@@ -73,4 +73,21 @@ class CommonController extends Controller
             'walletAmount'=>$walletAmount
         ]);
     }
+
+    public function getBillOperatorList(){
+        $apiKey = config('constant.API_KEY'); 
+        $token = Controller::getToken();
+        $billOperator=  Http::withHeaders([
+            'accept' => 'application/json',
+            'Authorisedkey'=> $apiKey,
+            'Token'=> $token
+        ])
+        ->post('https://paysprint.in/service-api/api/v1/service/bill-payment/bill/getoperator')->json();
+       
+        return response()->json([
+            'status'=>$billOperator['status'],
+            'message'=>$billOperator['message'],
+            'data'=>$billOperator['data']
+        ]);
+    }
 }

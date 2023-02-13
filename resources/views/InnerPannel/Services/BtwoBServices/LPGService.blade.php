@@ -5,13 +5,13 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-sm-6">
-                    <h3>Fast Tag</h3>
+                    <h3>LPG Gas Booking</h3>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#"><i data-feather="home"></i></a></li>
                         <li class="breadcrumb-item">Services</li>
-                        <li class="breadcrumb-item active">Fast Tag</li>
+                        <li class="breadcrumb-item active">LPG Gas Booking</li>
                     </ol>
                 </div>
             </div>
@@ -24,16 +24,17 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header pb-0">
-                        <h4>Choose Your Fast Tag Bank</h4><span></span>
+                        <h4>Choose Your LPG Gas Biller</h4><span></span>
                     </div>
                     <div class="card-body">
                         <div class="row m-0">
+
                             <div class="form-group col-6">
-                                <label class="col-form-label">FastTag Biller Id
+                                <label class="col-form-label">LPG Gas Biller Id
                                 </label><span class="text-danger fa-lg font-weight-500">
                                     *</span>
                                 <div class="input-group">
-                                    <select name="billerId" id="billerId" class="form-select">
+                                    <select name="lpgBillerId" id="lpgBillerId" class="form-select">
                                         <option value="">Loading ....</option>
                                     </select>
                                     <div class="input-group-append">
@@ -45,29 +46,59 @@
                                 </div>
 
                             </div>
-                            <div class="form-group col-6">
-                                <label class="col-form-label">Vehicle Registration Number / Wallet Number</label><span
+                            <div class="form-group col-6" id="caNumberDiv" style="display: none;">
+                                <label class="col-form-label" id="caLabel"></label><span
                                     class="text-danger fa-lg font-weight-500">
                                     *</span>
-                                <input name="vehicleNo" id="vehicleNo" class="form-control" type="text"
-                                    placeholder="Enter Registration Number / Wallet Number" autocomplete="off">
+                                <input name="canumber" id="canumber" class="form-control" type="text"
+                                    autocomplete="off">
 
                             </div>
-                            <div class="form-group col-6">
-                                <label class="col-form-label">Amount</label><span class="text-danger fa-lg font-weight-500">
+                            <div class="form-group col-6" id="ad1Div" style="display: none;">
+                                <label class="col-form-label" id="ad1Lable"></label><span
+                                    class="text-danger fa-lg font-weight-500">
                                     *</span>
-                                <input name="amnt" id="amnt" class="form-control" type="text"
+                                <input name="ad1" id="ad1" class="form-control" type="text" autocomplete="off">
+
+                            </div>
+                           <div class="form-group col-6">
+                                <label class="col-form-label">Amount</label><span
+                                    class="text-danger fa-lg font-weight-500">
+                                    *</span>
+                                <input name="amt" id="amt" class="form-control" type="text"
                                     placeholder="Enter Amount" autocomplete="off">
 
                             </div>
+                             {{-- <div class="form-group col-6">
+                                <label class="col-form-label">Consumer Number/Id</label><span
+                                    class="text-danger fa-lg font-weight-500">
+                                    *</span>
+                                <input name="consumerNo" id="consumerNo" class="form-control" type="text"
+                                    placeholder="Enter Consumer Number/Id" autocomplete="off">
 
+                            </div>
+                            <div class="form-group col-6">
+                                <label class="col-form-label">Distributor Id</label><span
+                                    class="text-danger fa-lg font-weight-500">
+                                    *</span>
+                                <input name="distributorId" id="distributorId" class="form-control" type="text"
+                                    placeholder="Enter Distributor Id" autocomplete="off">
 
+                            </div>
+                            <div class="form-group col-6">
+                                <label class="col-form-label">Unique Consumer Id</label><span
+                                    class="text-danger fa-lg font-weight-500">
+                                    *</span>
+                                <input name="uniConsID" id="uniConsID" class="form-control" type="text"
+                                    placeholder="Enter Unique Consumer Id" autocomplete="off">
+
+                            </div> --}}
 
                         </div>
 
                         <div class="form-group mt-4">
-                            <button class="btn btn-warning" id="fetchBillData" data-bs-toggle="modal">Fetch Bill</button>
-                            <button class="btn btn-primary" id="payBill">Pay Bill</button>
+                            <button class="btn btn-warning" id="fetchBill">Fetch Bill</button>
+                            <button class="btn btn-primary" id="payBillButton">Pay Bill</button>
                         </div>
                     </div>
                 </div>
@@ -77,7 +108,7 @@
     <!-- Container-fluid Ends-->
 
     <!-- Modal For Prepaid -->
-    <div class="modal fade" id="fetchBill" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="fetchBillModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
@@ -93,17 +124,7 @@
                                 placeholder="Enter Name" autocomplete="off" readonly>
 
                         </div>
-                        <div class="form-group col-4">
-                            <label class="col-form-label">Due Date</label><span class="text-danger fa-lg font-weight-500">
-                                *</span>
-                            <div class="input-group">
-                                <input class="form-control" type="text" data-language="en" id="dueDate"
-                                    placeholder="Due Date" readonly>
-                                <div class="input-group-text" id=""><i class="text-secondary"
-                                        data-feather="calendar"></i></div>
-                            </div>
 
-                        </div>
                         <div class="form-group col-4">
                             <label class="col-form-label">Bill Amount</label><span
                                 class="text-danger fa-lg font-weight-500">
@@ -112,22 +133,7 @@
                                 placeholder="Enter Bill Amount" autocomplete="off" readonly>
 
                         </div>
-                        <div class="form-group col-4">
-                            <label class="col-form-label">Bill Net Amount</label><span
-                                class="text-danger fa-lg font-weight-500">
-                                *</span>
-                            <input name="billNetAmnt" id="billNetAmnt" class="form-control" type="text"
-                                placeholder="Enter Bill Net Amount" autocomplete="off" readonly>
 
-                        </div>
-                        <div class="form-group col-4">
-                            <label class="col-form-label">Max Net Amount</label><span
-                                class="text-danger fa-lg font-weight-500">
-                                *</span>
-                            <input name="maxNetAmnt" id="maxNetAmnt" class="form-control" type="text"
-                                placeholder="Enter Max Net Amount" autocomplete="off" readonly>
-
-                        </div>
                         <div class="form-group col-4">
                             <label class="col-form-label">Cell Number</label><span
                                 class="text-danger fa-lg font-weight-500">
@@ -147,84 +153,80 @@
     <script>
         $(document).ready(function() {
             $('#serviceLink').addClass('activeLink');
+
             $('#perpaidOperatorLoading').show();
             var fetcBillData;
             var locationData;
+            var selected;
+            var extraData;
+            var addOn;
             $.ajax({
-                url: "{{ url('/getFastTagOperatorList') }}",
+                url: "{{ url('/getLpgOperatorList') }}",
                 success: function(res) {
 
                     var optionOperator = ['<option value="0" >--Select Operator--</option>'];
                     var optionLengthOperator = res.data.length;
 
                     for (var i = 0; i < optionLengthOperator; i++) {
-                        
-                            var resOptionOperator = '<option value=' + res.data[i].id + ' >' + res.data[i].name + '</option>'
-                            optionOperator.push(resOptionOperator);
-                       
+
+                        var resOptionOperator = '<option value=' + res.data[i].id +
+                            ' data-displayname = "' + res.data[i].displayname + '" data-regex = "' + res
+                            .data[i].regex + '" data-ad1_d_name = "' + res.data[i].ad1_d_name +
+                            '"  data-ad1_regex = "' + res.data[i].ad1_regex + '" >' + res.data[i].name +
+                            '</option>'
+                        optionOperator.push(resOptionOperator);
+
 
                     }
-                    $('#billerId').html(optionOperator);
+                    $('#lpgBillerId').html(optionOperator);
                     $('#perpaidOperatorLoading').hide();
                 }
             });
 
+            $('#lpgBillerId').on('change', function() {
+                selected = $('#lpgBillerId').find('option:selected');
+                extraData = selected.data('displayname');
+                addOn = selected.data('ad1_d_name');
 
-            $('#fetchBillData').on('click', function() {
-                var billerId = $('#billerId').val();
-                var vehicleNo = $('#vehicleNo').val();
-                if (billerId == 0) {
-                    errorAlert("Required", "Please select the operator", "billerId");
-                    return false;
+                if (extraData != null) {
+                    $('#caLabel').html(extraData);
+                    $('#caNumberDiv').show();
                 }
-                if (vehicleNo == "") {
-                    errorAlert("Required", "Please Enter wallet Number", "billerId");
-                    return false;
-                }
-                fetchBill(billerId,vehicleNo);
-                $('#fetchBill').modal('show');
-            })
 
-            $('#vehicleNo').focusout(function() {
-                var billerId = $('#billerId').val();
-                var vehicleNo = $('#vehicleNo').val();
-                if (billerId == 0) {
-                    errorAlert("Required", "Please select the operator", "billerId");
-                    return false;
+                if (addOn != null) {
+                    $('#ad1Lable').html(addOn);
+                    $('#ad1Div').show();
                 }
-                if (vehicleNo == "") {
-                    errorAlert("Required", "Please Enter wallet Number", "billerId");
-                    return false;
-                }
-                fetchBill(billerId,vehicleNo);
-            })
+            });
 
-            function fetchBill(billerId,vehicleNo) {
+            // $('#canumber').focusout(function() {
+            //     fetchBill();
+            // })
 
+            function fetchBill(billerId ,caNumber) {
               
+
                 $('.pageLoader').fadeIn();
                 $.ajax({
-                    url: "{{ url('/getBillData') }}",
+                    url: "{{ url('/getLpgBillData') }}",
                     data: {
                         operator: billerId,
-                        canumber: vehicleNo
+                        canumber: caNumber
                     },
                     success: function(res) {
                         $('.pageLoader').fadeOut();
 
                         if (res) {
-                            $('#userNameFetch').val(res.data.userName);
-                            $('#billAmnt').val(res.data.billAmount);
-                            $('#dueDate').val(res.data.dueDate);
-                            $('#billNetAmnt').val(res.data.billnetamount);
-                            $('#maxNetAmnt').val(res.data.maxBillAmount);
-                            $('#cellNo').val(res.data.cellNumber);
-                            fetcBillData = res.data;
+                            $('#userNameFetch').val(res.name);
+                            $('#billAmnt').val(res.amount);
+                            $('#cellNo').val(caNumber);
                         }
                     }
                 });
+
             }
 
+            
             getLocation()
 
             function getLocation() {
@@ -243,49 +245,52 @@
 
             }
 
-            $('#payBill').on('click', function() {
-
-                var billerId = $('#billerId').val();
-                var billerName = $('#billerId').text();
-                var vehicleNo = $('#vehicleNo').val();
-                var amnt = $('#amnt').val();
+            $('#fetchBill').on('click', function() {
+                var billerId = $('#lpgBillerId').val();
+                
+                var caNumber = $('#canumber').val();
                 if (billerId == 0) {
-                    errorAlert("Required", "Please select the operator", "billerId");
+                    errorAlert("Required", "Please select the operator", "lpgBillerId");
                     return false;
                 }
-                if (vehicleNo == "") {
-                    errorAlert("Required", "Please Enter wallet Number", "billerId");
+                if (caNumber == "") {
+                    errorAlert("Required", 'Please Enter ' + extraData + '', "canumber");
                     return false;
                 }
-                if (amnt == "") {
-                    errorAlert("Required", "Please Enter your amount", "amnt");
-                    return false;
-                }
+            
+                fetchBill(billerId ,caNumber);
+                $('#fetchBillModal').modal('show');
 
-                if (fetcBillData == undefined) {
-                    swal("Error", "unable to process the bill. Please try again later.", "error").then(
-                        function(res) {
-                            $('.pageLoader').fadeIn();
-                            if (res) {
-                                var loc = window.location;
-                                window.location = loc
-                                    .origin + "/services/b2bServices/fasttag"
-                            }
-                        }
-                    );
+            })
 
+            $('#payBillButton').on('click',function(){
+                var lpgBillerId = $('#lpgBillerId').val();
+                var operatorName = $('#lpgBillerId option:selected').text();
+                var lpgCaNumber = $('#canumber').val();
+                var amount = $('#amt').val();
+                if (lpgBillerId == 0) {
+                    errorAlert("Required", "Please select the operator", "lpgBillerId");
+                    return false;
+                }
+                if (lpgCaNumber == "") {
+                    errorAlert("Required", 'Please Enter ' + extraData + '', "canumber");
+                    return false;
+                }
+                if (amount == "") {
+                    errorAlert("Required", "Please select the operator", "amt");
+                    return false;
                 }
                 $('.pageLoader').fadeIn();
                 $.ajax({
-                    url: "{{ url('/payBillFastTag') }}",
+                    url: "{{ url('/payLpgBill') }}",
                     data: {
-                        operator: billerId,
-                        canumber: vehicleNo,
-                        amount: amnt,
-                        latitude: locationData.latitude,
-                        longitude: locationData.longitude,
-                        billfetch: fetcBillData,
-                        billerName:billerName
+                        operator: lpgBillerId,
+                        canumber: lpgCaNumber,
+                        amount: amount,
+                        latitude:locationData.latitude,
+                        longitude:locationData.longitude,
+                        operatorName:operatorName
+
                     },
                     success: function(res) {
                         $('.pageLoader').fadeOut();
@@ -298,7 +303,7 @@
                                             var loc = window.location;
                                             window.location = loc
                                                 .origin +
-                                                "/services/b2bServices/fasttag"
+                                                "/services/b2bServices/LPG"
                                         }
                                     });
                             } else {
@@ -310,18 +315,23 @@
                                             var loc = window.location;
                                             window.location = loc
                                                 .origin +
-                                                "/services/b2bServices/fasttag"
+                                                "/services/b2bServices/LPG"
                                         }
                                     }
                                 );
                             }
 
                         }
+
+                        // if (res) {
+                        //     $('#userNameFetch').val(res.name);
+                        //     $('#billAmnt').val(res.amount);
+                        //     $('#cellNo').val(caNumber);
+                        // }
                     }
                 });
             })
-
-
+            
         });
     </script>
 @endsection

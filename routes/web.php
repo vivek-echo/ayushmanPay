@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+
 Auth::routes();
 Route::get('/', [App\Http\Controllers\Home\HomePageController::class, 'index']);
 Route::get('/getState', [App\Http\Controllers\CommonController::class, 'getState']);
@@ -38,49 +39,57 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(['GET', 'POST'], '/payBillFastTag', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\FastTagServicesController::class, 'payBillFastTag']);
     //EMI bill
     Route::match(['GET', 'POST'], '/services/b2bServices/EmiBill', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\EmiBillServicesController::class, 'index']);
+    Route::match(['GET', 'POST'], '/getBillOperatorList', [App\Http\Controllers\CommonController::class, 'getBillOperatorList']);
+    Route::match(['GET', 'POST'], '/fetchEmiBill', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\EmiBillServicesController::class, 'fetchEmiBill']);
+    Route::match(['GET', 'POST'], '/payEmiBill', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\EmiBillServicesController::class, 'payEmiBill']);
+    //LPG
+    Route::match(['GET', 'POST'], '/services/b2bServices/LPG', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\LPGServicesController::class, 'index']);
+    Route::match(['GET', 'POST'], '/getLpgOperatorList', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\LPGServicesController::class, 'getLpgOperatorList']);
+    Route::match(['GET', 'POST'], '/getLpgBillData', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\LPGServicesController::class, 'getLpgBillData']);
+    Route::match(['GET', 'POST'], '/payLpgBill', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\LPGServicesController::class, 'payLpgBill']);
+    //BroadBand
+    Route::match(['GET', 'POST'], '/services/b2bServices/Broadband', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\BroadbandServicesController::class, 'index']);
+    Route::match(['GET', 'POST'], '/fetchBroadbandBill', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\BroadbandServicesController::class, 'fetchBroadbandBill']);
 });
-
 //B2BService
-Route::get('/services/hospital', function(){
+Route::get('/services/hospital', function () {
     return view('InnerPannel/Services/BtwoBServices/HospitalService');
 });
-Route::get('/services/broadband', function(){
+Route::get('/services/broadband', function () {
     return view('InnerPannel/Services/BtwoBServices/BroadbandService');
 });
-Route::get('/services/lifeinsurance', function(){
+Route::get('/services/lifeinsurance', function () {
     return view('InnerPannel/Services/BtwoBServices/LifeInsuranceService');
 });
-Route::get('/services/LpgGasBooking', function(){
+Route::get('/services/LpgGasBooking', function () {
     return view('InnerPannel/Services/BtwoBServices/LpgGasBookingService');
 });
-Route::get('/services/PancardUTI', function(){
+Route::get('/services/PancardUTI', function () {
     return view('InnerPannel/Services/BtwoBServices/PanCardUTIService');
 });
-Route::get('/services/irctcservice', function(){
+Route::get('/services/irctcservice', function () {
     return view('InnerPannel/Services/BtwoBServices/IrctcService');
 });
-Route::get('/services/fixeddepositservice', function(){
+Route::get('/services/fixeddepositservice', function () {
     return view('InnerPannel/Services/BtwoBServices/FixedDeposit');
 });
 
 //LegalService
-Route::get('/services/birthcertificate', function(){
+Route::get('/services/birthcertificate', function () {
     return view('InnerPannel/Services/LegalServices/BirthCertificateService');
 });
-Route::get('/services/deathcertificate', function(){
+Route::get('/services/deathcertificate', function () {
     return view('InnerPannel/Services/LegalServices/DeathCertificateService');
 });
-Route::get('/services/nsdlpancenter', function(){
+Route::get('/services/nsdlpancenter', function () {
     return view('InnerPannel/Services/LegalServices/NsdlPanCenterService');
 });
 
 
 
-Route::get('/walletsection/walletsummary', function(){
+Route::get('/walletsection/walletsummary', function () {
     return view('InnerPannel/WalletSection/WalletSummary');
 });
-Route::get('/walletsection/printMyQR', function(){
+Route::get('/walletsection/printMyQR', function () {
     return view('InnerPannel/WalletSection/PrintQR');
 });
-
-

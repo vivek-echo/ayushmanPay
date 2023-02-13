@@ -26,7 +26,8 @@ class MobileRechargeServicesController extends Controller
             {
                 return response()->json([
                     'status' =>  false,
-                    'message' => "Wallet Amount is very Low for this transaction. Please update your wallet ."
+                    'message' => "Insufficient fund in your account. Please topup your wallet before
+                    initiating transaction ."
                 ]);
             }
         }
@@ -56,6 +57,7 @@ class MobileRechargeServicesController extends Controller
                         'refid'=> $recharge['refid'],
                         'ackno'=> $recharge['ackno'],
                         'operatorid'=> $recharge['operatorid'],
+                        'operatorName'=> $getData['perpaidOperatorName'],
                         'message'=> $recharge['message'],
                         'createdOn'=>date('Y-m-d H:i:s')
                     ]);
