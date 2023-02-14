@@ -131,6 +131,10 @@
                                             <a href="/services/nsdlpancenter"><div class="quick-box"><i class="myicon-mobile-payment"></i></div>
                                             <h6>NSDL Pan<br> Center</h6></a>
                                         </li>
+                                        <li>
+                                            <a href="/services/drivinglicence"><div class="quick-box"><i class="myicon-mobile-payment"></i></div>
+                                            <h6>Driving<br> Licence</h6></a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>

@@ -90,6 +90,9 @@ Route::get('/services/deathcertificate', function () {
 Route::get('/services/nsdlpancenter', function () {
     return view('InnerPannel/Services/LegalServices/NsdlPanCenterService');
 });
+Route::get('/services/drivinglicence', function () {
+    return view('InnerPannel/Services/LegalServices/DrivingLicenceService');
+});
 
 
 

@@ -25,6 +25,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/flag-icon.css') }}">
     <!-- Feather icon-->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/feather-icon.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/photoswipe.css') }}">
     <!-- icomoon icon-->
     <link rel="stylesheet" type="text/css" href="{{ asset('custom-icomoon/style.css') }}">
     <!-- Datatable-->
@@ -318,6 +320,12 @@
     <!-- Sidebar jquery-->
     <script src="{{ asset('js/config.js') }}"></script>
     <script src="{{ asset('js/sidebar-menu.js') }}"></script>
+    <script src="{{ asset('js/counter/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('js/counter/jquery.counterup.min.js') }}"></script>
+    <script src="{{ asset('js/counter/counter-custom.js') }}"></script>
+    <script src="{{ asset('js/photoswipe/photoswipe.min.js') }}"></script>
+    <script src="{{ asset('js/photoswipe/photoswipe-ui-default.min.js') }}"></script>
+    <script src="{{ asset('js/photoswipe/photoswipe.js') }}"></script>
     <script src="{{ asset('js/chart/knob/knob.min.js') }}"></script>
     <script src="{{ asset('js/chart/knob/knob-chart.js') }}"></script>
     <!-- <script src="{{ asset('js/chart/apex-chart/apex-chart.js') }}"></script> -->
