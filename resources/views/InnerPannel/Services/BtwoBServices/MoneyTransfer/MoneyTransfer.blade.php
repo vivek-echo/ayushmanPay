@@ -65,7 +65,7 @@
                                             </div>
                                             <div class="form-group col-3">
                                                 <button class="btn btn-primary m-t-35" data-bs-toggle="modal"
-                                                data-bs-target="#viewBeneficiary">Search</button>
+                                                    data-bs-target="#viewBeneficiary">Search</button>
                                             </div>
                                         </div>
                                     </div>
@@ -78,10 +78,10 @@
                                                 <label class="col-form-label">Bank Name</label><span
                                                     class="text-danger fa-lg font-weight-500">
                                                     *</span>
-                                                    <select name="bankName" id="bankName" class="form-select">
-                                                        <option value="">Loading ....
-                                                        </option>
-                                                    </select>
+                                                <select name="bankId" id="bankId" class="form-select">
+                                                    <option value="">Loading ....
+                                                    </option>
+                                                </select>
 
                                             </div>
                                             <div class="form-group col-6">
@@ -99,11 +99,8 @@
                                                     *</span>
                                                 <div class="input-group">
                                                     <input type="text" class="form-control"
-                                                        placeholder="Enter Account Number" id="">
-                                                    <button type="button" class="btn btn-outline-info rounded-end">
-                                                        Verify <img src="{{ asset('images/loader-5.gif') }}"
-                                                            alt="" width="25" id="loading"
-                                                            style="display:none;"></button>
+                                                        placeholder="Enter Account Number" id="accNumber">
+
                                                 </div>
 
                                             </div>
@@ -120,17 +117,39 @@
 
 
                                             <div class="form-group col-6">
-                                                <label class="col-form-label">Mobile Number</label><span
+                                                <label class="col-form-label">Pincode</label><span
                                                     class="text-danger fa-lg font-weight-500">
                                                     *</span>
-                                                <input name="mobNo" id="mobNo" class="form-control" type="text"
+                                                <input name="pinCode" id="pinCode" class="form-control" type="text"
                                                     placeholder="Enter Mobile Number" autocomplete="off">
 
                                             </div>
-                                        </div>
 
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">Address</label><span
+                                                    class="text-danger fa-lg font-weight-500">
+                                                    *</span>
+                                                <input name="address" id="address" class="form-control" type="text"
+                                                    placeholder="Enter Mobile Number" autocomplete="off">
+
+                                            </div>
+
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">Date Of Birth</label><span
+                                                    class="text-danger fa-lg font-weight-500"> *</span>
+                                                <div class="input-group">
+                                                    <input name="dateOfBirth" id="dateOfBirth"
+                                                        class="datepicker-here form-control digits" type="text"
+                                                        data-language="en" placeholder="Date Of Birth" readonly>
+                                                    <div class="input-group-text" id="btnGroupAddon"><i
+                                                            class="text-secondary" data-feather="calendar"></i></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input name="remiterMobile" id="remiterMobile" class="form-control"
+                                            type="hidden" autocomplete="off" value="<?php echo $mobile; ?>" readonly>
                                         <div class="form-group mt-4">
-                                            <button class="btn btn-primary" id="">Submit</button>
+                                            <button class="btn btn-primary" id="addBenButton">Submit</button>
                                             <button class="btn btn-danger" id="">Reset</button>
                                         </div>
                                     </div>
@@ -144,13 +163,13 @@
                                                 <label class="col-form-label">Mobile Number</label><span
                                                     class="text-danger fa-lg font-weight-500">
                                                     *</span>
-                                                <input name="preMobile" id="preMobile" class="form-control" type="text"
-                                                    placeholder="Enter Mobile Number" autocomplete="off">
+                                                <input name="preMobileBen" id="preMobileBen" class="form-control"
+                                                    type="text" placeholder="Enter Mobile Number" autocomplete="off">
 
                                             </div>
                                             <div class="form-group col-4">
                                                 <button class="btn btn-primary m-t-35" data-bs-toggle="modal"
-                                                data-bs-target="#viewBeneficiary">Search</button>
+                                                    data-bs-target="#viewBeneficiary">Search</button>
                                             </div>
                                         </div>
                                         <div class="table-responsive">
@@ -237,7 +256,7 @@
                             <label class="col-form-label">Account Holder Name</label><span
                                 class="text-danger fa-lg font-weight-500">
                                 *</span>
-                            <input name="acntHoldName" id="acntHoldName" class="form-control" type="text"
+                            <input name="acntHoldNameBen" id="acntHoldNameBen" class="form-control" type="text"
                                 placeholder="Enter Account Holder Name" autocomplete="off" readonly>
 
                         </div>
@@ -246,7 +265,7 @@
                             <label class="col-form-label">IFSC Code</label><span
                                 class="text-danger fa-lg font-weight-500">
                                 *</span>
-                            <input name="ifcscode" id="ifcscode" class="form-control" type="text"
+                            <input name="ifcscodeBen" id="ifcscodeBen" class="form-control" type="text"
                                 placeholder="Enter IFSC Code" autocomplete="off" readonly>
 
                         </div>
@@ -291,14 +310,122 @@
                     var optionLengthOperator = res.data.length;
 
                     for (var i = 0; i < optionLengthOperator; i++) {
-                        var resOptionOperator = '<option value=' + res.data[i].BANKID + ' >' + res.data[i]
+                        var resOptionOperator = '<option value=' + res.data[i].BANKID + ' >' + res.data[
+                                i]
                             .BANKNAME + '</option>'
                         optionOperator.push(resOptionOperator);
                     }
-                    $('#bankName').html(optionOperator);
+                    $('#bankId').html(optionOperator);
                     $('#perpaidOperatorLoading').hide();
                 }
             });
+
+            $('#addBenButton').on('click', function() {
+                var bankId = $('#bankId').val();
+                var ifcscode = $('#ifcscode').val();
+                var accNumber = $('#accNumber').val();
+                var acntHoldName = $('#acntHoldName').val();
+                var address = $('#address').val();
+                var dateOfBirth = $('#dateOfBirth').val();
+                var pincode = $('#pinCode').val();
+                var remiterMobile = $('#remiterMobile').val();
+                if (bankId == 0) {
+                    errorAlert("Required", "Please select the Bank.", "bankId");
+                    return false;
+                }
+
+                if (ifcscode == 0) {
+                    errorAlert("Required", "Please enter the ifsc code.", "ifcscode");
+                    return false;
+                }
+
+                if (accNumber == 0) {
+                    errorAlert("Required", "Please enter the account number.", "accNumber");
+                    return false;
+                }
+
+                if (acntHoldName == 0) {
+                    errorAlert("Required", "Please enter the account holder name.", "acntHoldName");
+                    return false;
+                }
+                if (pincode == 0) {
+                    errorAlert("Required", "Please enter the date of birth.", "pincode");
+                    return false;
+                }
+
+                if (address == 0) {
+                    errorAlert("Required", "Please enter the address.", "address");
+                    return false;
+                }
+
+                if (dateOfBirth == 0) {
+                    errorAlert("Required", "Please enter the date of birth.", "dateOfBirth");
+                    return false;
+                }
+
+
+                addBenFun(remiterMobile, acntHoldName, bankId, accNumber, ifcscode, 0, dateOfBirth, address,
+                    pincode);
+            })
+
+            function addBenFun(remiterMobile, acntHoldName, bankId, accNumber, ifcscode, verified, dateOfBirth,
+                address, pincode) {
+                swal({
+                        title: "Are you sure?",
+                        text: "Are you sure you want to Register Remitter ?",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true
+                    })
+                    .then((willSubmit) => {
+                        if (willSubmit) {
+                            $('.pageLoader').fadeIn();
+                            $.ajax({
+                                url: "{{ url('/addBenfeiciry') }}",
+                                data: {
+                                    remiterMobile: remiterMobile,
+                                    acntHoldName: acntHoldName,
+                                    bankId: bankId,
+                                    accNumber: accNumber,
+                                    ifcscode: ifcscode,
+                                    verified: verified,
+                                    dateOfBirth: dateOfBirth,
+                                    address: address,
+                                    pincode: pincode
+                                },
+                                success: function(res) {
+                                    $('.pageLoader').fadeOut();
+                                    if (res.status == true) {
+                                        swal("Successfull", res.message, "success")
+                                            .then(function(res) {
+                                                $('.pageLoader').fadeIn();
+                                                if (res) {
+                                                    var loc = window.location;
+                                                    window.location = loc
+                                                        .origin +
+                                                        "/services/b2bServices/MoneyTransfer"
+                                                }
+                                            });
+                                    } else {
+                                        $('.pageLoader').fadeOut();
+                                        swal("Error", res.message, "error").then(
+                                            function(res) {
+                                                $('.pageLoader').fadeIn();
+                                                if (res) {
+                                                    var loc = window.location;
+                                                    window.location = loc
+                                                        .origin +
+                                                        "/services/b2bServices/MoneyTransfer"
+                                                }
+                                            }
+                                        );
+                                    }
+                                }
+                            });
+                        }
+                    });
+
+            }
 
         });
     </script>

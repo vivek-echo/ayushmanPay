@@ -24,18 +24,18 @@ class MoneyTransferController extends Controller
             'Token' => $token
         ])->withBody(json_encode($param), 'application/json')
             ->post('https://paysprint.in/service-api/api/v1/service/dmt/remitter/queryremitter')->json();
+        $viewVar['mobile'] = $user->mobile;
+        $viewVar['firstname'] = $user->firstName;
+        $viewVar['lastName'] = $user->lastName;
+        $viewVar['address'] = $user->address;
+        $viewVar['pincode'] = $user->pinCode;
 
         if ($queryremitter['status'] == true) {
 
-            return view("InnerPannel.Services.BtwoBServices.MoneyTransfer.MoneyTransfer");
+            return view("InnerPannel.Services.BtwoBServices.MoneyTransfer.MoneyTransfer",$viewVar);
         } else {
             $viewVar['stateresp'] = $queryremitter['stateresp'];
             $viewVar['message'] = $queryremitter['message'];
-            $viewVar['mobile'] = $user->mobile;
-            $viewVar['firstname'] = $user->firstName;
-            $viewVar['lastName'] = $user->lastName;
-            $viewVar['address'] = $user->address;
-            $viewVar['pincode'] = $user->pinCode;
             $viewVar['bank3_flag'] = "yes";
             $viewVar['dob'] = $user->dateOfBirth;
             $state = strtoupper($user->state);
@@ -48,7 +48,7 @@ class MoneyTransferController extends Controller
     //for Bank List
     public function getBankList()
     {
-        $bankList = DB::table('dmt-bank-list')->get();
+        $bankList = DB::table('dmt-bank-list')->orderBy('BANKNAME','asc')->get();
 
         return response()->json([
             'data' => $bankList
@@ -80,6 +80,31 @@ class MoneyTransferController extends Controller
         return response()->json([
             'status' => $registerRemitter['status'],
             'message' => $registerRemitter['message']
+        ]);
+    }
+
+    public function addBenfeiciry(){
+        $getData = request()->all();
+        $apiKey = config('constant.API_KEY');
+        $token = Controller::getToken();
+        $param['mobile'] = $getData['remiterMobile'];
+        $param['benename'] = $getData['acntHoldName'];
+        $param['bankid'] = $getData['bankId'];
+        $param['accno'] = $getData['accNumber'];
+        $param['ifsccode'] = $getData['ifcscode'];
+        $param['verified'] = $getData['verified'];
+        $param['dob'] = $getData['dateOfBirth'];
+        $param['address'] = $getData['address'];
+        $param['pincode'] = $getData['pincode'];
+        $registerBen =  Http::withHeaders([
+            'accept' => 'application/json',
+            'Authorisedkey' => $apiKey,
+            'Token' => $token
+        ])->withBody(json_encode($param), 'application/json')
+        ->post('https://paysprint.in/service-api/api/v1/service/dmt/beneficiary/registerbeneficiary')->json();
+        return response()->json([
+            'status' => $registerBen['status'],
+            'message' => $registerBen['message']
         ]);
     }
 }

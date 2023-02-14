@@ -9,10 +9,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
-// use Illuminate\Support\Facades\Mail;
-// use Illuminate\Support\Facades\Notification;
-// use App\Mail\SignUp;
-// use App\Mail\SignUpWelcome;
 
 class WalletController extends Controller
 {
