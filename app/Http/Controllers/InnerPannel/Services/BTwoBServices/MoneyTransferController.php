@@ -31,7 +31,18 @@ class MoneyTransferController extends Controller
         $viewVar['pincode'] = $user->pinCode;
 
         if ($queryremitter['status'] == true) {
-
+            $fetchParam['mobile'] = $user->mobile;
+            $fetchBen =  Http::withHeaders([
+                'accept' => 'application/json',
+                'Authorisedkey' => $apiKey,
+                'Token' => $token
+            ])->withBody(json_encode($fetchParam), 'application/json')
+                ->post('https://paysprint.in/service-api/api/v1/service/dmt/beneficiary/registerbeneficiary/fetchbeneficiary')->json();
+                if($fetchBen['status'] == true){
+                    $viewVar['fetchbenficery'] = $fetchBen['data'];
+                }else{
+                    $viewVar['fetchbenficery'] = [];
+                }
             return view("InnerPannel.Services.BtwoBServices.MoneyTransfer.MoneyTransfer",$viewVar);
         } else {
             $viewVar['stateresp'] = $queryremitter['stateresp'];
@@ -105,6 +116,24 @@ class MoneyTransferController extends Controller
         return response()->json([
             'status' => $registerBen['status'],
             'message' => $registerBen['message']
+        ]);
+    }
+
+    public function deletebeneficiary(){
+        $getData = request()->all();
+        $apiKey = config('constant.API_KEY');
+        $token = Controller::getToken();
+        $param['mobile'] = $getData['remiterMobile'];
+        $param['bene_id'] = $getData['bene_id'];
+        $deleteBen =  Http::withHeaders([
+            'accept' => 'application/json',
+            'Authorisedkey' => $apiKey,
+            'Token' => $token
+        ])->withBody(json_encode($param), 'application/json')
+        ->post('https://paysprint.in/service-api/api/v1/service/dmt/beneficiary/registerbeneficiary/deletebeneficiary')->json();
+        return response()->json([
+            'status' => $deleteBen['status'],
+            'message' => $deleteBen['message']
         ]);
     }
 }

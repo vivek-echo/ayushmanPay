@@ -32,7 +32,12 @@
 
                                 <ul class="nav nav-pills mb-3 mt-4" id="pills-tab" role="tablist">
                                     <li class="nav-item me-2" role="presentation">
-                                        <button class="nav-link active" id="moneyTransfer-tab" data-bs-toggle="pill"
+                                        <button class="nav-link active" id="beneficiaryList-tab" data-bs-toggle="pill"
+                                            data-bs-target="#beneficiaryList" type="button" role="tab"
+                                            aria-controls="beneficiaryList" aria-selected="false">Beneficiary List</button>
+                                    </li>
+                                    <li class="nav-item me-2" role="presentation">
+                                        <button class="nav-link " id="moneyTransfer-tab" data-bs-toggle="pill"
                                             data-bs-target="#moneyTransfer" type="button" role="tab"
                                             aria-controls="moneyTransfer" aria-selected="true">Money Transfer</button>
                                     </li>
@@ -41,16 +46,12 @@
                                             data-bs-target="#addBeneficiary" type="button" role="tab"
                                             aria-controls="addBeneficiary" aria-selected="false">Add Beneficiary</button>
                                     </li>
-                                    <li class="nav-item me-2" role="presentation">
-                                        <button class="nav-link" id="beneficiaryList-tab" data-bs-toggle="pill"
-                                            data-bs-target="#beneficiaryList" type="button" role="tab"
-                                            aria-controls="beneficiaryList" aria-selected="false">Beneficiary List</button>
-                                    </li>
+
                                 </ul>
                                 <div class="tab-content mt-4" id="pills-tabContent">
 
                                     <!-- FOR moneyTransfer -->
-                                    <div class="tab-pane fade show active" id="moneyTransfer" role="tabpanel"
+                                    <div class="tab-pane fade " id="moneyTransfer" role="tabpanel"
                                         aria-labelledby="pills-moneyTransfer">
 
                                         <div class="row">
@@ -155,23 +156,9 @@
                                     </div>
 
                                     <!-- FOR beneficiary List -->
-                                    <div class="tab-pane fade" id="beneficiaryList" role="tabpanel"
+                                    <div class="tab-pane fade show active" id="beneficiaryList" role="tabpanel"
                                         aria-labelledby="pills-beneficiaryList">
-                                        <div class="row">
-
-                                            <div class="form-group col-3">
-                                                <label class="col-form-label">Mobile Number</label><span
-                                                    class="text-danger fa-lg font-weight-500">
-                                                    *</span>
-                                                <input name="preMobileBen" id="preMobileBen" class="form-control"
-                                                    type="text" placeholder="Enter Mobile Number" autocomplete="off">
-
-                                            </div>
-                                            <div class="form-group col-4">
-                                                <button class="btn btn-primary m-t-35" data-bs-toggle="modal"
-                                                    data-bs-target="#viewBeneficiary">Search</button>
-                                            </div>
-                                        </div>
+                                        <?php if($fetchbenficery != []) { ?>
                                         <div class="table-responsive">
                                             <table class="table">
                                                 {{-- <caption>List of users</caption> --}}
@@ -182,37 +169,36 @@
                                                         <th scope="col">Account Number</th>
                                                         <th scope="col">Name</th>
                                                         <th scope="col">IFSC Code</th>
-                                                        <th scope="col">Mobile Number</th>
+                                                        <th scope="col">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    <?php foreach($fetchbenficery as $key=>$value) { ?>
                                                     <tr>
-                                                        <th scope="row">1</th>
-                                                        <td>Test Name </td>
-                                                        <td>121332312</td>
-                                                        <td>Test Name </td>
-                                                        <td>SBIN000000 </td>
-                                                        <td>8887778888 </td>
+                                                        <th scope="row">{{ $key + 1 }}</th>
+                                                        <td>{{ $value['bankname'] }}</td>
+                                                        <td>{{ $value['accno'] }}</td>
+                                                        <td>{{ $value['name'] }}</td>
+                                                        <td>{{ $value['ifsc'] }}</td>
+                                                        <td><a class="text-danger" title="Delete"
+                                                                onclick="deletebenefeciry({{ $value['bene_id'] }}) ;">
+                                                                <i data-feather="trash-2"></i>
+                                                            </a>
+
+                                                            
+                                                            <a class="text-info" title="Money Transfer">
+                                                                <i data-feather="fast-forward"></i>
+                                                            </a>
+                                                        </td>
+
                                                     </tr>
-                                                    <tr>
-                                                        <th scope="row">2</th>
-                                                        <td>Test Name </td>
-                                                        <td>121332312</td>
-                                                        <td>Test Name </td>
-                                                        <td>SBIN000000 </td>
-                                                        <td>8887778888 </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">3</th>
-                                                        <td>Test Name </td>
-                                                        <td>121332312</td>
-                                                        <td>Test Name </td>
-                                                        <td>SBIN000000 </td>
-                                                        <td>8887778888 </td>
-                                                    </tr>
+                                                    <?php } ?>
                                                 </tbody>
                                             </table>
                                         </div>
+                                        <?php }else{ ?>
+                                        <div>Not Found</div>
+                                        <?php }?>
                                     </div>
                                 </div>
                             </div>
@@ -299,9 +285,64 @@
     </div>
 
     <script>
+        //for delete
+        function deletebenefeciry(bene_id) {
+            console.log(bene_id);
+            $(document).ready(function() {
+                swal({
+                        title: "Are you sure?",
+                        text: "Are you sure you want to delete this beneficiary ?",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true
+                    })
+                    .then((willSubmit) => {
+                        if (willSubmit) {
+                            $('.pageLoader').fadeIn();
+                            $.ajax({
+                                url: "{{ url('/deletebeneficiary') }}",
+                                data: {
+                                    bene_id: bene_id,
+                                    remiterMobile: $('#remiterMobile').val()
+                                },
+                                success: function(res) {
+                                    $('.pageLoader').fadeOut();
+                                    if (res.status == true) {
+                                        swal("Successfull", res.message, "success")
+                                            .then(function(res) {
+                                                $('.pageLoader').fadeIn();
+                                                if (res) {
+                                                    var loc = window.location;
+                                                    window.location = loc
+                                                        .origin +
+                                                        "/services/b2bServices/MoneyTransfer"
+                                                }
+                                            });
+                                    } else {
+                                        $('.pageLoader').fadeOut();
+                                        swal("Error", res.message, "error").then(
+                                            function(res) {
+                                                $('.pageLoader').fadeIn();
+                                                if (res) {
+                                                    var loc = window.location;
+                                                    window.location = loc
+                                                        .origin +
+                                                        "/services/b2bServices/MoneyTransfer"
+                                                }
+                                            }
+                                        );
+                                    }
+
+                                }
+                            });
+                        }
+                    });
+            });
+            console.log(bene_id);
+        }
+
         $(document).ready(function() {
             $('#serviceLink').addClass('activeLink');
-
 
             $.ajax({
                 url: "{{ url('/getBankList') }}",
@@ -372,7 +413,7 @@
                 address, pincode) {
                 swal({
                         title: "Are you sure?",
-                        text: "Are you sure you want to Register Remitter ?",
+                        text: "Are you sure you want to add this beneficiary ?",
                         icon: "warning",
                         buttons: true,
                         dangerMode: true
