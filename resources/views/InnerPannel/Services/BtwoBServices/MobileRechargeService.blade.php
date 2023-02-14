@@ -340,7 +340,7 @@
             });
 
             function functionSubmit() {
-               
+
                 swal({
                         title: "Are you sure?",
                         text: "Are you sure you want to Recharge?",
@@ -349,44 +349,51 @@
                         dangerMode: true,
                     })
                     .then((willSubmit) => {
-                        $('.pageLoader').fadeIn();
-                        var perpaidOperator = $('#perpaidOperator').val();
-                        var perpaidOperatorName = $('#perpaidOperator').text();
-                        var mobileNo = $('#preMobile').val();
-                        var rechargeAmount = $('#rechargeAmount').val();
-                        $.ajax({
-                            url: "{{ url('/submitRecharge') }}",
-                            data:{
-                                operator:perpaidOperator,canumber:mobileNo,amount:rechargeAmount,perpaidOperatorName:perpaidOperatorName
-                            },
-                            success: function(res) {
-                                $('.pageLoader').fadeOut();
-                               if(res.status == true)
-                               {
-                                swal("Successfull", res.message, "success")
-                                    .then(function(res) {
-                                        $('.pageLoader').fadeIn();
-                                        if (res) {
-                                            var loc = window.location;
-                                            window.location = loc
-                                                .origin + "/services/b2bServices/mobileRechare"
-                                        }
-                                    });
-                               }else{
-                                $('.pageLoader').fadeOut();
-                                swal("Error", res.message, "error").then(
-                                    function(res) {
-                                        $('.pageLoader').fadeIn();
-                                        if (res) {
-                                            var loc = window.location;
-                                            window.location = loc
-                                                .origin + "/services/b2bServices/mobileRechare"
-                                        }
+                        if (willSubmit) {
+                            $('.pageLoader').fadeIn();
+                            var perpaidOperator = $('#perpaidOperator').val();
+                            var perpaidOperatorName = $('#perpaidOperator').text();
+                            var mobileNo = $('#preMobile').val();
+                            var rechargeAmount = $('#rechargeAmount').val();
+                            $.ajax({
+                                url: "{{ url('/submitRecharge') }}",
+                                data: {
+                                    operator: perpaidOperator,
+                                    canumber: mobileNo,
+                                    amount: rechargeAmount,
+                                    perpaidOperatorName: perpaidOperatorName
+                                },
+                                success: function(res) {
+                                    $('.pageLoader').fadeOut();
+                                    if (res.status == true) {
+                                        swal("Successfull", res.message, "success")
+                                            .then(function(res) {
+                                                $('.pageLoader').fadeIn();
+                                                if (res) {
+                                                    var loc = window.location;
+                                                    window.location = loc
+                                                        .origin +
+                                                        "/services/b2bServices/mobileRechare"
+                                                }
+                                            });
+                                    } else {
+                                        $('.pageLoader').fadeOut();
+                                        swal("Error", res.message, "error").then(
+                                            function(res) {
+                                                $('.pageLoader').fadeIn();
+                                                if (res) {
+                                                    var loc = window.location;
+                                                    window.location = loc
+                                                        .origin +
+                                                        "/services/b2bServices/mobileRechare"
+                                                }
+                                            }
+                                        );
                                     }
-                                );
-                               }
-                            }
-                        });
+                                }
+                            });
+                        }
+
                     });
             }
 
