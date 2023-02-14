@@ -185,8 +185,9 @@
                                                                 <i data-feather="trash-2"></i>
                                                             </a>
 
-                                                            
-                                                            <a class="text-info" title="Money Transfer">
+
+                                                            <a class="text-info" title="Money Transfer"
+                                                                onclick="moneyTransferDetails({{ $value['bene_id'] }})">
                                                                 <i data-feather="fast-forward"></i>
                                                             </a>
                                                         </td>
@@ -224,8 +225,26 @@
                             <label class="col-form-label">Bank Name</label><span
                                 class="text-danger fa-lg font-weight-500">
                                 *</span>
-                            <input name="bankName" id="bankName" class="form-control" type="text"
-                                placeholder="Enter Bank Name" autocomplete="off" readonly>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="bank1" id="bankLimit">
+                                <label class="form-check-label" for="bankLimit">
+                                    Bank 1 limit : <b><span id="bank1"></span></b>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="bank2" id="bankLimit"
+                                    >
+                                <label class="form-check-label" for="bankLimit">
+                                    Bank 2 limit : <b><span id="bank2"></span></b>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="bank3" id="bankLimit"
+                                    >
+                                <label class="form-check-label" for="bankLimit">
+                                    Bank 1 limit : <b><span id="bank3"></span></b>
+                                </label>
+                            </div>
 
                         </div>
 
@@ -285,9 +304,56 @@
     </div>
 
     <script>
+        //for money transfer 
+        function moneyTransferDetails(bene_id) {
+            $(document).ready(function() {
+                $('.pageLoader').fadeIn();
+                $.ajax({
+                    url: "{{ url('/fetchMoneyTransferDetails') }}",
+                    data: {
+                        bene_id: bene_id,
+                        remiterMobile: $('#remiterMobile').val()
+                    },
+                    success: function(res) {
+                        $('.pageLoader').fadeOut();
+                        if (res.status == true) {
+                            $('#bank1').html(res.data.bank1_limit);
+                            $('#bank2').html(res.data.bank2_limit);
+                            $('#bank3').html(res.data.bank3_limit);
+                            $('#viewBeneficiary').modal('show');
+                        }
+                        // if (res.status == true) {
+                        //     swal("Successfull", res.message, "success")
+                        //         .then(function(res) {
+                        //             $('.pageLoader').fadeIn();
+                        //             if (res) {
+                        //                 var loc = window.location;
+                        //                 window.location = loc
+                        //                     .origin +
+                        //                     "/services/b2bServices/MoneyTransfer"
+                        //             }
+                        //         });
+                        // } else {
+                        //     $('.pageLoader').fadeOut();
+                        //     swal("Error", res.message, "error").then(
+                        //         function(res) {
+                        //             $('.pageLoader').fadeIn();
+                        //             if (res) {
+                        //                 var loc = window.location;
+                        //                 window.location = loc
+                        //                     .origin +
+                        //                     "/services/b2bServices/MoneyTransfer"
+                        //             }
+                        //         }
+                        //     );
+                        // }
+
+                    }
+                });
+            });
+        }
         //for delete
         function deletebenefeciry(bene_id) {
-            console.log(bene_id);
             $(document).ready(function() {
                 swal({
                         title: "Are you sure?",

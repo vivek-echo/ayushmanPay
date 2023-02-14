@@ -56,6 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(['GET', 'POST'], '/submitRemiterRegister', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'submitRemiterRegister']);
     Route::match(['GET', 'POST'], '/addBenfeiciry', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'addBenfeiciry']);
     Route::match(['GET', 'POST'], '/deletebeneficiary', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'deletebeneficiary']);
+    Route::match(['GET', 'POST'], '/fetchMoneyTransferDetails', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'fetchMoneyTransferDetails']);
 });
 //B2BService
 Route::get('/services/hospital', function () {

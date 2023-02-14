@@ -136,4 +136,23 @@ class MoneyTransferController extends Controller
             'message' => $deleteBen['message']
         ]);
     }
+
+    public function fetchMoneyTransferDetails(){
+        $getData = request()->all();
+        $apiKey = config('constant.API_KEY');
+        $token = Controller::getToken();
+        $param['mobile'] =  $getData['remiterMobile'] ;
+        $param['bank3_flag'] =  'NO';
+        $query =  Http::withHeaders([
+            'accept' => 'application/json',
+            'Authorisedkey' => $apiKey,
+            'Token' => $token
+        ])->withBody(json_encode($param), 'application/json')
+            ->post('https://paysprint.in/service-api/api/v1/service/dmt/remitter/queryremitter')->json();
+            return response()->json([
+                'status' => $query['status'],
+                'message' => $query['message'],
+                'data' => $query['data']
+            ]);
+    }
 }
