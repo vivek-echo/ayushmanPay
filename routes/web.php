@@ -31,7 +31,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(['GET', 'POST'], '/Wallet/UpdateWallet', [App\Http\Controllers\Wallet\WalletController::class, 'updateWallet']);
     Route::match(['GET', 'POST'], '/getPerpaidOperatorList', [App\Http\Controllers\CommonController::class, 'getPrepaidOperatorList']);
     Route::match(['GET', 'POST'], '/getPerpaidOperatorPlan', [App\Http\Controllers\CommonController::class, 'getPerpaidOperatorPlan']);
+    //common
     Route::match(['GET', 'POST'], '/profileData', [App\Http\Controllers\CommonController::class, 'profileData']);
+    Route::match(['GET', 'POST'], '/getGstStateList', [App\Http\Controllers\CommonController::class, 'getGstStateList']);
     //fasttag
     Route::match(['GET', 'POST'], '/services/b2bServices/fasttag', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\FastTagServicesController::class, 'index']);
     Route::match(['GET', 'POST'], '/getFastTagOperatorList', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\FastTagServicesController::class, 'getFastTagOperatorList']);
@@ -57,6 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(['GET', 'POST'], '/addBenfeiciry', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'addBenfeiciry']);
     Route::match(['GET', 'POST'], '/deletebeneficiary', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'deletebeneficiary']);
     Route::match(['GET', 'POST'], '/fetchMoneyTransferDetails', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'fetchMoneyTransferDetails']);
+    Route::match(['GET', 'POST'], '/getOtpMoneyTansfer', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'getOtpMoneyTansfer']);
 });
 //B2BService
 Route::get('/services/hospital', function () {

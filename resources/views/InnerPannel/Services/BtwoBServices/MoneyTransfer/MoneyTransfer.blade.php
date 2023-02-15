@@ -169,6 +169,7 @@
                                                         <th scope="col">Account Number</th>
                                                         <th scope="col">Name</th>
                                                         <th scope="col">IFSC Code</th>
+                                                        <th scope="col">verification Status</th>
                                                         <th scope="col">Action</th>
                                                     </tr>
                                                 </thead>
@@ -180,16 +181,24 @@
                                                         <td>{{ $value['accno'] }}</td>
                                                         <td>{{ $value['name'] }}</td>
                                                         <td>{{ $value['ifsc'] }}</td>
+                                                        <td>
+                                                            <?php if($value['verified'] == 0){ ?>
+                                                            <span class="text-danger">Not Verified</span>
+                                                            <?php }else{ ?>
+                                                            <span class="text-success">Verified</span>
+                                                            <?php } ?>
+                                                        </td>
                                                         <td><a class="text-danger" title="Delete"
                                                                 onclick="deletebenefeciry({{ $value['bene_id'] }}) ;">
                                                                 <i data-feather="trash-2"></i>
                                                             </a>
-
-
+                                                            <?php if($value['verified'] == 1){ ?>
                                                             <a class="text-info" title="Money Transfer"
                                                                 onclick="moneyTransferDetails({{ $value['bene_id'] }})">
                                                                 <i data-feather="fast-forward"></i>
                                                             </a>
+                                                            <?php } ?>
+
                                                         </td>
 
                                                     </tr>
@@ -222,80 +231,59 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="form-group col-6">
-                            <label class="col-form-label">Bank Name</label><span
-                                class="text-danger fa-lg font-weight-500">
-                                *</span>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="bank1" id="bankLimit">
-                                <label class="form-check-label" for="bankLimit">
-                                    Bank 1 limit : <b><span id="bank1"></span></b>
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="bank2" id="bankLimit"
-                                    >
-                                <label class="form-check-label" for="bankLimit">
-                                    Bank 2 limit : <b><span id="bank2"></span></b>
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="bank3" id="bankLimit"
-                                    >
-                                <label class="form-check-label" for="bankLimit">
-                                    Bank 1 limit : <b><span id="bank3"></span></b>
-                                </label>
-                            </div>
+                            <label class="col-form-label">Select Bank Limit</label><span> *</span><br>
+                            <input type="radio" id="bankLimit1" name="bankLimitMoneyTransfer" value="bank1" checked>
+                            <label for="bankLimit1"> Bank 1 limit : <b><span id="bank1"></span></b></label><br>
+                            <input type="radio" id="bankLimit2" name="bankLimitMoneyTransfer" value="bank2">
+                            <label for="bankLimit2">Bank 2 limit : <b><span id="bank2"></span></b></label><br>
+                            <input type="radio" id="bankLimit3" name="bankLimitMoneyTransfer" value="bank3">
+                            <label for="bankLimit3">Bank 3 limit : <b><span id="bank3"></span></b></label>
+                            
 
                         </div>
 
                         <div class="form-group col-6">
-                            <label class="col-form-label">Account Number</label><span
+                            <label class="col-form-label">Gst State</label><span
                                 class="text-danger fa-lg font-weight-500">
                                 *</span>
-                            <input name="acntNo" id="acntNo" class="form-control" type="text"
-                                placeholder="Enter Account Number" autocomplete="off" readonly>
+                            <select name="gstStateMoneyTransfer" id="gstStateMoneyTransfer" class="form-select">
+                                <option value="">Loading .....</option>
+                            </select>
 
                         </div>
 
                         <div class="form-group col-6">
-                            <label class="col-form-label">Account Holder Name</label><span
-                                class="text-danger fa-lg font-weight-500">
+                            <label class="col-form-label">Tax Type</label><span class="text-danger fa-lg font-weight-500">
                                 *</span>
-                            <input name="acntHoldNameBen" id="acntHoldNameBen" class="form-control" type="text"
-                                placeholder="Enter Account Holder Name" autocomplete="off" readonly>
-
-                        </div>
-
-                        <div class="form-group col-6">
-                            <label class="col-form-label">IFSC Code</label><span
-                                class="text-danger fa-lg font-weight-500">
-                                *</span>
-                            <input name="ifcscodeBen" id="ifcscodeBen" class="form-control" type="text"
-                                placeholder="Enter IFSC Code" autocomplete="off" readonly>
-
-                        </div>
-
-                        <div class="form-group col-6">
-                            <label class="col-form-label">Mobile Number</label><span
-                                class="text-danger fa-lg font-weight-500">
-                                *</span>
-                            <input name="mobNo" id="mobNo" class="form-control" type="text"
-                                placeholder="Enter Mobile Number" autocomplete="off" readonly>
+                            <select name="taxTypeMoneyTransfer" id="taxTypeMoneyTransfer" class="form-select">
+                                <option value="0">--Select--</option>
+                                <option value="1">IMPS</option>
+                                <option value="2">NEFT</option>
+                            </select>
 
                         </div>
 
                         <div class="form-group col-6">
                             <label class="col-form-label">Amount</label><span class="text-danger fa-lg font-weight-500">
                                 *</span>
-                            <input name="amnt" id="amnt" class="form-control" type="text"
-                                placeholder="Enter Amount" autocomplete="off">
-
+                            <input name="amountMoneyTransfer" id="amountMoneyTransfer" class="form-control"
+                                type="text" placeholder="Enter Amount" autocomplete="off">
                         </div>
-                    </div>
 
+                        <div class="form-group col-6" id="OTPDiv" style="display:none">
+                            <label class="col-form-label">OTP</label><span class="text-danger fa-lg font-weight-500">
+                                *</span>
+                            <input name="otpMoneyTransfer" id="otpMoneyTransfer" class="form-control" type="text"
+                                placeholder="Enter Mobile Number" autocomplete="off">
+                            <span id="spanOtp" class="text-danger"></span>
+                        </div>
+
+                    </div>
+                    <input name="otpEncMoneyTransfer" id="otpEncMoneyTransfer" class="form-control" type="hidden"
+                        autocomplete="off">
                     <div class="form-group mt-4">
-                        <button class="btn btn-primary" id="">Get OTP</button>
-                        <button class="btn btn-warning" id="">Send</button>
+                        <button class="btn btn-primary" id="getOTPMoneyTransfer">Get OTP</button>
+                        <button class="btn btn-warning" id="sendMoneyTransfer">Send</button>
                     </div>
                 </div>
 
@@ -317,37 +305,33 @@
                     success: function(res) {
                         $('.pageLoader').fadeOut();
                         if (res.status == true) {
+                            getGstState();
                             $('#bank1').html(res.data.bank1_limit);
                             $('#bank2').html(res.data.bank2_limit);
                             $('#bank3').html(res.data.bank3_limit);
                             $('#viewBeneficiary').modal('show');
                         }
-                        // if (res.status == true) {
-                        //     swal("Successfull", res.message, "success")
-                        //         .then(function(res) {
-                        //             $('.pageLoader').fadeIn();
-                        //             if (res) {
-                        //                 var loc = window.location;
-                        //                 window.location = loc
-                        //                     .origin +
-                        //                     "/services/b2bServices/MoneyTransfer"
-                        //             }
-                        //         });
-                        // } else {
-                        //     $('.pageLoader').fadeOut();
-                        //     swal("Error", res.message, "error").then(
-                        //         function(res) {
-                        //             $('.pageLoader').fadeIn();
-                        //             if (res) {
-                        //                 var loc = window.location;
-                        //                 window.location = loc
-                        //                     .origin +
-                        //                     "/services/b2bServices/MoneyTransfer"
-                        //             }
-                        //         }
-                        //     );
-                        // }
+                    }
+                });
+            });
+        }
+        //get gst state
+        function getGstState() {
+            $(document).ready(function() {
+                $.ajax({
+                    url: "{{ url('/getGstStateList') }}",
+                    success: function(res) {
+                        var optionOperatorMoneyTransfer = [
+                            '<option value="0" >--Select Bank Name--</option>'
+                        ];
+                        var optionLengthOperatormoney = res.data.length;
 
+                        for (var i = 0; i < optionLengthOperatormoney; i++) {
+                            var resOptionOperatorMoneyTransfer = '<option value=' + res.data[i]
+                                .gstStateId + ' >' + res.data[i].gstStateName + '</option>'
+                            optionOperatorMoneyTransfer.push(resOptionOperatorMoneyTransfer);
+                        }
+                        $('#gstStateMoneyTransfer').html(optionOperatorMoneyTransfer);
                     }
                 });
             });
@@ -404,7 +388,7 @@
                         }
                     });
             });
-            console.log(bene_id);
+
         }
 
         $(document).ready(function() {
@@ -533,6 +517,68 @@
                     });
 
             }
+
+            //get otp for money transfer
+            $('#getOTPMoneyTransfer').on('click', function() {
+                console.log($('[name="bankLimitMoneyTransfer"]').val());
+                var gstStateMoneyTransfer = $('#gstStateMoneyTransfer').val();
+                var taxTypeMoneyTransfer = $('#taxTypeMoneyTransfer').val();
+                var amountMoneyTransfer = $('#amountMoneyTransfer').val();
+                var otpMoneyTransfer = $('#otpMoneyTransfer').val();
+                if (gstStateMoneyTransfer == 0) {
+                    errorAlert("Required", "Please select the Gst state", "gstStateMoneyTransfer");
+                    return false;
+                }
+                if (taxTypeMoneyTransfer == 0) {
+                    errorAlert("Required", "Please select the Tax Type", "taxTypeMoneyTransfer");
+                    return false;
+                }
+                if (amountMoneyTransfer == "") {
+                    errorAlert("Required", "Please Enter the amount", "amountMoneyTransfer");
+                    return false;
+                }
+                if (otpMoneyTransfer == "") {
+                    errorAlert("Required", "Please get the otp & Enter the Otp", "otpMoneyTransfer");
+                    return false;
+                }
+                getOtpMoneyTansfer();
+            });
+
+            function getOtpMoneyTansfer() {
+                $('.pageLoader').fadeIn();
+                $.ajax({
+                    url: "{{ url('/getOtpMoneyTansfer') }}",
+
+                    success: function(res) {
+                        $('.pageLoader').fadeOut();
+                        if (res.status == true) {
+                            $('#OTPDiv').show();
+                            $('#spanOtp').html(res.message);
+                            $('#otpEncMoneyTransfer').val(res.otpEnc);
+                        } else {
+                            swal("Error", res.message, "error").then(
+                                function(res) {
+                                    $('.pageLoader').fadeIn();
+                                    if (res) {
+                                        var loc = window.location;
+                                        window.location = loc
+                                            .origin +
+                                            "/services/b2bServices/MoneyTransfer"
+                                    }
+                                }
+                            );
+                        }
+                    }
+                });
+            }
+
+            // function validator() {
+            //     if ($('#perpaidOperator').val() == 0) {
+            //         errorAlert("Required", "Please select the operator", "perpaidOperator");
+            //         return false;
+            //     }
+            //     return true;
+            // }
 
         });
     </script>

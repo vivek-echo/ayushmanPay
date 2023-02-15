@@ -17,77 +17,85 @@ class CommonController extends Controller
         return response()->json([
             'data' => $response['result'][0]
         ]);
-       
     }
 
-    public function getPrepaidOperatorList(){
-        $apiKey = config('constant.API_KEY'); 
+    public function getPrepaidOperatorList()
+    {
+        $apiKey = config('constant.API_KEY');
         $token = Controller::getToken();
 
-       $operatorList=  Http::withHeaders([
+        $operatorList =  Http::withHeaders([
             'accept' => 'application/json',
-            'Authorisedkey'=> $apiKey,
-            'Token'=> $token
+            'Authorisedkey' => $apiKey,
+            'Token' => $token
         ])
-        ->post('https://paysprint.in/service-api/api/v1/service/recharge/recharge/getoperator')->json();
+            ->post('https://paysprint.in/service-api/api/v1/service/recharge/recharge/getoperator')->json();
         return response()->json([
-            'status'=>$operatorList['status'],
-            'message'=>$operatorList['message'],
+            'status' => $operatorList['status'],
+            'message' => $operatorList['message'],
             'data' => $operatorList['data']
         ]);
-
     }
 
-    public function getPerpaidOperatorPlan(){
-        $getData = request()->all(); 
-        $apiKey = config('constant.API_KEY'); 
+    public function getPerpaidOperatorPlan()
+    {
+        $getData = request()->all();
+        $apiKey = config('constant.API_KEY');
         $token = Controller::getToken();
         $param['circle'] = $getData['circle'];
         $param['op'] = $getData['op'];
-       $plans=  Http::withHeaders([
+        $plans =  Http::withHeaders([
             'accept' => 'application/json',
-            'Authorisedkey'=> $apiKey,
-            'Token'=> $token
-        ])->withBody(json_encode($param),'application/json')
-        ->post('https://paysprint.in/service-api/api/v1/service/recharge/hlrapi/browseplan')->json();
+            'Authorisedkey' => $apiKey,
+            'Token' => $token
+        ])->withBody(json_encode($param), 'application/json')
+            ->post('https://paysprint.in/service-api/api/v1/service/recharge/hlrapi/browseplan')->json();
         $mainmenu = array_keys($plans['info']);
         return response()->json([
-            'status'=>$plans['status'],
-            'message'=>$plans['message'],
+            'status' => $plans['status'],
+            'message' => $plans['message'],
             'data' => $mainmenu,
-            'plans'=>$plans['info']
+            'plans' => $plans['info']
         ]);
     }
-    public function profileData(){
-        $data = Auth ::user();
+    public function profileData()
+    {
+        $data = Auth::user();
         $walletAmount = 0;
-        if($data)
-        {
-            $wallet = DB::table('user_wallet')->where('userId',$data->id)->where('deletedFlag',0)->first();
-            if($wallet)
-            {
+        if ($data) {
+            $wallet = DB::table('user_wallet')->where('userId', $data->id)->where('deletedFlag', 0)->first();
+            if ($wallet) {
                 $walletAmount = $wallet->walletAmount;
             }
         }
         return response()->json([
-            'walletAmount'=>$walletAmount
+            'walletAmount' => $walletAmount
         ]);
     }
 
-    public function getBillOperatorList(){
-        $apiKey = config('constant.API_KEY'); 
+    public function getBillOperatorList()
+    {
+        $apiKey = config('constant.API_KEY');
         $token = Controller::getToken();
-        $billOperator=  Http::withHeaders([
+        $billOperator =  Http::withHeaders([
             'accept' => 'application/json',
-            'Authorisedkey'=> $apiKey,
-            'Token'=> $token
+            'Authorisedkey' => $apiKey,
+            'Token' => $token
         ])
-        ->post('https://paysprint.in/service-api/api/v1/service/bill-payment/bill/getoperator')->json();
-       
+            ->post('https://paysprint.in/service-api/api/v1/service/bill-payment/bill/getoperator')->json();
+
         return response()->json([
-            'status'=>$billOperator['status'],
-            'message'=>$billOperator['message'],
-            'data'=>$billOperator['data']
+            'status' => $billOperator['status'],
+            'message' => $billOperator['message'],
+            'data' => $billOperator['data']
+        ]);
+    }
+
+    public function getGstStateList()
+    {
+        $bankList = DB::table('gststate')->orderBy('gstStateName', 'asc')->get();
+        return response()->json([
+            'data' => $bankList
         ]);
     }
 }
