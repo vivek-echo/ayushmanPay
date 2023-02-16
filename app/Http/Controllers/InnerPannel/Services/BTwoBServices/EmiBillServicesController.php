@@ -66,7 +66,63 @@ class EmiBillServicesController extends Controller
             'Token' => $token
         ])->withBody(json_encode($params),'application/json')
             ->post(''.config('constant.SERVICE_URL').'bill-payment/bill/paybill')->json();
-            dd( $payBill);
+            if($payBill['status'] == true){
+                try{
+                    $trans = DB::beginTransaction();
+                    $insertAllRecord = DB::transaction(function () use ($payBill,$params,$getData,$userId,$walletId ) {
+                        
+                        $rechargeId = DB::table('emibillservices')->insertGetId([
+                            'operatoridRes'=>$payBill['operatorid'],
+                            'userId' =>$userId,
+                            'rechargeAmount'=>  $params['amount'],
+                            'operatorId'=>  $params['operator'] ,
+                            'operatorName'=>  $getData['operatorName'] ,
+                            'caNumber'=>  $params['canumber'] ,
+                            'ackno'=> $payBill['ackno'],
+                            'message'=> $payBill['message'],
+                            'createdOn'=>date('Y-m-d H:i:s'),
+                            'refid'=>  $payBill['refid'] ,
+                        ]);
+                        
+                        $updatewalletLog = DB::table('user_wallet_log')->insert([
+                            'wId' => $walletId->wId,
+                            'serviceLogId'=> $rechargeId ,
+                            'userId'=> $userId,
+                            'walletAmount'=> $params['amount'] ,
+                            'createdOn'=>date('Y-m-d H:i:s'),
+                            'servicType'=>5,
+                            'transactionType'=>2
+                        ]);
+    
+                        DB::table('user_wallet')->where('deletedFlag',0)->where('userId',$userId)->update([
+                            'walletAmount'=>$walletId->walletAmount - $params['amount'],
+                            'updatedOn'=>date('Y-m-d H:i:s')
+                        ]);
+                    });
+                    if (is_null($insertAllRecord)) {
+                        $status =  $payBill['status'];
+                        $msg =  $payBill['message'];
+                    }
+                    DB::commit($trans);
+                } catch (\Exception $t) {
+                    DB::rollBack($trans);
+                    Log::error("Error", [
+                        'Controller' => 'EmiBillServicesController',
+                        'Method' => 'payEmiBill',
+                        'Error' => $t->getMessage(),
+                    ]);
+                    $status = false;
+                    $msg = "Something went wrong. please try again later";
+                }
+            }else{
+                $status =  $payBill['status'];
+                $msg =  $payBill['message'];
+            }
+    
+            return response()->json([
+                'status' =>  $status,
+                'message' => $msg
+            ]);
           
     }
 }

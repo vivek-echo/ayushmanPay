@@ -158,10 +158,11 @@
                     var optionLengthOperator = res.data.length;
 
                     for (var i = 0; i < optionLengthOperator; i++) {
-                        
-                            var resOptionOperator = '<option value=' + res.data[i].id + ' >' + res.data[i].name + '</option>'
-                            optionOperator.push(resOptionOperator);
-                       
+
+                        var resOptionOperator = '<option value=' + res.data[i].id + ' >' + res.data[i]
+                            .name + '</option>'
+                        optionOperator.push(resOptionOperator);
+
 
                     }
                     $('#billerId').html(optionOperator);
@@ -181,7 +182,7 @@
                     errorAlert("Required", "Please Enter wallet Number", "billerId");
                     return false;
                 }
-                fetchBill(billerId,vehicleNo);
+                fetchBill(billerId, vehicleNo);
                 $('#fetchBill').modal('show');
             })
 
@@ -196,12 +197,12 @@
                     errorAlert("Required", "Please Enter wallet Number", "billerId");
                     return false;
                 }
-                fetchBill(billerId,vehicleNo);
+                fetchBill(billerId, vehicleNo);
             })
 
-            function fetchBill(billerId,vehicleNo) {
+            function fetchBill(billerId, vehicleNo) {
 
-              
+
                 $('.pageLoader').fadeIn();
                 $.ajax({
                     url: "{{ url('/getBillData') }}",
@@ -246,7 +247,7 @@
             $('#payBill').on('click', function() {
 
                 var billerId = $('#billerId').val();
-                var billerName = $('#billerId').text();
+                var billerName = $('#billerId option:selected').text();
                 var vehicleNo = $('#vehicleNo').val();
                 var amnt = $('#amnt').val();
                 if (billerId == 0) {
@@ -275,50 +276,63 @@
                     );
 
                 }
-                $('.pageLoader').fadeIn();
-                $.ajax({
-                    url: "{{ url('/payBillFastTag') }}",
-                    data: {
-                        operator: billerId,
-                        canumber: vehicleNo,
-                        amount: amnt,
-                        latitude: locationData.latitude,
-                        longitude: locationData.longitude,
-                        billfetch: fetcBillData,
-                        billerName:billerName
-                    },
-                    success: function(res) {
-                        $('.pageLoader').fadeOut();
-                        if (res) {
-                            if (res.status == true) {
-                                swal("Successfull", res.message, "success")
-                                    .then(function(res) {
-                                        $('.pageLoader').fadeIn();
-                                        if (res) {
-                                            var loc = window.location;
-                                            window.location = loc
-                                                .origin +
-                                                "/services/b2bServices/fasttag"
-                                        }
-                                    });
-                            } else {
-                                $('.pageLoader').fadeOut();
-                                swal("Error", res.message, "error").then(
-                                    function(res) {
-                                        $('.pageLoader').fadeIn();
-                                        if (res) {
-                                            var loc = window.location;
-                                            window.location = loc
-                                                .origin +
-                                                "/services/b2bServices/fasttag"
-                                        }
-                                    }
-                                );
-                            }
 
+                swal({
+                        title: "Are you sure?",
+                        text: "Are you sure you want to pay fast tag bill ?",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true
+                    })
+                    .then((willSubmit) => {
+                        if (willSubmit) {
+                            $('.pageLoader').fadeIn();
+                            $.ajax({
+                                url: "{{ url('/payBillFastTag') }}",
+                                data: {
+                                    operator: billerId,
+                                    canumber: vehicleNo,
+                                    amount: amnt,
+                                    latitude: locationData.latitude,
+                                    longitude: locationData.longitude,
+                                    billfetch: fetcBillData,
+                                    billerName: billerName
+                                },
+                                success: function(res) {
+                                    $('.pageLoader').fadeOut();
+                                    if (res) {
+                                        if (res.status == true) {
+                                            swal("Successfull", res.message, "success")
+                                                .then(function(res) {
+                                                    $('.pageLoader').fadeIn();
+                                                    if (res) {
+                                                        var loc = window.location;
+                                                        window.location = loc
+                                                            .origin +
+                                                            "/services/b2bServices/fasttag"
+                                                    }
+                                                });
+                                        } else {
+                                            $('.pageLoader').fadeOut();
+                                            swal("Error", res.message, "error").then(
+                                                function(res) {
+                                                    $('.pageLoader').fadeIn();
+                                                    if (res) {
+                                                        var loc = window.location;
+                                                        window.location = loc
+                                                            .origin +
+                                                            "/services/b2bServices/fasttag"
+                                                    }
+                                                }
+                                            );
+                                        }
+
+                                    }
+                                }
+                            });
                         }
-                    }
-                });
+                    });
+
             })
 
 

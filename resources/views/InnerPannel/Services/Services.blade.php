@@ -64,18 +64,18 @@
                                             <a href="/services/b2bServices/EmiBill"><div class="quick-box"><i class="myicon-correct"></i></div>
                                             <h6>EMI Bill Pay</h6></a>
                                         </li>
-                                        <li>
+                                        {{-- <li>
                                             <a href="/services/hospital"><div class="quick-box"><i class="myicon-plus1"></i></div>
                                             <h6>Hospital</h6></a>
-                                        </li>
+                                        </li> --}}
                                         <li>
                                             <a href="/services/broadband"><div class="quick-box"><i class="myicon-wifi"></i></div>
                                             <h6>Broadband</h6></a>
                                         </li>
-                                        <li>
+                                        {{-- <li>
                                             <a href="/services/irctcservice"><div class="quick-box"><i class="myicon-train"></i></div>
                                             <h6>IRCTC</h6></a>
-                                        </li>
+                                        </li> --}}
                                         <li>
                                             <a href="/services/PancardUTI"><div class="quick-box"><i class="myicon-membership"></i></div>
                                             <h6>Pan Card(UTI)</h6></a>
@@ -89,22 +89,22 @@
                                             <h6>LIC</h6></a>
                                         </li>
 
-                                        <li>
+                                        {{-- <li>
                                             <a href="/services/fixeddepositservice"><div class="quick-box"><i class="myicon-fd"></i></div>
                                             <h6>Fixed Deposit</h6></a>
-                                        </li>
+                                        </li> --}}
                                         <li>
                                             <a href="#"><div class="quick-box"><i class="myicon-identification"></i></div>
                                             <h6>AEPS</h6></a>
                                         </li>
-                                        <li>
+                                        {{-- <li>
                                             <a href="#"><div class="quick-box"><i class="myicon-health-insurance"></i></div>
                                             <h6>Health<br> Insurance</h6></a>
-                                        </li>
-                                        <li>
+                                        </li> --}}
+                                        {{-- <li>
                                             <a href="#"><div class="quick-box"><i class="myicon-mobile-payment"></i></div>
                                             <h6>Payments</h6></a>
-                                        </li>
+                                        </li> --}}
                                     </ul>
                                 </div>
 

@@ -157,7 +157,7 @@
                         }
 
                     }
-                    
+
                     $('#billerId').html(optionOperator);
                     $('#perpaidOperatorLoading').hide();
                 }
@@ -269,6 +269,7 @@
 
             $('#payBillButton').on('click', function() {
                 var billerId = $('#billerId').val();
+                var billerName = $('#billerId option:selected').text();
                 var canNumber = $('#canNumber').val();
                 var amount = $('#amnt').val();
                 if (billerId == 0) {
@@ -283,30 +284,53 @@
                     errorAlert("Required", "Please Enter amount", "amnt");
                     return false;
                 }
-                $.ajax({
-                    url: "{{ url('/payEmiBill') }}",
-                    data: {
-                        operator: billerId,
-                        canumber: canNumber,
-                        amount: amount,
-                        latitude: locationData.latitude,
-                        longitude: locationData.longitude,
-                        billfetch: fetcBillData
-                    },
-                    success: function(res) {
-                        $('.pageLoader').fadeOut();
+                swal({
+                        title: "Are you sure?",
+                        text: "Are you sure you want to pay bill ?",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true
+                    })
+                    .then((willSubmit) => {
+                        if (willSubmit) {
+                            $('.pageLoader').fadeIn();
+                            $.ajax({
+                                url: "{{ url('/payEmiBill') }}",
+                                data: {
+                                    operator: billerId,
+                                    operatorName: billerName,
+                                    canumber: canNumber,
+                                    amount: amount,
+                                    latitude: locationData.latitude,
+                                    longitude: locationData.longitude,
+                                    billfetch: fetcBillData
+                                },
+                                success: function(res) {
+                                    $('.pageLoader').fadeOut();
 
-                        if (res) {
-                            if (res.status == true) {
-                               
-                            } else {
+                                    if (res) {
+                                        if (res.status == true) {
+                                            swal("Successfull", res.message, "success")
+                                                .then(function(res) {
+                                                    $('.pageLoader').fadeIn();
+                                                    if (res) {
+                                                        var loc = window.location;
+                                                        window.location = loc
+                                                            .origin +
+                                                            "/services/b2bServices/EmiBill"
+                                                    }
+                                                });
+                                        } else {
 
-                                swal("Error", res.message, "error")
-                            }
+                                            swal("Error", res.message, "error")
+                                        }
 
+                                    }
+                                }
+                            });
                         }
-                    }
-                });
+                    });
+
 
             })
 
