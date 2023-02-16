@@ -31,14 +31,25 @@
 
                             <ul class="nav nav-pills mb-3 mt-4 mx-4" id="pills-tab" role="tablist">
                                 <li class="nav-item me-2" role="presentation">
+                                    
                                     <button class="nav-link active" id="AepsTransaction-tab" data-bs-toggle="pill"
                                         data-bs-target="#AepsTransaction" type="button" role="tab" aria-controls="AepsTransaction"
-                                        aria-selected="true">AEPS Transaction</button>
+                                        aria-selected="true">
+                                        <span class="d-flex">
+                                            <i class="myicon-identification fs-5"></i> 
+                                            AEPS Transaction
+                                        </span>
+                                    </button>
                                 </li>
                                 <li class="nav-item me-2" role="presentation">
                                     <button class="nav-link" id="kyc-tab" data-bs-toggle="pill"
                                         data-bs-target="#kyc" type="button" role="tab"
-                                        aria-controls="kyc" aria-selected="false">KYC</button>
+                                        aria-controls="kyc" aria-selected="false">
+                                        <span class="d-flex">
+                                            <i class="myicon-file-text1 fs-5"></i> 
+                                            KYC
+                                        </span>
+                                    </button>
                                 </li>
                             </ul>
                             <div class="tab-content mt-4" id="pills-tabContent">

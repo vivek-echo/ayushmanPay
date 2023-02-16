@@ -94,7 +94,7 @@
                                             <h6>Fixed Deposit</h6></a>
                                         </li> --}}
                                         <li>
-                                            <a href="#"><div class="quick-box"><i class="myicon-identification"></i></div>
+                                            <a href="/services/aepsservice"><div class="quick-box"><i class="myicon-identification"></i></div>
                                             <h6>AEPS</h6></a>
                                         </li>
                                         {{-- <li>
