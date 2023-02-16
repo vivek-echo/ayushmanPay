@@ -188,14 +188,14 @@
                                                             <span class="text-success">Verified</span>
                                                             <?php } ?>
                                                         </td>
-                                                        <td><a class="text-danger" title="Delete"
+                                                        <td><a class="text-danger me-2" data-bs-toggle="tooltip" title="Delete"
                                                                 onclick="deletebenefeciry({{ $value['bene_id'] }}) ;">
                                                                 <i data-feather="trash-2"></i>
                                                             </a>
                                                             <?php if($value['verified'] == 1){ ?>
-                                                            <a class="text-info" title="Money Transfer"
+                                                            <a class="text-info" data-bs-toggle="tooltip" title="Money Transfer"
                                                                 onclick="moneyTransferDetails({{ $value['bene_id'] }})">
-                                                                <i data-feather="fast-forward"></i>
+                                                                <i data-feather="corner-up-right"></i>
                                                             </a>
                                                             <?php } ?>
 

@@ -83,6 +83,9 @@ Route::get('/services/irctcservice', function () {
 Route::get('/services/fixeddepositservice', function () {
     return view('InnerPannel/Services/BtwoBServices/FixedDeposit');
 });
+Route::get('/services/aepsservice', function () {
+    return view('InnerPannel/Services/BtwoBServices/AepsService');
+});
 
 //LegalService
 Route::get('/services/birthcertificate', function () {
