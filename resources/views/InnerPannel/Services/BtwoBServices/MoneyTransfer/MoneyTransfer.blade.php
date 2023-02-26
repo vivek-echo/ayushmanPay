@@ -9,9 +9,9 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#"><i data-feather="home"></i></a></li>
-                        <li class="breadcrumb-item">Services</li>
-                        <li class="breadcrumb-item active">Money Transfer</li>
+                        <li class="breadcrumb-item"><a href="/dashboard"><i data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="/services"> Services</a> </li>
+                        <li class="breadcrumb-item active"><a href="/services/b2bServices/MoneyTransfer"> Money Transfer</a> </li>
                     </ol>
                 </div>
             </div>
@@ -36,11 +36,11 @@
                                             data-bs-target="#beneficiaryList" type="button" role="tab"
                                             aria-controls="beneficiaryList" aria-selected="false">Beneficiary List</button>
                                     </li>
-                                    <li class="nav-item me-2" role="presentation">
+                                    {{-- <li class="nav-item me-2" role="presentation">
                                         <button class="nav-link " id="moneyTransfer-tab" data-bs-toggle="pill"
                                             data-bs-target="#moneyTransfer" type="button" role="tab"
                                             aria-controls="moneyTransfer" aria-selected="true">Money Transfer</button>
-                                    </li>
+                                    </li> --}}
                                     <li class="nav-item me-2" role="presentation">
                                         <button class="nav-link" id="addBeneficiary-tab" data-bs-toggle="pill"
                                             data-bs-target="#addBeneficiary" type="button" role="tab"

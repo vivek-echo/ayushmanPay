@@ -282,7 +282,7 @@ class MoneyTransferController extends Controller
                         'transactionType' => 2
                     ]);
 
-                    DB::table('user_wallet')->where('deletedFlag', 0)->where('userId', $userId)->update([
+                    DB::table('user_wallet')->where('deletedFlag', 0)->where('userId', $userId->id)->update([
                         'walletAmount' => $walletId->walletAmount - $params['amount'],
                         'updatedOn' => date('Y-m-d H:i:s')
                     ]);
