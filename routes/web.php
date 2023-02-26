@@ -19,6 +19,7 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\Home\HomePageController::class, 'index']);
 Route::get('/checkExistingUser', [App\Http\Controllers\Home\HomePageController::class, 'checkExistingUser']);
 Route::get('/checkUserTypedAndEncryptedOTP', [App\Http\Controllers\Home\HomePageController::class, 'checkUserTypedAndEncryptedOTP']);
+Route::get('/loginAction', [App\Http\Controllers\Home\HomePageController::class, 'loginAction']);
 Route::get('/getState', [App\Http\Controllers\CommonController::class, 'getState']);
 Route::match(['GET', 'POST'], '/vialidateOtpPage', [App\Http\Controllers\Auth\OtpController::class, 'vialidateOtpPage']);
 Route::match(['GET', 'POST'], '/viewOtpPage', [App\Http\Controllers\Auth\OtpController::class, 'viewOtpPage']);
@@ -62,6 +63,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(['GET', 'POST'], '/deletebeneficiary', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'deletebeneficiary']);
     Route::match(['GET', 'POST'], '/fetchMoneyTransferDetails', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'fetchMoneyTransferDetails']);
     Route::match(['GET', 'POST'], '/getOtpMoneyTansfer', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'getOtpMoneyTansfer']);
+    Route::match(['GET', 'POST'], '/sendMoneyValidateOtp', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'validateOtp']);
+    Route::match(['GET', 'POST'], '/sendMoney', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'sendMoney']);
 });
 //B2BService
 Route::get('/services/hospital', function () {

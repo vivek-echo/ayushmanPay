@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
-use DB; 
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
 use App\Mail\LoginOtp;
+use App\Providers\RouteServiceProvider;
 
 class HomePageController extends Controller
 {
@@ -83,5 +85,18 @@ class HomePageController extends Controller
     public function sendMailOtp($data){
         $data = $data[0];
         Mail::to( $data['email'])->send(new LoginOtp($data ));
+    }
+
+   public function loginAction(){
+      $getData = request()->all();
+      if (Auth::attempt(['email' => $getData['email'], 'password' => $getData['pswd']])) {
+        $status = true;
+      }else{
+         $status = false;
+      }
+
+      return response()->json([  //for sending data from controller to AJAX
+         'status' => $status,
+        ]);
     }
 }

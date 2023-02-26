@@ -187,4 +187,61 @@ class MoneyTransferController extends Controller
     {
         Mail::to($data['email'])->send(new GetOtpMoneyTransfer($data));
     }
+
+    public function validateOtp(){
+        $getData = request()->all();
+        if(Crypt::decryptString($getData['encOtp']) == $getData['otp'])
+        {
+            $status = true;
+        }else{
+            $status = false;
+        }
+        return response()->json([
+            'status' => $status
+        ]);
+    }
+
+    public function sendMoney(){
+        $getData = request()->all();
+        $userId = Auth ::user();
+        $walletId = DB::table('user_wallet')->where('userId',$userId->id)->where('deletedFlag',0)->first();
+        if($walletId)
+        {
+            if($walletId->walletAmount < $getData['amount'] )
+            {
+                return response()->json([
+                    'status' =>  false,
+                    'message' => "Insufficient fund in your account. Please topup your wallet before
+                    initiating transaction ."
+                ]);
+            }
+        }
+        if(!$walletId){
+            return response()->json([
+                'status' =>  false,
+                'message' => "Insufficient fund in your account. Please topup your wallet before
+                initiating transaction ."
+            ]);
+        }
+        $apiKey = config('constant.API_KEY');
+        $token = Controller::getToken();
+        $params['mobile']= $userId->mobile;
+        $params['referenceid']=  mt_rand(10000000, 99999999);
+        $params['pipe']=  $getData['bankPipe'];
+        $params['pincode']= $userId->pinCode;
+        $params['address']= $getData['gstAddress'];
+        $params['dob']= date('d-m-Y',strtotime($userId->dateOfBirth));
+        $params['gst_state']= $getData['gstState'];
+        $params['bene_id']= $getData['beneId'];
+        $params['txntype']= $getData['taxType'];
+        $params['amount']= $getData['amount'];
+
+        $sendMoney =  Http::withHeaders([
+            'accept' => 'application/json',
+            'Authorisedkey' => $apiKey,
+            'Token' => $token
+        ])->withBody(json_encode($params),'application/json')
+        ->post('https://paysprint.in/service-api/api/v1/service/dmt/transact/transact')->json();
+        dd($sendMoney);
+    }
 }

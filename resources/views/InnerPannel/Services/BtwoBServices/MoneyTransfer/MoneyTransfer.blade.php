@@ -232,7 +232,7 @@
                     <div class="row">
                         <div class="form-group col-6">
                             <label class="col-form-label">Select Bank Limit</label><span> *</span><br>
-                            <input type="radio" id="bankLimit1" name="bankLimitMoneyTransfer" value="bank1" checked>
+                            <input type="radio" id="bankLimit1" name="bankLimitMoneyTransfer" value="bank1">
                             <label for="bankLimit1"> Bank 1 limit : <b><span id="bank1"></span></b></label><br>
                             <input type="radio" id="bankLimit2" name="bankLimitMoneyTransfer" value="bank2">
                             <label for="bankLimit2">Bank 2 limit : <b><span id="bank2"></span></b></label><br>
@@ -273,8 +273,10 @@
                         <div class="form-group col-6" id="OTPDiv" style="display:none">
                             <label class="col-form-label">OTP</label><span class="text-danger fa-lg font-weight-500">
                                 *</span>
-                            <input name="otpMoneyTransfer" id="otpMoneyTransfer" class="form-control" type="text"
-                                placeholder="Enter Mobile Number" autocomplete="off">
+                            <input name="" id="otpMoneyTransfer" class="form-control" type="text"
+                                placeholder="Enter Mobile Number" autocomplete="off" >
+                                <input name="" id="beneId" class="form-control" type="hidden"
+                                 autocomplete="off" readonly>
                             <span id="spanOtp" class="text-danger"></span>
                         </div>
 
@@ -309,6 +311,7 @@
                             $('#bank1').html(res.data.bank1_limit);
                             $('#bank2').html(res.data.bank2_limit);
                             $('#bank3').html(res.data.bank3_limit);
+                            $('#beneId').val(bene_id);
                             $('#viewBeneficiary').modal('show');
                         }
                     }
@@ -520,8 +523,9 @@
 
             //get otp for money transfer
             $('#getOTPMoneyTransfer').on('click', function() {
-                console.log($('[name="bankLimitMoneyTransfer"]').val());
+                var bankLimitMoneyTransfer = $('[name="bankLimitMoneyTransfer"]:checked').val();
                 var gstStateMoneyTransfer = $('#gstStateMoneyTransfer').val();
+                var gstStateMoneyTransferAddress = $('#gstStateMoneyTransfer option:selected').text();
                 var taxTypeMoneyTransfer = $('#taxTypeMoneyTransfer').val();
                 var amountMoneyTransfer = $('#amountMoneyTransfer').val();
                 var otpMoneyTransfer = $('#otpMoneyTransfer').val();
@@ -533,16 +537,14 @@
                     errorAlert("Required", "Please select the Tax Type", "taxTypeMoneyTransfer");
                     return false;
                 }
-                if (amountMoneyTransfer == "") {
+                if (otpEncMoneyTransfer == "") {
                     errorAlert("Required", "Please Enter the amount", "amountMoneyTransfer");
                     return false;
                 }
-                if (otpMoneyTransfer == "") {
-                    errorAlert("Required", "Please get the otp & Enter the Otp", "otpMoneyTransfer");
-                    return false;
-                }
+               
                 getOtpMoneyTansfer();
             });
+
 
             function getOtpMoneyTansfer() {
                 $('.pageLoader').fadeIn();
@@ -572,13 +574,76 @@
                 });
             }
 
-            // function validator() {
-            //     if ($('#perpaidOperator').val() == 0) {
-            //         errorAlert("Required", "Please select the operator", "perpaidOperator");
-            //         return false;
-            //     }
-            //     return true;
-            // }
+            $('#sendMoneyTransfer').on('click',function(){
+                var bankLimitMoneyTransfer = $('[name="bankLimitMoneyTransfer"]:checked').val();
+                var gstStateMoneyTransfer = $('#gstStateMoneyTransfer').val();
+                var taxTypeMoneyTransfer = $('#taxTypeMoneyTransfer option:selected').text();
+                var amountMoneyTransfer = $('#amountMoneyTransfer').val();
+                var otpMoneyTransfer = $('#otpMoneyTransfer').val();
+                var otpEncMoneyTransfer = $('#otpEncMoneyTransfer').val();
+                var gstStateMoneyTransferAddress = $('#gstStateMoneyTransfer option:selected').text();
+                var beneId = $('#beneId').val();
+                if (gstStateMoneyTransfer == 0) {
+                    errorAlert("Required", "Please select the Gst state", "gstStateMoneyTransfer");
+                    return false;
+                }
+                if (taxTypeMoneyTransfer == 0) {
+                    errorAlert("Required", "Please select the Tax Type", "taxTypeMoneyTransfer");
+                    return false;
+                }
+                if (amountMoneyTransfer == "") {
+                    errorAlert("Required", "Please Enter the amount", "amountMoneyTransfer");
+                    return false;
+                }
+                if (otpEncMoneyTransfer == "") {
+                    errorAlert("Required", "Please get the otp & Enter the otp", "otpEncMoneyTransfer");
+                    return false;
+                }
+                if (otpMoneyTransfer == "") {
+                    errorAlert("Required", " Enter the otp", "otpEncMoneyTransfer");
+                    return false;
+                }
+
+                validateOtp(otpEncMoneyTransfer,otpMoneyTransfer,beneId,gstStateMoneyTransfer,taxTypeMoneyTransfer,amountMoneyTransfer,bankLimitMoneyTransfer,gstStateMoneyTransferAddress);
+            })
+
+            function validateOtp(encOtp,otp,beneId,gstState,taxType,amount,bankPipe,gstAddress){
+                $('.pageLoader').fadeIn();
+                $.ajax({
+                    url: "{{ url('/sendMoneyValidateOtp') }}",
+                    data:{
+                        encOtp:encOtp,otp:otp
+                    },
+                    success: function(res) {
+                        $('.pageLoader').fadeOut();
+                        if (res.status == true) {
+                            sendmoney(beneId,gstState,taxType,amount,bankPipe,gstAddress);
+                        } else {
+                            swal("Error", "Invalid Otp .Please Enter the Valid Otp", "error")
+                        }
+                    }
+                });
+            }
+
+          function  sendmoney(beneId,gstState,taxType,amount,bankPipe,gstAddress){
+                $.ajax({
+                    url: "{{ url('/sendMoney') }}",
+                    data:{
+                        beneId:beneId,gstState:gstState,taxType:taxType,amount:amount,bankPipe:bankPipe,gstAddress:gstAddress
+                    },
+                    success: function(res) {
+                        $('.pageLoader').fadeOut();
+                        if (res.status == true) {
+                            
+                        } else {
+                            swal("Error", "Invalid Otp .Please Enter the Valid Otp", "error")
+                        }
+                    }
+                });
+            }
+
+
+           
 
         });
     </script>

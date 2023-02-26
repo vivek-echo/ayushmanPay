@@ -144,8 +144,9 @@
 
                                 <h4 class="text-center">Login</h4>
                                 <p class="text-center">Enter your personal details</p>
-                                <form method="POST" id="loginForm" action="{{ route('login') }}" enctype="multipart/form-data">
-                                    @csrf
+                                {{-- <form method="POST" id="loginForm" action="/login" --}}
+                                {{-- enctype="multipart/form-data">
+                                    @csrf --}}
                                 <div class="row">
                                     <div class="form-group col-12">
                                         <label class="col-form-label">Email</label><span
@@ -165,7 +166,7 @@
 
                                     </div>
                                 </div>
-                                </form>
+                                {{-- </form> --}}
                             </div>
                             <div class="form-group text-center mt-2">
                                 <button class="btn btn-primary" id="submitButton" type="button">Login</button>
@@ -304,10 +305,38 @@
                         if (res.status == false) {
                             swal("Error", res.message, "error");
                         } else {
-                          $('form').submit();
+                            $('.pageLoader').show();
+                            var email = $('#email').val();
+                            var pswd = $('#pswd').val();
+                            $.ajax({
+                                url: "{{ url('/loginAction') }}",
+                                data: {
+                                    email: email,
+                                    pswd: pswd
+                                },
+                                success: function(res) {
+                                    $('.pageLoader').fadeIn();
+                                    if (res.status == true) {
+                                        var loc = window.location;
+                                        window.location = loc
+                                            .origin + "/dashboard"
+                                    } else {
+                                        swal("Error", "Something went wrong .Please try again later",
+                                            "error").then(
+                                            function(res) {
+                                                $('.pageLoader').fadeIn();
+                                                if (res) {
+                                                    var loc = window.location;
+                                                    window.location = loc
+                                                        .origin + "/"
+                                                }
+                                            }
+                                        );
+                                    }
+                                }
+
+                            });
                         }
-
-
                     }
                 });
             }
