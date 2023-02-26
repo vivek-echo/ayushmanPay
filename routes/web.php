@@ -105,6 +105,9 @@ Route::get('/services/nsdlpancenter', function () {
 Route::get('/services/drivinglicence', function () {
     return view('InnerPannel/Services/LegalServices/DrivingLicenceService');
 });
+Route::get('/services/rcservice', function () {
+    return view('InnerPannel/Services/LegalServices/RCService');
+});
 
 
 

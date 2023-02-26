@@ -120,20 +120,24 @@
                                 <div class="file-manager">
                                     <ul class="quick-file d-flex flex-row">
                                         <li>
-                                            <a href="/services/birthcertificate"><div class="quick-box"><i class="myicon-mobile-payment"></i></div>
+                                            <a href="/services/birthcertificate"><div class="quick-box"><i class="myicon-bc"></i></div>
                                             <h6>Birth<br> Certificate</h6></a>
                                         </li>
                                         <li>
-                                            <a href="/services/deathcertificate"><div class="quick-box"><i class="myicon-mobile-payment"></i></div>
+                                            <a href="/services/deathcertificate"><div class="quick-box"><i class="myicon-dc"></i></div>
                                             <h6>Death<br> Certificate</h6></a>
                                         </li>
                                         <li>
-                                            <a href="/services/nsdlpancenter"><div class="quick-box"><i class="myicon-mobile-payment"></i></div>
+                                            <a href="/services/nsdlpancenter"><div class="quick-box"><i class="myicon-nsdl"></i></div>
                                             <h6>NSDL Pan<br> Center</h6></a>
                                         </li>
                                         <li>
-                                            <a href="/services/drivinglicence"><div class="quick-box"><i class="myicon-mobile-payment"></i></div>
+                                            <a href="/services/drivinglicence"><div class="quick-box"><i class="myicon-dl"></i></div>
                                             <h6>Driving<br> Licence</h6></a>
+                                        </li>
+                                        <li>
+                                            <a href="/services/rcservice"><div class="quick-box"><i class="myicon-rc"></i></div>
+                                            <h6>RC<br> Registration</h6></a>
                                         </li>
                                     </ul>
                                 </div>
