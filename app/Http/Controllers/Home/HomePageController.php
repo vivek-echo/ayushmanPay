@@ -15,9 +15,7 @@ class HomePageController extends Controller
 {
     public function index()
     {
-        //    $token= Controller::getToken();
-        //    dd($token);
-
+       
         return view('Home.HomePage');
     }
 
