@@ -51,6 +51,13 @@ class EmiBillServicesController extends Controller
                 ]);
             }
         }
+        if(!$walletId){
+            return response()->json([
+                'status' =>  false,
+                'message' => "Insufficient fund in your account. Please topup your wallet before
+                initiating transaction ."
+            ]);
+        }
         $apiKey = config('constant.API_KEY');
         $token = Controller::getToken();
         $params['operator'] = $getData['operator'];

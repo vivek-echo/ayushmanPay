@@ -188,12 +188,14 @@
                                                             <span class="text-success">Verified</span>
                                                             <?php } ?>
                                                         </td>
-                                                        <td><a class="text-danger me-2" data-bs-toggle="tooltip" title="Delete"
+                                                        <td><a class="text-danger me-2" data-bs-toggle="tooltip"
+                                                                title="Delete"
                                                                 onclick="deletebenefeciry({{ $value['bene_id'] }}) ;">
                                                                 <i data-feather="trash-2"></i>
                                                             </a>
                                                             <?php if($value['verified'] == 1){ ?>
-                                                            <a class="text-info" data-bs-toggle="tooltip" title="Money Transfer"
+                                                            <a class="text-info" data-bs-toggle="tooltip"
+                                                                title="Money Transfer"
                                                                 onclick="moneyTransferDetails({{ $value['bene_id'] }})">
                                                                 <i data-feather="corner-up-right"></i>
                                                             </a>
@@ -238,7 +240,7 @@
                             <label for="bankLimit2">Bank 2 limit : <b><span id="bank2"></span></b></label><br>
                             <input type="radio" id="bankLimit3" name="bankLimitMoneyTransfer" value="bank3">
                             <label for="bankLimit3">Bank 3 limit : <b><span id="bank3"></span></b></label>
-                            
+
 
                         </div>
 
@@ -274,15 +276,16 @@
                             <label class="col-form-label">OTP</label><span class="text-danger fa-lg font-weight-500">
                                 *</span>
                             <input name="" id="otpMoneyTransfer" class="form-control" type="text"
-                                placeholder="Enter Mobile Number" autocomplete="off" >
-                                <input name="" id="beneId" class="form-control" type="hidden"
-                                 autocomplete="off" readonly>
+                                placeholder="Enter Otp" autocomplete="off">
+
                             <span id="spanOtp" class="text-danger"></span>
                         </div>
 
                     </div>
                     <input name="otpEncMoneyTransfer" id="otpEncMoneyTransfer" class="form-control" type="hidden"
                         autocomplete="off">
+                    <input name="" id="beneId" class="form-control" type="hidden" autocomplete="off"
+                        readonly>
                     <div class="form-group mt-4">
                         <button class="btn btn-primary" id="getOTPMoneyTransfer">Get OTP</button>
                         <button class="btn btn-warning" id="sendMoneyTransfer">Send</button>
@@ -296,6 +299,15 @@
     <script>
         //for money transfer 
         function moneyTransferDetails(bene_id) {
+            $('#OTPDiv').hide();
+            $('[name="bankLimitMoneyTransfer"]:checked').val('');
+            $('#gstStateMoneyTransfer').val('');
+            $('#taxTypeMoneyTransfer').val('0');
+            $('#amountMoneyTransfer').val('');
+            $('#otpMoneyTransfer').val('');
+            $('#otpEncMoneyTransfer').val('');
+            $('#beneId').val(bene_id);
+
             $(document).ready(function() {
                 $('.pageLoader').fadeIn();
                 $.ajax({
@@ -541,7 +553,7 @@
                     errorAlert("Required", "Please Enter the amount", "amountMoneyTransfer");
                     return false;
                 }
-               
+
                 getOtpMoneyTansfer();
             });
 
@@ -574,7 +586,7 @@
                 });
             }
 
-            $('#sendMoneyTransfer').on('click',function(){
+            $('#sendMoneyTransfer').on('click', function() {
                 var bankLimitMoneyTransfer = $('[name="bankLimitMoneyTransfer"]:checked').val();
                 var gstStateMoneyTransfer = $('#gstStateMoneyTransfer').val();
                 var taxTypeMoneyTransfer = $('#taxTypeMoneyTransfer option:selected').text();
@@ -604,20 +616,23 @@
                     return false;
                 }
 
-                validateOtp(otpEncMoneyTransfer,otpMoneyTransfer,beneId,gstStateMoneyTransfer,taxTypeMoneyTransfer,amountMoneyTransfer,bankLimitMoneyTransfer,gstStateMoneyTransferAddress);
+                validateOtp(otpEncMoneyTransfer, otpMoneyTransfer, beneId, gstStateMoneyTransfer,
+                    taxTypeMoneyTransfer, amountMoneyTransfer, bankLimitMoneyTransfer,
+                    gstStateMoneyTransferAddress);
             })
 
-            function validateOtp(encOtp,otp,beneId,gstState,taxType,amount,bankPipe,gstAddress){
+            function validateOtp(encOtp, otp, beneId, gstState, taxType, amount, bankPipe, gstAddress) {
                 $('.pageLoader').fadeIn();
                 $.ajax({
                     url: "{{ url('/sendMoneyValidateOtp') }}",
-                    data:{
-                        encOtp:encOtp,otp:otp
+                    data: {
+                        encOtp: encOtp,
+                        otp: otp
                     },
                     success: function(res) {
                         $('.pageLoader').fadeOut();
                         if (res.status == true) {
-                            sendmoney(beneId,gstState,taxType,amount,bankPipe,gstAddress);
+                            sendmoney(beneId, gstState, taxType, amount, bankPipe, gstAddress);
                         } else {
                             swal("Error", "Invalid Otp .Please Enter the Valid Otp", "error")
                         }
@@ -625,25 +640,40 @@
                 });
             }
 
-          function  sendmoney(beneId,gstState,taxType,amount,bankPipe,gstAddress){
+            function sendmoney(beneId, gstState, taxType, amount, bankPipe, gstAddress) {
+                $('.pageLoader').fadeIn();
                 $.ajax({
                     url: "{{ url('/sendMoney') }}",
-                    data:{
-                        beneId:beneId,gstState:gstState,taxType:taxType,amount:amount,bankPipe:bankPipe,gstAddress:gstAddress
+                    data: {
+                        beneId: beneId,
+                        gstState: gstState,
+                        taxType: taxType,
+                        amount: amount,
+                        bankPipe: bankPipe,
+                        gstAddress: gstAddress
                     },
                     success: function(res) {
                         $('.pageLoader').fadeOut();
                         if (res.status == true) {
-                            
+                            swal("Successfull", res.message, "success")
+                                .then(function(res) {
+                                    $('.pageLoader').fadeIn();
+                                    if (res) {
+                                        var loc = window.location;
+                                        window.location = loc
+                                            .origin +
+                                            "/services/b2bServices/MoneyTransfer"
+                                    }
+                                });
                         } else {
-                            swal("Error", "Invalid Otp .Please Enter the Valid Otp", "error")
+                            swal("Error", res.message, "error")
                         }
                     }
                 });
             }
 
 
-           
+
 
         });
     </script>

@@ -19,7 +19,6 @@ class HomePageController extends Controller
         return view('Home.HomePage');
     }
 
-
     // CHECKING EXISTING USER
     public function checkExistingUser()
     {
@@ -51,7 +50,6 @@ class HomePageController extends Controller
           
        }
 
-    //    dd($status . "---".$mssg);
        return response()->json([  //for sending data from controller to AJAX
         'status' => $status,
         'message'=>$mssg,
@@ -63,7 +61,6 @@ class HomePageController extends Controller
     public function checkUserTypedAndEncryptedOTP()
     {
        $getData = request()-> all();
-    //    dd($getData);
        if($getData['otpValid'] !=  Crypt::decryptString($getData['encOtp'])){
           $status = false;
           $mssg = "Invalid OTP";
@@ -73,7 +70,6 @@ class HomePageController extends Controller
            $mssg = "Valid OTP";
        }
 
-    //    dd($status . "---".$mssg);
        return response()->json([  //for sending data from controller to AJAX
         'status' => $status,
         'message'=>$mssg,

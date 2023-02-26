@@ -173,7 +173,7 @@ class MoneyTransferController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => "*Otp sent to your registred email.",
-                'otpEnc'=> Crypt::encryptString($params['otp'])
+                'otpEnc' => Crypt::encryptString($params['otp'])
             ]);
         } else {
             return response()->json([
@@ -188,12 +188,12 @@ class MoneyTransferController extends Controller
         Mail::to($data['email'])->send(new GetOtpMoneyTransfer($data));
     }
 
-    public function validateOtp(){
+    public function validateOtp()
+    {
         $getData = request()->all();
-        if(Crypt::decryptString($getData['encOtp']) == $getData['otp'])
-        {
+        if (Crypt::decryptString($getData['encOtp']) == $getData['otp']) {
             $status = true;
-        }else{
+        } else {
             $status = false;
         }
         return response()->json([
@@ -201,14 +201,13 @@ class MoneyTransferController extends Controller
         ]);
     }
 
-    public function sendMoney(){
+    public function sendMoney()
+    {
         $getData = request()->all();
-        $userId = Auth ::user();
-        $walletId = DB::table('user_wallet')->where('userId',$userId->id)->where('deletedFlag',0)->first();
-        if($walletId)
-        {
-            if($walletId->walletAmount < $getData['amount'] )
-            {
+        $userId = Auth::user();
+        $walletId = DB::table('user_wallet')->where('userId', $userId->id)->where('deletedFlag', 0)->first();
+        if ($walletId) {
+            if ($walletId->walletAmount < $getData['amount']) {
                 return response()->json([
                     'status' =>  false,
                     'message' => "Insufficient fund in your account. Please topup your wallet before
@@ -216,7 +215,7 @@ class MoneyTransferController extends Controller
                 ]);
             }
         }
-        if(!$walletId){
+        if (!$walletId) {
             return response()->json([
                 'status' =>  false,
                 'message' => "Insufficient fund in your account. Please topup your wallet before
@@ -225,23 +224,92 @@ class MoneyTransferController extends Controller
         }
         $apiKey = config('constant.API_KEY');
         $token = Controller::getToken();
-        $params['mobile']= $userId->mobile;
-        $params['referenceid']=  mt_rand(10000000, 99999999);
-        $params['pipe']=  $getData['bankPipe'];
-        $params['pincode']= $userId->pinCode;
-        $params['address']= $getData['gstAddress'];
-        $params['dob']= date('d-m-Y',strtotime($userId->dateOfBirth));
-        $params['gst_state']= $getData['gstState'];
-        $params['bene_id']= $getData['beneId'];
-        $params['txntype']= $getData['taxType'];
-        $params['amount']= $getData['amount'];
+        $params['mobile'] = $userId->mobile;
+        $params['referenceid'] =  mt_rand(10000000, 99999999);
+        $params['pipe'] =  $getData['bankPipe'];
+        $params['pincode'] = $userId->pinCode;
+        $params['address'] = $getData['gstAddress'];
+        $params['dob'] = date('d-m-Y', strtotime($userId->dateOfBirth));
+        $params['gst_state'] = $getData['gstState'];
+        $params['bene_id'] = $getData['beneId'];
+        $params['txntype'] = $getData['taxType'];
+        $params['amount'] = $getData['amount'];
+        $user = $userId->id;
 
         $sendMoney =  Http::withHeaders([
             'accept' => 'application/json',
             'Authorisedkey' => $apiKey,
             'Token' => $token
-        ])->withBody(json_encode($params),'application/json')
-        ->post('https://paysprint.in/service-api/api/v1/service/dmt/transact/transact')->json();
-        dd($sendMoney);
+        ])->withBody(json_encode($params), 'application/json')
+            ->post('https://paysprint.in/service-api/api/v1/service/dmt/transact/transact')->json();
+
+        if ($sendMoney['status'] == true) {
+            try {
+                $trans = DB::beginTransaction();
+                $insertAllRecord = DB::transaction(function () use ($sendMoney, $params, $user, $userId, $walletId) {
+                    
+                    $rechargeId = DB::table('moneytransferservice')->insertGetId([
+                        'userId' => $user,
+                        'ackno' => $sendMoney['ackno'],
+                        'utr' => $sendMoney['utr'],
+                        'txn_status' => $sendMoney['txn_status'],
+                        'benename' => $sendMoney['benename'],
+                        'remarks' => $sendMoney['remarks'],
+                        'message' => $sendMoney['message'],
+                        'customercharge' => $sendMoney['customercharge'],
+                        'gst' => $sendMoney['gst'],
+                        'tds' => $sendMoney['tds'],
+                        'netcommission' => $sendMoney['netcommission'],
+                        'remitter' => $sendMoney['remitter'],
+                        'account_number' => $sendMoney['account_number'],
+                        'paysprint_share' => $sendMoney['paysprint_share'],
+                        'txn_amount' => $sendMoney['txn_amount'],
+                        'balance' => $sendMoney['balance'],
+                        'createdOn' => now(),
+                        'refid' => $params['referenceid'],
+                        'bankPipe' => $params['pipe'],
+                        'bene_id' => $params['bene_id'],
+                        'txntype' => $params['txntype'],
+                    ]);
+
+                    $updatewalletLog = DB::table('user_wallet_log')->insert([
+                        'wId' => $walletId->wId,
+                        'serviceLogId' => $rechargeId,
+                        'userId' => $userId->id,
+                        'walletAmount' => $params['amount'],
+                        'createdOn' => date('Y-m-d H:i:s'),
+                        'servicType' => 3,
+                        'transactionType' => 2
+                    ]);
+
+                    DB::table('user_wallet')->where('deletedFlag', 0)->where('userId', $userId)->update([
+                        'walletAmount' => $walletId->walletAmount - $params['amount'],
+                        'updatedOn' => date('Y-m-d H:i:s')
+                    ]);
+                });
+                if (is_null($insertAllRecord)) {
+                    $status =  $sendMoney['status'];
+                    $msg =  $sendMoney['message'];
+                }
+                DB::commit($trans);
+            } catch (\Exception $t) {
+                DB::rollBack($trans);
+                Log::error("Error", [
+                    'Controller' => 'MoneyTransferController',
+                    'Method' => 'sendMoney',
+                    'Error' => $t->getMessage(),
+                ]);
+                $status = false;
+                $msg = "Something went wrong. please try again later";
+            }
+        } else {
+            $status =  $sendMoney['status'];
+            $msg =  $sendMoney['message'];
+        }
+
+        return response()->json([
+            'status' =>  $status,
+            'message' => $msg
+        ]);
     }
 }
