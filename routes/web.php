@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 Route::get('/', [App\Http\Controllers\Home\HomePageController::class, 'index']);
+Route::get('/checkExistingUser', [App\Http\Controllers\Home\HomePageController::class, 'checkExistingUser']);
+Route::get('/checkUserTypedAndEncryptedOTP', [App\Http\Controllers\Home\HomePageController::class, 'checkUserTypedAndEncryptedOTP']);
 Route::get('/getState', [App\Http\Controllers\CommonController::class, 'getState']);
 Route::match(['GET', 'POST'], '/vialidateOtpPage', [App\Http\Controllers\Auth\OtpController::class, 'vialidateOtpPage']);
 Route::match(['GET', 'POST'], '/viewOtpPage', [App\Http\Controllers\Auth\OtpController::class, 'viewOtpPage']);

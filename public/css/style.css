@@ -26142,6 +26142,16 @@ footer {
 	background-color: #fff
 }
 
+.login-card .login-main-small {
+	width: 450px;
+	padding: 40px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0 0 37px rgba(8, 21, 66, 0.05);
+	box-shadow: 0 0 37px rgba(8, 21, 66, 0.05);
+	margin: 0 auto;
+	background-color: #fff
+}
+
 .login-card .login-main .theme-form h4 {
 	margin-bottom: 5px
 }
