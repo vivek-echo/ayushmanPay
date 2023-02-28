@@ -8,48 +8,48 @@
     <meta name="description" content="Apna Bharat Pay">
     <meta name="keywords" content="Apna Bharat Pay, Online Payment System">
     <meta name="author" content="Apna Bharat Pay">
-    <link rel="icon" href="images/favicon/favicon.png" type="image/x-icon">
-    <link rel="shortcut icon" href="images/favicon/favicon.png" type="image/x-icon">
+    <link rel="icon" href="{{ asset('images/favicon/favicon.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('images/favicon/favicon.png') }}" type="image/x-icon">
     <title>Apna Bharat pay - Dashboard</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
         rel="stylesheet">
-    <!-- <link rel="stylesheet" type="text/css" href="css/vendors/font-awesome.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/font-awesome.css') }}"> -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
         integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- ico-font-->
-    <link rel="stylesheet" type="text/css" href="css/vendors/icofont.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/icofont.css') }}">
     <!-- Flag icon-->
-    <link rel="stylesheet" type="text/css" href="css/vendors/flag-icon.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/flag-icon.css') }}">
     <!-- Feather icon-->
-    <link rel="stylesheet" type="text/css" href="css/vendors/feather-icon.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/feather-icon.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="css/vendors/photoswipe.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/photoswipe.css') }}">
     <!-- icomoon icon-->
-    <link rel="stylesheet" type="text/css" href="custom-icomoon/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('custom-icomoon/style.css') }}">
     <!-- Datatable-->
-    <link rel="stylesheet" type="text/css" href="css/vendors/datatables.css">
-    <link rel="stylesheet" type="text/css" href="css/vendors/datatable-extension.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/datatables.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/datatable-extension.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="css/vendors/scrollbar.css">
-    <link rel="stylesheet" type="text/css" href="css/vendors/animate.css">
-    <link rel="stylesheet" type="text/css" href="css/vendors/date-picker.css">
-    <link rel="stylesheet" type="text/css" href="css/vendors/owlcarousel.css">
-    <link rel="stylesheet" type="text/css" href="css/vendors/prism.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/scrollbar.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/animate.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/date-picker.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/owlcarousel.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/prism.css') }}">
     <!-- Bootstrap css-->
-    <link rel="stylesheet" type="text/css" href="css/vendors/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/bootstrap.css') }}">
     <!-- App css-->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <!-- Responsive css-->
-    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="css/vendors/sweetalert2.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/sweetalert2.css') }}">
 
 
     <!-- latest jquery-->
-    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
 </head>
 
 <body>
@@ -310,63 +310,63 @@
     </div>
 
     <!-- Bootstrap js-->
-    <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
     <!-- feather icon js-->
-    <script src="js/icons/feather-icon/feather.min.js"></script>
-    <script src="js/icons/feather-icon/feather-icon.js"></script>
+    <script src="{{ asset('js/icons/feather-icon/feather.min.js') }}"></script>
+    <script src="{{ asset('js/icons/feather-icon/feather-icon.js') }}"></script>
     <!-- scrollbar js-->
-    <script src="js/scrollbar/simplebar.js"></script>
-    <script src="js/scrollbar/custom.js"></script>
+    <script src="{{ asset('js/scrollbar/simplebar.js') }}"></script>
+    <script src="{{ asset('js/scrollbar/custom.js') }}"></script>
     <!-- Sidebar jquery-->
-    <script src="js/config.js"></script>
-    <script src="js/sidebar-menu.js"></script>
-    <script src="js/counter/jquery.waypoints.min.js"></script>
-    <script src="js/counter/jquery.counterup.min.js"></script>
-    <script src="js/counter/counter-custom.js"></script>
-    <script src="js/photoswipe/photoswipe.min.js"></script>
-    <script src="js/photoswipe/photoswipe-ui-default.min.js"></script>
-    <script src="js/photoswipe/photoswipe.js"></script>
-    <script src="js/chart/knob/knob.min.js"></script>
-    <script src="js/chart/knob/knob-chart.js"></script>
-    <!-- <script src="js/chart/apex-chart/apex-chart.js"></script> -->
-    <script src="js/chart/apex-chart/stock-prices.js"></script>
-    <script src="js/prism/prism.min.js"></script>
-    <script src="js/clipboard/clipboard.min.js"></script>
-    <script src="js/custom-card/custom-card.js"></script>
-    <script src="js/notify/bootstrap-notify.min.js"></script>
-    <script src="js/datepicker/date-picker/datepicker.js"></script>
-    <script src="js/datepicker/date-picker/datepicker.en.js"></script>
-    <script src="js/datepicker/date-picker/datepicker.custom.js"></script>
-    <script src="js/owlcarousel/owl.carousel.js"></script>
-    <!-- <script src="js/dashboard/dashboard_2.js"></script> -->
+    <script src="{{ asset('js/config.js') }}"></script>
+    <script src="{{ asset('js/sidebar-menu.js') }}"></script>
+    <script src="{{ asset('js/counter/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('js/counter/jquery.counterup.min.js') }}"></script>
+    <script src="{{ asset('js/counter/counter-custom.js') }}"></script>
+    <script src="{{ asset('js/photoswipe/photoswipe.min.js') }}"></script>
+    <script src="{{ asset('js/photoswipe/photoswipe-ui-default.min.js') }}"></script>
+    <script src="{{ asset('js/photoswipe/photoswipe.js') }}"></script>
+    <script src="{{ asset('js/chart/knob/knob.min.js') }}"></script>
+    <script src="{{ asset('js/chart/knob/knob-chart.js') }}"></script>
+    <!-- <script src="{{ asset('js/chart/apex-chart/apex-chart.js') }}"></script> -->
+    <script src="{{ asset('js/chart/apex-chart/stock-prices.js') }}"></script>
+    <script src="{{ asset('js/prism/prism.min.js') }}"></script>
+    <script src="{{ asset('js/clipboard/clipboard.min.js') }}"></script>
+    <script src="{{ asset('js/custom-card/custom-card.js') }}"></script>
+    <script src="{{ asset('js/notify/bootstrap-notify.min.js') }}"></script>
+    <script src="{{ asset('js/datepicker/date-picker/datepicker.js') }}"></script>
+    <script src="{{ asset('js/datepicker/date-picker/datepicker.en.js') }}"></script>
+    <script src="{{ asset('js/datepicker/date-picker/datepicker.custom.js') }}"></script>
+    <script src="{{ asset('js/owlcarousel/owl.carousel.js') }}"></script>
+    <!-- <script src="{{ asset('js/dashboard/dashboard_2.js') }}"></script> -->
 
-    <script src="js/sweet-alert/sweetalert.min.js"></script>
+    <script src="{{ asset('js/sweet-alert/sweetalert.min.js') }}"></script>
     
     <!-- Datatable-->
-    <script src="js/datatable/datatables/jquery.dataTables.min.js"></script>
-    <script src="js/datatable/datatable-extension/dataTables.buttons.min.js"></script>
-    <script src="js/datatable/datatable-extension/jszip.min.js"></script>
-    <script src="js/datatable/datatable-extension/buttons.colVis.min.js"></script>
-    <script src="js/datatable/datatable-extension/pdfmake.min.js"></script>
-    <script src="js/datatable/datatable-extension/vfs_fonts.js"></script>
-    <script src="js/datatable/datatable-extension/dataTables.autoFill.min.js"></script>
-    <script src="js/datatable/datatable-extension/dataTables.select.min.js"></script>
-    <script src="js/datatable/datatable-extension/buttons.bootstrap4.min.js"></script>
-    <script src="js/datatable/datatable-extension/buttons.html5.min.js"></script>
-    <script src="js/datatable/datatable-extension/buttons.print.min.js"></script>
-    <script src="js/datatable/datatable-extension/dataTables.bootstrap4.min.js"></script>
-    <script src="js/datatable/datatable-extension/dataTables.responsive.min.js"></script>
-    <script src="js/datatable/datatable-extension/responsive.bootstrap4.min.js"></script>
-    <script src="js/datatable/datatable-extension/dataTables.keyTable.min.js"></script>
-    <script src="js/datatable/datatable-extension/dataTables.colReorder.min.js"></script>
-    <script src="js/datatable/datatable-extension/dataTables.fixedHeader.min.js"></script>
-    <script src="js/datatable/datatable-extension/dataTables.rowReorder.min.js"></script>
-    <script src="js/datatable/datatable-extension/dataTables.scroller.min.js"></script>
-    <script src="js/datatable/datatable-extension/custom.js"></script>
-    <script src="js/tooltip-init.js"></script>
+    <script src="{{ asset('js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/jszip.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/buttons.colVis.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/dataTables.autoFill.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/dataTables.select.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/dataTables.keyTable.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/dataTables.colReorder.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/dataTables.fixedHeader.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/dataTables.rowReorder.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/dataTables.scroller.min.js') }}"></script>
+    <script src="{{ asset('js/datatable/datatable-extension/custom.js') }}"></script>
+    <script src="{{ asset('js/tooltip-init.js') }}"></script>
     <!-- Template js-->
-    <script src="js/script.js"></script>
-    <script src="js/main.js"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
     <script>
         $(document).ready(function() {
             $.ajax({
