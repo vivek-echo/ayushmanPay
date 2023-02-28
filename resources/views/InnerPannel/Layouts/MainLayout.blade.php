@@ -174,48 +174,6 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="onhover-dropdown">
-                            <div class="message"><i data-feather="message-square"></i></div>
-                            <ul class="message-dropdown onhover-show-div">
-                                <li><i data-feather="message-square"></i>
-                                    <h6 class="f-18 mb-0">Messages</h6>
-                                </li>
-                                <li>
-                                    <div class="d-flex align-items-start">
-                                        <div class="message-img bg-light-primary"><img
-                                                src="{{ asset('images/user/3.jpg') }}" alt=""></div>
-                                        <div class="flex-grow-1">
-                                            <h5 class="mb-1"><a href="email_inbox.html">Emay Walter</a></h5>
-                                            <p>Do you want to go see movie?</p>
-                                        </div>
-                                        <div class="notification-right"><i data-feather="x"></i></div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="d-flex align-items-start">
-                                        <div class="message-img bg-light-primary"><img
-                                                src="{{ asset('images/user/6.jpg') }}" alt=""></div>
-                                        <div class="flex-grow-1">
-                                            <h5 class="mb-1"><a href="email_inbox.html">Jason Borne</a></h5>
-                                            <p>Thank you for rating us.</p>
-                                        </div>
-                                        <div class="notification-right"><i data-feather="x"></i></div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="d-flex align-items-start">
-                                        <div class="message-img bg-light-primary"><img
-                                                src="{{ asset('images/user/10.jpg') }}" alt=""></div>
-                                        <div class="flex-grow-1">
-                                            <h5 class="mb-1"><a href="email_inbox.html">Sarah Loren</a></h5>
-                                            <p>What`s the project report update?</p>
-                                        </div>
-                                        <div class="notification-right"><i data-feather="x"></i></div>
-                                    </div>
-                                </li>
-                                <li><a class="btn btn-primary" href="email_inbox.html">Check Messages</a></li>
-                            </ul>
-                        </li>
                         <li class="maximize"><a href="#!" onclick="javascript:toggleFullScreen()"><i
                                     data-feather="maximize-2"></i></a></li>
                         <li class="profile-nav onhover-dropdown">
@@ -251,7 +209,7 @@
             <div class="sidebar-wrapper">
                 <div>
                     <div class="logo-wrapper"><a href="{{ url('/dashboard') }}"><img class="w-75"
-                                src="{{ asset('images/logo/abp-white.png') }}" alt=""></a>
+                                src="{{ asset('images/logo/ayp-white.png') }}" alt=""></a>
                         <div class="back-btn"><i data-feather="grid"></i></div>
                         <div class="toggle-sidebar icon-box-sidebar"><i class="status_toggle middle sidebar-toggle"
                                 data-feather="grid"> </i></div>
