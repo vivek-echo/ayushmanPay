@@ -64,7 +64,7 @@
                 <div class="login-card">
                     <div>
                         <div><a class="logo text-center" href="#"><img class="img-fluid for-light"
-                                    src="{{ asset('images/logo/ABP.png') }}" alt="looginpage" width="320"></a></div>
+                                    src="{{ asset('images/logo/ayp-black.png') }}" alt="looginpage" width="320"></a></div>
                         <div class="login-main">
                             <div class="theme-form">
 
@@ -212,7 +212,7 @@
 
                             </div>
                             <p class="mt-4 mb-0 text-center">Already have an account?<a class="ms-2"
-                                    href="login.html">Sign in</a></p>
+                                    href="/login">Sign in</a></p>
 
                         </div>
                     </div>

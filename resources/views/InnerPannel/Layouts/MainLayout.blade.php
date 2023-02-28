@@ -259,7 +259,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-6 p-0 footer-left">
-                            <p class="mb-0">@ 2023 Apna Bharat Pay. All rights reserved.</p>
+                            <p class="mb-0">@ 2023 Ayushman Pay. All rights reserved.</p>
                         </div>
                     </div>
                 </div>

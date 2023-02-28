@@ -66,7 +66,7 @@
                 <div class="login-card">
                     <div>
                         <div><a class="logo text-center" href="#"><img class="img-fluid for-light"
-                                    src="{{ asset('images/logo/ABP.png') }}" alt="looginpage" width="320"></a></div>
+                                    src="{{ asset('images/logo/ayp-black.png') }}" alt="looginpage" width="320"></a></div>
                         <div class="login-main-small">
                             <div class="theme-form">
 
