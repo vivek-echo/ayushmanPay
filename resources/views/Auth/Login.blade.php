@@ -13,32 +13,32 @@
     <meta name="keywords"
         content="admin template, Tivo admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="images/favicon/favicon.png" type="image/x-icon">
-    <link rel="shortcut icon" href="images/favicon/favicon.png" type="image/x-icon">
+    <link rel="icon" href="{{ asset('images/favicon/favicon.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('images/favicon/favicon.png') }}" type="image/x-icon">
     <title>ABP</title>
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/vendors/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/font-awesome.css') }}">
     <!-- ico-font-->
-    <link rel="stylesheet" type="text/css" href="css/vendors/icofont.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/icofont.css') }}">
     <!-- Themify icon-->
-    <link rel="stylesheet" type="text/css" href="css/vendors/themify.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/themify.css') }}">
     <!-- Flag icon-->
-    <link rel="stylesheet" type="text/css" href="css/vendors/flag-icon.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/flag-icon.css') }}">
     <!-- Feather icon-->
-    <link rel="stylesheet" type="text/css" href="css/vendors/feather-icon.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/feather-icon.css') }}">
     <!-- Bootstrap css-->
-    <link rel="stylesheet" type="text/css" href="css/vendors/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/bootstrap.css') }}">
     <!-- App css-->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link id="color" rel="stylesheet" href="css/color-1.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+    <link id="color" rel="stylesheet" href="{{ asset('css/color-1.css') }}" media="screen">
     <!-- Responsive css-->
-    <link rel="stylesheet" type="text/css" href="css/responsive.css">
-    <link rel="stylesheet" type="text/css" href="css/vendors/sweetalert2.css">
-    <link rel="stylesheet" type="text/css" href="css/vendors/date-picker.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/sweetalert2.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/date-picker.css') }}">
 </head>
 
 <body>
@@ -140,23 +140,23 @@
 
 
         <!-- latest jquery-->
-        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
         <!-- Bootstrap js-->
-        <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
+        <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
         <!-- feather icon js-->
-        <script src="js/icons/feather-icon/feather.min.js"></script>
-        <script src="js/icons/feather-icon/feather-icon.js"></script>
-        <script src="js/sweet-alert/sweetalert.min.js"></script>
-        {{-- <script src="js/sweet-alert/app.js"></script> --}}
+        <script src="{{ asset('js/icons/feather-icon/feather.min.js') }}"></script>
+        <script src="{{ asset('js/icons/feather-icon/feather-icon.js') }}"></script>
+        <script src="{{ asset('js/sweet-alert/sweetalert.min.js') }}"></script>
+        {{-- <script src="{{ asset('js/sweet-alert/app.js') }}"></script> --}}
         <!-- scrollbar js-->
         <!-- Sidebar jquery-->
-        <script src="js/config.js"></script>
+        <script src="{{ asset('js/config.js') }}"></script>
         <!-- Template js-->
-        <script src="js/script.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/datepicker/date-picker/datepicker.js"></script>
-        <script src="js/datepicker/date-picker/datepicker.en.js"></script>
-        <script src="js/datepicker/date-picker/datepicker.custom.js"></script>
+        <script src="{{ asset('js/script.js') }}"></script>
+        <script src="{{ asset('js/main.js') }}"></script>
+        <script src="{{ asset('js/datepicker/date-picker/datepicker.js') }}"></script>
+        <script src="{{ asset('js/datepicker/date-picker/datepicker.en.js') }}"></script>
+        <script src="{{ asset('js/datepicker/date-picker/datepicker.custom.js') }}"></script>
 
         <!-- login js-->
 
@@ -164,6 +164,8 @@
             $('#submitButton').on('click', function() {
                 submitValidator();
             });
+
+
 
             function submitValidator() {
 
