@@ -5,7 +5,7 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-sm-6">
-                    <h3>Pan Card (UTI)</h3>
+                    <h3>Home - Pan Card (UTI)</h3>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
@@ -27,7 +27,95 @@
                         <h4>Sample Card</h4><span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
                     </div> --}}
                     <div class="card-body">
-                        <div class="row m-0">
+
+                        <div class="default-according style-1" id="accordionoc">
+                            <div class="card">
+                                <div class="card-header bg-light-orange">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link ps-0 text-white" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseicon" aria-expanded="true"
+                                            aria-controls="collapse11"><i class="myicon-disc"></i>
+                                            UTI Pancard</button>
+                                    </h5>
+                                </div>
+                                <div class="collapse show" id="collapseicon" aria-labelledby="collapseicon"
+                                    data-bs-parent="#accordionoc">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <div class="">
+                                                <button class="btn btn-lg btn-success" type="button"><i
+                                                        class="myicon-log-in"></i> Login To UTI</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header bg-light-orange">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link ps-0 collapsed text-white" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseicon1" aria-expanded="false"><i
+                                                class="myicon-disc"></i> Recent UTI Pancard Transactions</button>
+                                    </h5>
+                                </div>
+                                <div class="collapse" id="collapseicon1" aria-labelledby="headingeight"
+                                    data-bs-parent="#accordionoc">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Order Id</th>
+                                                        <th scope="col">User Details</th>
+                                                        <th scope="col">Transactions Details</th>
+                                                        <th scope="col">Reference Details</th>
+                                                        <th scope="col">Amount/Commission</th>
+                                                        <th scope="col">Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th><strong>35548</strong> <br>01/03/2023 10:00 AM
+                                                        </th>
+                                                        <td><strong>Vishal Kumar(2)</strong> <br>(Retailer) 9898555444</td>
+                                                        <td>Vle Id - STEK2</td>
+                                                        <td>Ref No. - Null <br>TxnId - YT9998886543</td>
+                                                        <td><strong>Amount</strong> - ₹ 0 <br><strong>Profit</strong> - ₹ 0</td>
+                                                        <td>
+                                                            <h5><span class="badge badge-danger">PENDING</span></h5>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><strong>35548</strong> <br>01/03/2023 10:00 AM
+                                                        </th>
+                                                        <td><strong>Vishal Kumar(2)</strong> <br>(Retailer) 9898555444</td>
+                                                        <td>Vle Id - STEK2</td>
+                                                        <td>Ref No. - Null <br>TxnId - YT9998886543</td>
+                                                        <td><strong>Amount</strong> - ₹ 0 <br><strong>Profit</strong> - ₹ 0</td>
+                                                        <td>
+                                                            <h5><span class="badge badge-danger">PENDING</span></h5>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><strong>35548</strong> <br>01/03/2023 10:00 AM
+                                                        </th>
+                                                        <td><strong>Vishal Kumar(2)</strong> <br>(Retailer) 9898555444</td>
+                                                        <td>Vle Id - STEK2</td>
+                                                        <td>Ref No. - Null <br>TxnId - YT9998886543</td>
+                                                        <td><strong>Amount</strong> - ₹ 0 <br><strong>Profit</strong> - ₹ 0</td>
+                                                        <td>
+                                                            <h5><span class="badge badge-success">SUCCESS</span></h5>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- <div class="row m-0">
                             <div class="col-12 p-0">
 
                                 <ul class="nav nav-pills mb-3 mt-4" id="pills-tab" role="tablist">
@@ -67,8 +155,9 @@
                                                 <label class="col-form-label">Location</label><span
                                                     class="text-danger fa-lg font-weight-500">
                                                     *</span>
-                                                <input name="location" id="location" class="form-control" type="text"
-                                                    placeholder="Enter Location" autocomplete="off" value="Ranchi" disabled>
+                                                <input name="location" id="location" class="form-control"
+                                                    type="text" placeholder="Enter Location" autocomplete="off"
+                                                    value="Ranchi" disabled>
 
                                             </div>
                                             <div class="form-group col-6">
@@ -85,7 +174,8 @@
                                                     class="text-danger fa-lg font-weight-500">
                                                     *</span>
                                                 <input name="pincode" id="pincode" class="form-control" type="text"
-                                                    placeholder="Enter Pincode" autocomplete="off" value="831005" disabled>
+                                                    placeholder="Enter Pincode" autocomplete="off" value="831005"
+                                                    disabled>
 
                                             </div>
                                             <div class="form-group col-6">
@@ -128,73 +218,13 @@
 
                                         <div class="row">
                                             <div class="form-group mt-4">
-                                                {{-- <button class="btn btn-warning" id="">Fetch Bill</button> --}}
                                                 <button class="btn btn-primary" id="">Submit</button>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <!-- FOR STATUS PAN CARD -->
-                                    {{-- <div class="tab-pane fade" id="postpaid" role="tabpanel"
-                                        aria-labelledby="pills-postpaid">
-                                        <div class="row">
-                                            <div class="form-group col-6">
-                                                <label class="col-form-label">Postpaid
-                                                    Number</label><span class="text-danger fa-lg font-weight-500">
-                                                    *</span>
-                                                <input name="Post-mobile" id="Post-mobile" class="form-control"
-                                                    type="text" placeholder="Enter Postpaid Number"
-                                                    autocomplete="off">
-
-                                            </div>
-
-                                            <div class="form-group col-6">
-                                                <label class="col-form-label">Postpaid
-                                                    Operator</label><span class="text-danger fa-lg font-weight-500">
-                                                    *</span>
-                                                <select name="perpaidOperator" id="perpaidOperator" class="form-select">
-                                                    <option value="0">--Select Prepaid Operator--
-                                                    </option>
-                                                    <option value="1">Airtel</option>
-                                                    <option value="2">Jio</option>
-                                                    <option value="3">BSNL Special</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-
-                                            <div class="form-group col-6">
-                                                <label class="col-form-label">Circle</label><span
-                                                    class="text-danger fa-lg font-weight-500"> *</span>
-                                                <select name="Circle" id="Circle" class="form-select">
-                                                    <option value="0">--Select Circle--</option>
-                                                    <option value="1">Jharkhand</option>
-                                                    <option value="2">Gujrat</option>
-                                                    <option value="3">Odisha</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-6">
-                                                <label class="col-form-label">Recharge
-                                                    Amount</label><span class="text-danger fa-lg font-weight-500">
-                                                    *</span>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control"
-                                                        placeholder="Enter Amount">
-                                                    <button type="button" class="btn btn-outline-info rounded-end">See
-                                                        Plans</button>
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group mt-4">
-                                            <button class="btn btn-primary" id="">Process</button>
-                                        </div>
-                                    </div> --}}
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

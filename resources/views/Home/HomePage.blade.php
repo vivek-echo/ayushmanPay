@@ -74,8 +74,8 @@
                 <div class="container">
                     <nav class="navbar navbar-expand-md navbar-light">
                         <a class="navbar-brand" href="index.html">
-                            <img class="logo-light" src="landingpage/img/abp.png" alt="logo" width="250">
-                            <img class="logo-dark" src="landingpage/img/abp-white.png" alt="logo" width="250">
+                            <img class="logo-light" src="landingpage/img/ayp-black.png" alt="logo" width="250">
+                            <img class="logo-dark" src="landingpage/img/ayp-white.png" alt="logo" width="250">
                         </a>
                         <div class="collapse navbar-collapse main-menu-wrap" id="navbarSupportedContent">
                             <div class="menu-close xl-none">

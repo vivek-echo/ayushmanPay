@@ -1270,6 +1270,11 @@
 	background-color: var(--theme-secondary) !important
 }
 
+.bg-light-orange {
+    background-color: #e6a469 !important;
+    color: #fff;
+}
+
 .bg-primary {
 	background-color: #5c61f2 !important;
 	color: #fff
@@ -3223,13 +3228,13 @@ fieldset .input-group-lg .touchspin {
 }
 
 .default-according.style-1 button[aria-expanded="true"]:before {
-	content: "";
-	font-family: IcoFont
+	content: "\e937";
+	font-family: 'custom-icomoon';
 }
 
 .default-according.style-1 button[aria-expanded="false"]:before {
-	content: "";
-	font-family: IcoFont
+	content: "\e93a";
+	font-family: 'custom-icomoon';
 }
 
 @media (max-width: 480px) {
@@ -7496,7 +7501,7 @@ input[type="file"] {
 }
 
 .loader-wrapper .dot:nth-child(1) {
-	background: rgba(92, 97, 242, 0.2)
+	background: rgba(46, 50, 162, 0.2)
 }
 
 .loader-wrapper .dot:nth-child(1)::before {
@@ -7505,7 +7510,7 @@ input[type="file"] {
 }
 
 .loader-wrapper .dot:nth-child(2) {
-	background: rgba(238, 184, 47, 0.4)
+	background: rgba(235, 123, 23, 0.4)
 }
 
 .loader-wrapper .dot:nth-child(2)::before {
@@ -7514,7 +7519,7 @@ input[type="file"] {
 }
 
 .loader-wrapper .dot:nth-child(3) {
-	background: rgba(92, 97, 242, 0.6)
+	background: rgba(46, 50, 162, 0.6)
 }
 
 .loader-wrapper .dot:nth-child(3)::before {
@@ -7523,7 +7528,7 @@ input[type="file"] {
 }
 
 .loader-wrapper .dot:nth-child(4) {
-	background: rgba(238, 184, 47, 0.8)
+	background: rgba(235, 123, 23, 0.8)
 }
 
 .loader-wrapper .dot:nth-child(4)::before {
@@ -11998,7 +12003,7 @@ th {
 }
 
 .table td {
-	color: #2b2b2b;
+	color: #2d2d2d;
 	vertical-align: middle;
 }
 
