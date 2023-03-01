@@ -77,7 +77,7 @@
                                             <h6>IRCTC</h6></a>
                                         </li> --}}
                                         <li>
-                                            <a href="/services/PancardUTI"><div class="quick-box"><i class="myicon-membership"></i></div>
+                                            <a href="/services/b2bServices/PanCardUti"><div class="quick-box"><i class="myicon-membership"></i></div>
                                             <h6>Pan Card(UTI)</h6></a>
                                         </li>
                                         <li>
@@ -119,20 +119,20 @@
 
                                 <div class="file-manager">
                                     <ul class="quick-file d-flex flex-row">
-                                        <li>
+                                        {{-- <li>
                                             <a href="/services/birthcertificate"><div class="quick-box"><i class="myicon-bc"></i></div>
                                             <h6>Birth<br> Certificate</h6></a>
                                         </li>
                                         <li>
                                             <a href="/services/deathcertificate"><div class="quick-box"><i class="myicon-dc"></i></div>
                                             <h6>Death<br> Certificate</h6></a>
-                                        </li>
+                                        </li> --}}
                                         <li>
                                             <a href="/services/nsdlpancenter"><div class="quick-box"><i class="myicon-nsdl"></i></div>
                                             <h6>NSDL Pan<br> Center</h6></a>
                                         </li>
                                         <li>
-                                            <a href="/services/drivinglicence"><div class="quick-box"><i class="myicon-dl"></i></div>
+                                            <a href="/services/legalServices/drivinglicence"><div class="quick-box"><i class="myicon-dl"></i></div>
                                             <h6>Driving<br> Licence</h6></a>
                                         </li>
                                         <li>
