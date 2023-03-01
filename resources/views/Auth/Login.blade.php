@@ -162,6 +162,8 @@
 
         <script>
             $('#submitButton').on('click', function() {
+                $('#encOTP').val('');
+                $('#otpValid').val('');
                 submitValidator();
             });
 

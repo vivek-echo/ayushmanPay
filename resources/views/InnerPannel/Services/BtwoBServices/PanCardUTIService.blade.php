@@ -43,8 +43,12 @@
                                     <div class="card-body">
                                         <div class="d-flex justify-content-center align-items-center">
                                             <div class="">
-                                                <button class="btn btn-lg btn-success" type="button"><i
+                                                <form method="post" action="{{$url}}">
+                                                    <textarea name="encdata" style="display:none">{{$encdata}}</textarea>
+                                                    <button class="btn btn-lg btn-success" type="submit" value="submit" ><i
                                                         class="myicon-log-in"></i> Login To UTI</button>
+                                                  </form>
+                                               
                                             </div>
                                         </div>
                                     </div>

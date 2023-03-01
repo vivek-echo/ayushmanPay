@@ -65,6 +65,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(['GET', 'POST'], '/getOtpMoneyTansfer', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'getOtpMoneyTansfer']);
     Route::match(['GET', 'POST'], '/sendMoneyValidateOtp', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'validateOtp']);
     Route::match(['GET', 'POST'], '/sendMoney', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'sendMoney']);
+    //pancard uti
+    Route::match(['GET', 'POST'], '/services/b2bServices/PanCardUti', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\PanCardUtiController::class, 'index']);
+    //driving license
+    Route::match(['GET', 'POST'], '/services/legalServices/drivinglicence', [App\Http\Controllers\InnerPannel\Services\LegalServices\DrivingLicController::class, 'index']);
+    Route::match(['GET', 'POST'], '/fetchDrivingLic', [App\Http\Controllers\InnerPannel\Services\LegalServices\DrivingLicController::class, 'fetchDrivingLic']);
 });
 //B2BService
 Route::get('/services/hospital', function () {
@@ -79,9 +84,7 @@ Route::get('/services/lifeinsurance', function () {
 Route::get('/services/LpgGasBooking', function () {
     return view('InnerPannel/Services/BtwoBServices/LpgGasBookingService');
 });
-Route::get('/services/PancardUTI', function () {
-    return view('InnerPannel/Services/BtwoBServices/PanCardUTIService');
-});
+
 Route::get('/services/irctcservice', function () {
     return view('InnerPannel/Services/BtwoBServices/IrctcService');
 });
@@ -102,9 +105,7 @@ Route::get('/services/deathcertificate', function () {
 Route::get('/services/nsdlpancenter', function () {
     return view('InnerPannel/Services/LegalServices/NsdlPanCenterService');
 });
-Route::get('/services/drivinglicence', function () {
-    return view('InnerPannel/Services/LegalServices/DrivingLicenceService');
-});
+
 Route::get('/services/rcservice', function () {
     return view('InnerPannel/Services/LegalServices/RCService');
 });

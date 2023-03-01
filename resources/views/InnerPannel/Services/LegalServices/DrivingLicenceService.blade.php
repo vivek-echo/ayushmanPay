@@ -42,7 +42,7 @@
                                     *</span>
                                 <div class="input-group">
                                     <input class="datepicker-here form-control digits" type="text" data-language="en"
-                                        placeholder="DD/MM/YYYY">
+                                        placeholder="DD/MM/YYYY" id="dob">
                                     <div class="input-group-text" id=""><i class="text-secondary"
                                             data-feather="calendar"></i></div>
                                 </div>
@@ -55,12 +55,13 @@
 
                         <div class="row">
                             <div class="col-lg-12">
-                                <img src="{{ asset('images/dlimage.png') }}" class="img-thumbnail" alt="DLimage" width="250px">
+                                <img src="{{ asset('images/dlimage.png') }}" class="img-thumbnail" alt="DLimage" id="my_image"
+                                    width="250px">
                             </div>
                         </div>
 
                         <div class="form-group mt-4">
-                            <button class="btn btn-warning" id="">Download</button>
+                            <button class="btn btn-warning" id="submitButton">Download</button>
                         </div>
                     </div>
                 </div>
@@ -72,6 +73,26 @@
     <script>
         $(document).ready(function() {
             $('#serviceLink').addClass('activeLink');
+            $('#submitButton').on('click', function() {
+                $('.pageLoader').fadeIn();
+                var dlno = $('#dlno').val();
+                var dob = $('#dob').val();
+                $.ajax({
+                    url: "{{ url('/fetchDrivingLic') }}",
+                    data: {
+                        dlno: dlno,
+                        dob: dob
+                    },
+                    success: function(res) {
+                        var img = res.image;
+                        var loc = window.location.origin +"/"+ img;
+                        $('#my_image').attr('src',loc);
+                        $('.pageLoader').fadeOut();
+
+                    }
+                });
+            })
+
         });
     </script>
 @endsection
