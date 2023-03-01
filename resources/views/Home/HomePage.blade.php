@@ -157,7 +157,7 @@
         <section class="hero-wrap style1 bg-spring">
             <img src="landingpage/img/hero/hero-shape-1.png" alt="Image" class="hero-shape-one">
             <img src="landingpage/img/hero/hero-shape-2.png" alt="Image" class="hero-shape-two">
-            <img src="landingpage/img/hero/hero-shape-3.png" alt="Image" class="hero-shape-three">
+            <img src="landingpage/img/hero/rupee-indian.png" alt="Image" class="hero-shape-three">
             <!-- <img src="landingpage/img/hero/hero-shape-4.png" alt="Image" class="hero-shape-four md-none"> -->
             <div class="hero-slider-two owl-carousel">
                 <div class="hero-slide-item">
@@ -538,7 +538,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                         <div class="footer-widget">
                             <a href="index.html" class="footer-logo">
-                                <img src="landingpage/img/abp-white.png" alt="Image" width="250">
+                                <img src="landingpage/img/ayp-white.png" alt="Image" width="250">
                             </a>
                             <p class="comp-desc">
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
@@ -670,7 +670,7 @@
                 </div>
             </div>
             <div class="copyright-text">
-                <p> <i class="ri-copyright-line"></i>2023 Apna Bharat Pay. All Rights Reserved By <a href="#"
+                <p> <i class="ri-copyright-line"></i>2023 Ayushman Pay. All Rights Reserved By <a href="#"
                         target="_blank"></a></p>
             </div>
         </footer>
