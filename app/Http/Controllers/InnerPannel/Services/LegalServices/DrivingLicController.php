@@ -64,19 +64,12 @@ class DrivingLicController extends Controller
         $image = $generateUrl['data']['profile_image'];
         $imageName =  $user->id."/".$params['refid'].".png";
         Storage::disk('public')->put($imageName, base64_decode($image));
-        $imageSrc = url('/DrivingLic/'.$imageName);
-        $data = $generateUrl['data'];
-        $pdf = \PDF::loadView('PDF.DrivingLic',$data);
-        // $path = public_path('pdf/'); 
-        //     dd( $path);
-        // $fileName =  time().'.'. 'pdf' ; 
-
-        // $pdf->save($path . '/' . $fileName); 
-
- 
-
-        // $pdf = public_path('pdf/'.$fileName); 
-        // return response()->download($pdf); 
+        $imageSrc ="DrivingLic/".$imageName;
+        $res['data'] = $generateUrl['data'];
+        $res['imageSrc'] = $imageSrc;
+        
+        $pdf = \PDF::loadView('PDF.DrivingLic',$res);
+        
         return $pdf->download('teknowize.pdf');
     }
 }

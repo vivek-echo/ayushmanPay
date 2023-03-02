@@ -1,5 +1,7 @@
+
 <html>
     <body>
-        <p>{{$license_number}}</p>
+        <p>{{$data['license_number']}}</p>
+        <img src="{{public_path($imageSrc)}}" alt="">
     </body>
 </html>
