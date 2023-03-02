@@ -75,7 +75,7 @@ class OtpController extends Controller
        
         try {
             $trans = DB::beginTransaction();
-            $resIns['userId'] =  $this->userId();
+            // $resIns['userId'] =  $this->userId();
             $resIns['memberType'] =  Crypt::decryptString($getData['memberType']);
             $resIns['email'] =  Crypt::decryptString($getData['email']);
             $resIns['firstName'] =  Crypt::decryptString($getData['firstName']);
@@ -95,7 +95,11 @@ class OtpController extends Controller
             $resIns['address'] =  Crypt::decryptString($getData['address']);
             $resIns['referalCode'] =  Crypt::decryptString($getData['referralCode']);
             $insertAllRecord = DB::transaction(function () use ($resIns) {
-                DB::table('users')->insert($resIns);
+                $id = DB::table('users')->insertGetId($resIns);
+                $userId = $this->userId($id);
+                DB::table('users')->where('id', $id) ->update([
+                    'userId' =>$userId
+                ]);
             });
             if (is_null($insertAllRecord)) {
                 $this->sendMailWecome($resIns);
@@ -134,10 +138,11 @@ class OtpController extends Controller
             'status' => $status
         ]);
     }
-    public function userId()
+    public function userId($id)
     {
+        
         $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $userId = "ABP" . substr(str_shuffle(str_repeat($pool, 3)), 0, 6);
+        $userId = "ABP" . substr(str_shuffle(str_repeat($pool, 3)), 0, 6).$id;
         return $userId;
     }
     public function password()

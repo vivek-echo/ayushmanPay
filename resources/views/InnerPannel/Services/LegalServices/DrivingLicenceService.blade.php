@@ -42,7 +42,7 @@
                                     *</span>
                                 <div class="input-group">
                                     <input class="datepicker-here form-control digits" type="text" data-language="en"
-                                        placeholder="DD/MM/YYYY" id="dob">
+                                        placeholder="DD/MM/YYYY" id="dob" name="dob">
                                     <div class="input-group-text" id=""><i class="text-secondary"
                                             data-feather="calendar"></i></div>
                                 </div>
@@ -59,9 +59,13 @@
                                     width="250px">
                             </div>
                         </div>
-
+                        <form action="/downloadDrivingLic" id="pdfFormDownload">
+                            <input type="hidden" id="pdfDl" name="pdfDl">
+                            <input type="hidden" id="pdfDob" name="pdfDob">
+                        </form>
                         <div class="form-group mt-4">
-                            <button class="btn btn-warning" id="submitButton">Download</button>
+                            <button class="btn btn-warning" id="submitButton">Fecth Details</button>
+                            <button class="btn btn-warning" id="downloadPdf">Download</button>
                         </div>
                     </div>
                 </div>
@@ -77,6 +81,16 @@
                 $('.pageLoader').fadeIn();
                 var dlno = $('#dlno').val();
                 var dob = $('#dob').val();
+                if (dlno == '') {
+                    errorAlert("Required", "Please Enter DL Number", "dlno");
+                    return false;
+                }
+
+                if (dob == '') {
+                    errorAlert("Required", "Please Enter Date of Birth", "dob");
+                    return false;
+                }
+
                 $.ajax({
                     url: "{{ url('/fetchDrivingLic') }}",
                     data: {
@@ -91,6 +105,26 @@
 
                     }
                 });
+            })
+
+            $('#downloadPdf').on('click', function() {
+                $('.pageLoader').fadeIn();
+                var dlno = $('#dlno').val();
+                var dob = $('#dob').val();
+                if (dlno == '') {
+                    errorAlert("Required", "Please Enter DL Number", "dlno");
+                    return false;
+                }
+
+                if (dob == '') {
+                    errorAlert("Required", "Please Enter Date of Birth", "dob");
+                    return false;
+                }
+                $('#pdfDl').val(dlno);
+                $('#pdfDob').val(dob);
+                $('#pdfFormDownload').submit();
+                $('.pageLoader').fadeOut();
+
             })
 
         });

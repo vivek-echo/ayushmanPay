@@ -70,6 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
     //driving license
     Route::match(['GET', 'POST'], '/services/legalServices/drivinglicence', [App\Http\Controllers\InnerPannel\Services\LegalServices\DrivingLicController::class, 'index']);
     Route::match(['GET', 'POST'], '/fetchDrivingLic', [App\Http\Controllers\InnerPannel\Services\LegalServices\DrivingLicController::class, 'fetchDrivingLic']);
+    Route::match(['GET', 'POST'], '/downloadDrivingLic', [App\Http\Controllers\InnerPannel\Services\LegalServices\DrivingLicController::class, 'downloadDrivingLic']);
 });
 //B2BService
 Route::get('/services/hospital', function () {

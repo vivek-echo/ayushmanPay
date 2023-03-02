@@ -13,6 +13,8 @@ use App\Mail\GetOtpMoneyTransfer;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
+// use Illuminate\Support\Facades\PDF;
+use \PDF;
 
 class DrivingLicController extends Controller
 {
@@ -43,5 +45,38 @@ class DrivingLicController extends Controller
         return response()->json([
             'image'=>$imageSrc
         ]);
+    }
+
+    public function downloadDrivingLic(){
+        $user = Auth::user();
+        $getData = request()->all();
+        $apiKey = config('constant.API_KEY');
+        $token = Controller::getToken();
+        $params['refid'] = mt_rand(10000000, 99999999);
+        $params['license_number'] = $getData['pdfDl'];
+        $params['dob'] = date('Y-m-d', strtotime($getData['pdfDob']));
+        $generateUrl =  Http::withHeaders([
+            'accept' => 'application/json',
+            'Authorisedkey' => $apiKey,
+            'Token' => $token
+        ])->withBody(json_encode($params), 'application/json')
+            ->post('https://paysprint.in/service-api/api/v1/service/verification/drivinglicense/validate')->json();
+        $image = $generateUrl['data']['profile_image'];
+        $imageName =  $user->id."/".$params['refid'].".png";
+        Storage::disk('public')->put($imageName, base64_decode($image));
+        $imageSrc = url('/DrivingLic/'.$imageName);
+        $data = $generateUrl['data'];
+        $pdf = \PDF::loadView('PDF.DrivingLic',$data);
+        // $path = public_path('pdf/'); 
+        //     dd( $path);
+        // $fileName =  time().'.'. 'pdf' ; 
+
+        // $pdf->save($path . '/' . $fileName); 
+
+ 
+
+        // $pdf = public_path('pdf/'.$fileName); 
+        // return response()->download($pdf); 
+        return $pdf->download('teknowize.pdf');
     }
 }
