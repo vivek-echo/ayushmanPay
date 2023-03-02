@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,13 +64,14 @@
                 <div class="login-card">
                     <div>
                         <div><a class="logo text-center" href="#"><img class="img-fluid for-light"
-                                    src="{{ asset('images/logo/ayp-black.png') }}" alt="looginpage" width="320"></a></div>
+                                    src="{{ asset('images/logo/ayp-black.png') }}" alt="looginpage" width="320"></a>
+                        </div>
                         <div class="login-main-small">
                             <div class="theme-form">
 
                                 <h4 class="text-center">Login</h4>
                                 <p class="text-center">Enter your personal details</p>
-                               
+
                                 <div class="row">
                                     <div class="form-group col-12">
                                         <label class="col-form-label">Email</label><span
@@ -92,8 +91,9 @@
 
                                     </div>
                                 </div>
-                              
+
                             </div>
+                            <input name="location" id="location" type="hidden">
                             <div class="form-group text-center mt-2">
                                 <button class="btn btn-primary" id="submitButton" type="button">Login</button>
                             </div>
@@ -125,7 +125,7 @@
                                 <input name="encOTP" id="encOTP" class="form-control" type="hidden"
                                     placeholder="Enter your OTP">
 
-                              
+
                             </div>
                         </div>
 
@@ -161,10 +161,29 @@
         <!-- login js-->
 
         <script>
-            $('#submitButton').on('click', function() {
-                $('#encOTP').val('');
-                $('#otpValid').val('');
-                submitValidator();
+            const successCallback = (position) => {
+                console.log(position);
+            };
+
+            const errorCallback = (error, codeLoc) => {
+                if (error.code == 1) {
+                    $('#location').val('1');
+                    swal("Error", "Please unable the location permission.", "error");
+
+                }
+            };
+            navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+            $('#submitButton').on('click', function(codeLoc) {
+
+                if ($('#location').val() == 1) {
+                    swal("Error", "Please unable the location permission.", "error");
+                    return false;
+                } else {
+                    $('#encOTP').val('');
+                    $('#otpValid').val('');
+                    submitValidator();
+                }
+
             });
 
 
@@ -273,5 +292,3 @@
 
 
 </html>
-
-
