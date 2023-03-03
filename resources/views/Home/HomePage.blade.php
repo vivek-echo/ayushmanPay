@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="landingpage/css/style.css">
     <link rel="stylesheet" href="landingpage/css/dark-theme.css">
     <link rel="stylesheet" href="landingpage/css/responsive.css">
-    <title>Apna Bharat Pay - Home</title>
+    <title>Ayushman Pay - Home</title>
     <link rel="icon" type="image/png" href="landingpage/img/favicon.png">
 </head>
 

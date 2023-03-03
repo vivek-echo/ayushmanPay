@@ -1,210 +1,369 @@
-
-        {{-- <p>{{$data['license_number']}}</p>
-        <img src="{{public_path($imageSrc)}}" alt=""> --}}
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Apna Bharat Pay">
-    <meta name="keywords" content="Apna Bharat Pay, Online Payment System">
-    <meta name="author" content="Apna Bharat Pay">
-    <link rel="icon" href="{{ asset('images/favicon/favicon.png') }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset('images/favicon/favicon.png') }}" type="image/x-icon">
     <title>Download PDF</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-        rel="stylesheet">
-    <!-- <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/font-awesome.css') }}"> -->
+    <style>
+        * {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-        integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- ico-font-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/icofont.css') }}">
-    <!-- Flag icon-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/flag-icon.css') }}">
-    <!-- Feather icon-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/feather-icon.css') }}">
+        .page-wrapper .page-body-wrapper {
+            background-color: #f6f8fc;
+        }
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/photoswipe.css') }}">
-    <!-- icomoon icon-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('custom-icomoon/style.css') }}">
-    <!-- Datatable-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/datatables.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/datatable-extension.css') }}">
+        body {
+            font-size: 14px;
+            overflow-x: hidden;
+            font-family: "Montserrat", sans-serif;
+            color: #2b2b2b;
+            background-color: #f6f8fc;
+            margin: 0;
+            padding: 0;
+        }
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/scrollbar.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/animate.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/date-picker.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/owlcarousel.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/prism.css') }}">
-    <!-- Bootstrap css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/bootstrap.css') }}">
-    <!-- App css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-    <!-- Responsive css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
+        .page-wrapper {
+            position: relative;
+        }
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendors/sweetalert2.css') }}">
+        .py-5 {
+            padding-top: 3rem !important;
+            padding-bottom: 3rem !important;
+        }
+
+        .px-5 {
+            padding-right: 3rem !important;
+            padding-left: 3rem !important;
+        }
+
+        @media (min-width: 1400px) {
+
+            .container,
+            .container-sm,
+            .container-md,
+            .container-lg,
+            .container-xl,
+            .container-xxl {
+                max-width: 1320px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+
+            .container,
+            .container-sm,
+            .container-md,
+            .container-lg,
+            .container-xl {
+                max-width: 1140px;
+            }
+        }
 
 
-    <!-- latest jquery-->
-    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+        .container,
+        .container-fluid,
+        .container-sm,
+        .container-md,
+        .container-lg,
+        .container-xl,
+        .container-xxl {
+            width: 100%;
+            padding-right: var(--bs-gutter-x, .75rem);
+            padding-left: var(--bs-gutter-x, .75rem);
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .mx-auto {
+            margin-right: auto !important;
+            margin-left: auto !important;
+        }
+
+        .col-8 {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+            width: 66.66667%;
+        }
+
+        .text-center {
+            text-align: center !important;
+        }
+
+        h1,
+        .h1,
+        h2,
+        .h2,
+        h3,
+        .h3,
+        h4,
+        .h4,
+        h5,
+        .h5,
+        h6,
+        .h6 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        h4 {
+            font-size: 26px;
+            font-weight: 700;
+        }
+
+        .border {
+            border-color: #eee !important;
+        }
+
+        .border {
+            border: 1px solid #dee2e6 !important;
+        }
+
+        .rounded {
+            border-radius: 0.25rem !important;
+        }
+
+        .p-4 {
+            padding: 1.5rem !important;
+        }
+
+        .mt-4 {
+            margin-top: 1.5rem !important;
+        }
+
+        form {
+            display: block;
+            margin-top: 0em;
+        }
+
+        .mb-3 {
+            margin-bottom: 1rem !important;
+        }
+
+        .row {
+            --bs-gutter-x: 1.5rem;
+            --bs-gutter-y: 0;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            margin-top: calc(var(--bs-gutter-y) * -1);
+            margin-right: calc(var(--bs-gutter-x) / -2);
+            margin-left: calc(var(--bs-gutter-x) / -2);
+        }
+
+        .col-form-label {
+            padding-top: calc(0.375rem + 1px);
+            padding-bottom: calc(0.375rem + 1px);
+            margin-bottom: 0;
+            font-size: inherit;
+            line-height: 1.5;
+        }
+
+        .col-3 {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+            width: 25% !important;
+        }
+
+        .col-1 {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+            width: 8.33333% !important;
+        }
+
+        .col-4 {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+            width: 33.33333% !important;
+        }
+
+        .fw-bold {
+            font-weight: 700 !important;
+        }
+
+        .row>* {
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            width: 100%;
+            max-width: 100%;
+            padding-right: calc(var(--bs-gutter-x) / 2);
+            padding-left: calc(var(--bs-gutter-x) / 2);
+            margin-top: var(--bs-gutter-y);
+        }
+
+        form label {
+            font-weight: 500;
+        }
+
+        label {
+            display: inline-block;
+        }
+
+        .img-thumbnail {
+            border-color: #eee;
+        }
+
+        .img-thumbnail {
+            padding: 0.25rem;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 0.25rem;
+            max-width: 100%;
+            height: auto;
+        }
+
+        img,
+        svg {
+            vertical-align: middle;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- tap on top starts-->
-    <div class="tap-top"><i data-feather="chevrons-up"></i></div>
-    <!-- tap on tap ends-->
-    <!-- Loader starts-->
-    <div class="loader-wrapper">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"> </div>
-        <div class="dot"></div>
-    </div>
-    <div class="pageLoader" style="display: none;">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"> </div>
-        <div class="dot"></div>
-    </div>
-    <!-- Loader ends-->
     <!-- page-wrapper Start-->
-    <div class="page-wrapper compact-wrapper" id="pageWrapper">
+    <div class="page-wrapper compact-wrapper">
         <!-- Page Header Ends-->
         <!-- Page Body Start-->
         <div class="page-body-wrapper">
-            <div class="container py-5">
-                <div class="col-12">
-                    <div class="header-title text-center">
-                       <h4>Driving Licence Details</h4>
+            <div class="container-fluid px-5 py-5">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="text-center">
+                            <h4>Driving Licence Details</h4>
+                        </div>
+                        <div class="p-4 mt-4">
+                            <form class="theme-form">
+                                <div class="mb-3 row">
+                                    <label class="col-3 col-form-label fw-bold">Client Id</label>
+                                    <label class="col-1 col-form-label fw-bold">:</label>
+                                    <label class="col-4 col-form-label fw-bold">{{ $data['client_id'] }}</label>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-3 col-form-label fw-bold">License Number</label>
+                                    <label class="col-1 col-form-label fw-bold">:</label>
+                                    <label class="col-4 col-form-label fw-bold">{{ $data['license_number'] }}</label>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-3 col-form-label fw-bold">State</label>
+                                    <label class="col-1 col-form-label fw-bold">:</label>
+                                    <label class="col-4 col-form-label fw-bold">{{ $data['state'] }}</label>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-3 col-form-label fw-bold">Name</label>
+                                    <label class="col-1 col-form-label fw-bold">:</label>
+                                    <label class="col-4 col-form-label fw-bold">{{ $data['name'] }}</label>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-3 col-form-label fw-bold">Permanent Address</label>
+                                    <label class="col-1 col-form-label fw-bold">:</label>
+                                    <label class="col-4 col-form-label fw-bold">{{ $data['permanent_address'] }}</label>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-3 col-form-label fw-bold">Permanent Zip</label>
+                                    <label class="col-1 col-form-label fw-bold">:</label>
+                                    <label class="col-4 col-form-label fw-bold">{{ $data['permanent_zip'] }}</label>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-3 col-form-label fw-bold">Temporary Address</label>
+                                    <label class="col-1 col-form-label fw-bold">:</label>
+                                    <label class="col-4 col-form-label fw-bold">{{ $data['temporary_address'] }}</label>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-3 col-form-label fw-bold">Temporary Zip</label>
+                                    <label class="col-1 col-form-label fw-bold">:</label>
+                                    <label class="col-4 col-form-label fw-bold">{{ $data['temporary_zip'] }}</label>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-3 col-form-label fw-bold">Citizenship</label>
+                                    <label class="col-1 col-form-label fw-bold">:</label>
+                                    <label class="col-4 col-form-label fw-bold">{{ $data['citizenship'] }}</label>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-3 col-form-label fw-bold">Ola Name</label>
+                                    <label class="col-1 col-form-label fw-bold">:</label>
+                                    <label class="col-4 col-form-label fw-bold">{{ $data['ola_name'] }}</label>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-3 col-form-label fw-bold">Ola Code</label>
+                                    <label class="col-1 col-form-label fw-bold">:</label>
+                                    <label class="col-4 col-form-label fw-bold">{{ $data['ola_code'] }}</label>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-3 col-form-label fw-bold">Gender</label>
+                                    <label class="col-1 col-form-label fw-bold">:</label>
+                                    <label class="col-4 col-form-label fw-bold">{{ $data['gender'] }}</label>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-3 col-form-label fw-bold">Father/ Husband Name</label>
+                                    <label class="col-1 col-form-label fw-bold">:</label>
+                                    <label
+                                        class="col-4 col-form-label fw-bold">{{ $data['father_or_husband_name'] }}</label>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-3 col-form-label">Date Of Birth</label>
+                                    <label class="col-1 col-form-label">:</label>
+                                    <label class="col-4 col-form-label fw-bold">{{ $data['dob'] }}</label>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-3 col-form-label fw-bold">Date Of Expiry</label>
+                                    <label class="col-1 col-form-label fw-bold">:</label>
+                                    <label class="col-4 col-form-label fw-bold">{{ $data['doe'] }}</label>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-3 col-form-label fw-bold">Transport Date Of Expiry</label>
+                                    <label class="col-1 col-form-label fw-bold">:</label>
+                                    <label class="col-4 col-form-label fw-bold">{{ $data['transport_doe'] }}</label>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-3 col-form-label fw-bold">Date Of Issue</label>
+                                    <label class="col-1 col-form-label fw-bold">:</label>
+                                    <label class="col-4 col-form-label fw-bold">{{ $data['doi'] }}</label>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-3 col-form-label fw-bold">Transport Date Of Issue</label>
+                                    <label class="col-1 col-form-label fw-bold">:</label>
+                                    <label class="col-4 col-form-label fw-bold">{{ $data['transport_doi'] }}</label>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-3 col-form-label fw-bold">Profile Image</label>
+                                    <label class="col-1 col-form-label fw-bold">:</label>
+                                    <label class="col-4 col-form-label">
+                                        <img src="{{ public_path($imageSrc) }}" class="img-thumbnail" alt="DLimage"
+                                            id="my_image" width="200">
+                                    </label>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-3 col-form-label fw-bold">Blood Group</label>
+                                    <label class="col-1 col-form-label fw-bold">:</label>
+                                    <label class="col-4 col-form-label fw-bold">{{ $data['blood_group'] }}</label>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-3 col-form-label fw-bold">Vehicle Classes</label>
+                                    <label class="col-1 col-form-label fw-bold">:</label>
+                                    {{-- <label class="col-4 col-form-label fw-bold">{{$data['vehicle_classes']}}</label> --}}
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-3 col-form-label fw-bold">Initial Date Of Issue</label>
+                                    <label class="col-1 col-form-label fw-bold">:</label>
+                                    <label class="col-4 col-form-label fw-bold">{{ $data['initial_doi'] }}</label>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <form class="theme-form">
-                        <div class="mb-3 row">
-                          <label class="col-sm-3 col-form-label" for="inputEmail3">Email</label>
-                          <div class="col-sm-9">
-                            <input class="form-control" id="inputEmail3" type="email" placeholder="Email" data-bs-original-title="" title="">
-                          </div>
-                        </div>
-                        <div class="mb-3 row">
-                          <label class="col-sm-3 col-form-label" for="inputPassword3">Password</label>
-                          <div class="col-sm-9">
-                            <input class="form-control" id="inputPassword3" type="password" placeholder="Password" data-bs-original-title="" title="">
-                          </div>
-                        </div>
-                        <div class="mb-3 row">
-                          <label class="col-sm-3 col-form-label" for="inputPassword3">Contact Number</label>
-                          <div class="col-sm-9">
-                            <input class="form-control" id="inputnumber" type="number" placeholder="Contact" data-bs-original-title="" title="">
-                          </div>
-                        </div>
-                        <div class="mb-3 row">
-                          <label class="col-sm-3 col-form-label" for="inputPassword3">Company name</label>
-                          <div class="col-sm-9">
-                            <input class="form-control" id="url" type="text" placeholder="Company name" data-bs-original-title="" title="">
-                          </div>
-                        </div>
-                        <div class="mb-3 row">
-                          <label class="col-sm-3 col-form-label" for="inputPassword3">Website</label>
-                          <div class="col-sm-9">
-                            <input class="form-control" id="Website" type="url" placeholder="Website" data-bs-original-title="" title="">
-                          </div>
-                        </div>
-                        <fieldset class="mb-3">
-                          <div class="row">
-                            <label class="col-form-label col-sm-3 pt-0">Radios</label>
-                            <div class="col-sm-9">
-                              <div class="form-check radio radio-primary">
-                                <input class="form-check-input" id="radio11" type="radio" name="radio1" value="option1" data-bs-original-title="" title="">
-                                <label class="form-check-label" for="radio11">Option 1</label>
-                              </div>
-                              <div class="form-check radio radio-primary">
-                                <input class="form-check-input" id="radio22" type="radio" name="radio1" value="option1" data-bs-original-title="" title="">
-                                <label class="form-check-label" for="radio22">Option 2</label>
-                              </div>
-                              <div class="form-check radio radio-primary">
-                                <input class="form-check-input" id="radio33" type="radio" name="radio1" value="option1" disabled="" data-bs-original-title="" title="">
-                                <label class="form-check-label" for="radio33">Disabled</label>
-                              </div>
-                              <div class="form-check radio radio-primary">
-                                <input class="form-check-input" id="radio44" type="radio" name="radio1" value="option1" checked="" data-bs-original-title="" title="">
-                                <label class="form-check-label" for="radio44">Option 3</label>
-                              </div>
-                              <div class="form-check radio radio-primary">
-                                <input class="form-check-input" id="radio55" type="radio" name="radio1" value="option1" checked="" data-bs-original-title="" title="">
-                                <label class="form-check-label" for="radio44">Option 4</label>
-                              </div>
-                            </div>
-                          </div>
-                        </fieldset>
-                        <div class="row mb-0">
-                          <label class="col-sm-3 col-form-label pb-0 pt-2">Checkbox</label>
-                          <div class="col-sm-9">
-                            <div class="mb-0">
-                              <div class="form-check form-check-inline checkbox checkbox-primary">
-                                <input class="form-check-input" id="inline-form-1" type="checkbox" data-bs-original-title="" title="">
-                                <label class="form-check-label" for="inline-form-1">Option 1</label>
-                              </div>
-                              <div class="form-check form-check-inline checkbox checkbox-primary">
-                                <input class="form-check-input" id="inline-form-2" type="checkbox" data-bs-original-title="" title="">
-                                <label class="form-check-label" for="inline-form-2">Option 1</label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap js-->
-    <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
-    <!-- feather icon js-->
-    <script src="{{ asset('js/icons/feather-icon/feather.min.js') }}"></script>
-    <script src="{{ asset('js/icons/feather-icon/feather-icon.js') }}"></script>
-    <!-- scrollbar js-->
-    <script src="{{ asset('js/scrollbar/simplebar.js') }}"></script>
-    <script src="{{ asset('js/scrollbar/custom.js') }}"></script>
-    <!-- Sidebar jquery-->
-    <script src="{{ asset('js/config.js') }}"></script>
-    <script src="{{ asset('js/sidebar-menu.js') }}"></script>
-    <script src="{{ asset('js/counter/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('js/counter/jquery.counterup.min.js') }}"></script>
-    <script src="{{ asset('js/counter/counter-custom.js') }}"></script>
-    <script src="{{ asset('js/photoswipe/photoswipe.min.js') }}"></script>
-    <script src="{{ asset('js/photoswipe/photoswipe-ui-default.min.js') }}"></script>
-    <script src="{{ asset('js/photoswipe/photoswipe.js') }}"></script>
-    <script src="{{ asset('js/chart/knob/knob.min.js') }}"></script>
-    <script src="{{ asset('js/chart/knob/knob-chart.js') }}"></script>
-    <!-- <script src="{{ asset('js/chart/apex-chart/apex-chart.js') }}"></script> -->
-    <script src="{{ asset('js/chart/apex-chart/stock-prices.js') }}"></script>
-    <script src="{{ asset('js/prism/prism.min.js') }}"></script>
-    <script src="{{ asset('js/clipboard/clipboard.min.js') }}"></script>
-    <script src="{{ asset('js/custom-card/custom-card.js') }}"></script>
-    <script src="{{ asset('js/notify/bootstrap-notify.min.js') }}"></script>
-    <script src="{{ asset('js/datepicker/date-picker/datepicker.js') }}"></script>
-    <script src="{{ asset('js/datepicker/date-picker/datepicker.en.js') }}"></script>
-    <script src="{{ asset('js/datepicker/date-picker/datepicker.custom.js') }}"></script>
-    <script src="{{ asset('js/owlcarousel/owl.carousel.js') }}"></script>
-    <!-- <script src="{{ asset('js/dashboard/dashboard_2.js') }}"></script> -->
 
-    <script src="{{ asset('js/sweet-alert/sweetalert.min.js') }}"></script>
-    <script src="{{ asset('js/tooltip-init.js') }}"></script>
-    <!-- Template js-->
-    <script src="{{ asset('js/script.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
-    
     <!-- login js-->
 </body>
 
