@@ -656,17 +656,17 @@ select {
 }
 
 .loader div:nth-child(1) {
-	background: rgba(0, 169, 164, .7)
+	background: rgba(235, 123, 23, .7)
 }
 
 .loader div:nth-child(2) {
-	background: rgba(0, 169, 164, .7);
+	background: rgba(235, 123, 23, .7);
 	-webkit-animation-delay: .2s;
 	animation-delay: .2s
 }
 
 .loader div:nth-child(3) {
-	background: rgba(0, 169, 164, .7);
+	background: rgba(235, 123, 23, .7);
 	-webkit-animation-delay: .4s;
 	animation-delay: .4s
 }

@@ -156,7 +156,7 @@
 
         <section class="hero-wrap style1 bg-spring">
             <img src="landingpage/img/hero/hero-shape-1.png" alt="Image" class="hero-shape-one">
-            <img src="landingpage/img/hero/hero-shape-2.png" alt="Image" class="hero-shape-two">
+            <img src="landingpage/img/hero/rupee-indian-2.png" alt="Image" class="hero-shape-two">
             <img src="landingpage/img/hero/rupee-indian.png" alt="Image" class="hero-shape-three">
             <!-- <img src="landingpage/img/hero/hero-shape-4.png" alt="Image" class="hero-shape-four md-none"> -->
             <div class="hero-slider-two owl-carousel">
@@ -232,10 +232,10 @@
                 <div class="row gx-5 align-items-center">
                     <div class="col-lg-6">
                         <div class="about-img-wrap">
-                            <img src="landingpage/img/about/about-shape-1.png" alt="Image"
-                                class="about-shape-one bounce">
-                            <img src="landingpage/img/about/about-shape-2.png" alt="Image"
-                                class="about-shape-two moveHorizontal">
+                            <img src="landingpage/img/about/rupee-indian-3.png" alt="Image"
+                                class="about-shape-one bounce" width="50">
+                            <img src="landingpage/img/about/favicon.png" alt="Image"
+                                class="about-shape-two moveHorizontal" width="50">
                             <img src="landingpage/img/about/about-img-1.png" alt="Image" class="about-img">
                         </div>
                     </div>
@@ -512,8 +512,8 @@
 
         <section class="cta-wrap style1 ptb-100 ">
             <div class="container">
-                <img src="landingpage/img/cta-shape-1.png" alt="Image" class="cta-shape-one xs-none">
-                <img src="landingpage/img/cta-shape-2.png" alt="Image" class="cta-shape-two xs-none">
+                <img src="landingpage/img/rupee-indian.png" alt="Image" class="cta-shape-one xs-none" width="60">
+                <img src="landingpage/img/rupee-indian-2.png" alt="Image" class="cta-shape-two xs-none" width="60">
                 <div class="row">
                     <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
                         <div class="content-title style1 text-center mb-40">
@@ -532,8 +532,8 @@
 
         <footer class="footer-wrap bg-rock">
             <div class="container">
-                <img src="landingpage/img/footer-shape-1.png" alt="Image" class="footer-shape-one">
-                <img src="landingpage/img/footer-shape-2.png" alt="Image" class="footer-shape-two">
+                <img src="landingpage/img/rupee-indian-footer.png" alt="Image" class="footer-shape-one" width="60">
+                <img src="landingpage/img/rupee-indian-footer.png" alt="Image" class="footer-shape-two" width="60">
                 <div class="row pt-100 pb-75">
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                         <div class="footer-widget">
@@ -570,93 +570,44 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                         <div class="footer-widget">
                             <h3 class="footer-widget-title">Our Company</h3>
                             <ul class="footer-menu list-style">
                                 <li>
                                     <a href="about.html">
                                         <i class="flaticon-next"></i>
-                                        Lorem Ipsum
+                                        About Us
                                     </a>
                                 </li>
                                 <li>
                                     <a href="service-one.html">
                                         <i class="flaticon-next"></i>
-                                        Lorem Ipsum
+                                        Services
                                     </a>
                                 </li>
                                 <li>
                                     <a href="team.html">
                                         <i class="flaticon-next"></i>
-                                        Lorem Ipsum
+                                        API Soultion
                                     </a>
                                 </li>
                                 <li>
                                     <a href="pricing.html">
                                         <i class="flaticon-next"></i>
-                                        Lorem Ipsum
+                                        B2B
                                     </a>
                                 </li>
                                 <li>
                                     <a href="contact.html">
                                         <i class="flaticon-next"></i>
-                                        Lorem Ipsum
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="privacy-policy.html">
-                                        <i class="flaticon-next"></i>
-                                        Lorem Ipsum
+                                        B2C
                                     </a>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6">
-                        <div class="footer-widget">
-                            <h3 class="footer-widget-title">Products</h3>
-                            <ul class="footer-menu list-style">
-                                <li>
-                                    <a href="service-one.html">
-                                        <i class="flaticon-next"></i>
-                                        Lorem Ipsum
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="service-one.html">
-                                        <i class="flaticon-next"></i>
-                                        Lorem Ipsum
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="service-one.html">
-                                        <i class="flaticon-next"></i>
-                                        Lorem Ipsum
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="service-one.html">
-                                        <i class="flaticon-next"></i>
-                                        Master Card
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="service-one.html">
-                                        <i class="flaticon-next"></i>
-                                        Lorem Ipsum
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="service-one.html">
-                                        <i class="flaticon-next"></i>
-                                        Lorem Ipsum
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                         <div class="footer-widget">
                             <h3 class="footer-widget-title">Subscribe</h3>
                             <p class="newsletter-text">Lorem Ipsum is simply dummy text of the printing and typesetting
