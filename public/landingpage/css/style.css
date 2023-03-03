@@ -808,7 +808,7 @@ select {
 
 .btn.style1:after,
 .btn.style1:before {
-	background: #010647
+	background: #161942
 }
 
 .btn.style2 {
@@ -818,7 +818,7 @@ select {
 
 .btn.style2:after,
 .btn.style2:before {
-	background: #010647
+	background: #161942
 }
 
 .btn.style2:hover {
@@ -1074,7 +1074,7 @@ select {
 }
 
 .bg-stratos {
-	background-color: #010647
+	background-color: #161942
 }
 
 .bg-rock {
@@ -2543,7 +2543,7 @@ select {
 	}
 
 	.header-wrap .header-bottom .navbar .navbar-nav .nav-item .dropdown-menu li a.active {
-		color: #010647
+		color: #161942
 	}
 
 	.header-wrap .header-bottom .navbar .navbar-nav .nav-item .dropdown-menu .nav-item .dropdown-menu {
@@ -2590,7 +2590,7 @@ select {
 		height: 38px;
 		border-radius: 50%;
 		text-align: center;
-		background-color: #010647;
+		background-color: #161942;
 		display: -webkit-box;
 		display: -ms-flexbox;
 		display: flex;
@@ -2822,7 +2822,7 @@ select {
 	.header-wrap .navbar .navbar-nav .nav-item a:hover,
 	.header-wrap .navbar .navbar-nav .nav-item a:focus,
 	.header-wrap .navbar .navbar-nav .nav-item a.active {
-		color: #010647
+		color: #161942
 	}
 
 	.header-wrap .navbar .navbar-nav .nav-item a:hover:after,
@@ -4665,7 +4665,7 @@ select {
 	height: 100%;
 	-webkit-transform: rotate(45deg);
 	transform: rotate(45deg);
-	background: #010647;
+	background: #161942;
 	border-radius: 7px;
 	z-index: -1
 }

@@ -241,8 +241,8 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="about-content">
-                            <img src="landingpage/img/about/about-shape-3.png" alt="Image"
-                                class="about-shape-three">
+                            {{-- <img src="landingpage/img/about/about-shape-3.png" alt="Image"
+                                class="about-shape-three"> --}}
                             <div class="content-title style1">
                                 <span>Smart Banking</span>
                                 <h2>The Better Way To Save &amp; Invest Online Banking</h2>

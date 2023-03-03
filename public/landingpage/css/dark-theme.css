@@ -96,7 +96,7 @@ input:checked+.slider:before {
 }
 
 .theme-light .header-wrap.style2 .header-bottom .header-btn .btn.style1:after {
-    background-color: #00a9a4
+    background-color: #eb7b17
 }
 
 .theme-dark .dpt-100 {
@@ -160,7 +160,7 @@ input:checked+.slider:before {
 .theme-dark .accordion .accordion-item .accordion-header .accordion-button,
 .theme-dark .faq-wrap .accordion.style2 .accordion-item .accordion-header .accordion-button,
 .theme-dark .cta-wrap.style1 {
-    background-color: #0e1c1f !important
+    background-color: #1f160e !important
 }
 
 .theme-dark .service-card.style3:after {
@@ -172,7 +172,7 @@ input:checked+.slider:before {
 }
 
 .theme-dark .pricing-table.style1 .btn.style1 {
-    background-color: #00a9a4
+    background-color: #eb7b17
 }
 
 .theme-dark .service-wrap.style1 {
@@ -229,7 +229,7 @@ input:checked+.slider:before {
 .theme-dark .terms-wrap p strong,
 .theme-dark .project-desc p strong,
 .theme-dark .copyright-text p a {
-    color: #00a9a4 !important
+    color: #eb7b17 !important
 }
 
 .theme-dark article,
@@ -248,11 +248,11 @@ input:checked+.slider:before {
 }
 
 .theme-dark .header-wrap .header-bottom .navbar-nav .nav-item .dropdown-menu li a.active {
-    border-color: #00a9a4
+    border-color: #eb7b17
 }
 
 .theme-dark .tag-list ul li a:hover {
-    background: #00a9a4 !important;
+    background: #eb7b17 !important;
     border-color: transparent;
     color: #fff
 }
@@ -294,7 +294,7 @@ input:checked+.slider:before {
 }
 
 .theme-dark .contact-item .contact-icon {
-    background-color: #00a9a4
+    background-color: #eb7b17
 }
 
 .theme-dark .contact-item:hover .contact-icon {
@@ -355,7 +355,7 @@ input:checked+.slider:before {
     }
 
     .theme-dark .main-menu-wrap {
-        background-color: #0e1c1f
+        background-color: #1f160e
     }
 
     .theme-dark .header-wrap .mobile-top-bar span {
@@ -372,7 +372,7 @@ input:checked+.slider:before {
     }
 
     .theme-dark .main-menu li a:hover {
-        color: #00a9a4
+        color: #eb7b17
     }
 
     .theme-dark .header-wrap.style1 .header-top .header-top-right .header-top-menu li::before {
@@ -384,7 +384,7 @@ input:checked+.slider:before {
     }
 
     .theme-dark .header-wrap .header-bottom .navbar .navbar-nav .nav-item a.active {
-        border-color: #00a9a4
+        border-color: #eb7b17
     }
 
     .theme-dark .header-wrap .header-bottom .navbar .navbar-nav .nav-item .dropdown-menu {
@@ -394,10 +394,10 @@ input:checked+.slider:before {
 
 @media only screen and (min-width:1200px) {
     .theme-dark .main-menu-wrap #menu ul li.has-children .sub-menu {
-        background-color: #0e1c1f
+        background-color: #1f160e
     }
 
     .theme-dark .header-wrap .navbar .navbar-nav .nav-item .dropdown-menu {
-        background-color: #0e1c1f
+        background-color: #1f160e
     }
 }
