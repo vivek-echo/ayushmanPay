@@ -43,7 +43,7 @@ class WalletController extends Controller
                     ]);
                     DB::table('user_wallet_log')->insert([
                         'wId' =>  $insertId,
-                        'serviceLogId' =>  0,
+                        'serviceLogId' =>  1,
                         'transactionType' =>  1,
                         'userId' =>  $userId,
                         'walletAmount' => $getData['amount'],

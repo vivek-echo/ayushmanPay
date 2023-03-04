@@ -64,7 +64,8 @@
                 <div class="login-card">
                     <div>
                         <div><a class="logo text-center" href="#"><img class="img-fluid for-light"
-                                    src="{{ asset('images/logo/ayp-black.png') }}" alt="looginpage" width="320"></a></div>
+                                    src="{{ asset('images/logo/ayp-black.png') }}" alt="looginpage" width="320"></a>
+                        </div>
                         <div class="login-main">
                             <div class="theme-form">
 
@@ -449,23 +450,38 @@
                                 },
 
                                 success: function(res) {
-                                    $('#memberTypeModal').val(res.data.memberType);
-                                    $('#firstNameModal').val(res.data.firstName);
-                                    $('#lastNameModal').val(res.data.lastName);
-                                    $('#emailModal').val(res.data.email);
-                                    $('#shopNameModal').val(res.data.shopName);
-                                    $('#dateOfBirthModal').val(res.data.dateOfBirth);
-                                    $('#pinCodeModal').val(res.data.pinCode);
-                                    $('#stateModal').val(res.data.state);
-                                    $('#stateIdModal').val(res.data.stateId);
-                                    $('#cityModal').val(res.data.city);
-                                    $('#cityIdModal').val(res.data.cityId);
-                                    $('#addressModal').val(res.data.address);
-                                    $('#referralCodeModal').val(res.data.referralCode);
-                                    $('#referralCodeModal').val(res.data.referralCode);
-                                    $('#otpValidEnc').val(res.data.otpENc);
-                                    $('.otpModal').modal('show');
-                                    $('.pageLoader').fadeOut();
+                                    if (res.status == true) {
+                                        $('#memberTypeModal').val(res.data.memberType);
+                                        $('#firstNameModal').val(res.data.firstName);
+                                        $('#lastNameModal').val(res.data.lastName);
+                                        $('#emailModal').val(res.data.email);
+                                        $('#shopNameModal').val(res.data.shopName);
+                                        $('#dateOfBirthModal').val(res.data.dateOfBirth);
+                                        $('#pinCodeModal').val(res.data.pinCode);
+                                        $('#stateModal').val(res.data.state);
+                                        $('#stateIdModal').val(res.data.stateId);
+                                        $('#cityModal').val(res.data.city);
+                                        $('#cityIdModal').val(res.data.cityId);
+                                        $('#addressModal').val(res.data.address);
+                                        $('#referralCodeModal').val(res.data.referralCode);
+                                        $('#referralCodeModal').val(res.data.referralCode);
+                                        $('#otpValidEnc').val(res.data.otpENc);
+                                        $('.otpModal').modal('show');
+                                        $('.pageLoader').fadeOut();
+                                    } else {
+                                        $('.pageLoader').fadeOut();
+                                        swal("Error", res.msg, "error").then(
+                                            function(res) {
+                                                $('.pageLoader').fadeIn();
+                                                if (res) {
+                                                    var loc = window.location;
+                                                    window.location = loc
+                                                        .origin + "/register"
+                                                }
+                                            }
+                                        );
+                                    }
+
 
 
                                 }

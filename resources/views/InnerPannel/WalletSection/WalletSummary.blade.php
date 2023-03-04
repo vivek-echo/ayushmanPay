@@ -9,7 +9,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#"><i data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="/dashboard"><i data-feather="home"></i></a></li>
                         <li class="breadcrumb-item">Wallet Section</li>
                         <li class="breadcrumb-item active">Wallet Summary</li>
                     </ol>
@@ -27,131 +27,93 @@
                         <h4>Wallet Transaction :</h4><span></span>
                     </div>
                     <div class="card-body">
-                        <div class="row m-0">
-                            <div class="form-group col-4 ps-0">
-                                <label class="col-form-label">From Date</label><span
-                                    class="text-danger fa-lg font-weight-500">
-                                    *</span>
-                                <div class="input-group">
-                                    <input class="datepicker-here form-control digits" type="text" data-language="en" placeholder="From Date">
-                                    <div class="input-group-text" id=""><i class="text-secondary"
-                                            data-feather="calendar"></i></div>
+
+                        <form method="post" action="/wallet/walletsummary" id="formSubmit" enctype='multipart/form-data'>
+                            @csrf
+                            <div class="row m-0">
+                                <div class="form-group col-6 ps-0">
+                                    <label class="col-form-label">From Date</label><span
+                                        class="text-danger fa-lg font-weight-500">
+                                        *</span>
+                                    <div class="input-group">
+                                        <input class="datepicker-here form-control digits" type="text" data-language="en"
+                                            id="fromDate" name="fromDate" placeholder="From Date" value="" readonly>
+                                        <div class="input-group-text" id=""><i class="text-secondary"
+                                                data-feather="calendar"></i></div>
+                                    </div>
+
                                 </div>
+                                <div class="form-group col-6">
+                                    <label class="col-form-label">To Date</label><span
+                                        class="text-danger fa-lg font-weight-500">
+                                        *</span>
+                                    <div class="input-group">
+                                        <input class="datepicker-here form-control digits" type="text" data-language="en"
+                                            id="toDate" name="toDate" placeholder="To Date" value="" readonly>
+                                        <div class="input-group-text" id=""><i class="text-secondary"
+                                                data-feather="calendar"></i></div>
+                                    </div>
 
-                            </div>
-                            <div class="form-group col-4">
-                                <label class="col-form-label">To Date</label><span
-                                    class="text-danger fa-lg font-weight-500">
-                                    *</span>
-                                <div class="input-group">
-                                    <input class="datepicker-here form-control digits" type="text" data-language="en" placeholder="To Date">
-                                    <div class="input-group-text" id=""><i class="text-secondary"
-                                            data-feather="calendar"></i></div>
                                 </div>
-
+                                <input type="hidden" name="btnSearchSubmit" value="1">
                             </div>
-                            <div class="form-group col-4 m-t-35">
-                                <button class="btn btn-success" id="">Search</button>
-                            </div>
+                        </form>
 
+                        <div class="form-group col-4 m-t-35">
+                            <button class="btn btn-success" id="btnSearch">Search</button>
                         </div>
+
+
                         <hr>
-                        <div class="dt-ext table-responsive pt-3">
-                            <table class="display" id="export-button">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Service</th>
-                                        <th>Type</th>
-                                        <th>Description</th>
-                                        <th>Transaction Amount(Rs.)</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Service 1</td>
-                                        <td>Type 1</td>
-                                        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</td>
-                                        <td>10,000</td>
-                                        <td>
-                                            <ul class="action">
-                                                <li class="edit"> <a href="#"><i class="myicon-edit"></i></a></li>
-                                                <li class="delete"><a href="#"><i class="myicon-trash-2"></i></a></li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Service 2</td>
-                                        <td>Type 2</td>
-                                        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</td>
-                                        <td>20,000</td>
-                                        <td>
-                                            <ul class="action">
-                                                <li class="edit"> <a href="#"><i class="myicon-edit"></i></a></li>
-                                                <li class="delete"><a href="#"><i class="myicon-trash-2"></i></a></li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Service 3</td>
-                                        <td>Type 3</td>
-                                        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</td>
-                                        <td>5,000</td>
-                                        <td>
-                                            <ul class="action">
-                                                <li class="edit"> <a href="#"><i class="myicon-edit"></i></a></li>
-                                                <li class="delete"><a href="#"><i class="myicon-trash-2"></i></a></li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Service 3</td>
-                                        <td>Type 3</td>
-                                        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</td>
-                                        <td>7,000</td>
-                                        <td>
-                                            <ul class="action">
-                                                <li class="edit"> <a href="#"><i class="myicon-edit"></i></a></li>
-                                                <li class="delete"><a href="#"><i class="myicon-trash-2"></i></a></li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>Service 5</td>
-                                        <td>Type 5</td>
-                                        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</td>
-                                        <td>2,000</td>
-                                        <td>
-                                            <ul class="action">
-                                                <li class="edit"> <a href="#"><i class="myicon-edit"></i></a></li>
-                                                <li class="delete"><a href="#"><i class="myicon-trash-2"></i></a></li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Service</th>
-                                        <th>Type</th>
-                                        <th>Description</th>
-                                        <th>Transaction Amount(Rs.)</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
+                        @if ($searchView == 0)
+                            
+                                <div class="card">
+                                    <div class="card-body bg-warning " style="border-radius:10px 10px 10px 10px;">
+                                        <h4>Please Search The Filter To Get The Wallet Summary .</h4>
+                                    </div>
+                                </div>
+                               
+                        @else
+                            <div class="dt-ext table-responsive pt-3" id="searched">
+                                <table class="display" id="export-button">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Service</th>
+                                            <th>Acknoledge Number</th>
+                                            <th>Refrence Id</th>
+                                            <th>Message</th>
+                                            <th>TransactionType</th>
+                                            <th>Transaction Date</th>
+                                            <th>Transaction Amount(Rs.)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="walTrans">
+                                        @foreach ($dataView as $k => $item)
+                                            <tr>
+                                               
+                                                <td>{{ $k + 1 }}</td>
+                                                <td>{{ $item['servicType'] }}</td>
+                                                <td>{{ $item['ackno'] }}</td>
+                                                <td>{{ $item['riefId'] }}</td>
+                                                <td>{{ $item['message'] }}</td>
+                                                <td>{{ $item['transactionType'] == 1 ? "Credited" : "Debited" }}</td>
+                                                <td>{{ $item['createdOn'] }}</td>
+                                                @if($item['transactionType'] == 1)
+                                                <td class="text-success">+ {{ $item['walletAmount'] }}</td>
+                                                @else
+                                                <td class="text-danger">- {{ $item['walletAmount'] }}</td>
+                                                @endIf
+                                            </tr>
+                                        @endforeach
 
-                        {{-- <div class="form-group mt-4">
-                            <button class="btn btn-warning" id="">Fetch Bill</button>
-                            <button class="btn btn-primary" id="">Pay Bill</button>
-                        </div> --}}
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        @endIf
+
                     </div>
                 </div>
             </div>
@@ -163,7 +125,45 @@
         $(document).ready(function() {
             // FOR ACTIVE SIDEBAR LINK
             $('#walletLink').addClass('activeLink');
+            $('#btnSearch').on('click', function() {
+                // var fromDate = $('#fromDate').val();
+                // var toDate = $('#toDate').val();
+                $('.pageLoader').fadeIn();
+                $('#formSubmit').submit();
+                // $.ajax({
+                //     url: "{{ url('/getWalletLogs') }}",
+                //     data: {
+                //         fromDate:fromDate,toDate:toDate
+                //     },
+                //     success: function(res) {
 
+                //         var dataLength = res.data.length;
+                //         var dataBindOption =[];
+                //         console.log(res.data);
+                //         for (var i = 0; i < dataLength; i++) {
+                //             var sl = (i+1);
+                //             var serviceType = res.data[i].servicType ;
+                //             var walletAmount = res.data[i].walletAmount ;
+                //             var transactionType = (res.data[i].transactionType == 1) ? "Credit" : "Debit";
+                //             var ackno = res.data[i].ackno ;
+                //             var riefId = res.data[i].riefId ;
+                //             var message = res.data[i].message ;
+
+                //             dataBind = '<tr><td>'+sl+'</td><td>'+serviceType+'</td><td>'+ackno+'</td><td>'+riefId+'</td><td>'+message+'</td><td>'+ transactionType  +'</td><td>'+walletAmount+'</td></tr>'
+                //             dataBindOption.push(dataBind);
+                //         }
+                //         console.log(dataBindOption);
+                //         $('#walTrans').html(dataBindOption.join(" "));
+
+
+                //         $('#notSerachDiv').hide();
+                //         $('#searched').show();
+                //         $('.pageLoader').fadeOut();
+
+
+                //     }
+                // });
+            })
 
             //FOR DATEPICKER
             // $('#fromDate').datepicker({

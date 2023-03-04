@@ -71,6 +71,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(['GET', 'POST'], '/services/legalServices/drivinglicence', [App\Http\Controllers\InnerPannel\Services\LegalServices\DrivingLicController::class, 'index']);
     Route::match(['GET', 'POST'], '/fetchDrivingLic', [App\Http\Controllers\InnerPannel\Services\LegalServices\DrivingLicController::class, 'fetchDrivingLic']);
     Route::match(['GET', 'POST'], '/downloadDrivingLic', [App\Http\Controllers\InnerPannel\Services\LegalServices\DrivingLicController::class, 'downloadDrivingLic']);
+    //pancard nsld
+    Route::match(['GET', 'POST'], '/services/legalServices/PanCardNsld', [App\Http\Controllers\InnerPannel\Services\LegalServices\PanCardNsldController::class, 'index']);
+    Route::match(['GET', 'POST'], '/PanCardNsldGen', [App\Http\Controllers\InnerPannel\Services\LegalServices\PanCardNsldController::class, 'PanCardNsldGen']);
+
+    //walletsummary
+    Route::match(['GET', 'POST'], '/wallet/walletsummary', [App\Http\Controllers\Wallet\WalletSummaryController::class, 'index']);
+    Route::match(['GET', 'POST'], '/getWalletLogs', [App\Http\Controllers\Wallet\WalletSummaryController::class, 'getWalletLogs']);
+
 });
 //B2BService
 Route::get('/services/hospital', function () {
@@ -81,9 +89,6 @@ Route::get('/services/broadband', function () {
 });
 Route::get('/services/lifeinsurance', function () {
     return view('InnerPannel/Services/BtwoBServices/LifeInsuranceService');
-});
-Route::get('/services/LpgGasBooking', function () {
-    return view('InnerPannel/Services/BtwoBServices/LpgGasBookingService');
 });
 
 Route::get('/services/irctcservice', function () {
@@ -103,9 +108,7 @@ Route::get('/services/birthcertificate', function () {
 Route::get('/services/deathcertificate', function () {
     return view('InnerPannel/Services/LegalServices/DeathCertificateService');
 });
-Route::get('/services/nsdlpancenter', function () {
-    return view('InnerPannel/Services/LegalServices/NsdlPanCenterService');
-});
+
 
 Route::get('/services/rcservice', function () {
     return view('InnerPannel/Services/LegalServices/RCService');
@@ -113,9 +116,6 @@ Route::get('/services/rcservice', function () {
 
 
 
-Route::get('/walletsection/walletsummary', function () {
-    return view('InnerPannel/WalletSection/WalletSummary');
-});
 Route::get('/walletsection/printMyQR', function () {
     return view('InnerPannel/WalletSection/PrintQR');
 });

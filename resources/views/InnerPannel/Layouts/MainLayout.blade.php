@@ -237,9 +237,9 @@
                                             id="walletLink" href="javascript:void(0)"><i data-feather="briefcase"></i><span>Wallet
                                                     Section</span></a>
                                             <ul class="sidebar-submenu">
-                                                <li><a href="{{ url('/walletsection/walletsummary') }}">Wallet Summary</a></li>
-                                                <li><a href="{{ url('/walletsection/printMyQR') }}">Print My QR</a></li>
-                                                <li><a href="#">Settlement</a></li>
+                                                <li><a href="{{ url('/wallet/walletsummary') }}">Wallet Summary</a></li>
+                                                {{-- <li><a href="{{ url('/walletsection/printMyQR') }}">Print My QR</a></li>
+                                                <li><a href="#">Settlement</a></li> --}}
                                             </ul>
                                         </li>
                                     </ul>

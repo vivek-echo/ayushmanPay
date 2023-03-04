@@ -18,6 +18,15 @@ class OtpController extends Controller
     public function vialidateOtpPage()
     {
         $getData = request()->all();
+        $checkEmail = DB::table('users')->where('email',$getData['email'])->where('deletedFlag',0)->first();
+        if($checkEmail)
+        {
+             return response()->json([
+            'status' => false,
+            'msg'=>'Email already exsits',
+            'data' => []
+        ]);
+        }
         $mailData = [];
         $res['memberType'] = Crypt::encryptString($getData['memberType']);
         $res['firstName'] = Crypt::encryptString($getData['firstName']);
@@ -35,18 +44,19 @@ class OtpController extends Controller
         $res['otp'] = mt_rand(100000, 999999);
         $resMAil = $res['otp'];
         $res['otpENc'] = Crypt::encryptString($res['otp']);
-        array_push($getData,['otp'=>$resMAil]);
+        array_push($getData, ['otp' => $resMAil]);
         // dd($getData[0]['otp']);
         $this->sendMailOtp($getData);
         return response()->json([
             'status' => true,
+            'msg'=>'',
             'data' => $res
         ]);
     }
     public function viewOtpPage()
     {
         $getData = request()->all();
-      
+
         $res['memberType'] = $getData['memberType'];
         $res['firstName'] = $getData['firstName'];
         $res['lastName'] = $getData['lastName'];
@@ -68,25 +78,26 @@ class OtpController extends Controller
     public function index(Request $request)
     {
         $getData = request()->all();
-        
+
         if (!$getData) {
             return "Not Authorized";
         }
-       
+
         try {
             $trans = DB::beginTransaction();
             // $resIns['userId'] =  $this->userId();
+
             $resIns['memberType'] =  Crypt::decryptString($getData['memberType']);
             $resIns['email'] =  Crypt::decryptString($getData['email']);
             $resIns['firstName'] =  Crypt::decryptString($getData['firstName']);
             $pass = $this->password();
             $resIns['password'] =  Hash::make($pass);
-            $resIns['temp'] =  $pass ;
+            $resIns['temp'] =  $pass;
             $resIns['lastName'] =  Crypt::decryptString($getData['lastName']);
             $resIns['mobile'] =  9999999999;
             $resIns['shopName'] =  Crypt::decryptString($getData['shopName']);
             $dateOfBirth =  Crypt::decryptString($getData['dateOfBirth']);
-            $resIns['dateOfBirth'] = date('y-m-d', strtotime( $dateOfBirth));
+            $resIns['dateOfBirth'] = date('y-m-d', strtotime($dateOfBirth));
             $resIns['pinCode'] =  Crypt::decryptString($getData['pinCode']);
             $resIns['stateId'] =  Crypt::decryptString($getData['stateId']);
             $resIns['state'] =  Crypt::decryptString($getData['state']);
@@ -94,14 +105,15 @@ class OtpController extends Controller
             $resIns['city'] =  Crypt::decryptString($getData['city']);
             $resIns['address'] =  Crypt::decryptString($getData['address']);
             $resIns['referalCode'] =  Crypt::decryptString($getData['referralCode']);
-            $insertAllRecord = DB::transaction(function () use ($resIns) {
-                $id = DB::table('users')->insertGetId($resIns);
-                $userId = $this->userId($id);
-                DB::table('users')->where('id', $id) ->update([
-                    'userId' =>$userId
-                ]);
-            });
-            if (is_null($insertAllRecord)) {
+
+            $id = DB::table('users')->insertGetId($resIns);
+            $userId = $this->getUserId($id);
+            $update =  DB::table('users')->where('id', $id)->update([
+                'userId' => $userId
+            ]);
+
+            $resIns['userId'] = $userId;
+            if ($update) {
                 $this->sendMailWecome($resIns);
                 $status = true;
                 $msg = "Account Created Successfully";
@@ -138,11 +150,11 @@ class OtpController extends Controller
             'status' => $status
         ]);
     }
-    public function userId($id)
+    public function getUserId($id)
     {
-        
+
         $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $userId = "ABP" . substr(str_shuffle(str_repeat($pool, 3)), 0, 6).$id;
+        $userId = "ABP" . substr(str_shuffle(str_repeat($pool, 3)), 0, 6) . $id;
         return $userId;
     }
     public function password()
@@ -152,11 +164,12 @@ class OtpController extends Controller
         return $pass;
     }
 
-    public function sendMailOtp($data){
-        Mail::to( $data['email'])->send(new SignUp($data ));
+    public function sendMailOtp($data)
+    {
+        Mail::to($data['email'])->send(new SignUp($data));
     }
     public function sendMailWecome($dataWel)
     {
-        Mail::to( $dataWel['email'])->send(new SignUpWelcome($dataWel));
+        Mail::to($dataWel['email'])->send(new SignUpWelcome($dataWel));
     }
 }

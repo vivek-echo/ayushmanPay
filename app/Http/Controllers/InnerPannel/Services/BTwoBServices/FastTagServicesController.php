@@ -110,7 +110,7 @@ class FastTagServicesController extends Controller
                         'userId'=> $userId,
                         'walletAmount'=> $params['amount'] ,
                         'createdOn'=>date('Y-m-d H:i:s'),
-                        'servicType'=>3,
+                        'servicType'=>6,
                         'transactionType'=>2
                     ]);
 

@@ -1,0 +1,4 @@
+ALTER TABLE `sql12601106`.`user_wallet_log` 
+ADD COLUMN `ackno` VARCHAR(115) NULL AFTER `transactionType`,
+ADD COLUMN `riefId` VARCHAR(115) NULL AFTER `ackno`,
+ADD COLUMN `message` VARCHAR(200) NULL AFTER `riefId`;

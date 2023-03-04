@@ -128,7 +128,7 @@
                                             <h6>Death<br> Certificate</h6></a>
                                         </li> --}}
                                         <li>
-                                            <a href="/services/nsdlpancenter"><div class="quick-box"><i class="myicon-nsdl"></i></div>
+                                            <a href="/services/legalServices/PanCardNsld"><div class="quick-box"><i class="myicon-nsdl"></i></div>
                                             <h6>NSDL Pan<br> Center</h6></a>
                                         </li>
                                         <li>
