@@ -60,7 +60,7 @@
                         </form>
 
                         <div class="form-group col-4 m-t-35">
-                            <button class="btn btn-success" id="btnSearch">Search</button>
+                            <button class="btn btn-warning" id="btnSearch">Search</button>
                         </div>
 
 

@@ -9,8 +9,8 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#"><i data-feather="home"></i></a></li>
-                        <li class="breadcrumb-item">Services</li>
+                        <li class="breadcrumb-item"><a href="/dashboard"><i data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="/services">Services</a></li>
                         <li class="breadcrumb-item active">Pan Card (UTI)</li>
                     </ol>
                 </div>

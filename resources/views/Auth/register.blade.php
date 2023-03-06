@@ -190,8 +190,8 @@
                                 <div class="row">
                                     <div class="form-group col-6">
                                         <label class="col-form-label">Address</label>
-                                        <input name="address" id="address" class="form-control" type="text"
-                                            placeholder="Address" autocomplete="off">
+                                        <input name="address" id="address" class="form-control" type="number"
+                                            placeholder="Enter Mobile Number" autocomplete="off">
 
                                     </div>
 
@@ -251,7 +251,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <img class="img-fluid for-light" src="{{ asset('images/logo/ABP.png') }}" alt="looginpage"
+                        <img class="img-fluid for-light" src="{{ asset('images/logo/ayp-black.png') }}" alt="looginpage"
                             width="250">
                         <button class="btn-close" type="button" data-bs-dismiss="modal"
                             aria-label="Close"></button>

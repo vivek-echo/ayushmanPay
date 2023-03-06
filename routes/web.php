@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +18,9 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 Route::get('/', [App\Http\Controllers\Home\HomePageController::class, 'index']);
-Route::get('/login', function(){
-    return view('Auth.Login');
-});
-Route::get('/register', function(){
-    return view('Auth.register');
+Route::get('/config', function(){
+    Artisan::call('optimize:clear');
+    return "cache:cleared";
 });
 Route::get('/checkExistingUser', [App\Http\Controllers\Home\HomePageController::class, 'checkExistingUser']);
 Route::get('/checkUserTypedAndEncryptedOTP', [App\Http\Controllers\Home\HomePageController::class, 'checkUserTypedAndEncryptedOTP']);
@@ -89,6 +88,10 @@ Route::group(['middleware' => 'auth'], function () {
     //rc
     Route::match(['GET', 'POST'], '/services/legalServices/Rc', [App\Http\Controllers\InnerPannel\Services\LegalServices\RCController::class, 'index']);
     Route::match(['GET', 'POST'], '/fetchRC', [App\Http\Controllers\InnerPannel\Services\LegalServices\RCController::class, 'fetchRC']);
+    
+    //voter Id card
+    Route::match(['GET', 'POST'], '/services/legalServices/voterIdCard', [App\Http\Controllers\InnerPannel\Services\LegalServices\VoterController::class, 'index']);
+    Route::match(['GET', 'POST'], '/fetchVoter', [App\Http\Controllers\InnerPannel\Services\LegalServices\VoterController::class, 'fetchVoter']);
 
 });
 //B2BService

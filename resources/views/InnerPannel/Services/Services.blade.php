@@ -9,8 +9,8 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
-                        <li class="breadcrumb-item active">Services</li>
+                        <li class="breadcrumb-item"><a href="/dashboard"><i data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="/services">Services</a></li>
                     </ol>
                 </div>
             </div>
@@ -138,6 +138,10 @@
                                         <li>
                                             <a href="/services/legalServices/Rc"><div class="quick-box"><i class="myicon-rc"></i></div>
                                             <h6>RC<br> Registration</h6></a>
+                                        </li>
+                                        <li>
+                                            <a href="/services/legalServices/voterIdCard"><div class="quick-box"><i class="myicon-rc"></i></div>
+                                            <h6>Voter Id<br> Card</h6></a>
                                         </li>
                                     </ul>
                                 </div>
