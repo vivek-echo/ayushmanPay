@@ -2352,6 +2352,14 @@ table tbody .border-bottom-warning td {
 	background-color: transparent
 }
 
+.box-shadow-1 {
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+	-ms-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+	-o-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
 .b-primary {
 	border: 1px solid #5c61f2 !important
 }
@@ -4495,6 +4503,10 @@ strong~p {
 
 .bookmark ul li:last-child a svg {
 	color: #ff9f40
+}
+
+.border-bottom-dark {
+	border-bottom: 1px solid #212529 !important;
 }
 
 .offcanvas-bookmark.page-wrapper.horizontal-wrapper .page-body-wrapper .page-body .bookmark ul li a {
@@ -12012,7 +12024,7 @@ th {
 }
 
 .table .bg-light {
-	color: #2b2b2b
+	color: #f6f8fc 
 }
 
 .table tfoot {
