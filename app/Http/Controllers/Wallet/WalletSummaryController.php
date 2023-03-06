@@ -25,7 +25,7 @@ class WalletSummaryController extends Controller
             '4' => "LPG Booking Service",
             '5' => "Emi Bill Service",
             '6' => "Fast Tag Service",
-
+            '7' => "BroadBand Service"
         ];
         $data = [];
         $user = Auth::user();
@@ -76,8 +76,10 @@ class WalletSummaryController extends Controller
             '4' => "LPG Booking Service",
             '5' => "Emi Bill Service",
             '6' => "Fast Tag Service",
+            '7' => "BroadBand Service"
 
         ];
+        
         $user = Auth::user();
         $queryData = DB::table('user_wallet_log')->where('userId', $user->id);
         if (!empty($getData['fromDate'])) {

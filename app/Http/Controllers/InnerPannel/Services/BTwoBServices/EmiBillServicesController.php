@@ -98,7 +98,10 @@ class EmiBillServicesController extends Controller
                             'walletAmount'=> $params['amount'] ,
                             'createdOn'=>date('Y-m-d H:i:s'),
                             'servicType'=>5,
-                            'transactionType'=>2
+                            'transactionType'=>2,
+                            'ackno' => $payBill['ackno'],
+                            'riefId' => $payBill['refid'],
+                            'message' => $payBill['message'],
                         ]);
     
                         DB::table('user_wallet')->where('deletedFlag',0)->where('userId',$userId)->update([

@@ -39,6 +39,8 @@ class OtpController extends Controller
         $res['stateId'] = Crypt::encryptString($getData['stateId']);
         $res['city'] = Crypt::encryptString($getData['city']);
         $res['cityId'] = Crypt::encryptString($getData['cityId']);
+        $res['mobile'] = Crypt::encryptString($getData['mobile']);
+        $res['gender'] = Crypt::encryptString($getData['gender']);
         $res['address'] = Crypt::encryptString($getData['address']);
         $res['referralCode'] = Crypt::encryptString($getData['referralCode']);
         $res['otp'] = mt_rand(100000, 999999);
@@ -68,6 +70,8 @@ class OtpController extends Controller
         $res['stateId'] = $getData['stateId'];
         $res['city'] = $getData['city'];
         $res['cityId'] = $getData['cityId'];
+        $res['mobile'] = $getData['mobile'];
+        $res['gender'] = $getData['gender'];
         $res['address'] = $getData['address'];
         $res['referralCode'] = $getData['referralCode'];
         $res['otp'] = $getData['otp'];
@@ -94,7 +98,7 @@ class OtpController extends Controller
             $resIns['password'] =  Hash::make($pass);
             $resIns['temp'] =  $pass;
             $resIns['lastName'] =  Crypt::decryptString($getData['lastName']);
-            $resIns['mobile'] =  9999999999;
+            $resIns['mobile'] =  Crypt::decryptString($getData['mobile']);
             $resIns['shopName'] =  Crypt::decryptString($getData['shopName']);
             $dateOfBirth =  Crypt::decryptString($getData['dateOfBirth']);
             $resIns['dateOfBirth'] = date('y-m-d', strtotime($dateOfBirth));
@@ -103,6 +107,8 @@ class OtpController extends Controller
             $resIns['state'] =  Crypt::decryptString($getData['state']);
             $resIns['cityId'] =  Crypt::decryptString($getData['cityId']);
             $resIns['city'] =  Crypt::decryptString($getData['city']);
+            // $resIns['mobile'] =  Crypt::decryptString($getData['mobile']);
+            $resIns['gender'] =  Crypt::decryptString($getData['gender']);
             $resIns['address'] =  Crypt::decryptString($getData['address']);
             $resIns['referalCode'] =  Crypt::decryptString($getData['referralCode']);
 

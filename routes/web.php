@@ -17,6 +17,12 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 Route::get('/', [App\Http\Controllers\Home\HomePageController::class, 'index']);
+Route::get('/login', function(){
+    return view('Auth.Login');
+});
+Route::get('/register', function(){
+    return view('Auth.register');
+});
 Route::get('/checkExistingUser', [App\Http\Controllers\Home\HomePageController::class, 'checkExistingUser']);
 Route::get('/checkUserTypedAndEncryptedOTP', [App\Http\Controllers\Home\HomePageController::class, 'checkUserTypedAndEncryptedOTP']);
 Route::get('/loginAction', [App\Http\Controllers\Home\HomePageController::class, 'loginAction']);
@@ -55,6 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
     //BroadBand
     Route::match(['GET', 'POST'], '/services/b2bServices/Broadband', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\BroadbandServicesController::class, 'index']);
     Route::match(['GET', 'POST'], '/fetchBroadbandBill', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\BroadbandServicesController::class, 'fetchBroadbandBill']);
+    Route::match(['GET', 'POST'], '/payBroadbandBill', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\BroadbandServicesController::class, 'payBroadbandBill']);
     //Money Transfer
     Route::match(['GET', 'POST'], '/services/b2bServices/MoneyTransfer', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'index']);
     Route::match(['GET', 'POST'], '/getBankList', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'getBankList']);
@@ -78,6 +85,10 @@ Route::group(['middleware' => 'auth'], function () {
     //walletsummary
     Route::match(['GET', 'POST'], '/wallet/walletsummary', [App\Http\Controllers\Wallet\WalletSummaryController::class, 'index']);
     Route::match(['GET', 'POST'], '/getWalletLogs', [App\Http\Controllers\Wallet\WalletSummaryController::class, 'getWalletLogs']);
+
+    //rc
+    Route::match(['GET', 'POST'], '/services/legalServices/Rc', [App\Http\Controllers\InnerPannel\Services\LegalServices\RCController::class, 'index']);
+    Route::match(['GET', 'POST'], '/fetchRC', [App\Http\Controllers\InnerPannel\Services\LegalServices\RCController::class, 'fetchRC']);
 
 });
 //B2BService

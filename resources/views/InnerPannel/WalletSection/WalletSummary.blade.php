@@ -126,52 +126,13 @@
             // FOR ACTIVE SIDEBAR LINK
             $('#walletLink').addClass('activeLink');
             $('#btnSearch').on('click', function() {
-                // var fromDate = $('#fromDate').val();
-                // var toDate = $('#toDate').val();
+                
                 $('.pageLoader').fadeIn();
                 $('#formSubmit').submit();
-                // $.ajax({
-                //     url: "{{ url('/getWalletLogs') }}",
-                //     data: {
-                //         fromDate:fromDate,toDate:toDate
-                //     },
-                //     success: function(res) {
-
-                //         var dataLength = res.data.length;
-                //         var dataBindOption =[];
-                //         console.log(res.data);
-                //         for (var i = 0; i < dataLength; i++) {
-                //             var sl = (i+1);
-                //             var serviceType = res.data[i].servicType ;
-                //             var walletAmount = res.data[i].walletAmount ;
-                //             var transactionType = (res.data[i].transactionType == 1) ? "Credit" : "Debit";
-                //             var ackno = res.data[i].ackno ;
-                //             var riefId = res.data[i].riefId ;
-                //             var message = res.data[i].message ;
-
-                //             dataBind = '<tr><td>'+sl+'</td><td>'+serviceType+'</td><td>'+ackno+'</td><td>'+riefId+'</td><td>'+message+'</td><td>'+ transactionType  +'</td><td>'+walletAmount+'</td></tr>'
-                //             dataBindOption.push(dataBind);
-                //         }
-                //         console.log(dataBindOption);
-                //         $('#walTrans').html(dataBindOption.join(" "));
-
-
-                //         $('#notSerachDiv').hide();
-                //         $('#searched').show();
-                //         $('.pageLoader').fadeOut();
-
-
-                //     }
-                // });
+                
             })
 
-            //FOR DATEPICKER
-            // $('#fromDate').datepicker({
-            //     format: "dd/mm/yyyy"
-            // });
-            // $('#toDate').datepicker({
-            //     format: "dd/mm/yyyy"
-            // });
+        
         });
     </script>
 @endsection

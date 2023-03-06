@@ -72,7 +72,7 @@
 
                         <div class="form-group mt-4">
                             <button class="btn btn-warning" id="fetchBillButton">Fetch Bill</button>
-                            <button class="btn btn-primary" id="">Pay Bill</button>
+                            <button class="btn btn-primary" id="payBillButton">Pay Bill</button>
                         </div>
                     </div>
                 </div>
@@ -277,6 +277,73 @@
                     }
                 });
             }
+
+            $('#payBillButton').on('click', function() {
+                var billerId = $('#perpaidOperator').val();
+                var billerName = $('#perpaidOperator option:selected').text();
+                var canNumber = $('#canNumber').val();
+                var amount = $('#amnt').val();
+                if (billerId == 0) {
+                    errorAlert("Required", "Please select the operator", "perpaidOperator");
+                    return false;
+                }
+                if (canNumber == "") {
+                    errorAlert("Required", "Please Enter loan Number", "canNumber");
+                    return false;
+                }
+                if (amount == "") {
+                    errorAlert("Required", "Please Enter amount", "amnt");
+                    return false;
+                }
+                swal({
+                        title: "Are you sure?",
+                        text: "Are you sure you want to pay bill ?",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true
+                    })
+                    .then((willSubmit) => {
+                        if (willSubmit) {
+                            $('.pageLoader').fadeIn();
+                            $.ajax({
+                                url: "{{ url('/payBroadbandBill') }}",
+                                data: {
+                                    operator: billerId,
+                                    operatorName: billerName,
+                                    canumber: canNumber,
+                                    amount: amount,
+                                    latitude: locationData.latitude,
+                                    longitude: locationData.longitude,
+                                    billfetch: fetcBillData
+                                },
+                                success: function(res) {
+                                    $('.pageLoader').fadeOut();
+
+                                    if (res) {
+                                        if (res.status == true) {
+                                            swal("Successfull", res.message, "success")
+                                                .then(function(res) {
+                                                    $('.pageLoader').fadeIn();
+                                                    if (res) {
+                                                        var loc = window.location;
+                                                        window.location = loc
+                                                            .origin +
+                                                            "/services/b2bServices/Broadband"
+                                                    }
+                                                });
+                                        } else {
+
+                                            swal("Error", res.message, "error")
+                                        }
+
+                                    }
+                                }
+                            });
+                        }
+                    });
+
+
+            })
 
 
         });

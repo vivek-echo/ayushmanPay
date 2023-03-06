@@ -78,7 +78,7 @@
         $(document).ready(function() {
             $('#serviceLink').addClass('activeLink');
             $('#submitButton').on('click', function() {
-                $('.pageLoader').fadeIn();
+               
                 var dlno = $('#dlno').val();
                 var dob = $('#dob').val();
                 if (dlno == '') {
@@ -90,7 +90,7 @@
                     errorAlert("Required", "Please Enter Date of Birth", "dob");
                     return false;
                 }
-
+                $('.pageLoader').fadeIn();
                 $.ajax({
                     url: "{{ url('/fetchDrivingLic') }}",
                     data: {

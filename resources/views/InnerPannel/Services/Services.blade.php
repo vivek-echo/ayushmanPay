@@ -136,7 +136,7 @@
                                             <h6>Driving<br> Licence</h6></a>
                                         </li>
                                         <li>
-                                            <a href="/services/rcservice"><div class="quick-box"><i class="myicon-rc"></i></div>
+                                            <a href="/services/legalServices/Rc"><div class="quick-box"><i class="myicon-rc"></i></div>
                                             <h6>RC<br> Registration</h6></a>
                                         </li>
                                     </ul>

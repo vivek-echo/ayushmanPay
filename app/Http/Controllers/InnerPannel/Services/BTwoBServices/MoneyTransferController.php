@@ -247,7 +247,7 @@ class MoneyTransferController extends Controller
             try {
                 $trans = DB::beginTransaction();
                 $insertAllRecord = DB::transaction(function () use ($sendMoney, $params, $user, $userId, $walletId) {
-                    
+
                     $rechargeId = DB::table('moneytransferservice')->insertGetId([
                         'userId' => $user,
                         'ackno' => $sendMoney['ackno'],
@@ -279,7 +279,10 @@ class MoneyTransferController extends Controller
                         'walletAmount' => $params['amount'],
                         'createdOn' => date('Y-m-d H:i:s'),
                         'servicType' => 3,
-                        'transactionType' => 2
+                        'transactionType' => 2,
+                        'ackno' => $sendMoney['ackno'],
+                        'riefId' => $params['referenceid'],
+                        'message' => $sendMoney['remarks'],
                     ]);
 
                     DB::table('user_wallet')->where('deletedFlag', 0)->where('userId', $userId->id)->update([

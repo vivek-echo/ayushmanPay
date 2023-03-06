@@ -168,6 +168,27 @@
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-6">
+                                        <label class="col-form-label">Mobile Number</label><span
+                                        class="text-danger fa-lg font-weight-500"> *</span>
+                                        <input name="mobile" id="mobile" class="form-control" type="number"
+                                            placeholder="Address" autocomplete="off">
+
+                                    </div>
+
+                                    <div class="form-group col-6">
+                                        <label class="col-form-label">Gender</label><span
+                                        class="text-danger fa-lg font-weight-500"> *</span>
+                                        <select name="gender" id="gender" class="form-select">
+                                            <option value="0">--Select--</option>
+                                            <option value="1">MALE</option>
+                                            <option value="2">FEMALE</option>
+                                            <option value="3">OTHERS</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-6">
                                         <label class="col-form-label">Address</label>
                                         <input name="address" id="address" class="form-control" type="text"
                                             placeholder="Address" autocomplete="off">
@@ -181,6 +202,8 @@
 
                                     </div>
                                 </div>
+
+                                
                                 <div class="row mt-3">
                                     <div class="form-group col-6">
                                         <label class="col-form-label">Let's solve this math problem : <span
@@ -246,6 +269,8 @@
                         <input name="state" id="stateModal" class="form-control" type="hidden">
                         <input name="stateId" id="stateIdModal" class="form-control" type="hidden">
                         <input name="city" id="cityModal" class="form-control" type="hidden">
+                        <input name="mobile" id="mobileModal" class="form-control" type="hidden">
+                        <input name="gender" id="genderModal" class="form-control" type="hidden">
                         <input name="cityId" id="cityIdModal" class="form-control" type="hidden">
                         <input name="address" id="addressModal" class="form-control" type="hidden">
                         <input name="referralCode" id="referralCodeModal" class="form-control" type="hidden">
@@ -389,6 +414,14 @@
                         errorAlert("Required", "Please enter city", "city");
                         return false;
                     }
+                    if ($('#mobile').val() == "") {
+                        errorAlert("Required", "Please enter mobile number", "mobile");
+                        return false;
+                    }
+                    if ($('#gender').val() == 0) {
+                        errorAlert("Required", "Please select your Gender", "city");
+                        return false;
+                    }
                     /**validate captcha**/
                     if ($('#captchaCode').val() == "") {
                         errorAlert("Required", "Please enter the captcha", "captchaCode");
@@ -416,6 +449,8 @@
                     var stateId = $('#stateId').val();
                     var city = $('#city').val();
                     var cityId = $('#cityId').val();
+                    var mobile = $('#mobile').val();
+                    var gender = $('#gender').val();
                     var address = $('#address').val();
                     var referralCode = $('#referralCode').val();
                     swal({
@@ -444,6 +479,8 @@
                                     stateId: stateId,
                                     city: city,
                                     cityId: cityId,
+                                    mobile: mobile,
+                                    gender: gender,
                                     address: address,
                                     referralCode: referralCode
 
@@ -462,6 +499,8 @@
                                         $('#stateIdModal').val(res.data.stateId);
                                         $('#cityModal').val(res.data.city);
                                         $('#cityIdModal').val(res.data.cityId);
+                                        $('#mobileModal').val(res.data.mobile);
+                                        $('#genderModal').val(res.data.gender);
                                         $('#addressModal').val(res.data.address);
                                         $('#referralCodeModal').val(res.data.referralCode);
                                         $('#referralCodeModal').val(res.data.referralCode);
@@ -532,6 +571,8 @@
                             stateId: $('#stateIdModal').val(),
                             city: $('#cityModal').val(),
                             cityId: $('#cityIdModal').val(),
+                            mobile: $('#mobileModal').val(),
+                            gender: $('#genderModal').val(),
                             address: $('#addressModal').val(),
                             referralCode: $('#referralCodeModal').val()
 

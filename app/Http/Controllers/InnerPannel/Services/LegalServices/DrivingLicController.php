@@ -68,6 +68,6 @@ class DrivingLicController extends Controller
         $res['data'] = $generateUrl['data'];
         $res['imageSrc'] = $imageSrc;
         $pdf = \PDF::loadView('PDF.DrivingLic',$res);
-        return $pdf->download('teknowize.pdf');
+        return $pdf->download('DrivingLic.pdf');
     }
 }
