@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Wallet;
+namespace App\Http\Controllers\InnerPannel\Wallet;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

@@ -169,15 +169,15 @@
                                 <div class="row">
                                     <div class="form-group col-6">
                                         <label class="col-form-label">Mobile Number</label><span
-                                        class="text-danger fa-lg font-weight-500"> *</span>
+                                            class="text-danger fa-lg font-weight-500"> *</span>
                                         <input name="mobile" id="mobile" class="form-control" type="number"
-                                            placeholder="Address" autocomplete="off">
+                                            placeholder="Enter your mobile" autocomplete="off">
 
                                     </div>
 
                                     <div class="form-group col-6">
                                         <label class="col-form-label">Gender</label><span
-                                        class="text-danger fa-lg font-weight-500"> *</span>
+                                            class="text-danger fa-lg font-weight-500"> *</span>
                                         <select name="gender" id="gender" class="form-select">
                                             <option value="0">--Select--</option>
                                             <option value="1">MALE</option>
@@ -190,8 +190,8 @@
                                 <div class="row">
                                     <div class="form-group col-6">
                                         <label class="col-form-label">Address</label>
-                                        <input name="address" id="address" class="form-control" type="number"
-                                            placeholder="Enter Mobile Number" autocomplete="off">
+                                        <input name="address" id="address" class="form-control" type="text"
+                                            placeholder="Enter your address" autocomplete="off">
 
                                     </div>
 
@@ -203,7 +203,7 @@
                                     </div>
                                 </div>
 
-                                
+
                                 <div class="row mt-3">
                                     <div class="form-group col-6">
                                         <label class="col-form-label">Let's solve this math problem : <span
@@ -251,8 +251,8 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <img class="img-fluid for-light" src="{{ asset('images/logo/ayp-black.png') }}" alt="looginpage"
-                            width="250">
+                        <img class="img-fluid for-light" src="{{ asset('images/logo/ayp-black.png') }}"
+                            alt="looginpage" width="250">
                         <button class="btn-close" type="button" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                     </div>
@@ -462,69 +462,70 @@
                         })
                         .then((willDelete) => {
                             //ok
+                            if (willDelete) {
+                                $('.pageLoader').fadeIn();
+                                $.ajax({
+                                    url: "{{ url('/vialidateOtpPage') }}",
+                                    data: {
+                                        memberType: memberType,
+                                        firstName: firstName,
+                                        lastName: lastName,
+                                        email: email,
+                                        shopName: shopName,
+                                        dateOfBirth: dateOfBirth,
+                                        pinCode: pinCode,
+                                        state: state,
+                                        stateId: stateId,
+                                        city: city,
+                                        cityId: cityId,
+                                        mobile: mobile,
+                                        gender: gender,
+                                        address: address,
+                                        referralCode: referralCode
 
+                                    },
 
-                            $('.pageLoader').fadeIn();
-                            $.ajax({
-                                url: "{{ url('/vialidateOtpPage') }}",
-                                data: {
-                                    memberType: memberType,
-                                    firstName: firstName,
-                                    lastName: lastName,
-                                    email: email,
-                                    shopName: shopName,
-                                    dateOfBirth: dateOfBirth,
-                                    pinCode: pinCode,
-                                    state: state,
-                                    stateId: stateId,
-                                    city: city,
-                                    cityId: cityId,
-                                    mobile: mobile,
-                                    gender: gender,
-                                    address: address,
-                                    referralCode: referralCode
-
-                                },
-
-                                success: function(res) {
-                                    if (res.status == true) {
-                                        $('#memberTypeModal').val(res.data.memberType);
-                                        $('#firstNameModal').val(res.data.firstName);
-                                        $('#lastNameModal').val(res.data.lastName);
-                                        $('#emailModal').val(res.data.email);
-                                        $('#shopNameModal').val(res.data.shopName);
-                                        $('#dateOfBirthModal').val(res.data.dateOfBirth);
-                                        $('#pinCodeModal').val(res.data.pinCode);
-                                        $('#stateModal').val(res.data.state);
-                                        $('#stateIdModal').val(res.data.stateId);
-                                        $('#cityModal').val(res.data.city);
-                                        $('#cityIdModal').val(res.data.cityId);
-                                        $('#mobileModal').val(res.data.mobile);
-                                        $('#genderModal').val(res.data.gender);
-                                        $('#addressModal').val(res.data.address);
-                                        $('#referralCodeModal').val(res.data.referralCode);
-                                        $('#referralCodeModal').val(res.data.referralCode);
-                                        $('#otpValidEnc').val(res.data.otpENc);
-                                        $('.otpModal').modal('show');
-                                        $('.pageLoader').fadeOut();
-                                    } else {
-                                        $('.pageLoader').fadeOut();
-                                        swal("Error", res.msg, "error").then(
-                                            function(res) {
-                                                $('.pageLoader').fadeIn();
-                                                if (res) {
-                                                    var loc = window.location;
-                                                    window.location = loc
-                                                        .origin + "/register"
+                                    success: function(res) {
+                                        if (res.status == true) {
+                                            $('#memberTypeModal').val(res.data.memberType);
+                                            $('#firstNameModal').val(res.data.firstName);
+                                            $('#lastNameModal').val(res.data.lastName);
+                                            $('#emailModal').val(res.data.email);
+                                            $('#shopNameModal').val(res.data.shopName);
+                                            $('#dateOfBirthModal').val(res.data.dateOfBirth);
+                                            $('#pinCodeModal').val(res.data.pinCode);
+                                            $('#stateModal').val(res.data.state);
+                                            $('#stateIdModal').val(res.data.stateId);
+                                            $('#cityModal').val(res.data.city);
+                                            $('#cityIdModal').val(res.data.cityId);
+                                            $('#mobileModal').val(res.data.mobile);
+                                            $('#genderModal').val(res.data.gender);
+                                            $('#addressModal').val(res.data.address);
+                                            $('#referralCodeModal').val(res.data.referralCode);
+                                            $('#referralCodeModal').val(res.data.referralCode);
+                                            $('#otpValidEnc').val(res.data.otpENc);
+                                            $('.otpModal').modal('show');
+                                            $('.pageLoader').fadeOut();
+                                        } else {
+                                            $('.pageLoader').fadeOut();
+                                            swal("Error", res.msg, "error").then(
+                                                function(res) {
+                                                    $('.pageLoader').fadeIn();
+                                                    if (res) {
+                                                        var loc = window.location;
+                                                        window.location = loc
+                                                            .origin + "/register"
+                                                    }
                                                 }
-                                            }
-                                        );
+                                            );
+                                        }
+
                                     }
+                                });
+                            }
 
 
 
-                                }
-                            });
                         })
                 }
 

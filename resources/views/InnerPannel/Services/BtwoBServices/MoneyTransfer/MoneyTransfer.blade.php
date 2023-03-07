@@ -197,7 +197,7 @@
                                                             <a class="text-info" data-bs-toggle="tooltip"
                                                                 title="Money Transfer"
                                                                 onclick="moneyTransferDetails({{ $value['bene_id'] }})">
-                                                                <i data-feather="corner-up-right"></i>
+                                                                <i data-feather="send"></i>
                                                             </a>
                                                             <?php } ?>
 

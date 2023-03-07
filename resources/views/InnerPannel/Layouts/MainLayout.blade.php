@@ -242,6 +242,16 @@
                                                 <li><a href="#">Settlement</a></li> --}}
                                             </ul>
                                         </li>
+                                        <li class="sidebar-list"><a class="sidebar-link sidebar-title"
+                                            id="profileLink" href="javascript:void(0)"><i data-feather="user"></i><span>Profile
+                                                    Section</span></a>
+                                            <ul class="sidebar-submenu">
+                                                <li><a href="{{ url('/profile/profileUpdate') }}">Profile Update</a></li>
+                                                <li><a href="{{ url('/profile/changePassword') }}">Change Password</a></li>
+                                                {{-- <li><a href="{{ url('/walletsection/printMyQR') }}">Print My QR</a></li>
+                                                <li><a href="#">Settlement</a></li> --}}
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>

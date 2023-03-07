@@ -82,8 +82,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(['GET', 'POST'], '/PanCardNsldGen', [App\Http\Controllers\InnerPannel\Services\LegalServices\PanCardNsldController::class, 'PanCardNsldGen']);
 
     //walletsummary
-    Route::match(['GET', 'POST'], '/wallet/walletsummary', [App\Http\Controllers\Wallet\WalletSummaryController::class, 'index']);
-    Route::match(['GET', 'POST'], '/getWalletLogs', [App\Http\Controllers\Wallet\WalletSummaryController::class, 'getWalletLogs']);
+    Route::match(['GET', 'POST'], '/wallet/walletsummary', [App\Http\Controllers\InnerPannel\Wallet\WalletSummaryController::class, 'index']);
+    Route::match(['GET', 'POST'], '/getWalletLogs', [App\Http\Controllers\InnerPannel\Wallet\WalletSummaryController::class, 'getWalletLogs']);
 
     //rc
     Route::match(['GET', 'POST'], '/services/legalServices/Rc', [App\Http\Controllers\InnerPannel\Services\LegalServices\RCController::class, 'index']);
@@ -92,6 +92,11 @@ Route::group(['middleware' => 'auth'], function () {
     //voter Id card
     Route::match(['GET', 'POST'], '/services/legalServices/voterIdCard', [App\Http\Controllers\InnerPannel\Services\LegalServices\VoterController::class, 'index']);
     Route::match(['GET', 'POST'], '/fetchVoter', [App\Http\Controllers\InnerPannel\Services\LegalServices\VoterController::class, 'fetchVoter']);
+    
+    //profile section
+    Route::match(['GET', 'POST'], '/profile/profileUpdate', [App\Http\Controllers\InnerPannel\Profile\ProfileController::class, 'profileUpdateIndex']);
+    Route::match(['GET', 'POST'], '/profileUpdate', [App\Http\Controllers\InnerPannel\Profile\ProfileController::class, 'profileUpdate']);
+
 
 });
 //B2BService
