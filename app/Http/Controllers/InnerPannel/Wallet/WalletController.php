@@ -17,7 +17,7 @@ class WalletController extends Controller
         $a = Auth::user();
         $res['name'] = $a->firstName . " " . $a->lastName;
         $res['id'] =  Crypt::encryptString($a->id);
-        return view('Wallet.AddWallet', $res);
+        return view('InnerPannel.WalletSection.AddWallet', $res);
     }
 
     public function updateWallet()

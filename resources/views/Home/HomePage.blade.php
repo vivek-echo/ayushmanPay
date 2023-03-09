@@ -73,7 +73,7 @@
             <div class="header-bottom">
                 <div class="container">
                     <nav class="navbar navbar-expand-md navbar-light">
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="/">
                             <img class="logo-light" src="{{ asset(''.config('constant.ASSET').'landingpage/img/ayp-black.png')}}" alt="logo" width="250">
                             <img class="logo-dark" src="{{ asset(''.config('constant.ASSET').'landingpage/img/ayp-white.png')}}" alt="logo" width="250">
                         </a>

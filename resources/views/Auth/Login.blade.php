@@ -63,7 +63,7 @@
             <div class="col-12 p-0">
                 <div class="login-card">
                     <div>
-                        <div><a class="logo text-center" href="#"><img class="img-fluid for-light"
+                        <div><a class="logo text-center" href="/"><img class="img-fluid for-light"
                                     src="{{ asset(''.config('constant.ASSET').'images/logo/ayp-black.png') }}" alt="looginpage" width="320"></a>
                         </div>
                         <div class="login-main-small">
