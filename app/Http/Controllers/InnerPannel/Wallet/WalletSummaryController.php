@@ -41,7 +41,7 @@ class WalletSummaryController extends Controller
             $view['searchView'] = 1;
 
 
-            $queryData =  $queryData->get();
+            $queryData =  $queryData->orderBy('createdOn','desc')->get();
 
             if (!$queryData->isEmpty()) {
                 $status = true;

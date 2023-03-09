@@ -122,7 +122,7 @@
                                                     class="text-danger fa-lg font-weight-500">
                                                     *</span>
                                                 <input name="pinCode" id="pinCode" class="form-control" type="text"
-                                                    placeholder="Enter Mobile Number" autocomplete="off">
+                                                    placeholder="Enter pincode" autocomplete="off">
 
                                             </div>
 
@@ -131,7 +131,7 @@
                                                     class="text-danger fa-lg font-weight-500">
                                                     *</span>
                                                 <input name="address" id="address" class="form-control" type="text"
-                                                    placeholder="Enter Mobile Number" autocomplete="off">
+                                                    placeholder="Enter Address" autocomplete="off">
 
                                             </div>
 

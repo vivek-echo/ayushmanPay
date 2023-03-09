@@ -21,24 +21,26 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    <div class="row">
-                        <div class="form-group col-6">
-                            <label class="col-form-label"> Name</label>
-                            <input name="name" id="name" class="form-control" type="text" autocomplete="off"
-                                value="<?php echo $name; ?>">
-                            <input type="hidden" value="<?php echo $id; ?>" name="userId" id="userId">
-
-                        </div>
-
-                        <div class="form-group col-6">
-                            <label class="col-form-label">Amount</label>
-                            <input name="amount" id="amount" class="form-control" type="number"
-                                placeholder="Enter Amount" autocomplete="off">
-
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label class="col-form-label"> Name</label>
+                                <input name="name" id="name" class="form-control" type="text" autocomplete="off"
+                                    value="<?php echo $name; ?>">
+                                <input type="hidden" value="<?php echo $id; ?>" name="userId" id="userId">
+    
+                            </div>
+    
+                            <div class="form-group col-6">
+                                <label class="col-form-label">Amount</label>
+                                <input name="amount" id="amount" class="form-control" type="number"
+                                    placeholder="Enter Amount" autocomplete="off">
+    
+                            </div>
                         </div>
                     </div>
                     <div class="form-group text-center mt-2">
-                        <button class="btn btn-primary" id="submitButton">Updated Wallet</button>
+                        <button class="btn btn-primary" id="submitButton">Update Wallet</button>
                     </div>
                 </div>
             </div>
@@ -62,7 +64,7 @@
                 var userId = $('#userId').val();
                 var amount = $('#amount').val();
                 $.ajax({
-                    url: "{{ url('/Wallet/UpdateWallet') }}",
+                    url: "{{ url('/UpdateWallet') }}",
                     data: {
                         userId: userId,
                         amount: amount
@@ -76,7 +78,7 @@
                                     if (resThen) {
                                         var loc = window.location;
                                         window.location = loc
-                                            .origin + "/wallet"
+                                            .origin + "/wallet/UpdateWallet"
                                     }
                                 });
                         } else {
@@ -87,7 +89,7 @@
                                     if (resThen) {
                                         var loc = window.location;
                                         window.location = loc
-                                            .origin + "/wallet"
+                                            .origin + "/wallet/UpdateWallet"
                                     }
                                 }
                             );

@@ -352,7 +352,7 @@
                         if (willSubmit) {
                             $('.pageLoader').fadeIn();
                             var perpaidOperator = $('#perpaidOperator').val();
-                            var perpaidOperatorName = $('#perpaidOperator').text();
+                            var perpaidOperatorName = $('#perpaidOperator option:selected').text();
                             var mobileNo = $('#preMobile').val();
                             var rechargeAmount = $('#rechargeAmount').val();
                             $.ajax({

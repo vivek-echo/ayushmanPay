@@ -97,7 +97,12 @@
                                                 <td>{{ $item['ackno'] }}</td>
                                                 <td>{{ $item['riefId'] }}</td>
                                                 <td>{{ $item['message'] }}</td>
-                                                <td>{{ $item['transactionType'] == 1 ? "Credited" : "Debited" }}</td>
+                                                @if($item['transactionType'] == 1)
+                                                <td class="text-success">Credited</td>
+                                                @else
+                                                <td class="text-danger">Debited</td>
+                                                @endIf
+                                               
                                                 <td>{{ $item['createdOn'] }}</td>
                                                 @if($item['transactionType'] == 1)
                                                 <td class="text-success">+ {{ $item['walletAmount'] }}</td>

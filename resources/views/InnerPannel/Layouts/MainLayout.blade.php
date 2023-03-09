@@ -238,7 +238,7 @@
                                                     Section</span></a>
                                             <ul class="sidebar-submenu">
                                                 <li><a href="{{ url('/wallet/walletsummary') }}">Wallet Summary</a></li>
-                                                <li><a href="{{ url('/wallet') }}">Wallet Update</a></li> 
+                                                <li><a href="{{ url('/wallet/UpdateWallet') }}">Wallet Update</a></li> 
                                                  {{-- <li><a href="{{ url('/walletsection/printMyQR') }}">Print My QR</a></li> --}}
                                             </ul>
                                         </li>
