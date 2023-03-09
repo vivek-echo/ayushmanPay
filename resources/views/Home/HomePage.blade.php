@@ -6,18 +6,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="landingpage/css/bootstrap.min.css">
-    <link rel="stylesheet" href="landingpage/css/flaticon.css">
-    <link rel="stylesheet" href="landingpage/css/remixicon.css">
-    <link rel="stylesheet" href="landingpage/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="landingpage/css/odometer.min.css">
-    <link rel="stylesheet" href="landingpage/css/fancybox.css">
-    <link rel="stylesheet" href="landingpage/css/aos.css">
-    <link rel="stylesheet" href="landingpage/css/style.css">
-    <link rel="stylesheet" href="landingpage/css/dark-theme.css">
-    <link rel="stylesheet" href="landingpage/css/responsive.css">
+    <link rel="stylesheet" href="{{ asset(''.config('constant.ASSET').'landingpage/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/landingpage/css/flaticon.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/landingpage/css/remixicon.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/landingpage/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/landingpage/css/odometer.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/landingpage/css/fancybox.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/landingpage/css/aos.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/landingpage/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/landingpage/css/dark-theme.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/landingpage/css/responsive.css')}}">
     <title>Ayushman Pay - Home</title>
-    <link rel="icon" type="image/png" href="landingpage/img/favicon.png">
+    <link rel="icon" type="image/png" href="{{ asset('publiclandingpage/img/favicon.png')}}">
 </head>
 
 <body>
@@ -631,17 +631,17 @@
 
     <a href="javascript:void(0)" class="back-to-top bounce"><i class="ri-arrow-up-s-line"></i></a>
 
-    <script src="landingpage/js/jquery.min.js"></script>
-    <script src="landingpage/js/bootstrap.bundle.min.js"></script>
-    <script src="landingpage/js/form-validator.min.js"></script>
-    <script src="landingpage/js/contact-form-script.js"></script>
-    <script src="landingpage/js/aos.js"></script>
-    <script src="landingpage/js/owl.carousel.min.js"></script>
-    <script src="landingpage/js/odometer.min.js"></script>
-    <script src="landingpage/js/fancybox.js"></script>
-    <script src="landingpage/js/jquery.appear.js"></script>
-    <script src="landingpage/js/tweenmax.min.js"></script>
-    <script src="landingpage/js/main.js"></script>
+    <script src="{{asset('public/landingpage/js/jquery.min.js')}}"></script>
+    <script src="{{asset('public/landingpage/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('public/landingpage/js/form-validator.min.js')}}"></script>
+    <script src="{{asset('public/landingpage/js/contact-form-script.js')}}"></script>
+    <script src="{{asset('public/landingpage/js/aos.js')}}"></script>
+    <script src="{{asset('public/landingpage/js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('public/landingpage/js/odometer.min.js')}}"></script>
+    <script src="{{asset('public/landingpage/js/fancybox.js')}}"></script>
+    <script src="{{asset('public/landingpage/js/jquery.appear.js')}}"></script>
+    <script src="{{asset('public/landingpage/js/tweenmax.min.js')}}"></script>
+    <script src="{{asset('public/landingpage/js/main.js')}}"></script>
 </body>
 
 
