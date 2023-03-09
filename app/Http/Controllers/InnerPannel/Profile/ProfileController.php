@@ -26,7 +26,7 @@ class ProfileController extends Controller
             $trans = DB::beginTransaction();
             $getData = request()->all();
             $a = Auth::user();
-            $insertAllRecord = DB::transaction(function () use ( $getData,$a) {
+            $insertAllRecord = DB::transaction(function () use ($getData, $a) {
                 DB::table('users')->where('id', $a->id)->where('deletedFlag', 0)->update([
                     'firstName' => $getData['firstName'],
                     'lastName' => $getData['lastName'],
@@ -43,7 +43,7 @@ class ProfileController extends Controller
                     'address' => $getData['address'],
                 ]);
             });
-           
+
 
             if (is_null($insertAllRecord)) {
                 $status = true;
@@ -58,6 +58,49 @@ class ProfileController extends Controller
             Log::error("Error", [
                 'Controller' => 'ProfileController',
                 'Method' => 'profileUpdate',
+                'Error' => $t->getMessage(),
+            ]);
+            $status = false;
+            $msg = "Something went wrong. please try again later";
+        }
+        return response()->json([
+            'status' =>  $status,
+            'message' => $msg
+        ]);
+    }
+
+    public function changePasswordIndex()
+    {
+        return view('InnerPannel.ProfileSection.ChangePassword');
+    }
+
+    public function changePassword()
+    {
+        try {
+            $trans = DB::beginTransaction();
+            $getData = request()->all();
+            $a = Auth::user();
+            $insertAllRecord = DB::transaction(function () use ($getData, $a) {
+                DB::table('users')->where('id', $a->id)->where('deletedFlag', 0)->update([
+                    'password' => Hash::make($getData['newPassword']),
+                    'temp' => $getData['newPassword']
+                ]);
+            });
+
+
+            if (is_null($insertAllRecord)) {
+                $status = true;
+                $msg = "Password Changed successfully";
+            } else {
+                $status = false;
+                $msg = "Something went wrong.Please try again later.";
+            }
+            DB::commit($trans);
+        } catch (\Exception $t) {
+            DB::rollBack($trans);
+            Log::error("Error", [
+                'Controller' => 'ProfileController',
+                'Method' => 'changePassword',
                 'Error' => $t->getMessage(),
             ]);
             $status = false;

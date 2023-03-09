@@ -19,7 +19,7 @@ class HomePageController extends Controller
         return view('Home.HomePage');
     }
 
-    // CHECKING EXISTING USER
+    // CHECKING EXISTING USER  for login
     public function checkExistingUser()
     {
         $encOtp = '';
@@ -92,5 +92,11 @@ class HomePageController extends Controller
       return response()->json([  //for sending data from controller to AJAX
          'status' => $status,
         ]);
+    }
+
+    public function callBacks(){
+        return response()->json([
+            "status"=>200,"message"=>"Transaction completed successfully"
+            ]);
     }
 }

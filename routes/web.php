@@ -96,6 +96,8 @@ Route::group(['middleware' => 'auth'], function () {
     //profile section
     Route::match(['GET', 'POST'], '/profile/profileUpdate', [App\Http\Controllers\InnerPannel\Profile\ProfileController::class, 'profileUpdateIndex']);
     Route::match(['GET', 'POST'], '/profileUpdate', [App\Http\Controllers\InnerPannel\Profile\ProfileController::class, 'profileUpdate']);
+    Route::match(['GET', 'POST'], '/profile/changePassword', [App\Http\Controllers\InnerPannel\Profile\ProfileController::class, 'changePasswordIndex']);
+    Route::match(['GET', 'POST'], '/changePassword', [App\Http\Controllers\InnerPannel\Profile\ProfileController::class, 'changePassword']);
 
 
 });
