@@ -10,8 +10,8 @@
     <meta name="description">
     <meta name="keywords">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="{{ asset('images/favicon/favicon.png') }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset('images/favicon/favicon.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset(''.config('constant.ASSET').'images/favicon/favicon.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset(''.config('constant.ASSET').'images/favicon/favicon.png') }}" type="image/x-icon">
     <title>ABP</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
@@ -96,7 +96,7 @@
                                                 style="display: flex; align-items: center; justify-content: space-between; width: 650px;">
                                                 {{-- <td><img class="img-fluid" src="../assets/images/logo/logo2.png" alt=""></td> --}}
                                                 <td><img class="img-fluid"
-                                                        src="{{ asset('images/logo/ayp-black.png') }}" alt="looginpage"
+                                                        src="{{ asset(''.config('constant.ASSET').'images/logo/ayp-black.png') }}" alt="looginpage"
                                                         width="200"></td>
                                                 <td style="text-align: right; color:#999"><span>Some Description</span>
                                                 </td>
