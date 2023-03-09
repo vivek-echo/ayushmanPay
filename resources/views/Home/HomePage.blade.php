@@ -7,17 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="{{ asset(''.config('constant.ASSET').'landingpage/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('public/landingpage/css/flaticon.css')}}">
-    <link rel="stylesheet" href="{{ asset('public/landingpage/css/remixicon.css')}}">
-    <link rel="stylesheet" href="{{ asset('public/landingpage/css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('public/landingpage/css/odometer.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('public/landingpage/css/fancybox.css')}}">
-    <link rel="stylesheet" href="{{ asset('public/landingpage/css/aos.css')}}">
-    <link rel="stylesheet" href="{{ asset('public/landingpage/css/style.css')}}">
-    <link rel="stylesheet" href="{{ asset('public/landingpage/css/dark-theme.css')}}">
-    <link rel="stylesheet" href="{{ asset('public/landingpage/css/responsive.css')}}">
+    <link rel="stylesheet" href="{{ asset(''.config('constant.ASSET').'landingpage/css/flaticon.css')}}">
+    <link rel="stylesheet" href="{{ asset(''.config('constant.ASSET').'landingpage/css/remixicon.css')}}">
+    <link rel="stylesheet" href="{{ asset(''.config('constant.ASSET').'landingpage/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{ asset(''.config('constant.ASSET').'landingpage/css/odometer.min.css')}}">
+    <link rel="stylesheet" href="{{ asset(''.config('constant.ASSET').'landingpage/css/fancybox.css')}}">
+    <link rel="stylesheet" href="{{ asset(''.config('constant.ASSET').'landingpage/css/aos.css')}}">
+    <link rel="stylesheet" href="{{ asset(''.config('constant.ASSET').'landingpage/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset(''.config('constant.ASSET').'landingpage/css/dark-theme.css')}}">
+    <link rel="stylesheet" href="{{ asset(''.config('constant.ASSET').'landingpage/css/responsive.css')}}">
     <title>Ayushman Pay - Home</title>
-    <link rel="icon" type="image/png" href="{{ asset('publiclandingpage/img/favicon.png')}}">
+    <link rel="icon" type="image/png" href="{{ asset(''.config('constant.ASSET').'landingpage/img/favicon.png')}}">
 </head>
 
 <body>
@@ -74,8 +74,8 @@
                 <div class="container">
                     <nav class="navbar navbar-expand-md navbar-light">
                         <a class="navbar-brand" href="index.html">
-                            <img class="logo-light" src="landingpage/img/ayp-black.png" alt="logo" width="250">
-                            <img class="logo-dark" src="landingpage/img/ayp-white.png" alt="logo" width="250">
+                            <img class="logo-light" src="{{ asset(''.config('constant.ASSET').'landingpage/img/ayp-black.png')}}" alt="logo" width="250">
+                            <img class="logo-dark" src="{{ asset(''.config('constant.ASSET').'landingpage/img/ayp-white.png')}}" alt="logo" width="250">
                         </a>
                         <div class="collapse navbar-collapse main-menu-wrap" id="navbarSupportedContent">
                             <div class="menu-close xl-none">
@@ -155,9 +155,9 @@
 
 
         <section class="hero-wrap style1 bg-spring">
-            <img src="landingpage/img/hero/hero-shape-1.png" alt="Image" class="hero-shape-one">
-            <img src="landingpage/img/hero/rupee-indian-2.png" alt="Image" class="hero-shape-two">
-            <img src="landingpage/img/hero/rupee-indian.png" alt="Image" class="hero-shape-three">
+            <img src="{{ asset(''.config('constant.ASSET').'landingpage/img/hero/hero-shape-1.png')}}" alt="Image" class="hero-shape-one">
+            <img src="{{ asset(''.config('constant.ASSET').'landingpage/img/hero/rupee-indian-2.png')}}" alt="Image" class="hero-shape-two">
+            <img src="{{ asset(''.config('constant.ASSET').'landingpage/img/hero/rupee-indian.png')}}" alt="Image" class="hero-shape-three">
             <!-- <img src="landingpage/img/hero/hero-shape-4.png" alt="Image" class="hero-shape-four md-none"> -->
             <div class="hero-slider-two owl-carousel">
                 <div class="hero-slide-item">
@@ -174,7 +174,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="hero-img-wrap">
-                                    <img src="landingpage/img/hero/Transactional-SMS.svg" alt="Image"
+                                    <img src="{{ asset(''.config('constant.ASSET').'landingpage/img/hero/Transactional-SMS.svg')}}" alt="Image"
                                         height="850">
                                 </div>
                             </div>
@@ -195,7 +195,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="hero-img-wrap">
-                                    <img src="landingpage/img/hero/Transactional-SMS.svg" alt="Image"
+                                    <img src="{{ asset(''.config('constant.ASSET').'landingpage/img/hero/Transactional-SMS.svg')}}" alt="Image"
                                         height="850">
                                 </div>
                             </div>
@@ -216,7 +216,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="hero-img-wrap">
-                                    <img src="landingpage/img/hero/Transactional-SMS.svg" alt="Image"
+                                    <img src="{{ asset(''.config('constant.ASSET').'landingpage/img/hero/Transactional-SMS.svg')}}" alt="Image"
                                         height="850">
                                 </div>
                             </div>
@@ -232,11 +232,11 @@
                 <div class="row gx-5 align-items-center">
                     <div class="col-lg-6">
                         <div class="about-img-wrap">
-                            <img src="landingpage/img/about/rupee-indian-3.png" alt="Image"
+                            <img src="{{ asset(''.config('constant.ASSET').'landingpage/img/about/rupee-indian-3.png')}}" alt="Image"
                                 class="about-shape-one bounce" width="50">
-                            <img src="landingpage/img/about/favicon.png" alt="Image"
+                            <img src="{{ asset(''.config('constant.ASSET').'landingpage/img/about/favicon.png')}}" alt="Image"
                                 class="about-shape-two moveHorizontal" width="50">
-                            <img src="landingpage/img/about/about-img-1.png" alt="Image" class="about-img">
+                            <img src="{{ asset(''.config('constant.ASSET').'landingpage/img/about/about-img-1.png')}}" alt="Image" class="about-img">
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -313,7 +313,7 @@
                         <div class="feature-card style1">
                             <div class="feature-info">
                                 <div class="feature-title">
-                                    <span><img src="landingpage/img/feature/icon-1.png" alt="Image" width="50"></span>
+                                    <span><img src="{{ asset(''.config('constant.ASSET').'landingpage/img/feature/icon-1.png')}}" alt="Image" width="50"></span>
                                     <h3>All Recharge</h3>
                                 </div>
                                 <p>orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.</p>
@@ -324,7 +324,7 @@
                         <div class="feature-card style1">
                             <div class="feature-info">
                                 <div class="feature-title">
-                                    <span><img src="landingpage/img/feature/icon-2.png" alt="Image"></span>
+                                    <span><img src="{{ asset(''.config('constant.ASSET').'landingpage/img/feature/icon-2.png')}}" alt="Image"></span>
                                     <h3>Money Transfer</h3>
                                 </div>
                                 <p>Lorem ipsum dolor sit amet dolor alut const slice elit aliquid dolor ametin perfer
@@ -336,7 +336,7 @@
                         <div class="feature-card style1">
                             <div class="feature-info">
                                 <div class="feature-title">
-                                    <span><img src="landingpage/img/feature/icon-3.png" alt="Image"></span>
+                                    <span><img src="{{ asset(''.config('constant.ASSET').'landingpage/img/feature/icon-3.png')}}" alt="Image"></span>
                                     <h3>AEPS</h3>
                                 </div>
                                 <p>Lorem ipsum dolor sit amet dolor alut const slice elit aliquid dolor ametin perfer
@@ -348,7 +348,7 @@
                         <div class="feature-card style1">
                             <div class="feature-info">
                                 <div class="feature-title">
-                                    <span><img src="landingpage/img/feature/icon-4.png" alt="Image"></span>
+                                    <span><img src="{{ asset(''.config('constant.ASSET').'landingpage/img/feature/icon-4.png')}}" alt="Image"></span>
                                     <h3>BBPS</h3>
                                 </div>
                                 <p>Lorem ipsum dolor sit amet dolor alut const slice elit aliquid dolor ametin perfer
@@ -360,7 +360,7 @@
                         <div class="feature-card style1">
                             <div class="feature-info">
                                 <div class="feature-title">
-                                    <span><img src="landingpage/img/feature/icon-5.png" alt="Image"></span>
+                                    <span><img src="{{ asset(''.config('constant.ASSET').'landingpage/img/feature/icon-5.png')}}" alt="Image"></span>
                                     <h3>DTH</h3>
                                 </div>
                                 <p>Lorem ipsum dolor sit amet dolor alut const slice elit aliquid dolor ametin perfer
@@ -372,7 +372,7 @@
                         <div class="feature-card style1">
                             <div class="feature-info">
                                 <div class="feature-title">
-                                    <span><img src="landingpage/img/feature/icon-6.png" alt="Image"></span>
+                                    <span><img src="{{ asset(''.config('constant.ASSET').'landingpage/img/feature/icon-6.png')}}" alt="Image"></span>
                                     <h3>Mini Bank Statement</h3>
                                 </div>
                                 <p>Lorem ipsum dolor sit amet dolor alut const slice elit aliquid dolor ametin perfer
@@ -512,8 +512,8 @@
 
         <section class="cta-wrap style1 ptb-100 ">
             <div class="container">
-                <img src="landingpage/img/rupee-indian.png" alt="Image" class="cta-shape-one xs-none" width="60">
-                <img src="landingpage/img/rupee-indian-2.png" alt="Image" class="cta-shape-two xs-none" width="60">
+                <img src="{{ asset(''.config('constant.ASSET').'landingpage/img/rupee-indian.png')}}" alt="Image" class="cta-shape-one xs-none" width="60">
+                <img src="{{ asset(''.config('constant.ASSET').'landingpage/img/rupee-indian-2.png')}}" alt="Image" class="cta-shape-two xs-none" width="60">
                 <div class="row">
                     <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
                         <div class="content-title style1 text-center mb-40">
@@ -532,13 +532,13 @@
 
         <footer class="footer-wrap bg-rock">
             <div class="container">
-                <img src="landingpage/img/rupee-indian-footer.png" alt="Image" class="footer-shape-one" width="60">
-                <img src="landingpage/img/rupee-indian-footer.png" alt="Image" class="footer-shape-two" width="60">
+                <img src="{{ asset(''.config('constant.ASSET').'landingpage/img/rupee-indian-footer.png')}}" alt="Image" class="footer-shape-one" width="60">
+                <img src="{{ asset(''.config('constant.ASSET').'landingpage/img/rupee-indian-footer.png')}}" alt="Image" class="footer-shape-two" width="60">
                 <div class="row pt-100 pb-75">
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                         <div class="footer-widget">
                             <a href="index.html" class="footer-logo">
-                                <img src="landingpage/img/ayp-white.png" alt="Image" width="250">
+                                <img src="{{ asset(''.config('constant.ASSET').'landingpage/img/ayp-white.png')}}" alt="Image" width="250">
                             </a>
                             <p class="comp-desc">
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
@@ -631,17 +631,17 @@
 
     <a href="javascript:void(0)" class="back-to-top bounce"><i class="ri-arrow-up-s-line"></i></a>
 
-    <script src="{{asset('public/landingpage/js/jquery.min.js')}}"></script>
-    <script src="{{asset('public/landingpage/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('public/landingpage/js/form-validator.min.js')}}"></script>
-    <script src="{{asset('public/landingpage/js/contact-form-script.js')}}"></script>
-    <script src="{{asset('public/landingpage/js/aos.js')}}"></script>
-    <script src="{{asset('public/landingpage/js/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('public/landingpage/js/odometer.min.js')}}"></script>
-    <script src="{{asset('public/landingpage/js/fancybox.js')}}"></script>
-    <script src="{{asset('public/landingpage/js/jquery.appear.js')}}"></script>
-    <script src="{{asset('public/landingpage/js/tweenmax.min.js')}}"></script>
-    <script src="{{asset('public/landingpage/js/main.js')}}"></script>
+    <script src="{{ asset(''.config('constant.ASSET').'landingpage/js/jquery.min.js')}}"></script>
+    <script src="{{ asset(''.config('constant.ASSET').'landingpage/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ asset(''.config('constant.ASSET').'landingpage/js/form-validator.min.js')}}"></script>
+    <script src="{{ asset(''.config('constant.ASSET').'landingpage/js/contact-form-script.js')}}"></script>
+    <script src="{{ asset(''.config('constant.ASSET').'landingpage/js/aos.js')}}"></script>
+    <script src="{{ asset(''.config('constant.ASSET').'landingpage/js/owl.carousel.min.js')}}"></script>
+    <script src="{{ asset(''.config('constant.ASSET').'landingpage/js/odometer.min.js')}}"></script>
+    <script src="{{ asset(''.config('constant.ASSET').'landingpage/js/fancybox.js')}}"></script>
+    <script src="{{ asset(''.config('constant.ASSET').'landingpage/js/jquery.appear.js')}}"></script>
+    <script src="{{ asset(''.config('constant.ASSET').'landingpage/js/tweenmax.min.js')}}"></script>
+    <script src="{{ asset(''.config('constant.ASSET').'landingpage/js/main.js')}}"></script>
 </body>
 
 
