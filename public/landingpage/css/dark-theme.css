@@ -333,17 +333,17 @@ input:checked+.slider:before {
 
 @media only screen and (max-width:767px) {
     .switch-theme-mode {
-        right: 13px
+        right: 22px
     }
 
     .switch {
-        width: 50px;
-        height: 28px
+        width: 35px;
+        height: 22px;
     }
 
     .slider::before {
-        height: 32px;
-        width: 32px
+        height: 28px;
+        width: 28px
     }
 }
 

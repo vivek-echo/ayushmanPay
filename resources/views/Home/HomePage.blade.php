@@ -74,8 +74,8 @@
                 <div class="container">
                     <nav class="navbar navbar-expand-md navbar-light">
                         <a class="navbar-brand" href="/">
-                            <img class="logo-light" src="{{ asset(''.config('constant.ASSET').'landingpage/img/ayp-black.png')}}" alt="logo" width="250">
-                            <img class="logo-dark" src="{{ asset(''.config('constant.ASSET').'landingpage/img/ayp-white.png')}}" alt="logo" width="250">
+                            <img class="logo-light" src="{{ asset(''.config('constant.ASSET').'landingpage/img/ayp-logo-new.png')}}" alt="logo" width="250">
+                            <img class="logo-dark" src="{{ asset(''.config('constant.ASSET').'landingpage/img/ayp-logo-new-white.png')}}" alt="logo" width="250">
                         </a>
                         <div class="collapse navbar-collapse main-menu-wrap" id="navbarSupportedContent">
                             <div class="menu-close xl-none">
@@ -538,7 +538,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                         <div class="footer-widget">
                             <a href="index.html" class="footer-logo">
-                                <img src="{{ asset(''.config('constant.ASSET').'landingpage/img/ayp-white.png')}}" alt="Image" width="250">
+                                <img src="{{ asset(''.config('constant.ASSET').'landingpage/img/ayp-logo-new-white.png')}}" alt="Image" width="250">
                             </a>
                             <p class="comp-desc">
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum

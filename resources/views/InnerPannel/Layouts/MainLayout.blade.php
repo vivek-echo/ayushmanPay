@@ -10,7 +10,7 @@
     <meta name="author" content="Apna Bharat Pay">
     <link rel="icon" href="{{ asset(''.config('constant.ASSET').'images/favicon/favicon.png') }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ asset(''.config('constant.ASSET').'images/favicon/favicon.png') }}" type="image/x-icon">
-    <title>Apna Bharat pay - Dashboard</title>
+    <title>Ayushman Pay - Dashboard</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
         rel="stylesheet">
@@ -209,7 +209,7 @@
             <div class="sidebar-wrapper">
                 <div>
                     <div class="logo-wrapper"><a href="{{ url('/dashboard') }}"><img class="w-75"
-                                src="{{ asset('images/logo/ayp-white.png') }}" alt=""></a>
+                                src="{{ asset('images/logo/ayp-logo-new-white.png') }}" alt=""></a>
                         <div class="back-btn"><i data-feather="grid"></i></div>
                         <div class="toggle-sidebar icon-box-sidebar"><i class="status_toggle middle sidebar-toggle"
                                 data-feather="grid"> </i></div>

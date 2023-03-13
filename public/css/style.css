@@ -1271,8 +1271,8 @@
 }
 
 .bg-light-orange {
-    background-color: #e6a469 !important;
-    color: #fff;
+	background-color: #e6a469 !important;
+	color: #fff;
 }
 
 .bg-primary {
@@ -12024,7 +12024,7 @@ th {
 }
 
 .table .bg-light {
-	color: #f6f8fc 
+	color: #f6f8fc
 }
 
 .table tfoot {
@@ -31520,6 +31520,16 @@ footer {
 	-webkit-box-shadow: 0 0 21px 0 rgba(89, 102, 122, 0.1);
 	box-shadow: 0 0 21px 0 rgba(89, 102, 122, 0.1)
 }
+
+/* .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper:before {
+	content: '';
+	background: url('../images/pattern.png') no-repeat center center/cover;
+	position: absolute;
+	opacity: 0.3;
+	top: 0px;
+	left: 0px;
+	z-index: 10;
+} */
 
 .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .logo-wrapper,
 .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .logo-icon-wrapper {
