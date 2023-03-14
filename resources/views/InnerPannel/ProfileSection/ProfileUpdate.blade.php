@@ -23,150 +23,287 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    <div class="card-header pb-0">
-                        <h4>Profile Update</h4><span></span>
-                    </div>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="form-group col-6">
-                                <label class="col-form-label">First Name</label><span
-                                    class="text-danger fa-lg font-weight-500"> *</span>
-                                <input name="firstName" id="firstName" class="form-control" type="text"
-                                    placeholder="First name" autocomplete="off" value="{{ $profile->firstName }}">
 
+                        <div class="default-according style-1" id="accordionoc">
+                            <div class="card">
+                                <div class="card-header bg-light-orange">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link ps-0 text-white" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseicon" aria-expanded="true"
+                                            aria-controls="collapse11"><i class="myicon-disc"></i>
+                                            Profile Update</button>
+                                    </h5>
+                                </div>
+                                <div class="collapse show" id="collapseicon" aria-labelledby="collapseicon"
+                                    data-bs-parent="#accordionoc">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">First Name</label><span
+                                                    class="text-danger fa-lg font-weight-500"> *</span>
+                                                <input name="firstName" id="firstName" class="form-control" type="text"
+                                                    placeholder="First name" autocomplete="off"
+                                                    value="{{ $profile->firstName }}">
+
+                                            </div>
+
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">Last Name</label><span
+                                                    class="text-danger fa-lg font-weight-500"> *</span>
+                                                <input name="lastName" id="lastName" class="form-control" type="text"
+                                                    placeholder="Last name" autocomplete="off"
+                                                    value="{{ $profile->lastName }}">
+
+                                            </div>
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">Email</label><span
+                                                    class="text-danger fa-lg font-weight-500">
+                                                    *</span>
+                                                <input name="email" id="email" class="form-control" type="text"
+                                                    placeholder="Email" autocomplete="off" value="{{ $profile->email }}"
+                                                    readonly>
+
+                                            </div>
+
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">Shop Name</label><span
+                                                    class="text-danger fa-lg font-weight-500"> *</span>
+                                                <input name="shopName" id="shopName" class="form-control" type="text"
+                                                    placeholder="Shop name" autocomplete="off"
+                                                    value="{{ $profile->shopName }}">
+
+                                            </div>
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">Date Of Birth</label><span
+                                                    class="text-danger fa-lg font-weight-500"> *</span>
+                                                <div class="input-group">
+                                                    <input name="dateOfBirth" id="dateOfBirth"
+                                                        class="datepicker-here form-control digits" type="text"
+                                                        data-language="en" placeholder="Date Of Birth"
+                                                        value="{{ $profile->dateOfBirth }}" readonly>
+                                                    <div class="input-group-text" id="btnGroupAddon"><i
+                                                            class="text-secondary" data-feather="calendar"></i></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">Pin Code</label><span
+                                                    class="text-danger fa-lg font-weight-500"> *</span>
+                                                <div class="input-group">
+                                                    <input name="pinCode" id="pinCode" class="form-control" type="text"
+                                                        autocomplete="off" placeholder="Pin Code"
+                                                        value="{{ $profile->pinCode }}">
+                                                    <div class="input-group-append">
+                                                        <div class="form-group col-1 mb-0"> <img
+                                                                src="{{ asset('images/loader-5.gif') }}" alt=""
+                                                                width="45" id="loading" style="display:none;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">State</label><span
+                                                    class="text-danger fa-lg font-weight-500">
+                                                    *</span>
+                                                <input name="state" id="state" class="form-control" type="text"
+                                                    placeholder="State" readonly value="{{ $profile->state }}">
+                                                <input name="stateId" id="stateId" class="form-control" type="hidden"
+                                                    placeholder="State" value="{{ $profile->stateId }}">
+                                            </div>
+
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">City</label><span
+                                                    class="text-danger fa-lg font-weight-500">
+                                                    *</span>
+                                                <input name="city" id="city" class="form-control" type="text"
+                                                    placeholder="City" readonly value="{{ $profile->city }}">
+                                                <input name="cityId" id="cityId" class="form-control" type="hidden"
+                                                    placeholder="City" value="{{ $profile->cityId }}">
+
+                                            </div>
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">Mobile Number</label><span
+                                                    class="text-danger fa-lg font-weight-500"> *</span>
+                                                <input name="mobile" id="mobile" class="form-control" type="number"
+                                                    placeholder="Enter your mobile" autocomplete="off"
+                                                    value="{{ $profile->mobile }}">
+
+                                            </div>
+
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">Gender</label><span
+                                                    class="text-danger fa-lg font-weight-500"> *</span>
+                                                <select name="gender" id="gender" class="form-select">
+                                                    <option value="0">--Select--</option>
+                                                    <option value="1" <?php if ($profile->gender == 1) {
+                                                        echo 'selected';
+                                                    } ?>>MALE</option>
+                                                    <option value="2" <?php if ($profile->gender == 2) {
+                                                        echo 'selected';
+                                                    } ?>>FEMALE</option>
+                                                    <option value="3" <?php if ($profile->gender == 3) {
+                                                        echo 'selected';
+                                                    } ?>>OTHERS</option>
+                                                </select>
+
+                                            </div>
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">Address</label>
+                                                <input name="address" id="address" class="form-control" type="text"
+                                                    placeholder="Enter your address" autocomplete="off"
+                                                    value="{{ $profile->address }}">
+
+                                            </div>
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">Member Type</label><span
+                                                    class="text-danger fa-lg font-weight-500"> *</span>
+                                                <select name="memberType" id="memberType" class="form-select" disabled>
+                                                    <option value="0">--Select--</option>
+                                                    <option value="1" <?php if ($profile->memberType == 1) {
+                                                        echo 'selected';
+                                                    } ?>>District Mananger</option>
+                                                    <option value="2" <?php if ($profile->memberType == 2) {
+                                                        echo 'selected';
+                                                    } ?>>Agent</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="d-flex align-items-center">
+                                            <div class="form-group mt-3">
+                                                <button class="btn btn-success" id="submitButton">Update</button>
+                                                {{-- <button class="btn btn-warning" id="downloadPdf">Download</button> --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            <div class="card">
+                                <div class="card-header bg-light-orange">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link ps-0 collapsed text-white" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseicon1" aria-expanded="false"><i
+                                                class="myicon-disc"></i> Bank Details</button>
+                                    </h5>
+                                </div>
+                                <div class="collapse" id="collapseicon1" aria-labelledby="headingeight"
+                                    data-bs-parent="#accordionoc">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">Account Holder Name</label><span
+                                                    class="text-danger fa-lg font-weight-500"> *</span>
+                                                <input name="firstName" id="firstName" class="form-control"
+                                                    type="text" placeholder="Enter Account Holder Name"
+                                                    autocomplete="off" value="">
 
-                            <div class="form-group col-6">
-                                <label class="col-form-label">Last Name</label><span
-                                    class="text-danger fa-lg font-weight-500"> *</span>
-                                <input name="lastName" id="lastName" class="form-control" type="text"
-                                    placeholder="Last name" autocomplete="off" value="{{ $profile->lastName }}">
+                                            </div>
 
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-6">
-                                <label class="col-form-label">Email</label><span class="text-danger fa-lg font-weight-500">
-                                    *</span>
-                                <input name="email" id="email" class="form-control" type="text" placeholder="Email"
-                                    autocomplete="off" value="{{ $profile->email }}" readonly>
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">Account Number</label><span
+                                                    class="text-danger fa-lg font-weight-500"> *</span>
+                                                <input name="lastName" id="lastName" class="form-control"
+                                                    type="text" placeholder="Account Number" autocomplete="off"
+                                                    value="">
+                                            </div>
 
-                            </div>
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">Bank Name</label><span
+                                                    class="text-danger fa-lg font-weight-500"> *</span>
+                                                <input name="lastName" id="lastName" class="form-control"
+                                                    type="text" placeholder="Enter Bank Name" autocomplete="off"
+                                                    value="">
+                                            </div>
 
-                            <div class="form-group col-6">
-                                <label class="col-form-label">Shop Name</label><span
-                                    class="text-danger fa-lg font-weight-500"> *</span>
-                                <input name="shopName" id="shopName" class="form-control" type="text"
-                                    placeholder="Shop name" autocomplete="off" value="{{ $profile->shopName }}">
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">IFSC Code</label><span
+                                                    class="text-danger fa-lg font-weight-500"> *</span>
+                                                <input name="lastName" id="lastName" class="form-control"
+                                                    type="text" placeholder="Enter IFSC Code" autocomplete="off"
+                                                    value="">
+                                            </div>
 
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-6">
-                                <label class="col-form-label">Date Of Birth</label><span
-                                    class="text-danger fa-lg font-weight-500"> *</span>
-                                <div class="input-group">
-                                    <input name="dateOfBirth" id="dateOfBirth" class="datepicker-here form-control digits"
-                                        type="text" data-language="en" placeholder="Date Of Birth"
-                                        value="{{ $profile->dateOfBirth }}" readonly>
-                                    <div class="input-group-text" id="btnGroupAddon"><i class="text-secondary"
-                                            data-feather="calendar"></i></div>
+                                        </div>
+
+                                        <div class="d-flex align-items-center">
+                                            <div class="form-group mt-3">
+                                                <button class="btn btn-success" id="">Update</button>
+                                                {{-- <button class="btn btn-warning" id="downloadPdf">Download</button> --}}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="form-group col-6">
-                                <label class="col-form-label">Pin Code</label><span
-                                    class="text-danger fa-lg font-weight-500"> *</span>
-                                <div class="input-group">
-                                    <input name="pinCode" id="pinCode" class="form-control" type="text"
-                                        autocomplete="off" placeholder="Pin Code" value="{{ $profile->pinCode }}">
-                                    <div class="input-group-append">
-                                        <div class="form-group col-1 mb-0"> <img src="{{ asset('images/loader-5.gif') }}"
-                                                alt="" width="45" id="loading" style="display:none;">
+                            <div class="card">
+                                <div class="card-header bg-light-orange">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link ps-0 collapsed text-white" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseicon2" aria-expanded="false"><i
+                                                class="myicon-disc"></i> KYC Details</button>
+                                    </h5>
+                                </div>
+                                <div class="collapse" id="collapseicon2" aria-labelledby="headingeight"
+                                    data-bs-parent="#accordionoc">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="form-group col-6 mb-0">
+                                                <label class="col-form-label">PAN Number</label><span
+                                                    class="text-danger fa-lg font-weight-500"> *</span>
+                                                <input name="firstName" id="firstName" class="form-control"
+                                                    type="text" placeholder="Enter Account Holder Name"
+                                                    autocomplete="off" value="">
+
+                                            </div>
+
+                                            <div class="form-group col-6 mb-0">
+                                                <label class="col-form-label">Aadhaar Number</label><span
+                                                    class="text-danger fa-lg font-weight-500"> *</span>
+                                                <input name="lastName" id="lastName" class="form-control"
+                                                    type="text" placeholder="Enter Aadhaar Number" autocomplete="off"
+                                                    value="">
+                                            </div>
+
+                                        </div>
+
+                                        <hr>
+
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <label class="col-form-label">Pan Card Photo</label>
+                                                <div class="col-lg-12">
+                                                    <img src="{{ asset('images/dlimage.png') }}" class="img-thumbnail"
+                                                        alt="DLimage" id="my_image" width="230px">
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <label class="col-form-label">Aadhaar Card Front Photo</label>
+                                                <div class="col-lg-12">
+                                                    <img src="{{ asset('images/dlimage.png') }}" class="img-thumbnail"
+                                                        alt="DLimage" id="my_image" width="230px">
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <label class="col-form-label">Aadhaar Card Back Photo</label>
+                                                <div class="col-lg-12">
+                                                    <img src="{{ asset('images/dlimage.png') }}" class="img-thumbnail"
+                                                        alt="DLimage" id="my_image" width="230px">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex align-items-center">
+                                            <div class="form-group mt-3">
+                                                <button class="btn btn-success" id="">Update</button>
+                                                {{-- <button class="btn btn-warning" id="downloadPdf">Download</button> --}}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="form-group col-6">
-                                <label class="col-form-label">State</label><span class="text-danger fa-lg font-weight-500">
-                                    *</span>
-                                <input name="state" id="state" class="form-control" type="text"
-                                    placeholder="State" readonly value="{{ $profile->state }}">
-                                <input name="stateId" id="stateId" class="form-control" type="hidden"
-                                    placeholder="State" value="{{ $profile->stateId }}">
-                            </div>
-
-                            <div class="form-group col-6">
-                                <label class="col-form-label">City</label><span class="text-danger fa-lg font-weight-500">
-                                    *</span>
-                                <input name="city" id="city" class="form-control" type="text"
-                                    placeholder="City" readonly value="{{ $profile->city }}">
-                                <input name="cityId" id="cityId" class="form-control" type="hidden"
-                                    placeholder="City" value="{{ $profile->cityId }}">
-
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-6">
-                                <label class="col-form-label">Mobile Number</label><span
-                                    class="text-danger fa-lg font-weight-500"> *</span>
-                                <input name="mobile" id="mobile" class="form-control" type="number"
-                                    placeholder="Enter your mobile" autocomplete="off" value="{{ $profile->mobile }}">
-
-                            </div>
-
-                            <div class="form-group col-6">
-                                <label class="col-form-label">Gender</label><span
-                                    class="text-danger fa-lg font-weight-500"> *</span>
-                                <select name="gender" id="gender" class="form-select">
-                                    <option value="0">--Select--</option>
-                                    <option value="1" <?php if ($profile->gender == 1) {
-                                        echo 'selected';
-                                    } ?>>MALE</option>
-                                    <option value="2" <?php if ($profile->gender == 2) {
-                                        echo 'selected';
-                                    } ?>>FEMALE</option>
-                                    <option value="3" <?php if ($profile->gender == 3) {
-                                        echo 'selected';
-                                    } ?>>OTHERS</option>
-                                </select>
-
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-6">
-                                <label class="col-form-label">Address</label>
-                                <input name="address" id="address" class="form-control" type="text"
-                                    placeholder="Enter your address" autocomplete="off" value="{{ $profile->address }}">
-
-                            </div>
-                            <div class="form-group col-6">
-                                <label class="col-form-label">Member Type</label><span
-                                    class="text-danger fa-lg font-weight-500"> *</span>
-                                <select name="memberType" id="memberType" class="form-select" disabled>
-                                    <option value="0">--Select--</option>
-                                    <option value="1" <?php if ($profile->memberType == 1) {
-                                        echo 'selected';
-                                    } ?>>District Mananger</option>
-                                    <option value="2" <?php if ($profile->memberType == 2) {
-                                        echo 'selected';
-                                    } ?>>Agent</option>
-                                </select>
-                            </div>
-
-                        </div>
-
-                        <hr>
-
-                        <div class="form-group mt-4">
-                            <button class="btn btn-warning" id="submitButton">Update</button>
-                            {{-- <button class="btn btn-warning" id="downloadPdf">Download</button> --}}
-                        </div>
-
-
-
                     </div>
                 </div>
             </div>
@@ -269,7 +406,7 @@
             }
 
             function submitForm() {
-               
+
                 var firstName = $('#firstName').val();
                 var lastName = $('#lastName').val();
                 var email = $('#email').val();
@@ -296,7 +433,7 @@
                             $.ajax({
                                 url: "{{ url('/profileUpdate') }}",
                                 data: {
-                                   
+
                                     firstName: firstName,
                                     lastName: lastName,
                                     email: email,

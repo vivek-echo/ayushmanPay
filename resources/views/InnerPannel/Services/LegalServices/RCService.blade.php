@@ -329,10 +329,9 @@
                         </div>
 
                         <div class="form-group mt-4" style="display:none;" id="noRecordFound">
-                            <hr>
-                            <div class="card-body bg-warning" style="border-radius:10px 10px 10px 10px;">
+                            <div class="card-body bg-light box-shadow-1 text-dark rounded">
                                 <div class="row m-0">
-                                    <h4>NO RECORD FOUND.....</h4>
+                                    <h4 class="mb-0">NO RECORD FOUND.....</h4>
                                 </div>
                             </div>
                         </div>
