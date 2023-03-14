@@ -81,7 +81,7 @@
                                             <h6>Pan Card(UTI)</h6></a>
                                         </li>
                                         <li>
-                                            <a href="/services/LpgGasBooking"><div class="quick-box"><i class="myicon-gas"></i></div>
+                                            <a href="/services/b2bServices/LPG"><div class="quick-box"><i class="myicon-gas"></i></div>
                                             <h6>LPG Gas</h6></a>
                                         </li>
                                         <li>
@@ -94,7 +94,7 @@
                                             <h6>Fixed Deposit</h6></a>
                                         </li> --}}
                                         <li>
-                                            <a href="/services/aepsservice"><div class="quick-box"><i class="myicon-identification"></i></div>
+                                            <a href="/services/b2bServices/aepsservice"><div class="quick-box"><i class="myicon-identification"></i></div>
                                             <h6>AEPS</h6></a>
                                         </li>
                                         {{-- <li>

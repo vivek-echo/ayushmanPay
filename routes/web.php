@@ -99,6 +99,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(['GET', 'POST'], '/profile/changePassword', [App\Http\Controllers\InnerPannel\Profile\ProfileController::class, 'changePasswordIndex']);
     Route::match(['GET', 'POST'], '/changePassword', [App\Http\Controllers\InnerPannel\Profile\ProfileController::class, 'changePassword']);
 
+    //aeps 
+    // D:\apnaBhartPay\app\Http\Controllers\InnerPannel\Services\BTwoBServices\AepsController.php
+    Route::match(['GET', 'POST'], '/services/b2bServices/aepsservice', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\AepsController::class, 'index'])->name('aeps');
+    Route::match(['GET', 'POST'], '/aepsKycCallBack', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\AepsController::class, 'aepsKycCallBack']);
+    Route::match(['GET', 'POST'], '/getBankNameList', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\AepsController::class, 'getBankNameList']);
+    Route::match(['GET', 'POST'], '/getBEAeps', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\AepsController::class, 'getBEAeps']);
 
 });
 //B2BService
@@ -118,9 +124,7 @@ Route::get('/services/irctcservice', function () {
 Route::get('/services/fixeddepositservice', function () {
     return view('InnerPannel/Services/BtwoBServices/FixedDeposit');
 });
-Route::get('/services/aepsservice', function () {
-    return view('InnerPannel/Services/BtwoBServices/AepsService');
-});
+
 
 //LegalService
 Route::get('/services/birthcertificate', function () {

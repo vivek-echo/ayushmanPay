@@ -272,12 +272,9 @@
                     errorAlert("Required", "Please select the operator", "lpgBillerId");
                     return false;
                 }
-                if (lpgCaNumber == "") {
-                    errorAlert("Required", 'Please Enter ' + extraData + '', "canumber");
-                    return false;
-                }
+             
                 if (amount == "") {
-                    errorAlert("Required", "Please select the operator", "amt");
+                    errorAlert("Required", "Please Enter the amount", "amt");
                     return false;
                 }
                 $('.pageLoader').fadeIn();

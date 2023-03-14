@@ -88,7 +88,6 @@ class FastTagServicesController extends Controller
             'Token' => $token
         ])->withBody(json_encode($params), 'application/json')
             ->post('' . config('constant.SERVICE_URL') . 'fastag/Fastag/recharge')->json();
-
         if ($payBill['status'] == true) {
             try {
                 $trans = DB::beginTransaction();
@@ -113,7 +112,7 @@ class FastTagServicesController extends Controller
                         'servicType' => 6,
                         'transactionType' => 2,
                         'ackno' => $payBill['ackno'],
-                        'riefId' => $payBill['refid'],
+                        'riefId' =>  $params['referenceid'],
                         'message' => $payBill['message'],
                     ]);
 

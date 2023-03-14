@@ -19,7 +19,6 @@ class PanCardUtiController extends Controller
         $user = Auth::user();
         $apiKey = config('constant.API_KEY');
         $token = Controller::getToken();
-        // dd($token);
         $params['merchantcid'] = (string)$user->userId;
         $params['refid'] = (string)mt_rand(10000000, 99999999);
         $params['redirect_url'] = url('/services/b2bServices/PanCardUti');

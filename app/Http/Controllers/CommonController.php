@@ -93,7 +93,7 @@ class CommonController extends Controller
 
     public function getGstStateList()
     {
-        $bankList = DB::table('gststate')->orderBy('gstStateName', 'asc')->get();
+        $bankList = DB::table('statelist')->orderBy('state', 'asc')->select('state as gstStateName', 'id as gstStateId')->get();
         return response()->json([
             'data' => $bankList
         ]);

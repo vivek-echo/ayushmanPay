@@ -111,7 +111,7 @@ class LPGServicesController extends Controller
                             'servicType'=>4,
                             'transactionType'=>2,
                             'ackno' => $payBill['ackno'],
-                            'riefId' => $payBill['refid'],
+                            'riefId' => $params['referenceid'] ,
                             'message' => $payBill['message']
                         ]);
     

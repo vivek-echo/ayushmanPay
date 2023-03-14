@@ -53,6 +53,10 @@ return [
             'channels' => ['single'],
             'ignore_exceptions' => false,
         ],
+        'apiLog' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/apiLog.log'),
+        ],
 
         'single' => [
             'driver' => 'single',

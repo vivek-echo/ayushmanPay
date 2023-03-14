@@ -73,6 +73,11 @@ class EmiBillServicesController extends Controller
             'Token' => $token
         ])->withBody(json_encode($params),'application/json')
             ->post(''.config('constant.SERVICE_URL').'bill-payment/bill/paybill')->json();
+            Log::channel('apiLog')->info('success',[
+                'url'=> config('constant.SERVICE_URL')."bill-payment/bill/paybill",
+                'body'=>  $params,
+                'response' => $payBill
+            ]);
             if($payBill['status'] == true){
                 try{
                     $trans = DB::beginTransaction();
