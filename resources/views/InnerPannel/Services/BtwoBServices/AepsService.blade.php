@@ -234,8 +234,8 @@
                                                 *</span>
                                             <input name="aadharNo" id="aadharNo" class="form-control" type="number"
                                                 placeholder="Enter Aadhar Number" autocomplete="off">
-                                            <input name="lat" id="lat" class="form-control" type="text">
-                                            <input name="long" id="long" class="form-control" type="text">
+                                            <input name="lat" id="lat" class="form-control" type="hidden">
+                                            <input name="long" id="long" class="form-control" type="hidden">
 
                                         </div>
 
@@ -343,6 +343,7 @@
                     errorAlert("Required", "Please get the finger print ", "txtPidData");
                     return false;
                 }
+                $('.pageLoader').show();
                 if (transType == "BE") {
                     $.ajax({
                         url: "{{ url('/getBEAeps') }}",
@@ -358,7 +359,11 @@
 
                         },
                         success: function(res) {
-
+                            $('.pageLoader').hide();
+                            if(res.status == false)
+                            {
+                                swal("Error", res.message, "error");
+                            }
                         }
                     });
                 }
