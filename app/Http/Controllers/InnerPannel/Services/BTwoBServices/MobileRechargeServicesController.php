@@ -50,7 +50,11 @@ class MobileRechargeServicesController extends Controller
             'Token' => $token
         ])->withBody(json_encode($param), 'application/json')
             ->post('https://paysprint.in/service-api/api/v1/service/recharge/recharge/dorecharge')->json();
-
+            Log::channel('apiLog')->info('success',[
+                'url'=> 'https://paysprint.in/service-api/api/v1/service/recharge/recharge/dorecharge',
+                'body'=>  $param,
+                'response' => $recharge
+            ]);
 
         if ($recharge['status'] == true) {
             try {

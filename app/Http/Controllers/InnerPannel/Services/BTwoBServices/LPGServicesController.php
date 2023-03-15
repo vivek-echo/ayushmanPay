@@ -26,6 +26,10 @@ class LPGServicesController extends Controller
             'Token' => $token
         ])
             ->post('' . config('constant.SERVICE_URL') . 'bill-payment/lpg/getoperator')->json();
+            Log::channel('apiLog')->info('success',[
+                'url'=> config('constant.SERVICE_URL')."bill-payment/lpg/getoperator",
+                'response' => $operatorList
+            ]);
         return response()->json([
             'status' => $operatorList['status'],
             'message' => $operatorList['message'],
@@ -46,6 +50,11 @@ class LPGServicesController extends Controller
             'Token' => $token
         ])->withBody(json_encode($params), 'application/json')
             ->post('' . config('constant.SERVICE_URL') . 'bill-payment/lpg/fetchbill')->json();
+            Log::channel('apiLog')->info('success',[
+                'url'=> config('constant.SERVICE_URL')."bill-payment/lpg/fetchbill",
+                'body'=>  $params,
+                'response' => $fetchBill
+            ]);
         return response()->json([
             'status' => $fetchBill['status'],
             'message' => $fetchBill['message'],
@@ -84,6 +93,11 @@ class LPGServicesController extends Controller
             'Token' => $token
         ])->withBody(json_encode($params), 'application/json')
             ->post('' . config('constant.SERVICE_URL') . 'bill-payment/lpg/paybill')->json();
+            Log::channel('apiLog')->info('success',[
+                'url'=> config('constant.SERVICE_URL')."bill-payment/lpg/paybill",
+                'body'=>  $params,
+                'response' => $payBill
+            ]);
 
             if($payBill['status'] == true){
                 try{

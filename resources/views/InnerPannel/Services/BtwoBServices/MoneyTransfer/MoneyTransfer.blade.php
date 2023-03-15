@@ -470,7 +470,7 @@
                 }
 
 
-                addBenFun(remiterMobile, acntHoldName, bankId, accNumber, ifcscode, 0, dateOfBirth, address,
+                addBenFun(remiterMobile, acntHoldName, bankId, accNumber, ifcscode, 1, dateOfBirth, address,
                     pincode);
             })
 

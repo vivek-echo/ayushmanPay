@@ -27,6 +27,11 @@ class MoneyTransferController extends Controller
             'Token' => $token
         ])->withBody(json_encode($param), 'application/json')
             ->post('https://paysprint.in/service-api/api/v1/service/dmt/remitter/queryremitter')->json();
+            Log::channel('apiLog')->info('success',[
+                'url'=> 'https://paysprint.in/service-api/api/v1/service/dmt/remitter/queryremitter',
+                'body'=>  $param,
+                'response' => $queryremitter
+            ]);
         $viewVar['mobile'] = $user->mobile;
         $viewVar['firstname'] = $user->firstName;
         $viewVar['lastName'] = $user->lastName;
@@ -41,6 +46,11 @@ class MoneyTransferController extends Controller
                 'Token' => $token
             ])->withBody(json_encode($fetchParam), 'application/json')
                 ->post('https://paysprint.in/service-api/api/v1/service/dmt/beneficiary/registerbeneficiary/fetchbeneficiary')->json();
+                Log::channel('apiLog')->info('success',[
+                    'url'=> 'https://paysprint.in/service-api/api/v1/service/dmt/beneficiary/registerbeneficiary/fetchbeneficiary',
+                    'body'=>  $fetchParam,
+                    'response' => $fetchBen
+                ]);
             if ($fetchBen['status'] == true) {
                 $viewVar['fetchbenficery'] = $fetchBen['data'];
             } else {
@@ -91,6 +101,11 @@ class MoneyTransferController extends Controller
             'Token' => $token
         ])->withBody(json_encode($param), 'application/json')
             ->post('https://paysprint.in/service-api/api/v1/service/dmt/remitter/registerremitter')->json();
+            Log::channel('apiLog')->info('success',[
+                'url'=> 'https://paysprint.in/service-api/api/v1/service/dmt/remitter/registerremitter',
+                'body'=>  $param,
+                'response' => $registerRemitter
+            ]);
         return response()->json([
             'status' => $registerRemitter['status'],
             'message' => $registerRemitter['message']
@@ -117,6 +132,11 @@ class MoneyTransferController extends Controller
             'Token' => $token
         ])->withBody(json_encode($param), 'application/json')
             ->post('https://paysprint.in/service-api/api/v1/service/dmt/beneficiary/registerbeneficiary')->json();
+            Log::channel('apiLog')->info('success',[
+                'url'=> 'https://paysprint.in/service-api/api/v1/service/dmt/beneficiary/registerbeneficiary',
+                'body'=>  $param,
+                'response' => $registerBen
+            ]);
         return response()->json([
             'status' => $registerBen['status'],
             'message' => $registerBen['message']
@@ -136,6 +156,11 @@ class MoneyTransferController extends Controller
             'Token' => $token
         ])->withBody(json_encode($param), 'application/json')
             ->post('https://paysprint.in/service-api/api/v1/service/dmt/beneficiary/registerbeneficiary/deletebeneficiary')->json();
+            Log::channel('apiLog')->info('success',[
+                'url'=> 'https://paysprint.in/service-api/api/v1/service/dmt/beneficiary/registerbeneficiary/deletebeneficiary',
+                'body'=>  $param,
+                'response' => $deleteBen
+            ]);
         return response()->json([
             'status' => $deleteBen['status'],
             'message' => $deleteBen['message']
@@ -155,6 +180,11 @@ class MoneyTransferController extends Controller
             'Token' => $token
         ])->withBody(json_encode($param), 'application/json')
             ->post('https://paysprint.in/service-api/api/v1/service/dmt/remitter/queryremitter')->json();
+            Log::channel('apiLog')->info('success',[
+                'url'=> 'https://paysprint.in/service-api/api/v1/service/dmt/remitter/queryremitter',
+                'body'=>  $param,
+                'response' => $query
+            ]);
         return response()->json([
             'status' => $query['status'],
             'message' => $query['message'],
@@ -242,6 +272,11 @@ class MoneyTransferController extends Controller
             'Token' => $token
         ])->withBody(json_encode($params), 'application/json')
             ->post('https://paysprint.in/service-api/api/v1/service/dmt/transact/transact')->json();
+            Log::channel('apiLog')->info('success',[
+                'url'=> 'https://paysprint.in/service-api/api/v1/service/dmt/transact/transact',
+                'body'=>  $params,
+                'response' => $sendMoney
+            ]);
 
         if ($sendMoney['status'] == true) {
             try {

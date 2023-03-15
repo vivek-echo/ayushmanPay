@@ -28,6 +28,11 @@ class BroadbandServicesController extends Controller
             'Token' => $token
         ])->withBody(json_encode($params),'application/json')
             ->post(''.config('constant.SERVICE_URL').'bill-payment/bill/fetchbill')->json();
+            Log::channel('apiLog')->info('success',[
+                'url'=> config('constant.SERVICE_URL')."bill-payment/bill/fetchbill",
+                'body'=>  $params,
+                'response' => $fetchBill
+            ]);
             // dd($fetchBill);
         return response()->json([
             'status' => $fetchBill['status'],
@@ -73,6 +78,11 @@ class BroadbandServicesController extends Controller
             'Token' => $token
         ])->withBody(json_encode($params),'application/json')
             ->post(''.config('constant.SERVICE_URL').'bill-payment/bill/paybill')->json();
+            Log::channel('apiLog')->info('success',[
+                'url'=> config('constant.SERVICE_URL')."bill-payment/bill/paybill",
+                'body'=>  $params,
+                'response' => $payBill
+            ]);
             if($payBill['status'] == true){
                 try{
                     $trans = DB::beginTransaction();

@@ -38,6 +38,11 @@ class DrivingLicController extends Controller
             'Token' => $token
         ])->withBody(json_encode($params), 'application/json')
             ->post('https://paysprint.in/service-api/api/v1/service/verification/drivinglicense/validate')->json();
+            Log::channel('apiLog')->info('success',[
+                'url'=> 'https://paysprint.in/service-api/api/v1/service/verification/drivinglicense/validate',
+                'body'=>  $params,
+                'response' => $generateUrl
+            ]);
         $image = $generateUrl['data']['profile_image'];
         $imageName =  $user->id."/".$params['refid'].".png";
         Storage::disk('public')->put($imageName, base64_decode($image));

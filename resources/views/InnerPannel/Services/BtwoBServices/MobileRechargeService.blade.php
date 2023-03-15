@@ -368,8 +368,8 @@
                                     if (res.status == true) {
                                         swal("Successfull", res.message, "success")
                                             .then(function(res) {
-                                                $('.pageLoader').fadeIn();
                                                 if (res) {
+                                                    $('.pageLoader').fadeIn();
                                                     var loc = window.location;
                                                     window.location = loc
                                                         .origin +
@@ -380,8 +380,8 @@
                                         $('.pageLoader').fadeOut();
                                         swal("Error", res.message, "error").then(
                                             function(res) {
-                                                $('.pageLoader').fadeIn();
                                                 if (res) {
+                                                    $('.pageLoader').fadeIn();
                                                     var loc = window.location;
                                                     window.location = loc
                                                         .origin +

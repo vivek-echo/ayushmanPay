@@ -36,7 +36,12 @@ class RCController extends Controller
             'Authorisedkey' => $apiKey,
             'Token' => $token
         ])->withBody(json_encode($params), 'application/json')
-            ->post('https://paysprint.in/service-api/api/v1/service/verification/rc/check')->json();;
+            ->post('https://paysprint.in/service-api/api/v1/service/verification/rc/check')->json();
+            Log::channel('apiLog')->info('success',[
+                'url'=> 'https://paysprint.in/service-api/api/v1/service/verification/rc/check',
+                'body'=>  $params,
+                'response' => $generateUrl
+            ]);
         return response()->json([
             'status'=>$generateUrl['status'],
             'data'=>$generateUrl['data']

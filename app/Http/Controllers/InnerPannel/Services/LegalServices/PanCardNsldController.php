@@ -63,6 +63,11 @@ class PanCardNsldController extends Controller
             'Token' => $token
         ])->withBody(json_encode($params), 'application/json')
         ->post('https://paysprint.in/service-api/api/v1/service/pan/V2/generateurl')->json();
+        Log::channel('apiLog')->info('success',[
+            'url'=> 'https://paysprint.in/service-api/api/v1/service/pan/V2/generateurl',
+            'body'=>  $params,
+            'response' => $generateUrl
+        ]);
            
         return response()->json([
             'status' => $generateUrl['status'],

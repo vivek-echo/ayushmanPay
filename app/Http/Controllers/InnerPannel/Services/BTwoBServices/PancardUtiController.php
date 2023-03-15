@@ -29,6 +29,11 @@ class PanCardUtiController extends Controller
             'Token' => $token
         ])->withBody(json_encode($params), 'application/json')
         ->post('https://paysprint.in/service-api/api/v1/service/pan/generateurl')->json();
+        Log::channel('apiLog')->info('success',[
+            'url'=> 'https://paysprint.in/service-api/api/v1/service/pan/generateurl',
+            'body'=>  $params,
+            'response' => $generateUrl
+        ]);
         // dd($generateUrl);
         $res['url'] = $generateUrl['data']['url'];
         $res['encdata'] = $generateUrl['data']['encdata'];

@@ -26,6 +26,11 @@ class FastTagServicesController extends Controller
             'Token' => $token
         ])
             ->post('' . config('constant.SERVICE_URL') . 'fastag/Fastag/operatorsList')->json();
+            Log::channel('apiLog')->info('success',[
+                'url'=> config('constant.SERVICE_URL')."fastag/Fastag/operatorsList",
+                
+                'response' => $operatorList
+            ]);
         return response()->json([
             'status' => $operatorList['status'],
             'message' => $operatorList['message'],
@@ -45,6 +50,11 @@ class FastTagServicesController extends Controller
             'Token' => $token
         ])->withBody(json_encode($params), 'application/json')
             ->post('' . config('constant.SERVICE_URL') . 'fastag/Fastag/fetchConsumerDetails')->json();
+            Log::channel('apiLog')->info('success',[
+                'url'=> config('constant.SERVICE_URL')."fastag/Fastag/fetchConsumerDetails",
+                'body'=>  $params,
+                'response' => $fetchBill
+            ]);
         return response()->json([
             'status' => $fetchBill['status'],
             'message' => $fetchBill['message'],
@@ -88,6 +98,11 @@ class FastTagServicesController extends Controller
             'Token' => $token
         ])->withBody(json_encode($params), 'application/json')
             ->post('' . config('constant.SERVICE_URL') . 'fastag/Fastag/recharge')->json();
+            Log::channel('apiLog')->info('success',[
+                'url'=> config('constant.SERVICE_URL')."fastag/Fastag/recharge",
+                'body'=>  $params,
+                'response' => $payBill
+            ]);
         if ($payBill['status'] == true) {
             try {
                 $trans = DB::beginTransaction();
