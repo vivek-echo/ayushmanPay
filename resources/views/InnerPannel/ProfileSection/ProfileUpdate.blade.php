@@ -249,7 +249,7 @@
                                     data-bs-parent="#accordionoc">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="form-group col-6 mb-0">
+                                            <div class="form-group col-6">
                                                 <label class="col-form-label">PAN Number</label><span
                                                     class="text-danger fa-lg font-weight-500"> *</span>
                                                 <input name="firstName" id="firstName" class="form-control"
@@ -258,7 +258,7 @@
 
                                             </div>
 
-                                            <div class="form-group col-6 mb-0">
+                                            <div class="form-group col-6">
                                                 <label class="col-form-label">Aadhaar Number</label><span
                                                     class="text-danger fa-lg font-weight-500"> *</span>
                                                 <input name="lastName" id="lastName" class="form-control"
@@ -266,6 +266,26 @@
                                                     value="">
                                             </div>
 
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">Upload Pan Card Photo</label><span
+                                                    class="text-danger fa-lg font-weight-500"> *</span>
+                                                <input class="form-control" type="file" id="uploadPanPhoto"
+                                                    name="uploadPanPhoto">
+                                            </div>
+
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">Upload Aadhaar Card Front Photo</label><span
+                                                    class="text-danger fa-lg font-weight-500"> *</span>
+                                                <input class="form-control" type="file" id="uploadAadhaarfrnPhoto"
+                                                    name="uploadAadhaarfrnPhoto">
+                                            </div>
+
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">Upload Aadhaar Card Back Photo</label><span
+                                                    class="text-danger fa-lg font-weight-500"> *</span>
+                                                <input class="form-control" type="file" id="uploadPanbckPhoto"
+                                                    name="uploadPanbckPhoto">
+                                            </div>
                                         </div>
 
                                         <hr>
@@ -293,17 +313,17 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="d-flex align-items-center">
-                                            <div class="row">
-                                                    <div class="form-group mt-3">
-                                                    <button class="btn btn-success" id="">Accept</button>
-                                                    <button class="btn btn-danger" id="">Reject</button>
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <div class="btn-showcase d-flex mt-4">
+                                                    <button class="btn btn-success text-center"
+                                                        id="">Accept</button>
+                                                    <button class="btn btn-danger text-center"
+                                                        id="">Reject</button>
                                                 </div>
-                                              
-                                                {{-- <button class="btn btn-warning" id="downloadPdf">Download</button> --}}
                                             </div>
                                         </div>
+                                        {{-- <button class="btn btn-warning" id="downloadPdf">Download</button> --}}
                                     </div>
                                 </div>
                             </div>

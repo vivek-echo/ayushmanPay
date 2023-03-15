@@ -144,3 +144,8 @@ Route::get('/services/rcservice', function () {
 Route::get('/walletsection/printMyQR', function () {
     return view('InnerPannel/WalletSection/PrintQR');
 });
+
+
+Route::get('/memberlist/memberlist', function () {
+    return view('InnerPannel/MemberList/MemberList');
+});
