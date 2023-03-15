@@ -69,7 +69,7 @@ class CommonController extends Controller
             }
         }
         return response()->json([
-            'walletAmount' => $walletAmount
+            'walletAmount' => $walletAmount,
         ]);
     }
 

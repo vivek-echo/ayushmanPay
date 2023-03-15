@@ -15,8 +15,7 @@ class DashboardController extends Controller
 
     public function index()
     {
-       
-        
-        return view('InnerPannel.Dashboard.Dashboard');
+        $view['sbvsgbvg']="vivek";
+        return view('InnerPannel.Dashboard.Dashboard', $view);
     }
 }

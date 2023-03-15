@@ -238,6 +238,13 @@
                                             <input name="long" id="long" class="form-control" type="hidden">
 
                                         </div>
+                                        <div class="form-group col-6" id="amountDiv" style="display:none">
+                                            <label class="col-form-label">Amount</label><span
+                                                class="text-danger fa-lg font-weight-500">
+                                                *</span>
+                                            <input name="amount" id="amount" class="form-control" type="number"
+                                                placeholder="Enter Amount" autocomplete="off">
+                                        </div>
 
                                         <div class="form-group mt-4">
                                             <button class="btn btn-info" id="checkDeviceBtn"
@@ -269,7 +276,27 @@
                 </div>
             </div>
         </div>
+        {{-- <div > --}}
+        <div class="table-responsive" id="miniStateDiv" style="display:none">
+            <table class="table" id="beneficiaryList">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">TxnType</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Narration</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    
+
+                </tbody>
+            </table>
+        </div>
+        {{-- </div> --}}
     </div>
+
     <input id="method" type="hidden" value="">
     <input id="info" type="hidden" value="">
     <input type="hidden" name="txtWadh" id="txtWadh">
@@ -282,6 +309,15 @@
     <script>
         $(document).ready(function() {
             $('#serviceLink').addClass('activeLink');
+            $('#transType').on('change', function() {
+                $('#amount').val('');
+                var transVal = $(this).val();
+                if (transVal == 'CW') {
+                    $('#amountDiv').show();
+                } else {
+                    $('#amountDiv').hide();
+                }
+            })
             $('#perpaidOperatorLoading').show();
             $.ajax({
                 url: "{{ url('/getBankNameList') }}",
@@ -289,7 +325,6 @@
 
                     var optionOperator = ['<option value="0" >--Select Operator--</option>'];
                     var optionLengthOperator = res.data.length;
-                    console.log(optionLengthOperator);
                     for (var i = 0; i < optionLengthOperator; i++) {
 
                         var resOptionOperator = '<option value="' + res.data[i].iinno + '" >' + res
@@ -311,8 +346,9 @@
                 var cstmrName = $('#cstmrName').val();
                 var bankName = $('#bankName').val();
                 var aadharNo = $('#aadharNo').val();
-                var txtDeviceInfo = $('#txtDeviceInfo').val();  
+                var txtDeviceInfo = $('#txtDeviceInfo').val();
                 var txtPidData = $('#txtPidData').val();
+                var amount = $('#amount').val();
                 var lat = $('#lat').val();
                 var long = $('#long').val();
                 if (transType == "") {
@@ -335,6 +371,13 @@
                     errorAlert("Required", "Please enter the adhaar number ", "aadharNo");
                     return false;
                 }
+                if (transType == "CW") {
+                    if (amount == '') {
+                        errorAlert("Required", "Please Enter Amount ", "amount");
+                        return false;
+
+                    }
+                }
                 if (txtDeviceInfo == "") {
                     errorAlert("Required", "Please Get the device details ", "txtDeviceInfo");
                     return false;
@@ -344,29 +387,51 @@
                     return false;
                 }
                 $('.pageLoader').show();
-                if (transType == "BE") {
-                    $.ajax({
-                        url: "{{ url('/getBEAeps') }}",
-                        data:{
-                            'transType':transType,
-                            'cstmrMobNo':cstmrMobNo,
-                            'cstmrName':cstmrName,
-                            'bankName':bankName,
-                            'aadharNo':aadharNo,
-                            'txtPidData':txtPidData,
-                            lat:lat,
-                            long:long
 
-                        },
-                        success: function(res) {
-                            $('.pageLoader').hide();
-                            if(res.status == false)
-                            {
-                                swal("Error", res.message, "error");
+                $.ajax({
+                    url: "{{ url('/getBEAeps') }}",
+                    data: {
+                        'transType': transType,
+                        'cstmrMobNo': cstmrMobNo,
+                        'cstmrName': cstmrName,
+                        'bankName': bankName,
+                        'aadharNo': aadharNo,
+                        'txtPidData': txtPidData,
+                        'amount': amount,
+                        'lat': lat,
+                        'long': long
+
+                    },
+                    success: function(res) {
+                        $('.pageLoader').hide();
+                        $('#miniStateDiv').hide();
+                        if (res.status == false) {
+                            swal("Error", res.message, "error");
+                        } else {
+                           
+                            if (res.transType == "BE") {
+                                swal("Successfull", 'Your Avaliable Balance is: Rs ' + res
+                                    .balance + '', "success");
+                            } else if (res.transType == "CW") {
+                                swal("Successfull", '' + res.message + ' of Rs. ' + res
+                                    .balance + '', "success");
+                            } else if (res.transType == "MS") {
+                                swal("Successfull", 'Mini-Statement Generated successfully.',
+                                    "success");
+                                var StatementCount = res.ministatement.length
+                                var StatementData = res.ministatement
+                                var staArr = '';
+                                for (var i = 0; i < StatementCount; i++) {
+                                    staArr += '<tr><td scope="row">'+(i+1)+'</td><td>'+StatementData[i].date+'</td><td>'+StatementData[i].txnType+'</td><td>'+StatementData[i].amount+'</td><td>'+StatementData[i].narration+'</td> </tr>';
+                                    
+                                }
+                                $('#beneficiaryList tbody').append(staArr);
+                                $('#miniStateDiv').show();
                             }
                         }
-                    });
-                }
+                    }
+                });
+
 
             });
         });

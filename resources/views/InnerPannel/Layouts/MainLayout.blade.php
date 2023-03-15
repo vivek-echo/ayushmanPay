@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
 
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -251,6 +251,11 @@
                                                 {{-- <li><a href="{{ url('/walletsection/printMyQR') }}">Print My QR</a></li>
                                                 <li><a href="#">Settlement</a></li> --}}
                                             </ul>
+                                        </li>
+                                        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav"
+                                            id="memberLink" href="{{ url('/membersList') }}"><i
+                                                data-feather="users"> </i><span>Members List</span></a></li>
+                                           
                                         </li>
                                     </ul>
                                 </li>

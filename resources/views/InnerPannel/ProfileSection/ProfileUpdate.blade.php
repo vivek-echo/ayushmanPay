@@ -229,7 +229,7 @@
 
                                         <div class="d-flex align-items-center">
                                             <div class="form-group mt-3">
-                                                <button class="btn btn-success" id="">Update</button>
+                                                <button class="btn btn-success" id="">Verify</button>
                                                 {{-- <button class="btn btn-warning" id="downloadPdf">Download</button> --}}
                                             </div>
                                         </div>
@@ -295,8 +295,12 @@
                                         </div>
 
                                         <div class="d-flex align-items-center">
-                                            <div class="form-group mt-3">
-                                                <button class="btn btn-success" id="">Update</button>
+                                            <div class="row">
+                                                    <div class="form-group mt-3">
+                                                    <button class="btn btn-success" id="">Accept</button>
+                                                    <button class="btn btn-danger" id="">Reject</button>
+                                                </div>
+                                              
                                                 {{-- <button class="btn btn-warning" id="downloadPdf">Download</button> --}}
                                             </div>
                                         </div>

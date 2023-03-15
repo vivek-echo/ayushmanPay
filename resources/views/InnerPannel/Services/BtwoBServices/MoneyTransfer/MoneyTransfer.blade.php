@@ -176,7 +176,7 @@
                                                 <tbody>
                                                     <?php foreach($fetchbenficery as $key=>$value) { ?>
                                                     <tr>
-                                                        <th scope="row">{{ $key + 1 }}</th>
+                                                        <td scope="row">{{ $key + 1 }}</td>
                                                         <td>{{ $value['bankname'] }}</td>
                                                         <td>{{ $value['accno'] }}</td>
                                                         <td>{{ $value['name'] }}</td>

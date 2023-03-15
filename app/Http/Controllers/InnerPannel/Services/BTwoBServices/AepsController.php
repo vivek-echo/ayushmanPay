@@ -110,31 +110,84 @@ class AepsController extends Controller
         $datapost['requestremarks'] = "requestremarks";
         $datapost['pipe'] = "bank1";
         $datapost['timestamp'] = now();
-        $datapost['transactiontype'] = "BE";
+        $datapost['transactiontype'] = $getData['transType'];
+        $datapost['amount'] = $getData['amount'];
         $datapost['submerchantid'] = $a->userId;
         $datapost['is_iris'] = "Yes";
         $cipher  =   openssl_encrypt(json_encode($datapost, true), 'AES-128-CBC', $key, $options = OPENSSL_RAW_DATA, $iv);
         $param['body'] =       base64_encode($cipher);
+
+        $apiUrl = '';
+        if ($getData['transType'] == "BE") {
+            $apiUrl = 'https://paysprint.in/service-api/api/v1/service/aeps/balanceenquiry/index';
+        } else if ($getData['transType'] == "CW") {
+            $apiUrl = 'https://paysprint.in/service-api/api/v1/service/aeps/cashwithdraw/index';
+        } else if ($getData['transType'] == "MS") {
+            $apiUrl =  'https://paysprint.in/service-api/api/v1/service/aeps/ministatement/index';
+        }
         $runApi =  Http::withHeaders([
             'accept' => 'application/json',
             'Authorisedkey' => $apiKey,
             'Token' => $token
         ])->withBody(json_encode($param), 'application/json')
-            ->post('https://paysprint.in/service-api/api/v1/service/aeps/balanceenquiry/index')->json();
-        if ($runApi['status'] == false) {
-            return response()->json([
-                'status' => $runApi['status'],
-                'message' => $runApi['message'],
-                'balance' => "",
+            ->post($apiUrl)->json();
 
-            ]);
-        } else {
-            return response()->json([
-                'status' => $runApi['status'],
-                'message' => $runApi['message'],
-                'balance' => $runApi['balanceamount'],
 
-            ]);
+        if ($getData['transType'] == "BE") {
+            if ($runApi['status'] == false) {
+                return response()->json([
+                    'transType' => "BE",
+                    'status' => $runApi['status'],
+                    'message' => $runApi['message'],
+                    'balance' => ""
+
+                ]);
+            } else {
+                return response()->json([
+                    'transType' => "BE",
+                    'status' => $runApi['status'],
+                    'message' => $runApi['message'],
+                    'balance' => $runApi['balanceamount']
+                ]);
+            }
+        } else if ($getData['transType'] == "CW") {
+            if ($runApi['status'] == false) {
+                return response()->json([
+                    'transType' => "CW",
+                    'status' => $runApi['status'],
+                    'message' => $runApi['message'],
+                    'balance' => ""
+
+                ]);
+            } else {
+                return response()->json([
+                    'transType' => "CW",
+                    'status' => $runApi['status'],
+                    'message' => $runApi['message'],
+                    'balance' => $runApi['amount']
+                ]);
+            }
+        } else if ($getData['transType'] == "MS") {
+            if ($runApi['status'] == false) {
+                return response()->json([
+                    'transType' => "MS",
+                    'status' => $runApi['status'],
+                    'message' => $runApi['message'],
+                    'balance' => ""
+
+                ]);
+            } else {
+                return response()->json([
+                    'transType' => "MS",
+                    'status' => $runApi['status'],
+                    'message' => $runApi['message'],
+                    'balance' => $runApi['balanceamount'],
+                    'dateTime' => $runApi['datetime'],
+                    'bankAcc' => $runApi['bankrrn'],
+                    'bankName' => $runApi['bankiin'],
+                    'ministatement' => $runApi['ministatement']
+                ]);
+            }
         }
     }
 
