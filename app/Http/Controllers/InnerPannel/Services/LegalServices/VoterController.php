@@ -35,9 +35,9 @@ class VoterController extends Controller
             'Authorisedkey' => $apiKey,
             'Token' => $token
         ])->withBody(json_encode($params), 'application/json')
-            ->post('https://paysprint.in/service-api/api/v1/service/verification/rc/check')->json();
+            ->post('https://paysprint.in/service-api/api/v1/service/verification/Votercard/validate')->json();
             Log::channel('apiLog')->info('success',[
-                'url'=> 'https://paysprint.in/service-api/api/v1/service/verification/rc/check',
+                'url'=> 'https://paysprint.in/service-api/api/v1/service/verification/Votercard/validate',
                 'body'=>  $params,
                 'response' => $generateUrl
             ]);
