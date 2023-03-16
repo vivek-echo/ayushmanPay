@@ -70,9 +70,9 @@
                                                     
                                                         <select name="gender" id="gender" class="form-select">
                                                             <option value="">--Select--</option>
-                                                            <option value="M">MALE</option>
-                                                            <option value="F">FEMALE</option>
-                                                            <option value="T">TRANSGENDER</option>
+                                                            <option value="Male">MALE</option>
+                                                            <option value="Female">FEMALE</option>
+                                                            <option value="Transgender">TRANSGENDER</option>
                                                         </select>
                                                         
                                                     
@@ -292,11 +292,11 @@
                 var gender =  $('#gender').val();
                 $('#titleLoad').show();
                 var option;
-                if(gender == 'M'){
+                if(gender == 'Male'){
                     option = '<option value="">--Select--</option><option value="1">Shri</option>';
-                }else if(gender == 'F'){
+                }else if(gender == 'Female'){
                     option = '<option value="">--Select--</option><option value="2">Smt</option><option value="3">Kumari</option>';
-                }else if(gender == 'T'){
+                }else if(gender == 'Transgender'){
                     option = '<option value="">--Select--</option><option value="1">Shri</option><option value="2">Smt</option><option value="3">Kumari</option>';
                 }
                 $('#title').html(option);

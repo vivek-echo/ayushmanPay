@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Log;
 class CommonController extends Controller
 {
     public function getState()
@@ -30,6 +30,11 @@ class CommonController extends Controller
             'Token' => $token
         ])
             ->post('https://paysprint.in/service-api/api/v1/service/recharge/recharge/getoperator')->json();
+            Log::channel('apiLog')->info('success',[
+                'url'=> "https://paysprint.in/service-api/api/v1/service/recharge/recharge/getoperator",
+                
+                'response' => $operatorList
+            ]);
         return response()->json([
             'status' => $operatorList['status'],
             'message' => $operatorList['message'],
@@ -83,6 +88,11 @@ class CommonController extends Controller
             'Token' => $token
         ])
             ->post('https://paysprint.in/service-api/api/v1/service/bill-payment/bill/getoperator')->json();
+            Log::channel('apiLog')->info('success',[
+                'url'=> "https://paysprint.in/service-api/api/v1/service/bill-payment/bill/getoperator",
+                
+                'response' => $billOperator
+            ]);
 
         return response()->json([
             'status' => $billOperator['status'],

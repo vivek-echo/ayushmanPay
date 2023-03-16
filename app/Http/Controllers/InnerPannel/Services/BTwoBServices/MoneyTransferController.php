@@ -19,6 +19,7 @@ class MoneyTransferController extends Controller
         $user = Auth::user();
         $apiKey = config('constant.API_KEY');
         $token = Controller::getToken();
+        // dd( $token );
         $param['mobile'] =  $user->mobile;
         $param['bank3_flag'] =  'NO';
         $queryremitter =  Http::withHeaders([
