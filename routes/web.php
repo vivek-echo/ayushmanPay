@@ -71,6 +71,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(['GET', 'POST'], '/getOtpMoneyTansfer', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'getOtpMoneyTansfer']);
     Route::match(['GET', 'POST'], '/sendMoneyValidateOtp', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'validateOtp']);
     Route::match(['GET', 'POST'], '/sendMoney', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'sendMoney']);
+    Route::match(['GET', 'POST'], '/checkTransStatusfun', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'checkTransStatusfun']);
     //pancard uti
     Route::match(['GET', 'POST'], '/services/b2bServices/PanCardUti', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\PanCardUtiController::class, 'index']);
     //driving license
@@ -80,6 +81,9 @@ Route::group(['middleware' => 'auth'], function () {
     //pancard nsld
     Route::match(['GET', 'POST'], '/services/legalServices/PanCardNsld', [App\Http\Controllers\InnerPannel\Services\LegalServices\PanCardNsldController::class, 'index']);
     Route::match(['GET', 'POST'], '/PanCardNsldGen', [App\Http\Controllers\InnerPannel\Services\LegalServices\PanCardNsldController::class, 'PanCardNsldGen']);
+    Route::match(['GET', 'POST'], '/PanCardNsldCallback', [App\Http\Controllers\InnerPannel\Services\LegalServices\PanCardNsldController::class, 'PanCardNsldCallback']);
+    Route::match(['GET', 'POST'], '/getCheckPanStatusFun', [App\Http\Controllers\InnerPannel\Services\LegalServices\PanCardNsldController::class, 'getCheckPanStatusFun']);
+    Route::match(['GET', 'POST'], '/getTransStatusNSDLFun', [App\Http\Controllers\InnerPannel\Services\LegalServices\PanCardNsldController::class, 'getTransStatusNSDLFun']);
 
     //walletsummary
     Route::match(['GET', 'POST'], '/wallet/walletsummary', [App\Http\Controllers\InnerPannel\Wallet\WalletSummaryController::class, 'index']);

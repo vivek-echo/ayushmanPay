@@ -351,4 +351,25 @@ class MoneyTransferController extends Controller
             'message' => $msg
         ]);
     }
+
+    public function checkTransStatusfun(){
+        $getData = request()->all();
+        $apiKey = config('constant.API_KEY');
+        $token = Controller::getToken();
+        $params['referenceid'] = $getData['referenceid'];
+        $runApi =  Http::withHeaders([
+            'accept' => 'application/json',
+            'Authorisedkey' => $apiKey,
+            'Token' => $token
+        ])->withBody(json_encode($params), 'application/json')
+            ->post('https://paysprint.in/service-api/api/v1/service/dmt/transact/transact/querytransact')->json();
+            Log::channel('apiLog')->info('success',[
+                'url'=> 'https://paysprint.in/service-api/api/v1/service/dmt/transact/transact/querytransact',
+                'body'=>  $params,
+                'response' => $runApi
+            ]);
+            return response()->json([
+                'api' => $runApi
+            ]);
+    }
 }

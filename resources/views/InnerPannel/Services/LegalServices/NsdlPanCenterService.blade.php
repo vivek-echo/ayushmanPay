@@ -5,7 +5,7 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-sm-6">
-                    <h3>Home - Pan Card (NSLD)</h3>
+                    <h3>Home - Pan Card (NSDL)</h3>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
@@ -147,6 +147,148 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="card">
+                                <div class="card-header bg-light-orange">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link ps-0 text-white" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseicon" aria-expanded="true"
+                                            aria-controls="collapse12"><i class="myicon-disc"></i>
+                                            Transaction Status Check</button>
+                                    </h5>
+                                </div>
+                                <div class="collapse" id="collapseicon" aria-labelledby="collapseicon"
+                                    data-bs-parent="#accordionoc12">
+                                    <div class="card-body">
+                                        <div class=" justify-content-center align-items-center">
+                                            <div class="row">
+                                                <div class="form-group col-6">
+                                                    <label class="col-form-label">Reference Id
+                                                    </label><span class="text-danger fa-lg font-weight-500">
+                                                        *</span>
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control" id="refidTrans" name="refidTrans" placeholder="Reference Id">
+                                                        
+                                                    </div>
+                    
+                                                </div>
+                                             
+                                              
+                                            </div>
+                                            <div class="row justify-content-center">
+                                                <div class="form-group col-2 justify-content-center">
+                                                    <button class="btn btn-lg btn-success"  id="getTransStatusNSDL" >Get Status</button>
+                                                 
+                                                </div>
+                                               
+                                            </div>
+                                            <div class="form-group mt-4" style="display:none;" id="statusRecordFound">
+                                                <div class="card-body bg-light box-shadow-1 text-dark rounded">
+                                                    <div class="px-2 border-bottom-dark mb-3 d-flex justify-content-start align-items-center">
+                                                        <div class="pe-2"><i class="myicon-membership fs-3"></i></div>
+                                                        <div class="mt-1"><h4>Details</h4></div>
+                                                    </div>
+                                                    <div class="row m-0">
+                                                        <div class="row form-group mb-2 col-6">
+                                                            <label class="col-form-label col-sm-5"><i class="myicon-disc"></i> name </label>
+                                                            <label class="col-form-label col-sm-1 fw-bold">:</label>
+                                                            <label class="col-form-label col-sm-6 fw-bold" id="namePan"></label>
+                                                        </div>
+
+                                                        <div class="row form-group mb-2 col-6">
+                                                            <label class="col-form-label col-sm-5"><i class="myicon-disc"></i> UTR </label>
+                                                            <label class="col-form-label col-sm-1 fw-bold">:</label>
+                                                            <label class="col-form-label col-sm-6 fw-bold" id="utr_noPan"></label>
+                                                        </div>
+                                                        <div class="row form-group mb-2 col-6">
+                                                            <label class="col-form-label col-sm-5"><i class="myicon-disc"></i> ack_no </label>
+                                                            <label class="col-form-label col-sm-1 fw-bold">:</label>
+                                                            <label class="col-form-label col-sm-6 fw-bold" id="ack_noPan"></label>
+                                                        </div>
+                                                        <div class="row form-group mb-2 col-6">
+                                                            <label class="col-form-label col-sm-5"><i class="myicon-disc"></i> amount </label>
+                                                            <label class="col-form-label col-sm-1 fw-bold">:</label>
+                                                            <label class="col-form-label col-sm-6 fw-bold" id="amountPan"></label>
+                                                        </div>
+
+                                                        <div class="row form-group mb-2 col-6">
+                                                            <label class="col-form-label col-sm-5"><i class="myicon-disc"></i> status </label>
+                                                            <label class="col-form-label col-sm-1 fw-bold">:</label>
+                                                            <label class="col-form-label col-sm-6 fw-bold" id="statusPan"></label>
+                                                        </div>
+                                                        <div class="row form-group mb-2 col-6">
+                                                            <label class="col-form-label col-sm-5"><i class="myicon-disc"></i> Added Date </label>
+                                                            <label class="col-form-label col-sm-1 fw-bold">:</label>
+                                                            <label class="col-form-label col-sm-6 fw-bold" id="addeddatePan"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           
+                                            {{-- <div class="">
+                                                <form method="post" action="{{$url}}">
+                                                    <textarea name="encdata" style="display:none">{{$encdata}}</textarea>
+                                                    <button class="btn btn-lg btn-success" type="submit" value="submit" ><i
+                                                        class="myicon-log-in"></i> Login To UTI</button>
+                                                  </form>
+                                               
+                                            </div> --}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <div class="card">
+                                <div class="card-header bg-light-orange">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link ps-0 text-white" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseicon" aria-expanded="true"
+                                            aria-controls="collapse12"><i class="myicon-disc"></i>
+                                            Pan Status Check</button>
+                                    </h5>
+                                </div>
+                                <div class="collapse" id="collapseicon" aria-labelledby="collapseicon"
+                                    data-bs-parent="#accordionoc12">
+                                    <div class="card-body">
+                                        <div class=" justify-content-center align-items-center">
+                                            <div class="row">
+                                                <div class="form-group col-6">
+                                                    <label class="col-form-label">Reference Id
+                                                    </label><span class="text-danger fa-lg font-weight-500">
+                                                        *</span>
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control" id="refid" name="refid" placeholder="Enter First Name">
+                                                        
+                                                    </div>
+                    
+                                                </div>
+                                             
+                                              
+                                            </div>
+                                            <div class="row justify-content-center">
+                                                <div class="form-group col-2 justify-content-center">
+                                                    <button class="btn btn-lg btn-success"  id="getCheckPanStatus" >Get Status</button>
+                                                 
+                                                </div>
+                                               
+                                            </div>
+                                           
+                                            {{-- <div class="">
+                                                <form method="post" action="{{$url}}">
+                                                    <textarea name="encdata" style="display:none">{{$encdata}}</textarea>
+                                                    <button class="btn btn-lg btn-success" type="submit" value="submit" ><i
+                                                        class="myicon-log-in"></i> Login To UTI</button>
+                                                  </form>
+                                               
+                                            </div> --}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            
                             <div class="card">
                                 <div class="card-header bg-light-orange">
                                     <h5 class="mb-0">
@@ -221,6 +363,60 @@
     <!-- Container-fluid Ends-->
     <script>
         $(document).ready(function() {
+
+            $('#getTransStatusNSDL').on('click',function(){
+                $('#statusRecordFound').hide();
+                $('.pageLoader').fadeIn();
+                var refidTrans = $('#refidTrans').val();
+                $.ajax({
+                    url: "{{ url('/getTransStatusNSDLFun') }}",
+                    data: {
+                        refidTrans:refidTrans
+                    },
+                    success: function(res) {
+                        $('.pageLoader').fadeOut();
+                        if(res.api.status == true)
+                        {
+                            $('#statusRecordFound').show();
+                            $('namePan').val(res.api.data.name);
+                            $('utr_noPan').val(res.api.data.utr_no);
+                            $('ack_noPan').val(res.api.data.ack_no);
+                            $('amountPan').val(res.api.data.amount);
+                            $('statusPan').val(res.api.data.status);
+                            $('addeddatePan').val(res.api.data.addeddate);
+                           
+                        }else{
+                            swal("Error", res.api.message, "error");
+                        }
+                        
+                       
+
+                    }
+                });
+            })
+
+            $('#getCheckPanStatus').on('click',function(){
+                $('.pageLoader').fadeIn();
+                var refid = $('#refid').val();
+                $.ajax({
+                    url: "{{ url('/getCheckPanStatusFun') }}",
+                    data: {
+                        refid:refid
+                    },
+                    success: function(res) {
+                        $('.pageLoader').fadeOut();
+                        if(res.api.status == true)
+                        {
+                            swal("Successfull", res.api.message, "success");
+                        }else{
+                            swal("Error", res.api.message, "error");
+                        }
+                        
+                       
+
+                    }
+                });
+            })
             $('#getRedirectLink').on('click',function(){
                 var firstName = $('#firstName').val();
                 var lastName = $('#lastName').val();

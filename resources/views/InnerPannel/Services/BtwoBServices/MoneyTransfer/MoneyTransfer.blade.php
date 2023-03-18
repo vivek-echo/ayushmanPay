@@ -46,6 +46,11 @@
                                             data-bs-target="#addBeneficiary" type="button" role="tab"
                                             aria-controls="addBeneficiary" aria-selected="false">Add Beneficiary</button>
                                     </li>
+                                    <li class="nav-item me-2" role="presentation">
+                                        <button class="nav-link" id="checkTransStatus-tab" data-bs-toggle="pill"
+                                            data-bs-target="#checkTransStatus" type="button" role="tab"
+                                            aria-controls="checkTransStatus" aria-selected="false">Check Transaction Status</button>
+                                    </li>
 
                                 </ul>
                                 <div class="tab-content mt-4" id="pills-tabContent">
@@ -212,6 +217,37 @@
                                         <div>Not Found</div>
                                         <?php }?>
                                     </div>
+
+                                    <div class="tab-pane fade" id="checkTransStatus" role="tabpanel"
+                                    aria-labelledby="pills-checkTransStatus">
+                                    <div class="row">
+                                    
+                                        <div class="form-group col-6">
+                                            <label class="col-form-label">Reference Number</label><span
+                                                class="text-danger fa-lg font-weight-500">
+                                                *</span>
+                                            <input name="referenceid" id="referenceid" class="form-control" type="text"
+                                                placeholder="Enter Reference Number" autocomplete="off">
+
+                                        </div>
+                                        <div class="form-group col-6">
+                                            {{-- <label class="col-form-label">acknowledgement Number</label><span
+                                                class="text-danger fa-lg font-weight-500">
+                                                *</span>
+                                            <input name="ackno" id="ackno" class="form-control" type="text"
+                                                placeholder="Enter IFSC Code" autocomplete="off">
+
+                                        </div> --}}
+
+
+                                    
+                                    </div>
+                                    
+                                    <div class="form-group mt-4">
+                                        <button class="btn btn-primary" id="checkTransStatusbtn">Submit</button>
+                                    </div>
+                                </div>
+
                                 </div>
                             </div>
                         </div>
@@ -219,6 +255,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <!-- Container-fluid Ends-->
 
@@ -289,6 +326,112 @@
                     <div class="form-group mt-4">
                         <button class="btn btn-primary" id="getOTPMoneyTransfer">Get OTP</button>
                         <button class="btn btn-warning" id="sendMoneyTransfer">Send</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="fetchCheckStatusModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Transaction Status</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+               
+                
+                <div class="modal-body">
+                    <div class="row m-0">
+                        <div class="form-group col-4">
+                            <label class="col-form-label">UTR</label><span class="text-danger fa-lg font-weight-500">
+                                *</span>
+                            <input id="utrCheckStatus" class="form-control" type="text"
+                                placeholder="Enter Name" autocomplete="off" readonly>
+
+                        </div>
+                        <div class="form-group col-4">
+                            <label class="col-form-label">Amount</label><span class="text-danger fa-lg font-weight-500">
+                                *</span>
+                            <input id="amountCheckStatus" class="form-control" type="text"
+                                placeholder="Enter Name" autocomplete="off" readonly>
+
+                        </div>
+                        <div class="form-group col-4">
+                            <label class="col-form-label">Acknowledgement Number</label><span class="text-danger fa-lg font-weight-500">
+                                *</span>
+                            <input id="acknoCheckStatus" class="form-control" type="text"
+                                placeholder="Enter Name" autocomplete="off" readonly>
+
+                        </div>
+                        <div class="form-group col-4">
+                            <label class="col-form-label">Refrence Number</label><span class="text-danger fa-lg font-weight-500">
+                                *</span>
+                            <input id="referenceidCheckStatus" class="form-control" type="text"
+                                placeholder="Enter Name" autocomplete="off" readonly>
+
+                        </div>
+                        <div class="form-group col-4">
+                            <label class="col-form-label">Account Number</label><span class="text-danger fa-lg font-weight-500">
+                                *</span>
+                            <input id="accountCheckStatus" class="form-control" type="text"
+                                placeholder="Enter Name" autocomplete="off" readonly>
+
+                        </div>
+
+                        <div class="form-group col-4">
+                            <label class="col-form-label">Message</label><span class="text-danger fa-lg font-weight-500">
+                                *</span>
+                            <input id="messageCheckStatus" class="form-control" type="text"
+                                placeholder="Enter Name" autocomplete="off" readonly>
+
+                        </div>
+                        <div class="form-group col-4">
+                            <label class="col-form-label">Customer Charge</label><span class="text-danger fa-lg font-weight-500">
+                                *</span>
+                            <input id="customerchargeCheckStatus" class="form-control" type="text"
+                                placeholder="Enter Name" autocomplete="off" readonly>
+
+                        </div>
+                        <div class="form-group col-4">
+                            <label class="col-form-label">GST</label><span class="text-danger fa-lg font-weight-500">
+                                *</span>
+                            <input id="gstCheckStatus" class="form-control" type="text"
+                                placeholder="Enter Name" autocomplete="off" readonly>
+
+                        </div>
+                        <div class="form-group col-4">
+                            <label class="col-form-label">Discount</label><span class="text-danger fa-lg font-weight-500">
+                                *</span>
+                            <input id="discountCheckStatus" class="form-control" type="text"
+                                placeholder="Enter Name" autocomplete="off" readonly>
+
+                        </div>
+                        <div class="form-group col-4">
+                            <label class="col-form-label">TDS</label><span class="text-danger fa-lg font-weight-500">
+                                *</span>
+                            <input id="tdsCheckStatus" class="form-control" type="text"
+                                placeholder="Enter Name" autocomplete="off" readonly>
+
+                        </div>
+                        <div class="form-group col-4">
+                            <label class="col-form-label">Net commission</label><span class="text-danger fa-lg font-weight-500">
+                                *</span>
+                            <input id="netcommissionCheckStatus" class="form-control" type="text"
+                                placeholder="Enter Name" autocomplete="off" readonly>
+
+                        </div>
+                        <div class="form-group col-4">
+                            <label class="col-form-label">Refund txn id</label><span class="text-danger fa-lg font-weight-500">
+                                *</span>
+                            <input id="refundtxnidCheckStatus" class="form-control" type="text"
+                                placeholder="Enter Name" autocomplete="off" readonly>
+
+                        </div>
+                       
+
                     </div>
                 </div>
 
@@ -408,7 +551,40 @@
 
         $(document).ready(function() {
             $('#serviceLink').addClass('activeLink');
+            ///checking status 
+            $('#checkTransStatusbtn').on('click',function(){
+                $('.pageLoader').fadeIn();
+                var referenceid = $('#referenceid').val();
+                $.ajax({
+                url: "{{ url('/checkTransStatusfun') }}",
+                data:{
+                    referenceid:referenceid
+                },
+                success: function(res) {
+                    $('.pageLoader').fadeOut();
+                    if(res.api.status == true){
+                        $('#fetchCheckStatusModal').modal('show');
+                        $('#utrCheckStatus').val(res.api.utr);
+                        $('#amountCheckStatus').val(res.api.amount);
+                        $('#acknoCheckStatus').val(res.api.ackno);
+                        $('#referenceidCheckStatus').val(res.api.referenceid);
+                        $('#accountCheckStatus').val(res.api.account);
+                        $('#messageCheckStatus').val(res.api.message);
+                        $('#customerchargeCheckStatus').val(res.api.customercharge);
+                        $('#gstCheckStatus').val(res.api.gst);
+                        $('#discountCheckStatus').val(res.api.discount);
+                        $('#tdsCheckStatus').val(res.api.tds);
+                        $('#netcommissionCheckStatus').val(res.api.netcommission);
+                        $('#daterefundedCheckStatus').val(res.api.daterefunded);
+                        $('#refundtxnidCheckStatus').val(res.api.refundtxnid);
 
+                    }else{
+                        swal("Error", res.api.message, "error")
+                    }
+                 
+                }
+            });
+            });
             $.ajax({
                 url: "{{ url('/getBankList') }}",
                 success: function(res) {
