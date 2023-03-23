@@ -84,6 +84,7 @@ class PanCardNsldController extends Controller
         $getData = request()->all();
         $decodeData = json_decode(base64_decode(str_replace('_', '/', str_replace('-', '+', explode('.', $getData['encdata'])[1]))));
         dd($decodeData);
+        return redirect()->route('NsldCallback');
     }
 
     public function getCheckPanStatusFun(){

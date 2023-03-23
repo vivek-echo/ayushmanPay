@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,48 +9,57 @@
     <meta name="description" content="Apna Bharat Pay">
     <meta name="keywords" content="Apna Bharat Pay, Online Payment System">
     <meta name="author" content="Apna Bharat Pay">
-    <link rel="icon" href="{{ asset(''.config('constant.ASSET').'images/favicon/favicon.png') }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset(''.config('constant.ASSET').'images/favicon/favicon.png') }}" type="image/x-icon">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" href="{{ asset('' . config('constant.ASSET') . 'images/favicon/favicon.png') }}"
+        type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('' . config('constant.ASSET') . 'images/favicon/favicon.png') }}"
+        type="image/x-icon">
     <title>Ayushman Pay - Dashboard</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
         rel="stylesheet">
-    <!-- <link rel="stylesheet" type="text/css" href="{{ asset(''.config('constant.ASSET').'css/vendors/font-awesome.css') }}"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="{{ asset('' . config('constant.ASSET') . 'css/vendors/font-awesome.css') }}"> -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
         integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- ico-font-->
-    <link rel="stylesheet" type="text/css" href="{{ asset(''.config('constant.ASSET').'css/vendors/icofont.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('' . config('constant.ASSET') . 'css/vendors/icofont.css') }}">
     <!-- Flag icon-->
-    <link rel="stylesheet" type="text/css" href="{{ asset(''.config('constant.ASSET').'css/vendors/flag-icon.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('' . config('constant.ASSET') . 'css/vendors/flag-icon.css') }}">
     <!-- Feather icon-->
-    <link rel="stylesheet" type="text/css" href="{{ asset(''.config('constant.ASSET').'css/vendors/feather-icon.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('' . config('constant.ASSET') . 'css/vendors/feather-icon.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset(''.config('constant.ASSET').'css/vendors/photoswipe.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('' . config('constant.ASSET') . 'css/vendors/photoswipe.css') }}">
     <!-- icomoon icon-->
-    <link rel="stylesheet" type="text/css" href="{{ asset(''.config('constant.ASSET').'custom-icomoon/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('' . config('constant.ASSET') . 'custom-icomoon/style.css') }}">
     <!-- Datatable-->
-    <link rel="stylesheet" type="text/css" href="{{ asset(''.config('constant.ASSET').'css/vendors/datatables.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset(''.config('constant.ASSET').'css/vendors/datatable-extension.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('' . config('constant.ASSET') . 'css/vendors/datatables.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('' . config('constant.ASSET') . 'css/vendors/datatable-extension.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset(''.config('constant.ASSET').'css/vendors/scrollbar.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset(''.config('constant.ASSET').'css/vendors/animate.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset(''.config('constant.ASSET').'css/vendors/date-picker.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset(''.config('constant.ASSET').'css/vendors/owlcarousel.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset(''.config('constant.ASSET').'css/vendors/prism.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('' . config('constant.ASSET') . 'css/vendors/scrollbar.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('' . config('constant.ASSET') . 'css/vendors/animate.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('' . config('constant.ASSET') . 'css/vendors/date-picker.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('' . config('constant.ASSET') . 'css/vendors/owlcarousel.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('' . config('constant.ASSET') . 'css/vendors/prism.css') }}">
     <!-- Bootstrap css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset(''.config('constant.ASSET').'css/vendors/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('' . config('constant.ASSET') . 'css/vendors/bootstrap.css') }}">
     <!-- App css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset(''.config('constant.ASSET').'css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('' . config('constant.ASSET') . 'css/style.css') }}">
     <!-- Responsive css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset(''.config('constant.ASSET').'css/responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('' . config('constant.ASSET') . 'css/responsive.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset(''.config('constant.ASSET').'css/vendors/sweetalert2.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('' . config('constant.ASSET') . 'css/vendors/sweetalert2.css') }}">
+
 
 
     <!-- latest jquery-->
-    <script src="{{ asset(''.config('constant.ASSET').'js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/jquery-3.6.0.min.js') }}"></script>
 </head>
 
 <body>
@@ -96,9 +106,11 @@
                         </i>
                     </div>
                     <div class="logo-header-main"><a href="{{ url('/dashboard') }}"><img
-                                class="img-fluid for-light img-100" src="{{ asset(''.config('constant.ASSET').'images/favicon/favicon.png') }}"
+                                class="img-fluid for-light img-100"
+                                src="{{ asset('' . config('constant.ASSET') . 'images/favicon/favicon.png') }}"
                                 alt=""><img class="img-fluid for-dark"
-                                src="{{ asset(''.config('constant.ASSET').'images/favicon/favicon.png') }}" alt=""></a></div>
+                                src="{{ asset('' . config('constant.ASSET') . 'images/favicon/favicon.png') }}"
+                                alt=""></a></div>
                 </div>
                 <div class="left-header col horizontal-wrapper ps-0">
                     <div class="left-menu-header">
@@ -234,31 +246,36 @@
                                                 id="serviceLink" href="{{ url('/services') }}"><i
                                                     data-feather="grid"> </i><span>Services</span></a></li>
                                         <li class="sidebar-list"><a class="sidebar-link sidebar-title"
-                                            id="walletLink" href="javascript:void(0)"><i data-feather="briefcase"></i><span>Wallet
+                                                id="walletLink" href="javascript:void(0)"><i
+                                                    data-feather="briefcase"></i><span>Wallet
                                                     Section</span></a>
                                             <ul class="sidebar-submenu">
-                                                <li><a href="{{ url('/wallet/walletsummary') }}">Wallet Summary</a></li>
-                                                <li><a href="{{ url('/wallet/UpdateWallet') }}">Wallet Update</a></li> 
-                                                 {{-- <li><a href="{{ url('/walletsection/printMyQR') }}">Print My QR</a></li> --}}
+                                                <li><a href="{{ url('/wallet/walletsummary') }}">Wallet Summary</a>
+                                                </li>
+                                                <li><a href="{{ url('/wallet/UpdateWallet') }}">Wallet Update</a></li>
+                                                {{-- <li><a href="{{ url('/walletsection/printMyQR') }}">Print My QR</a></li> --}}
                                             </ul>
                                         </li>
                                         <li class="sidebar-list"><a class="sidebar-link sidebar-title"
-                                            id="profileLink" href="javascript:void(0)"><i data-feather="user"></i><span>Profile
+                                                id="profileLink" href="javascript:void(0)"><i
+                                                    data-feather="user"></i><span>Profile
                                                     Section</span></a>
                                             <ul class="sidebar-submenu">
-                                                <li><a href="{{ url('/profile/profileUpdate') }}">Profile Update</a></li>
-                                                <li><a href="{{ url('/profile/changePassword') }}">Change Password</a></li>
+                                                <li><a href="{{ url('/profile/profileUpdate') }}">Profile Update</a>
+                                                </li>
+                                                <li><a href="{{ url('/profile/changePassword') }}">Change Password</a>
+                                                </li>
                                                 {{-- <li><a href="{{ url('/walletsection/printMyQR') }}">Print My QR</a></li>
                                                 <li><a href="#">Settlement</a></li> --}}
                                             </ul>
                                         </li>
                                         <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav"
-                                            id="memberLink" href="{{ url('/memberlist/memberlist') }}"><i
-                                                data-feather="users"> </i><span>Members List</span></a></li>
-                                           
-                                        </li>
-                                    </ul>
+                                                id="memberLink" href="{{ url('/memberlist/memberlist') }}"><i
+                                                    data-feather="users"> </i><span>Members List</span></a></li>
+
                                 </li>
+                            </ul>
+                            </li>
                             </ul>
                         </div>
                         <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
@@ -283,77 +300,99 @@
     </div>
 
     <!-- Bootstrap js-->
-    <script src="{{ asset(''.config('constant.ASSET').'js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/bootstrap/bootstrap.bundle.min.js') }}"></script>
     <!-- feather icon js-->
-    <script src="{{ asset(''.config('constant.ASSET').'js/icons/feather-icon/feather.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/icons/feather-icon/feather-icon.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/icons/feather-icon/feather.min.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/icons/feather-icon/feather-icon.js') }}"></script>
     <!-- scrollbar js-->
-    <script src="{{ asset(''.config('constant.ASSET').'js/scrollbar/simplebar.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/scrollbar/custom.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/scrollbar/simplebar.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/scrollbar/custom.js') }}"></script>
     <!-- Sidebar jquery-->
-    <script src="{{ asset(''.config('constant.ASSET').'js/config.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/sidebar-menu.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/counter/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/counter/jquery.counterup.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/counter/counter-custom.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/photoswipe/photoswipe.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/photoswipe/photoswipe-ui-default.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/photoswipe/photoswipe.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/chart/knob/knob.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/chart/knob/knob-chart.js') }}"></script>
-    <!-- <script src="{{ asset(''.config('constant.ASSET').'js/chart/apex-chart/apex-chart.js') }}"></script> -->
-    <script src="{{ asset(''.config('constant.ASSET').'js/chart/apex-chart/stock-prices.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/prism/prism.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/clipboard/clipboard.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/custom-card/custom-card.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/notify/bootstrap-notify.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/datepicker/date-picker/datepicker.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/datepicker/date-picker/datepicker.en.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/datepicker/date-picker/datepicker.custom.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/owlcarousel/owl.carousel.js') }}"></script>
-    <!-- <script src="{{ asset(''.config('constant.ASSET').'js/dashboard/dashboard_2.js') }}"></script> -->
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/config.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/sidebar-menu.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/counter/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/counter/jquery.counterup.min.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/counter/counter-custom.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/photoswipe/photoswipe.min.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/photoswipe/photoswipe-ui-default.min.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/photoswipe/photoswipe.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/chart/knob/knob.min.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/chart/knob/knob-chart.js') }}"></script>
+    <!-- <script src="{{ asset('' . config('constant.ASSET') . 'js/chart/apex-chart/apex-chart.js') }}"></script> -->
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/chart/apex-chart/stock-prices.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/prism/prism.min.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/clipboard/clipboard.min.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/custom-card/custom-card.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/notify/bootstrap-notify.min.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/datepicker/date-picker/datepicker.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/datepicker/date-picker/datepicker.en.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/datepicker/date-picker/datepicker.custom.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/owlcarousel/owl.carousel.js') }}"></script>
+    <!-- <script src="{{ asset('' . config('constant.ASSET') . 'js/dashboard/dashboard_2.js') }}"></script> -->
 
-    <script src="{{ asset(''.config('constant.ASSET').'js/sweet-alert/sweetalert.min.js') }}"></script>
-    
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/sweet-alert/sweetalert.min.js') }}"></script>
+
     <!-- Datatable-->
-    <script src="{{ asset(''.config('constant.ASSET').'js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/datatable/datatable-extension/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/datatable/datatable-extension/jszip.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/datatable/datatable-extension/buttons.colVis.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/datatable/datatable-extension/pdfmake.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/datatable/datatable-extension/vfs_fonts.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/datatable/datatable-extension/dataTables.autoFill.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/datatable/datatable-extension/dataTables.select.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/datatable/datatable-extension/buttons.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/datatable/datatable-extension/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/datatable/datatable-extension/buttons.print.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/datatable/datatable-extension/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/datatable/datatable-extension/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/datatable/datatable-extension/responsive.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/datatable/datatable-extension/dataTables.keyTable.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/datatable/datatable-extension/dataTables.colReorder.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/datatable/datatable-extension/dataTables.fixedHeader.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/datatable/datatable-extension/dataTables.rowReorder.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/datatable/datatable-extension/dataTables.scroller.min.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/datatable/datatable-extension/custom.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/tooltip-init.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.buttons.min.js') }}">
+    </script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/jszip.min.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/buttons.colVis.min.js') }}">
+    </script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.autoFill.min.js') }}">
+    </script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.select.min.js') }}">
+    </script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/buttons.bootstrap4.min.js') }}">
+    </script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/buttons.html5.min.js') }}">
+    </script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/buttons.print.min.js') }}">
+    </script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.bootstrap4.min.js') }}">
+    </script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.responsive.min.js') }}">
+    </script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/responsive.bootstrap4.min.js') }}">
+    </script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.keyTable.min.js') }}">
+    </script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.colReorder.min.js') }}">
+    </script>
+    <script
+        src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.fixedHeader.min.js') }}">
+    </script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.rowReorder.min.js') }}">
+    </script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.scroller.min.js') }}">
+    </script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/custom.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/tooltip-init.js') }}"></script>
+    {{-- <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script> --}}
+
     <!-- Template js-->
-    <script src="{{ asset(''.config('constant.ASSET').'js/script.js') }}"></script>
-    <script src="{{ asset(''.config('constant.ASSET').'js/main.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/script.js') }}"></script>
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/main.js') }}"></script>
     <script>
         $(document).ready(function() {
             $.ajax({
                 url: "{{ url('/profileData') }}",
                 success: function(res) {
-                    if(res)
-                    {
-                        $('#walletId').html("Wallet Balance: Rs. " +res.walletAmount);
+                    if (res) {
+                        $('#walletId').html("Wallet Balance: Rs. " + res.walletAmount);
                     }
                 }
             });
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
         })
-        </script>
-    
+    </script>
+
     <!-- login js-->
 </body>
 

@@ -9,20 +9,114 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Request;
 use App\Mail\GetOtpMoneyTransfer;
 use Illuminate\Support\Facades\Crypt;
 
 class MoneyTransferController extends Controller
 {
-    public function index()
+    public function index(Request $request)
+    {
+
+        return view("InnerPannel.Services.BtwoBServices.MoneyTransfer.MoneyTransfer");
+        // $user = Auth::user();
+        // $apiKey = config('constant.API_KEY');
+        // $token = Controller::getToken();
+        // // dd( $token );
+        // $param['mobile'] =  $user->mobile;
+        // $param['bank3_flag'] =  'NO';
+        // $queryremitter =  Http::withHeaders([
+        //     'accept' => 'application/json',
+        //     'Authorisedkey' => $apiKey,
+        //     'Token' => $token
+        // ])->withBody(json_encode($param), 'application/json')
+        //     ->post('https://paysprint.in/service-api/api/v1/service/dmt/remitter/queryremitter')->json();
+        //     Log::channel('apiLog')->info('success',[
+        //         'url'=> 'https://paysprint.in/service-api/api/v1/service/dmt/remitter/queryremitter',
+        //         'body'=>  $param,
+        //         'response' => $queryremitter
+        //     ]);
+        // $viewVar['mobile'] = $user->mobile;
+        // $viewVar['firstname'] = $user->firstName;
+        // $viewVar['lastName'] = $user->lastName;
+        // $viewVar['address'] = $user->address;
+        // $viewVar['pincode'] = $user->pinCode;
+
+        // if ($queryremitter['status'] == true) {
+        //     $fetchParam['mobile'] = $user->mobile;
+        //     $fetchBen =  Http::withHeaders([
+        //         'accept' => 'application/json',
+        //         'Authorisedkey' => $apiKey,
+        //         'Token' => $token
+        //     ])->withBody(json_encode($fetchParam), 'application/json')
+        //         ->post('https://paysprint.in/service-api/api/v1/service/dmt/beneficiary/registerbeneficiary/fetchbeneficiary')->json();
+        //         Log::channel('apiLog')->info('success',[
+        //             'url'=> 'https://paysprint.in/service-api/api/v1/service/dmt/beneficiary/registerbeneficiary/fetchbeneficiary',
+        //             'body'=>  $fetchParam,
+        //             'response' => $fetchBen
+        //         ]);
+        //     if ($fetchBen['status'] == true) {
+        //         $viewVar['fetchbenficery'] = $fetchBen['data'];
+        //     } else {
+        //         $viewVar['fetchbenficery'] = [];
+        //     }
+        //     return view("InnerPannel.Services.BtwoBServices.MoneyTransfer.MoneyTransfer", $viewVar);
+        // } else {
+        //     $viewVar['stateresp'] = $queryremitter['stateresp'];
+        //     $viewVar['message'] = $queryremitter['message'];
+        //     $viewVar['bank3_flag'] = "yes";
+        //     $viewVar['dob'] = $user->dateOfBirth;
+        //     $state = strtoupper($user->state);
+        //     $gstState = DB::table('gststate')->where('gstStateName', $state)->first()->gstStateId;
+        //     $viewVar['gst_state'] = sprintf("%02d", $gstState);
+
+        //     return view('InnerPannel.Services.BtwoBServices.MoneyTransfer.MoneyTransferRemiter', $viewVar);
+        // }
+    }
+
+
+    public function checkRemitter()
     {
         $user = Auth::user();
         $apiKey = config('constant.API_KEY');
         $token = Controller::getToken();
-        // dd( $token );
-        $param['mobile'] =  $user->mobile;
+        $getData = request()->all();
+        $param['mobile'] =  $getData['remiterCheckMobile'];
         $param['bank3_flag'] =  'NO';
         $queryremitter =  Http::withHeaders([
+            'accept' => 'application/json',
+            'Authorisedkey' => $apiKey,
+            'Token' => $token
+        ])->withBody(json_encode($param), 'application/json')
+            ->post('https://paysprint.in/service-api/api/v1/service/dmt/remitter/queryremitter')->json();
+        Log::channel('apiLog')->info('success', [
+            'url' => 'https://paysprint.in/service-api/api/v1/service/dmt/remitter/queryremitter',
+            'body' =>  $param,
+            'response' => $queryremitter
+        ]);
+        return response()->json([
+            'api' => $queryremitter
+        ]);
+    }
+
+    //for Bank List
+    public function getBankList()
+    {
+        $bankList = DB::table('dmt-bank-list')->orderBy('BANKNAME', 'asc')->get();
+
+        return response()->json([
+            'data' => $bankList
+        ]);
+    }
+
+    public function fetchMoneySendDetails()
+    {
+        $getData = request()->all();
+        $apiKey = config('constant.API_KEY');
+        $token = Controller::getToken();
+        $param['mobile'] =  $getData['remiterMobile'];
+        $param['bank3_flag'] =  'NO';
+        $query =  Http::withHeaders([
             'accept' => 'application/json',
             'Authorisedkey' => $apiKey,
             'Token' => $token
@@ -31,52 +125,12 @@ class MoneyTransferController extends Controller
             Log::channel('apiLog')->info('success',[
                 'url'=> 'https://paysprint.in/service-api/api/v1/service/dmt/remitter/queryremitter',
                 'body'=>  $param,
-                'response' => $queryremitter
+                'response' => $query
             ]);
-        $viewVar['mobile'] = $user->mobile;
-        $viewVar['firstname'] = $user->firstName;
-        $viewVar['lastName'] = $user->lastName;
-        $viewVar['address'] = $user->address;
-        $viewVar['pincode'] = $user->pinCode;
-
-        if ($queryremitter['status'] == true) {
-            $fetchParam['mobile'] = $user->mobile;
-            $fetchBen =  Http::withHeaders([
-                'accept' => 'application/json',
-                'Authorisedkey' => $apiKey,
-                'Token' => $token
-            ])->withBody(json_encode($fetchParam), 'application/json')
-                ->post('https://paysprint.in/service-api/api/v1/service/dmt/beneficiary/registerbeneficiary/fetchbeneficiary')->json();
-                Log::channel('apiLog')->info('success',[
-                    'url'=> 'https://paysprint.in/service-api/api/v1/service/dmt/beneficiary/registerbeneficiary/fetchbeneficiary',
-                    'body'=>  $fetchParam,
-                    'response' => $fetchBen
-                ]);
-            if ($fetchBen['status'] == true) {
-                $viewVar['fetchbenficery'] = $fetchBen['data'];
-            } else {
-                $viewVar['fetchbenficery'] = [];
-            }
-            return view("InnerPannel.Services.BtwoBServices.MoneyTransfer.MoneyTransfer", $viewVar);
-        } else {
-            $viewVar['stateresp'] = $queryremitter['stateresp'];
-            $viewVar['message'] = $queryremitter['message'];
-            $viewVar['bank3_flag'] = "yes";
-            $viewVar['dob'] = $user->dateOfBirth;
-            $state = strtoupper($user->state);
-            $gstState = DB::table('gststate')->where('gstStateName', $state)->first()->gstStateId;
-            $viewVar['gst_state'] = sprintf("%02d", $gstState);
-
-            return view('InnerPannel.Services.BtwoBServices.MoneyTransfer.MoneyTransferRemiter', $viewVar);
-        }
-    }
-    //for Bank List
-    public function getBankList()
-    {
-        $bankList = DB::table('dmt-bank-list')->orderBy('BANKNAME', 'asc')->get();
-
         return response()->json([
-            'data' => $bankList
+            'status' => $query['status'],
+            'message' => $query['message'],
+            'data' => $query['data']
         ]);
     }
 
@@ -102,11 +156,11 @@ class MoneyTransferController extends Controller
             'Token' => $token
         ])->withBody(json_encode($param), 'application/json')
             ->post('https://paysprint.in/service-api/api/v1/service/dmt/remitter/registerremitter')->json();
-            Log::channel('apiLog')->info('success',[
-                'url'=> 'https://paysprint.in/service-api/api/v1/service/dmt/remitter/registerremitter',
-                'body'=>  $param,
-                'response' => $registerRemitter
-            ]);
+        Log::channel('apiLog')->info('success', [
+            'url' => 'https://paysprint.in/service-api/api/v1/service/dmt/remitter/registerremitter',
+            'body' =>  $param,
+            'response' => $registerRemitter
+        ]);
         return response()->json([
             'status' => $registerRemitter['status'],
             'message' => $registerRemitter['message']
@@ -133,11 +187,11 @@ class MoneyTransferController extends Controller
             'Token' => $token
         ])->withBody(json_encode($param), 'application/json')
             ->post('https://paysprint.in/service-api/api/v1/service/dmt/beneficiary/registerbeneficiary')->json();
-            Log::channel('apiLog')->info('success',[
-                'url'=> 'https://paysprint.in/service-api/api/v1/service/dmt/beneficiary/registerbeneficiary',
-                'body'=>  $param,
-                'response' => $registerBen
-            ]);
+        Log::channel('apiLog')->info('success', [
+            'url' => 'https://paysprint.in/service-api/api/v1/service/dmt/beneficiary/registerbeneficiary',
+            'body' =>  $param,
+            'response' => $registerBen
+        ]);
         return response()->json([
             'status' => $registerBen['status'],
             'message' => $registerBen['message']
@@ -157,40 +211,84 @@ class MoneyTransferController extends Controller
             'Token' => $token
         ])->withBody(json_encode($param), 'application/json')
             ->post('https://paysprint.in/service-api/api/v1/service/dmt/beneficiary/registerbeneficiary/deletebeneficiary')->json();
-            Log::channel('apiLog')->info('success',[
-                'url'=> 'https://paysprint.in/service-api/api/v1/service/dmt/beneficiary/registerbeneficiary/deletebeneficiary',
-                'body'=>  $param,
-                'response' => $deleteBen
-            ]);
+        Log::channel('apiLog')->info('success', [
+            'url' => 'https://paysprint.in/service-api/api/v1/service/dmt/beneficiary/registerbeneficiary/deletebeneficiary',
+            'body' =>  $param,
+            'response' => $deleteBen
+        ]);
         return response()->json([
             'status' => $deleteBen['status'],
             'message' => $deleteBen['message']
         ]);
     }
 
-    public function fetchMoneyTransferDetails()
+    public function fetchMoneyTransferDetails(Request $request)
     {
         $getData = request()->all();
+        // $getData = request()->all();
+        $draw =  $getData['draw'];
+        $start =  $getData['start'];
+        $rowPerPage =  $getData['length'];
         $apiKey = config('constant.API_KEY');
         $token = Controller::getToken();
-        $param['mobile'] =  $getData['remiterMobile'];
-        $param['bank3_flag'] =  'NO';
+        $param['mobile'] = $getData['mobile'];
         $query =  Http::withHeaders([
             'accept' => 'application/json',
             'Authorisedkey' => $apiKey,
             'Token' => $token
         ])->withBody(json_encode($param), 'application/json')
-            ->post('https://paysprint.in/service-api/api/v1/service/dmt/remitter/queryremitter')->json();
-            Log::channel('apiLog')->info('success',[
-                'url'=> 'https://paysprint.in/service-api/api/v1/service/dmt/remitter/queryremitter',
-                'body'=>  $param,
-                'response' => $query
-            ]);
+            ->post('https://paysprint.in/service-api/api/v1/service/dmt/beneficiary/registerbeneficiary/fetchbeneficiary')->json();
+        Log::channel('apiLog')->info('success', [
+            'url' => 'https://paysprint.in/service-api/api/v1/service/dmt/beneficiary/registerbeneficiary/fetchbeneficiary',
+            'body' =>  $param,
+            'response' => $query
+        ]);
+        if ($query['status'] == true) {
+
+            $totalFilter = count($query['data']);
+            $arrData = $query['data'];
+            $arrData = array_slice($arrData, $start, $rowPerPage);
+            // foreach ( $arrData as $k => $val) {
+            //     $res['sl'] = $k + 1;
+            //     $res['bene_id'] = $val['bene_id'];
+            //     $res['bankid'] = $val['bankid'];
+            //     $res['bankname'] = $val['bankname'];
+            //     $res['name'] = $val['name'];
+            //     $res['accno'] = $val['accno'];
+            //     $res['ifsc'] = $val['ifsc'];
+            //     $res['verified'] = $val['verified'];
+            // }
+            // $arrData = $res;
+        } else {
+
+            $totalFilter = 0;
+            $arrData = [];
+        }
         return response()->json([
             'status' => $query['status'],
             'message' => $query['message'],
-            'data' => $query['data']
+            'data' => $arrData,
+            'recordsTotal' => $totalFilter,
+            'recordsFiltered' => $totalFilter,
+            'draw' => intval($draw)
         ]);
+        // foreach($query['data'] as $k=> $val)
+        // {
+        //     $res['sl'] = $k+1;
+        //     $res['bene_id']= $val->bene_id; 
+        //     $res['bankid']= $val->bankid; 
+        //     $res['bankname']= $val->bankname; 
+        //     $res['name']= $val->name; 
+        //     $res['accno']= $val->accno; 
+        //     $res['ifsc']= $val->ifsc; 
+        //     $res['verified']= $val->verified; 
+
+        // }
+        // return response()->json([
+        //     'status' => $query['status'],
+        //     'message' => $query['message'],
+        //     'data' => $res
+        // ]);
     }
 
     public function getOtpMoneyTansfer()
@@ -273,11 +371,11 @@ class MoneyTransferController extends Controller
             'Token' => $token
         ])->withBody(json_encode($params), 'application/json')
             ->post('https://paysprint.in/service-api/api/v1/service/dmt/transact/transact')->json();
-            Log::channel('apiLog')->info('success',[
-                'url'=> 'https://paysprint.in/service-api/api/v1/service/dmt/transact/transact',
-                'body'=>  $params,
-                'response' => $sendMoney
-            ]);
+        Log::channel('apiLog')->info('success', [
+            'url' => 'https://paysprint.in/service-api/api/v1/service/dmt/transact/transact',
+            'body' =>  $params,
+            'response' => $sendMoney
+        ]);
 
         if ($sendMoney['status'] == true) {
             try {
@@ -352,7 +450,8 @@ class MoneyTransferController extends Controller
         ]);
     }
 
-    public function checkTransStatusfun(){
+    public function checkTransStatusfun()
+    {
         $getData = request()->all();
         $apiKey = config('constant.API_KEY');
         $token = Controller::getToken();
@@ -363,13 +462,56 @@ class MoneyTransferController extends Controller
             'Token' => $token
         ])->withBody(json_encode($params), 'application/json')
             ->post('https://paysprint.in/service-api/api/v1/service/dmt/transact/transact/querytransact')->json();
-            Log::channel('apiLog')->info('success',[
-                'url'=> 'https://paysprint.in/service-api/api/v1/service/dmt/transact/transact/querytransact',
-                'body'=>  $params,
+        Log::channel('apiLog')->info('success', [
+            'url' => 'https://paysprint.in/service-api/api/v1/service/dmt/transact/transact/querytransact',
+            'body' =>  $params,
+            'response' => $runApi
+        ]);
+        return response()->json([
+            'api' => $runApi
+        ]);
+    }
+
+    public function refundDMT()
+    {
+        $getData = request()->all();
+        $apiKey = config('constant.API_KEY');
+        $token = Controller::getToken();
+
+        $params['referenceid'] = $getData['refundRefId'];
+        $params['ackno'] = $getData['refundAckno'];
+        // $params['isRefundOtp'] = $getData['isRefundOtp'];
+        // $params['refundOtp'] = $getData['refundOtp'];
+
+        if ($getData['isRefundOtp'] != 1) {
+            $runApi =  Http::withHeaders([
+                'accept' => 'application/json',
+                'Authorisedkey' => $apiKey,
+                'Token' => $token
+            ])->withBody(json_encode($params), 'application/json')
+                ->post('https://paysprint.in/service-api/api/v1/service/dmt/refund/refund/resendotp')->json();
+            Log::channel('apiLog')->info('success', [
+                'url' => 'https://paysprint.in/service-api/api/v1/service/dmt/refund/refund/resendotp',
+                'body' =>  $params,
                 'response' => $runApi
             ]);
-            return response()->json([
-                'api' => $runApi
+        } else {
+            $params['otp'] = $getData['refundOtp'];
+            $runApi =  Http::withHeaders([
+                'accept' => 'application/json',
+                'Authorisedkey' => $apiKey,
+                'Token' => $token
+            ])->withBody(json_encode($params), 'application/json')
+                ->post('https://paysprint.in/service-api/api/v1/service/dmt/refund/refund/')->json();
+            Log::channel('apiLog')->info('success', [
+                'url' => 'https://paysprint.in/service-api/api/v1/service/dmt/refund/refund/',
+                'body' =>  $params,
+                'response' => $runApi
             ]);
+        }
+
+        return response()->json([
+            'api' => $runApi
+        ]);
     }
 }

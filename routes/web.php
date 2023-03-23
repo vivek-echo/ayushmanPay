@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Artisan;
 
 Auth::routes();
 Route::get('/', [App\Http\Controllers\Home\HomePageController::class, 'index']);
-Route::get('/config', function(){
+Route::get('/config', function () {
     Artisan::call('optimize:clear');
     return "cache:cleared";
 });
@@ -30,7 +30,7 @@ Route::match(['GET', 'POST'], '/vialidateOtpPage', [App\Http\Controllers\Auth\Ot
 Route::match(['GET', 'POST'], '/viewOtpPage', [App\Http\Controllers\Auth\OtpController::class, 'viewOtpPage']);
 Route::match(['GET', 'POST'], '/validateOtp', [App\Http\Controllers\Auth\OtpController::class, 'validateOtp']);
 Route::match(['GET', 'POST'], '/createAccount', [App\Http\Controllers\Auth\OtpController::class, 'index']);
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'web'], function () {
     Route::match(['GET', 'POST'], '/dashboard', [App\Http\Controllers\InnerPannel\Dashboard\DashboardController::class, 'index']);
     Route::match(['GET', 'POST'], '/services', [App\Http\Controllers\InnerPannel\Services\ServicesController::class, 'index']);
     Route::match(['GET', 'POST'], '/services/b2bServices/mobileRechare', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MobileRechargeServicesController::class, 'index']);
@@ -63,8 +63,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(['GET', 'POST'], '/payBroadbandBill', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\BroadbandServicesController::class, 'payBroadbandBill']);
     //Money Transfer
     Route::match(['GET', 'POST'], '/services/b2bServices/MoneyTransfer', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'index']);
-    Route::match(['GET', 'POST'], '/getBankList', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'getBankList']);
+    Route::match(['GET', 'POST'], '/checkRemitter', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'checkRemitter']);
     Route::match(['GET', 'POST'], '/submitRemiterRegister', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'submitRemiterRegister']);
+    Route::match(['GET', 'POST'], '/fetchMoneySendDetails', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'fetchMoneySendDetails']);
     Route::match(['GET', 'POST'], '/addBenfeiciry', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'addBenfeiciry']);
     Route::match(['GET', 'POST'], '/deletebeneficiary', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'deletebeneficiary']);
     Route::match(['GET', 'POST'], '/fetchMoneyTransferDetails', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'fetchMoneyTransferDetails']);
@@ -72,6 +73,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(['GET', 'POST'], '/sendMoneyValidateOtp', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'validateOtp']);
     Route::match(['GET', 'POST'], '/sendMoney', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'sendMoney']);
     Route::match(['GET', 'POST'], '/checkTransStatusfun', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'checkTransStatusfun']);
+    Route::match(['GET', 'POST'], '/refundDMT', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'refundDMT']);
+    Route::match(['GET', 'POST'], '/getBankList', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'getBankList']);
+
     //pancard uti
     Route::match(['GET', 'POST'], '/services/b2bServices/PanCardUti', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\PanCardUtiController::class, 'index']);
     //driving license
@@ -79,7 +83,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(['GET', 'POST'], '/fetchDrivingLic', [App\Http\Controllers\InnerPannel\Services\LegalServices\DrivingLicController::class, 'fetchDrivingLic']);
     Route::match(['GET', 'POST'], '/downloadDrivingLic', [App\Http\Controllers\InnerPannel\Services\LegalServices\DrivingLicController::class, 'downloadDrivingLic']);
     //pancard nsld
-    Route::match(['GET', 'POST'], '/services/legalServices/PanCardNsld', [App\Http\Controllers\InnerPannel\Services\LegalServices\PanCardNsldController::class, 'index']);
+    Route::match(['GET', 'POST'], '/services/legalServices/PanCardNsld', [App\Http\Controllers\InnerPannel\Services\LegalServices\PanCardNsldController::class, 'index'])->name('NsldCallback');
     Route::match(['GET', 'POST'], '/PanCardNsldGen', [App\Http\Controllers\InnerPannel\Services\LegalServices\PanCardNsldController::class, 'PanCardNsldGen']);
     Route::match(['GET', 'POST'], '/PanCardNsldCallback', [App\Http\Controllers\InnerPannel\Services\LegalServices\PanCardNsldController::class, 'PanCardNsldCallback']);
     Route::match(['GET', 'POST'], '/getCheckPanStatusFun', [App\Http\Controllers\InnerPannel\Services\LegalServices\PanCardNsldController::class, 'getCheckPanStatusFun']);
@@ -92,11 +96,11 @@ Route::group(['middleware' => 'auth'], function () {
     //rc
     Route::match(['GET', 'POST'], '/services/legalServices/Rc', [App\Http\Controllers\InnerPannel\Services\LegalServices\RCController::class, 'index']);
     Route::match(['GET', 'POST'], '/fetchRC', [App\Http\Controllers\InnerPannel\Services\LegalServices\RCController::class, 'fetchRC']);
-    
+
     //voter Id card
     Route::match(['GET', 'POST'], '/services/legalServices/voterIdCard', [App\Http\Controllers\InnerPannel\Services\LegalServices\VoterController::class, 'index']);
     Route::match(['GET', 'POST'], '/fetchVoter', [App\Http\Controllers\InnerPannel\Services\LegalServices\VoterController::class, 'fetchVoter']);
-    
+
     //profile section
     Route::match(['GET', 'POST'], '/profile/profileUpdate', [App\Http\Controllers\InnerPannel\Profile\ProfileController::class, 'profileUpdateIndex']);
     Route::match(['GET', 'POST'], '/profileUpdate', [App\Http\Controllers\InnerPannel\Profile\ProfileController::class, 'profileUpdate']);
@@ -109,7 +113,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(['GET', 'POST'], '/aepsKycCallBack', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\AepsController::class, 'aepsKycCallBack']);
     Route::match(['GET', 'POST'], '/getBankNameList', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\AepsController::class, 'getBankNameList']);
     Route::match(['GET', 'POST'], '/getBEAeps', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\AepsController::class, 'getBEAeps']);
-
 });
 //B2BService
 Route::get('/services/hospital', function () {
