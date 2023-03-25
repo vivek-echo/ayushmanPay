@@ -116,6 +116,10 @@ Route::group(['middleware' => 'web'], function () {
     Route::match(['GET', 'POST'], '/aepsKycCallBack', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\AepsController::class, 'aepsKycCallBack']);
     Route::match(['GET', 'POST'], '/getBankNameList', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\AepsController::class, 'getBankNameList']);
     Route::match(['GET', 'POST'], '/getBEAeps', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\AepsController::class, 'getBEAeps']);
+
+    // members list 
+    Route::match(['GET', 'POST'], '/member/memberlist', [App\Http\Controllers\InnerPannel\Member\MembersListController::class, 'index']);
+    Route::match(['GET', 'POST'], '/getMembersDetails', [App\Http\Controllers\InnerPannel\Member\MembersListController::class, 'getMembersDetails']);
 });
 //B2BService
 Route::get('/services/hospital', function () {
@@ -153,9 +157,4 @@ Route::get('/services/rcservice', function () {
 
 Route::get('/walletsection/printMyQR', function () {
     return view('InnerPannel/WalletSection/PrintQR');
-});
-
-
-Route::get('/memberlist/memberlist', function () {
-    return view('InnerPannel/MemberList/MemberList');
 });

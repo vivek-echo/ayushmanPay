@@ -270,7 +270,7 @@
                                             </ul>
                                         </li>
                                         <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav"
-                                                id="memberLink" href="{{ url('/memberlist/memberlist') }}"><i
+                                                id="memberLink" href="{{ url('/member/memberlist') }}"><i
                                                     data-feather="users"> </i><span>Members List</span></a></li>
 
                                 </li>

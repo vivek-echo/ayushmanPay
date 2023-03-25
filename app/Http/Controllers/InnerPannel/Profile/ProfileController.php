@@ -129,7 +129,8 @@ class ProfileController extends Controller
                     'bankAccHolderName' => $getData['accHolderName'],
                     'bankAccNo' => $getData['accountNumber'],
                     'bankName' => $getData['bankName'],
-                    'bankIfscCode' => $getData['ifscCode']
+                    'bankIfscCode' => $getData['ifscCode'],
+                    'bankVerify'=>1
                 ]);
             });
 
@@ -161,7 +162,7 @@ class ProfileController extends Controller
     public function kycUpdate()
     {
         try {
-            $trans = DB::beginTransaction();
+            $trans = DB::beginTransaction(); 
             $getData = request()->all();
             $a = Auth::user();
             //pancard
@@ -185,6 +186,7 @@ class ProfileController extends Controller
                     'uploadPanCard' => $filePan,
                     'uploadAadharFront' => $fileAaFront,
                     'uploadAadharBack' => $fileAaBack,
+                    'webKyc'=>1
 
                 ]);
             });
