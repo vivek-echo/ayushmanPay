@@ -55,7 +55,7 @@
 
                         <div class="row">
                             <div class="col-lg-12">
-                                <img src="{{ asset('images/dlimage.png') }}" class="img-thumbnail" alt="DLimage" id="my_image"
+                                <img src="{{ asset('' . config('constant.ASSET') .'images/dlimage.png') }}" class="img-thumbnail" alt="DLimage" id="my_image"
                                     width="250px">
                             </div>
                         </div>

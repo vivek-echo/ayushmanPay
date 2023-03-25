@@ -53,11 +53,11 @@
                                             aria-controls="checkTransStatus" aria-selected="false">Check Transaction
                                             Status</button>
                                     </li>
-                                    {{--  <li class="nav-item me-2" role="presentation">
+                                    <li class="nav-item me-2" role="presentation">
                                         <button class="nav-link" id="refundDivision-tab" data-bs-toggle="pill"
                                             data-bs-target="#refundDivision" type="button" role="tab"
                                             aria-controls="refundDivision" aria-selected="false">Refund</button>
-                                    </li> --}}
+                                    </li>
 
                                 </ul>
                                 <div class="tab-content mt-4" id="pills-tabContent">
@@ -725,8 +725,23 @@
             //    $('#sendMoney').modal('show');
         }
 
-        function penneyDrop(param) {
-
+        function penneyDrop(beneId) {
+            $('.pageLoader').fadeIn();
+            $.ajax({
+                url: "{{ url('/penneyDropMoneyTransfer') }}",
+                data: {
+                    bene_id: beneId,
+                    remiterMobile: $('#universalMobileNumber').val()
+                },
+                success: function(res) {
+                    $('.pageLoader').fadeOut();
+                    if (res.api.status == true) {
+                        swal("SUCCESSFULL", res.api.message, "success");
+                    }else{
+                        swal("Error", res.api.message, "error");
+                    }
+                }
+            });
 
         }
         ///get bank limits
@@ -1346,10 +1361,11 @@
                         },
                         {
                             "render": function(data, type, full, meta) {
+
                                 var verified = full.verified;
                                 if (verified == 0) {
                                     return '<button class="btn btn-danger btn-sm" href="javascript:void(0);" onclick="penneyDrop(' +
-                                        full.bene_id + ');">Penny Drop</button>'
+                                        (full.bene_id) + ');">Penny Drop</button>'
                                 } else {
 
 

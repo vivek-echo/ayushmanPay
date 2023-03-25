@@ -514,4 +514,52 @@ class MoneyTransferController extends Controller
             'api' => $runApi
         ]);
     }
+
+    public function penneyDropMoneyTransfer(){
+        $getData = request()->all();
+        $apiKey = config('constant.API_KEY');
+        $token = Controller::getToken();
+        $param['beneid'] = $getData['bene_id'];
+        $param['mobile'] = $getData['remiterMobile'];
+
+        $fetchbenDe =  Http::withHeaders([
+            'accept' => 'application/json',
+            'Authorisedkey' => $apiKey,
+            'Token' => $token
+        ])->withBody(json_encode($param), 'application/json')
+            ->post('https://paysprint.in/service-api/api/v1/service/dmt/beneficiary/registerbeneficiary/fetchbeneficiarybybeneid')->json();
+        Log::channel('apiLog')->info('success', [
+            'url' => 'https://paysprint.in/service-api/api/v1/service/dmt/beneficiary/registerbeneficiary/fetchbeneficiarybybeneid',
+            'body' =>  $param,
+            'response' => $fetchbenDe
+        ]);
+        // dd($fetchbenDe['data'][0]);
+        if( $fetchbenDe['status'] == true){
+            $paramPen['mobile']=$getData['remiterMobile'];
+            $paramPen['accno']=$fetchbenDe['data'][0]['accno'];
+            $paramPen['bankid']=$fetchbenDe['data'][0]['bankid'];
+            $paramPen['benename']=$fetchbenDe['data'][0]['name'];
+            $paramPen['referenceid']=mt_rand(10000000, 99999999);//
+            $paramPen['bene_id']=$fetchbenDe['data'][0]['bene_id'];
+            $penDrop= Http::withHeaders([
+                'accept' => 'application/json',
+                'Authorisedkey' => $apiKey,
+                'Token' => $token
+            ])->withBody(json_encode($paramPen), 'application/json')
+                ->post('https://paysprint.in/service-api/api/v1/service/dmt/beneficiary/registerbeneficiary/benenameverify')->json();
+            Log::channel('apiLog')->info('success', [
+                'url' => 'https://paysprint.in/service-api/api/v1/service/dmt/beneficiary/registerbeneficiary/benenameverify',
+                'body' =>  $param,
+                'response' => $penDrop
+            ]);
+            $api =  $penDrop;
+        }else{
+            $api = $fetchbenDe;
+        }
+       
+      
+        return response()->json([
+            'api'=> $api
+        ]);
+    }
 }

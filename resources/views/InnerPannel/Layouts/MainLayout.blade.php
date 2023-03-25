@@ -221,7 +221,7 @@
             <div class="sidebar-wrapper">
                 <div>
                     <div class="logo-wrapper"><a href="{{ url('/dashboard') }}"><img class="w-75"
-                                src="{{ asset('images/logo/ayp-logo-new-white.png') }}" alt=""></a>
+                                src="{{ asset('' . config('constant.ASSET') .'images/logo/ayp-logo-new-white.png') }}" alt=""></a>
                         <div class="back-btn"><i data-feather="grid"></i></div>
                         <div class="toggle-sidebar icon-box-sidebar"><i class="status_toggle middle sidebar-toggle"
                                 data-feather="grid"> </i></div>

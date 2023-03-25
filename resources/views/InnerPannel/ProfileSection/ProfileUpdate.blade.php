@@ -1,6 +1,19 @@
 @extends('InnerPannel.Layouts.MainLayout')
 
 @section('content')
+<link rel="stylesheet" type="text/css" href="{{ asset('' . config('constant.ASSET') . 'css/vendors/sweetalert2.css') }}">
+<script src="{{ asset('' . config('constant.ASSET') . 'js/sweet-alert/sweetalert.min.js') }}"></script>
+@if (Session::get('status') != '')
+    @if (Session::get('status') == true)
+        <script>
+            swal("Successfull", "KYC Profile Updated successfully", "success");
+        </script>
+    @else
+        <script>
+            swal("Error", "KYC not registred. Please try again later.", "error");
+        </script>
+    @endIf
+@endIf
     <div class="container-fluid">
         <div class="page-title">
             <div class="row">
@@ -94,12 +107,7 @@
                                                     <input name="pinCode" id="pinCode" class="form-control" type="text"
                                                         autocomplete="off" placeholder="Pin Code"
                                                         value="{{ $profile->pinCode }}">
-                                                    <div class="input-group-append">
-                                                        <div class="form-group col-1 mb-0"> <img
-                                                                src="{{ asset('images/loader-5.gif') }}" alt=""
-                                                                width="45" id="loading" style="display:none;">
-                                                        </div>
-                                                    </div>
+                                                   
                                                 </div>
                                             </div>
                                             <div class="form-group col-6">
@@ -195,41 +203,49 @@
                                             <div class="form-group col-6">
                                                 <label class="col-form-label">Account Holder Name</label><span
                                                     class="text-danger fa-lg font-weight-500"> *</span>
-                                                <input name="firstName" id="firstName" class="form-control"
+                                                <input name="accHolderName" id="accHolderName" class="form-control"
                                                     type="text" placeholder="Enter Account Holder Name"
-                                                    autocomplete="off" value="">
+                                                    autocomplete="off" value="<?php echo $profile->bankAccHolderName; ?>" <?php if ($profile->bankVerify == 1) {
+                                                        echo 'readonly';
+                                                    } ?>>
 
                                             </div>
 
                                             <div class="form-group col-6">
                                                 <label class="col-form-label">Account Number</label><span
                                                     class="text-danger fa-lg font-weight-500"> *</span>
-                                                <input name="lastName" id="lastName" class="form-control"
+                                                <input name="accountNumber" id="accountNumber" class="form-control"
                                                     type="text" placeholder="Account Number" autocomplete="off"
-                                                    value="">
+                                                    value="<?php echo $profile->bankAccNo; ?>" <?php if ($profile->bankVerify == 1) {
+                                                        echo 'readonly';
+                                                    } ?>>
                                             </div>
 
                                             <div class="form-group col-6">
                                                 <label class="col-form-label">Bank Name</label><span
                                                     class="text-danger fa-lg font-weight-500"> *</span>
-                                                <input name="lastName" id="lastName" class="form-control"
+                                                <input name="bankName" id="bankName" class="form-control"
                                                     type="text" placeholder="Enter Bank Name" autocomplete="off"
-                                                    value="">
+                                                    value="<?php echo $profile->bankName; ?>" <?php if ($profile->bankVerify == 1) {
+                                                        echo 'readonly';
+                                                    } ?>>
                                             </div>
 
                                             <div class="form-group col-6">
                                                 <label class="col-form-label">IFSC Code</label><span
                                                     class="text-danger fa-lg font-weight-500"> *</span>
-                                                <input name="lastName" id="lastName" class="form-control"
+                                                <input name="ifscCode" id="ifscCode" class="form-control"
                                                     type="text" placeholder="Enter IFSC Code" autocomplete="off"
-                                                    value="">
+                                                    value="<?php echo $profile->bankIfscCode; ?>" <?php if ($profile->bankVerify == 1) {
+                                                        echo 'readonly';
+                                                    } ?>>
                                             </div>
 
                                         </div>
 
                                         <div class="d-flex align-items-center">
                                             <div class="form-group mt-3">
-                                                <button class="btn btn-success" id="">Verify</button>
+                                                <button class="btn btn-success" id="profileBankUpdate">Update</button>
                                                 {{-- <button class="btn btn-warning" id="downloadPdf">Download</button> --}}
                                             </div>
                                         </div>
@@ -248,82 +264,152 @@
                                 <div class="collapse" id="collapseicon2" aria-labelledby="headingeight"
                                     data-bs-parent="#accordionoc">
                                     <div class="card-body">
-                                        <div class="row">
-                                            <div class="form-group col-6">
-                                                <label class="col-form-label">PAN Number</label><span
-                                                    class="text-danger fa-lg font-weight-500"> *</span>
-                                                <input name="firstName" id="firstName" class="form-control"
-                                                    type="text" placeholder="Enter Account Holder Name"
-                                                    autocomplete="off" value="">
+                                        <form method="POST" action="/kycUpdate" enctype="multipart/form-data">
+                                            {{ csrf_field() }}
+                                            <div class="row">
+                                                <div class="form-group col-6">
+                                                    <label class="col-form-label">PAN Number</label><span
+                                                        class="text-danger fa-lg font-weight-500"> *</span>
+                                                    <input name="panCardNo" id="panCardNo" class="form-control"
+                                                        type="text" placeholder="Enter Pancard Number"
+                                                        autocomplete="off" value="<?php echo $profile->panCard; ?>"  <?php if ($profile->webKyc == 1) {
+                                                            echo 'readonly';
+                                                        } ?>>
 
+                                                </div>
+
+                                                <div class="form-group col-6">
+                                                    <label class="col-form-label">Aadhaar Number</label><span
+                                                        class="text-danger fa-lg font-weight-500"> *</span>
+                                                    <input name="aadharCardNo" id="aadharCardNo" class="form-control"
+                                                        type="text" placeholder="Enter Aadhaar Number"
+                                                        autocomplete="off" value="<?php echo $profile->aadharCard; ?>"  <?php if ($profile->webKyc == 1) {
+                                                            echo 'readonly';
+                                                        } ?>>
+                                                </div>
+                                                @if($profile->webKyc != 1)
+                                                <div class="form-group col-4">
+                                                    <label class="col-form-label">Upload Pan Card Photo</label><span
+                                                        class="text-danger fa-lg font-weight-500"> *</span>
+                                                    <input class="form-control" type="file" id="uploadPanPhoto"
+                                                        accept="image/*" onchange="loadFilePanPhoto(event)"
+                                                        name="uploadPanPhoto">
+                                                </div>
+
+                                                <div class="form-group col-4">
+                                                    <label class="col-form-label">Upload Aadhaar Card Front
+                                                        Photo</label><span class="text-danger fa-lg font-weight-500">
+                                                        *</span>
+                                                    <input class="form-control" type="file" id="uploadAadhaarfrnPhoto"
+                                                        accept="image/*" name="uploadAadhaarfrnPhoto"
+                                                        onchange="loadAdharFrontPhoto(event)">
+                                                </div>
+
+                                                <div class="form-group col-4">
+                                                    <label class="col-form-label">Upload Aadhaar Card Back
+                                                        Photo</label><span class="text-danger fa-lg font-weight-500">
+                                                        *</span>
+                                                    <input class="form-control" type="file"
+                                                        id="uploadAadhaarBackPhoto" accept="image/*"
+                                                        name="uploadAadhaarBackPhoto"
+                                                        onchange="loadAdharBackPhoto(event)">
+                                                </div>
+                                                @endIf
                                             </div>
 
-                                            <div class="form-group col-6">
-                                                <label class="col-form-label">Aadhaar Number</label><span
-                                                    class="text-danger fa-lg font-weight-500"> *</span>
-                                                <input name="lastName" id="lastName" class="form-control"
-                                                    type="text" placeholder="Enter Aadhaar Number" autocomplete="off"
-                                                    value="">
-                                            </div>
-
-                                            <div class="form-group col-6">
-                                                <label class="col-form-label">Upload Pan Card Photo</label><span
-                                                    class="text-danger fa-lg font-weight-500"> *</span>
-                                                <input class="form-control" type="file" id="uploadPanPhoto"
-                                                    name="uploadPanPhoto">
-                                            </div>
-
-                                            <div class="form-group col-6">
-                                                <label class="col-form-label">Upload Aadhaar Card Front Photo</label><span
-                                                    class="text-danger fa-lg font-weight-500"> *</span>
-                                                <input class="form-control" type="file" id="uploadAadhaarfrnPhoto"
-                                                    name="uploadAadhaarfrnPhoto">
-                                            </div>
-
-                                            <div class="form-group col-6">
-                                                <label class="col-form-label">Upload Aadhaar Card Back Photo</label><span
-                                                    class="text-danger fa-lg font-weight-500"> *</span>
-                                                <input class="form-control" type="file" id="uploadPanbckPhoto"
-                                                    name="uploadPanbckPhoto">
-                                            </div>
-                                        </div>
-
+                                        </form>
                                         <hr>
 
                                         <div class="row">
-                                            <div class="col-3">
+                                            @if($profile->uploadPanCard)
+                                            <?php 
+                                            $panSrc = url('/')."/profileDetails/". $profile->uploadPanCard; 
+                                            ?>
+                                           
+                                            <div class="col-4 text-center">
                                                 <label class="col-form-label">Pan Card Photo</label>
                                                 <div class="col-lg-12">
-                                                    <img src="{{ asset('images/dlimage.png') }}" class="img-thumbnail"
-                                                        alt="DLimage" id="my_image" width="230px">
+                                                    <img class="img-thumbnail"
+                                                        src="{{$panSrc}}"   
+                                                        alt="DLimage" id="outputPanPhoto" width="230px"
+                                                        height="230px">
                                                 </div>
                                             </div>
-                                            <div class="col-3">
+                                            @else
+                                            <div class="col-4 text-center">
+                                                <label class="col-form-label">Pan Card Photo</label>
+                                                <div class="col-lg-12">
+                                                    <img class="img-thumbnail"
+                                                        src="{{ asset('' . config('constant.ASSET') . 'images/dlimage.png') }}"
+                                                        alt="DLimage" id="outputPanPhoto" width="230px"
+                                                        height="230px">
+                                                </div>
+                                            </div>
+                                            @endIf
+                                           
+
+                                            @if($profile->uploadAadharFront)
+                                            <?php 
+                                            $imageSrcAFront = url('/')."/profileDetails/". $profile->uploadAadharFront; 
+                                            ?>
+                                            <div class="col-4 text-center">
                                                 <label class="col-form-label">Aadhaar Card Front Photo</label>
                                                 <div class="col-lg-12">
-                                                    <img src="{{ asset('images/dlimage.png') }}" class="img-thumbnail"
-                                                        alt="DLimage" id="my_image" width="230px">
+                                                    <img class="img-thumbnail"
+                                                        src="{{ $imageSrcAFront}}"
+                                                        alt="DLimage" id="outputAdharFrontPhoto" width="230px"
+                                                        height="230px">
                                                 </div>
                                             </div>
-                                            <div class="col-3">
+                                            @else
+                                            <div class="col-4 text-center">
+                                                <label class="col-form-label">Aadhaar Card Front Photo</label>
+                                                <div class="col-lg-12">
+                                                    <img src="{{ asset('' . config('constant.ASSET') . 'images/dlimage.png') }}"
+                                                        class="img-thumbnail" alt="DLimage" id="outputAdharFrontPhoto"
+                                                        width="230px" height="230px">
+                                                </div>
+                                            </div>
+                                            @endIf
+                                           
+
+                                            @if($profile->uploadAadharBack)
+                                            <?php 
+                                            $imageSrcABack = url('/')."/profileDetails/". $profile->uploadAadharBack; 
+                                            ?>
+                                            <div class="col-4 text-center">
                                                 <label class="col-form-label">Aadhaar Card Back Photo</label>
                                                 <div class="col-lg-12">
-                                                    <img src="{{ asset('images/dlimage.png') }}" class="img-thumbnail"
-                                                        alt="DLimage" id="my_image" width="230px">
+                                                    <img class="img-thumbnail"
+                                                        src="{{$imageSrcABack}}"
+                                                        alt="DLimage" id="outputAdharBackPhoto" width="230px"
+                                                        height="230px">
                                                 </div>
                                             </div>
+                                            @else
+                                            <div class="col-4 text-center">
+                                                <label class="col-form-label">Aadhaar Card Back Photo</label>
+                                                <div class="col-lg-12">
+                                                    <img src="{{ asset('' . config('constant.ASSET') . 'images/dlimage.png') }}"
+                                                        class="img-thumbnail" alt="DLimage" id="outputAdharBackPhoto"
+                                                        width="230px" height="230px">
+                                                </div>
+                                            </div>
+                                            @endIf
+                                           
                                         </div>
+                                        <hr>
                                         <div class="row">
-                                            <div class="col-3">
+                                            <div class="col-2">
                                                 <div class="btn-showcase d-flex mt-4">
                                                     <button class="btn btn-success text-center"
-                                                        id="">Accept</button>
-                                                    <button class="btn btn-danger text-center"
-                                                        id="">Reject</button>
+                                                        id="kycUpdateButton">Update</button>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
-                                        {{-- <button class="btn btn-warning" id="downloadPdf">Download</button> --}}
+
+                            
                                     </div>
                                 </div>
                             </div>
@@ -336,9 +422,161 @@
     <!-- Container-fluid Ends-->
 
     <script>
+        var loadFilePanPhoto = function(event) {
+            var readerPan = new FileReader();
+            readerPan.onload = function() {
+                var outputPanPhoto = document.getElementById('outputPanPhoto');
+                outputPanPhoto.src = readerPan.result;
+            };
+            readerPan.readAsDataURL(event.target.files[0]);
+        };
+
+        var loadAdharFrontPhoto = function(event) {
+            var readerAdharFrn = new FileReader();
+            readerAdharFrn.onload = function() {
+                var outputAdharFrontPhoto = document.getElementById('outputAdharFrontPhoto');
+                outputAdharFrontPhoto.src = readerAdharFrn.result;
+            };
+            readerAdharFrn.readAsDataURL(event.target.files[0]);
+        };
+
+        var loadAdharBackPhoto = function(event) {
+            var readerAdharBack = new FileReader();
+            readerAdharBack.onload = function() {
+                var outputAdharBackPhoto = document.getElementById('outputAdharBackPhoto');
+                outputAdharBackPhoto.src = readerAdharBack.result;
+            };
+            readerAdharBack.readAsDataURL(event.target.files[0]);
+        };
+
         $(document).ready(function() {
             $('#profileLink').addClass('activeLink');
             $('#profileLink').addClass('active');
+            $('#kycUpdateButton').on('click', function() {
+                var panCardNo = $('#panCardNo').val();
+                var aadharCardNo = $('#aadharCardNo').val();
+                var uploadPanPhoto = $('#uploadPanPhoto').val();
+                var uploadAadhaarfrnPhoto = $('#uploadAadhaarfrnPhoto').val();
+                var uploadAadhaarBackPhoto = $('#uploadAadhaarBackPhoto').val();
+
+                if ($('#panCardNo').val() == "") {
+                    errorAlert("Required", "Please Enter Pancard Number ", "panCardNo");
+                    return false;
+                }
+                if ($('#aadharCardNo').val() == "") {
+                    errorAlert("Required", "Please Enter Aadhaar Number ", "aadharCardNo");
+                    return false;
+                }
+                if ($('#uploadPanPhoto').val() == "") {
+                    errorAlert("Required", "Please Upload Your Pan card Photo ", "uploadPanPhoto");
+                    return false;
+                }
+                if ($('#uploadAadhaarfrnPhoto').val() == "") {
+                    errorAlert("Required", "Please Upload Your Aadhaar card front Photo ",
+                        "uploadAadhaarfrnPhoto");
+                    return false;
+                }
+                if ($('#uploadAadhaarBackPhoto').val() == "") {
+                    errorAlert("Required", "Please Upload Your Aadhaar card back Photo ",
+                        "uploadAadhaarBackPhoto");
+                    return false;
+                }
+
+                swal({
+                        title: "Are you sure?",
+                        text: "Are you sure you want to Update Your account?",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            $('.pageLoader').fadeIn();
+                            $('form').submit();
+
+                      
+                        }
+
+                    })
+            });
+            $('#profileBankUpdate').on('click', function() {
+                var accHolderName = $('#accHolderName').val();
+                var accountNumber = $('#accountNumber').val();
+                var bankName = $('#bankName').val();
+                var ifscCode = $('#ifscCode').val();
+
+                if ($('#accHolderName').val() == "") {
+                    errorAlert("Required", "Please Enter Account Holder Name", "accHolderName");
+                    return false;
+                }
+
+                if ($('#accountNumber').val() == "") {
+                    errorAlert("Required", "Please Enter Account Number", "accountNumber");
+                    return false;
+                }
+
+                if ($('#bankName').val() == "") {
+                    errorAlert("Required", "Please Enter Bank Name", "bankName");
+                    return false;
+                }
+
+                if ($('#ifscCode').val() == "") {
+                    errorAlert("Required", "Please Enter IFSC code", "ifscCode");
+                    return false;
+                }
+                swal({
+                        title: "Are you sure?",
+                        text: "Are you sure you want to Update Your account?",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            $('.pageLoader').fadeIn();
+                            $.ajax({
+                                url: "{{ url('/profileBankUpdate') }}",
+                                data: {
+                                    accHolderName: accHolderName,
+                                    accountNumber: accountNumber,
+                                    bankName: bankName,
+                                    ifscCode: ifscCode
+                                },
+                                success: function(res) {
+                                    if (res.status == true) {
+                                        swal("Successfull", res.message, "success")
+                                            .then(function(res) {
+                                                $('.pageLoader').fadeIn();
+                                                if (res) {
+                                                    var loc = window.location;
+                                                    window.location = loc
+                                                        .origin +
+                                                        "/profile/profileUpdate"
+                                                }
+                                            });
+                                        $('.pageLoader').fadeOut();
+                                    } else {
+                                        $('.pageLoader').fadeOut();
+                                        swal("Error", res.message, "error").then(
+                                            function(res) {
+                                                $('.pageLoader').fadeIn();
+                                                if (res) {
+                                                    var loc = window.location;
+                                                    window.location = loc
+                                                        .origin +
+                                                        "/profile/profileUpdate"
+                                                }
+                                            }
+                                        );
+                                    }
+
+                                }
+                            });
+                        }
+
+                    })
+
+            })
 
             $("#pinCode").focusout(function() {
                 $('#loading').show();

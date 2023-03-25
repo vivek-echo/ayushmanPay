@@ -37,7 +37,11 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => public_path('DrivingLic')
+             'root' => public_path('DrivingLic'),
+        ],
+        'profileDetails' => [
+            'driver' => 'local',
+             'root' => public_path('ProfileDetails'),
         ],
 
         's3' => [

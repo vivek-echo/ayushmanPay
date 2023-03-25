@@ -75,6 +75,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::match(['GET', 'POST'], '/checkTransStatusfun', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'checkTransStatusfun']);
     Route::match(['GET', 'POST'], '/refundDMT', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'refundDMT']);
     Route::match(['GET', 'POST'], '/getBankList', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'getBankList']);
+    Route::match(['GET', 'POST'], '/penneyDropMoneyTransfer', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MoneyTransferController::class, 'penneyDropMoneyTransfer']);
 
     //pancard uti
     Route::match(['GET', 'POST'], '/services/b2bServices/PanCardUti', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\PanCardUtiController::class, 'index']);
@@ -102,10 +103,12 @@ Route::group(['middleware' => 'web'], function () {
     Route::match(['GET', 'POST'], '/fetchVoter', [App\Http\Controllers\InnerPannel\Services\LegalServices\VoterController::class, 'fetchVoter']);
 
     //profile section
-    Route::match(['GET', 'POST'], '/profile/profileUpdate', [App\Http\Controllers\InnerPannel\Profile\ProfileController::class, 'profileUpdateIndex']);
+    Route::match(['GET', 'POST'], '/profile/profileUpdate', [App\Http\Controllers\InnerPannel\Profile\ProfileController::class, 'profileUpdateIndex'])->name('updtPro');
     Route::match(['GET', 'POST'], '/profileUpdate', [App\Http\Controllers\InnerPannel\Profile\ProfileController::class, 'profileUpdate']);
     Route::match(['GET', 'POST'], '/profile/changePassword', [App\Http\Controllers\InnerPannel\Profile\ProfileController::class, 'changePasswordIndex']);
     Route::match(['GET', 'POST'], '/changePassword', [App\Http\Controllers\InnerPannel\Profile\ProfileController::class, 'changePassword']);
+    Route::match(['GET', 'POST'], '/profileBankUpdate', [App\Http\Controllers\InnerPannel\Profile\ProfileController::class, 'profileBankUpdate']);
+    Route::match(['GET', 'POST'], '/kycUpdate', [App\Http\Controllers\InnerPannel\Profile\ProfileController::class, 'kycUpdate']);
 
     //aeps 
     // D:\apnaBhartPay\app\Http\Controllers\InnerPannel\Services\BTwoBServices\AepsController.php
