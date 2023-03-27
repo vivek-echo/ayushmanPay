@@ -87,7 +87,7 @@
                                                             <option value="">--Select--</option>
                                                         </select>
                                                         <div class="input-group-append">
-                                                            <div class="form-group col-1 mb-0"> <img src="{{ asset('images/loader-5.gif') }}"
+                                                            <div class="form-group col-1 mb-0"> <img src="{{ asset(''.config('constant.ASSET').'images/loader-5.gif') }}"
                                                                     alt="" width="45" id="titleLoad"
                                                                     style="display:none;">
                                                             </div>

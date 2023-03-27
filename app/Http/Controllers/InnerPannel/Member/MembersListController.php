@@ -19,7 +19,8 @@ class MembersListController extends Controller
 
     public function getMembersDetails(){
         $getData=request()->all();
-        $a =DB::table('users')->where('deletedFlag',0)->where('id',$getData['id'])->select('firstName','lastName','email','shopName','dateOfBirth','pinCode','state','city','mobile','gender','address','memberType','bankAccHolderName','bankAccNo','bankName','bankIfscCode','panCard','aadharCard','uploadPanCard','uploadAadharFront','uploadAadharBack','bankVerify','webKyc','profileUpdate')->first();
+        $a =DB::table('users')->where('deletedFlag',0)->where('id',$getData['id'])->select('id','firstName','lastName','email','shopName','dateOfBirth','pinCode','state','city','mobile','gender','address','memberType','bankAccHolderName','bankAccNo','bankName','bankIfscCode','panCard','aadharCard','uploadPanCard','uploadAadharFront','uploadAadharBack','bankVerify','webKyc','profileUpdate')->first();
+        $res['id']= $a->id;
         $res['firstName']= $a->firstName;
         $res['lastName']= $a->lastName;
         $res['email']= $a->email;
@@ -47,6 +48,27 @@ class MembersListController extends Controller
         $res['profileUpdate']= $a->profileUpdate;
         return response()->json([
             'profile'=> $res
+        ]);
+    }
+
+    public function verifykycbtn(){
+        $status = false;
+        $msg = "";
+        $getData = request()->all();
+        $update = DB::table('users')->where('id',$getData['userIdMember'])->update([
+            'profileUpdate' =>$getData['actionStatus'],
+            'profileUpdateRemark'=>$getData['actionRemark']
+        ]);
+        if($update){
+            $status = true;
+            $msg = "Profile Verified Successfully";
+        }else{
+            $status = false;
+            $msg = "Something went Wrong . Please try again later .";
+        }
+        return response()->json([
+            'status'=>$status ,
+            'msg'=>$msg
         ]);
     }
 }

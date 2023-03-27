@@ -96,7 +96,7 @@
                                                 style="display: flex; align-items: center; justify-content: space-between; width: 650px;">
                                                 {{-- <td><img class="img-fluid" src="../assets/images/logo/logo2.png" alt=""></td> --}}
                                                 <td><img class="img-fluid"
-                                                        src="{{ asset(''.config('constant.ASSET').'images/logo/ayp-black.png') }}" alt="looginpage"
+                                                        src="{{ asset(''.config('constant.ASSET').'images/logo/ayp-logo-new.png') }}" alt="looginpage"
                                                         width="200"></td>
                                                 <td style="text-align: right; color:#999"><span>Some Description</span>
                                                 </td>

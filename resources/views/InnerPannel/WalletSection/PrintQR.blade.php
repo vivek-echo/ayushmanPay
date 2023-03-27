@@ -36,7 +36,7 @@
                             </div>
                             <div class="col-xxl-6">
                                 <div class="QRcard">
-                                    <img src="{{ asset('images/qrcode.png') }}" width="300" alt="">
+                                    <img src="{{ asset(''.config('constant.ASSET').'images/qrcode.png') }}" width="300" alt="">
                                     {{-- <div class="QRcard-content">
                                       <h2>Improve your front-end skills by building projects</h2>
                                       <p>Scan the QR Code to visit Frontend Mentor and take your coding skills to the next level!</p>

@@ -30,7 +30,7 @@ Route::match(['GET', 'POST'], '/vialidateOtpPage', [App\Http\Controllers\Auth\Ot
 Route::match(['GET', 'POST'], '/viewOtpPage', [App\Http\Controllers\Auth\OtpController::class, 'viewOtpPage']);
 Route::match(['GET', 'POST'], '/validateOtp', [App\Http\Controllers\Auth\OtpController::class, 'validateOtp']);
 Route::match(['GET', 'POST'], '/createAccount', [App\Http\Controllers\Auth\OtpController::class, 'index']);
-Route::group(['middleware' => 'web'], function () {
+Route::group(['middleware' => 'auth'], function () {
     Route::match(['GET', 'POST'], '/dashboard', [App\Http\Controllers\InnerPannel\Dashboard\DashboardController::class, 'index']);
     Route::match(['GET', 'POST'], '/services', [App\Http\Controllers\InnerPannel\Services\ServicesController::class, 'index']);
     Route::match(['GET', 'POST'], '/services/b2bServices/mobileRechare', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\MobileRechargeServicesController::class, 'index']);
@@ -120,6 +120,7 @@ Route::group(['middleware' => 'web'], function () {
     // members list 
     Route::match(['GET', 'POST'], '/member/memberlist', [App\Http\Controllers\InnerPannel\Member\MembersListController::class, 'index']);
     Route::match(['GET', 'POST'], '/getMembersDetails', [App\Http\Controllers\InnerPannel\Member\MembersListController::class, 'getMembersDetails']);
+    Route::match(['GET', 'POST'], '/verifykycbtn', [App\Http\Controllers\InnerPannel\Member\MembersListController::class, 'verifykycbtn']);
 });
 //B2BService
 Route::get('/services/hospital', function () {

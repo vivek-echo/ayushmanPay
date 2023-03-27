@@ -32,6 +32,9 @@
                                         <th scope="col" class="text-center">Name</th>
                                         <th scope="col" class="text-center">User Id</th>
                                         <th scope="col" class="text-center">Member Type</th>
+                                        <th scope="col" class="text-center">Bank Profile Status</th>
+                                        <th scope="col" class="text-center">KYC Profile Status</th>
+                                        <th scope="col" class="text-center">Profile Verified Status</th>
                                         <th class="text-center" scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -42,6 +45,28 @@
                                             <td class="text-center">{{ $pr->firstName }} {{ $pr->lastName }}</td>
                                             <td class="text-center">{{ $pr->userId }}</td>
                                             <td class="text-center">{{ config('constant.USERS')[$pr->memberType] }}</td>
+                                            <td class="text-center">
+                                                @if($pr->bankVerify == 0)
+                                                <span class="text-danger">Not Updated</span>
+                                                @else
+                                                <span  class="text-success" >Updated</span>
+                                                @endIf
+                                            </td>
+                                            <td class="text-center">
+                                                @if($pr->webKyc == 0)
+                                                <span class="text-danger">Not Updated</span>
+                                                @else
+                                                <span  class="text-success" >Updated</span>
+                                                @endIf
+                                            </td>
+                                            <td class="text-center">
+                                                @if($pr->profileUpdate == 0)
+                                                <span class="text-danger">Not Verified</span>
+                                                @else
+                                                <span  class="text-success" >Verified</span>
+                                                @endIf
+                                            </td>
+                                            
                                             <td class="text-center">
                                                 <a class="text-primary me-2" data-bs-toggle="modal"
                                                     onclick="getMembersDetails({{ $pr->id }})"
@@ -230,26 +255,26 @@
 
                                 </div>
                                 <hr>
-                                <div class="row pb-3" >
+                                <div class="row pb-3">
                                     <div class="col-4 text-center">
                                         <label class="col-form-label">Pan Card Photo</label>
                                         <div class="col-lg-12">
-                                            <img src="{{ asset('' . config('constant.ASSET') .'images/dlimage.png') }}" class="img-thumbnail"
-                                                alt="img" id="panImg" width="230px">
+                                            <img src="{{ asset('' . config('constant.ASSET') . 'images/dlimage.png') }}"
+                                                class="img-thumbnail" alt="img" id="panImg" width="230px">
                                         </div>
                                     </div>
                                     <div class="col-4 text-center">
                                         <label class="col-form-label">Aadhaar Card Front Photo</label>
                                         <div class="col-lg-12">
-                                            <img src="{{ asset('' . config('constant.ASSET') .'images/dlimage.png') }}" class="img-thumbnail"
-                                                alt="img" id="aadharFrontImg" width="230px">
+                                            <img src="{{ asset('' . config('constant.ASSET') . 'images/dlimage.png') }}"
+                                                class="img-thumbnail" alt="img" id="aadharFrontImg" width="230px">
                                         </div>
                                     </div>
                                     <div class="col-4 text-center">
                                         <label class="col-form-label">Aadhaar Card Back Photo</label>
                                         <div class="col-lg-12">
-                                            <img src="{{ asset('' . config('constant.ASSET') .'images/dlimage.png') }}" class="img-thumbnail"
-                                                alt="img" id="aadharBackImg" width="230px">
+                                            <img src="{{ asset('' . config('constant.ASSET') . 'images/dlimage.png') }}"
+                                                class="img-thumbnail" alt="img" id="aadharBackImg" width="230px">
                                         </div>
                                     </div>
                                 </div>
@@ -263,11 +288,12 @@
                         </div>
 
 
-                        <div class="row" id="profileVerifyDiv" style="display:none">
+                        <div class="row mt-3" id="profileVerifyDiv" style="display:none">
                             <div class="form-group col-6">
                                 <label class="col-form-label">Action</label><span
                                     class="text-danger fa-lg font-weight-500"> *</span>
-                                <select name="gender" id="gender" class="form-select">
+                                <select name="actionStatus" id="actionStatus" class="form-select">
+                                    <option value="0">--Select--</option>
                                     <option value="1">Accept</option>
                                     <option value="2">Reject</option>
                                 </select>
@@ -276,17 +302,18 @@
                             <div class="form-group col-6">
                                 <label class="col-form-label">Remarks</label><span
                                     class="text-danger fa-lg font-weight-500"> *</span>
-                                <textarea class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+                                <textarea class="form-control" id="actionRemark" rows="1"></textarea>
 
                             </div>
+                            <input type="hidden" id="userIdMember">
                             <div class="col-3">
                                 <div class="btn-showcase d-flex mt-4">
-                                    <button class="btn btn-success text-center" id="">Verify</button>
+                                    <button class="btn btn-success text-center" id="verifykycbtn">Verify</button>
                                 </div>
                             </div>
                         </div>
 
-                        
+
                     </div>
                 </div>
 
@@ -311,6 +338,7 @@
                     success: function(res) {
 
                         $('.pageLoader').fadeOut();
+                        $('#userIdMember').val(res.profile.id);
                         $('#firstname').text(res.profile.firstName);
                         $('#lastName').text(res.profile.lastName);
                         $('#email').text(res.profile.email);
@@ -344,16 +372,16 @@
 
                         if (res.profile.webKyc == 1) {
                             $('#kycDivRecordFound').show();
-                            $('#panImg').attr('src',res.profile.panImg);
-                            $('#aadharFrontImg').attr('src',res.profile.aadharFrontImg);
-                            $('#aadharBackImg').attr('src',res.profile.aadharBackImg);
+                            $('#panImg').attr('src', res.profile.panImg);
+                            $('#aadharFrontImg').attr('src', res.profile.aadharFrontImg);
+                            $('#aadharBackImg').attr('src', res.profile.aadharBackImg);
                         } else {
                             $('#kycDivRecordNotFound').show();
                         }
 
 
                         if (res.profile.profileUpdate == 0) {
-                            if (res.profile.bankVerify == 1 && res.profile.webKyc == 1 ) {
+                            if (res.profile.bankVerify == 1 && res.profile.webKyc == 1) {
                                 $('#profileVerifyDiv').show();
                             }
                         }
@@ -369,7 +397,67 @@
             $('#memberLink').addClass('activeLink');
             $('#memberLink').addClass('active');
 
+            $('#verifykycbtn').on('click', function() {
+                var userIdMember = $('#userIdMember').val();
+                var actionStatus = $('#actionStatus').val();
+                var actionRemark = $('#actionRemark').val();
 
+                if (actionStatus == 0) {
+                    errorAlert("Required", "Please Select the status", "actionStatus");
+                    return false;
+                }
+                if (actionRemark == 0) {
+                    errorAlert("Required", "Please Enter Remark", "actionRemark");
+                    return false;
+                }
+
+                swal({
+                        title: "Are you sure?",
+                        text: "Are you sure you want to update this profile ?",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        $('.pageLoader').fadeIn();
+                        $.ajax({
+                            url: "{{ url('/verifykycbtn') }}",
+                            data: {
+
+                                userIdMember: userIdMember,
+                                actionStatus: actionStatus,
+                                actionRemark:actionRemark
+
+                            },
+                            success: function(res) {
+                                if (res.status == true) {
+                                        swal("Successfull", res.msg, "success")
+                                            .then(function(res) {
+                                                $('.pageLoader').fadeIn();
+                                                if (res) {
+                                                    var loc = window.location;
+                                                    window.location = loc
+                                                        .origin + "/member/memberlist"
+                                                }
+                                            });
+                                        $('.pageLoader').fadeOut();
+                                    } else {
+                                        $('.pageLoader').fadeOut();
+                                        swal("Error", res.msg, "error").then(
+                                            function(res) {
+                                                $('.pageLoader').fadeIn();
+                                                if (res) {
+                                                    var loc = window.location;
+                                                    window.location = loc
+                                                        .origin + "/member/memberlist"
+                                                }
+                                            }
+                                        );
+                                    }
+                            }
+                        })
+                    })
+            })
 
         });
     </script>
