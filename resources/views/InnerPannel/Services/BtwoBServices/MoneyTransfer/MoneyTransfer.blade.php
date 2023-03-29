@@ -737,7 +737,7 @@
                     $('.pageLoader').fadeOut();
                     if (res.api.status == true) {
                         swal("SUCCESSFULL", res.api.message, "success");
-                    }else{
+                    } else {
                         swal("Error", res.api.message, "error");
                     }
                 }
@@ -1405,7 +1405,11 @@
 
             })
             /**************************************************************************************************************************************************************/
-
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
         })
     </script>
 @endsection

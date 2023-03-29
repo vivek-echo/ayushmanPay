@@ -3,17 +3,25 @@
 @section('content')
     <link rel="stylesheet" type="text/css" href="{{ asset('' . config('constant.ASSET') . 'css/vendors/sweetalert2.css') }}">
     <script src="{{ asset('' . config('constant.ASSET') . 'js/sweet-alert/sweetalert.min.js') }}"></script>
-    @if (Session::get('status') != '')
-        @if (Session::get('status') == true)
-            <script>
-                swal("Successfull", "KYC Done successfully", "success");
-            </script>
-        @else
-            <script>
-                swal("Error", "KYC not registred. Please try again later.", "error");
-            </script>
-        @endIf
+
+    {{-- @if ($status != '') --}}
+    <?php //dd($status);
+    ?>
+    @if ($status === true)
+        <script type="text/javascript">
+            var msg = '<?php echo $message; ?>';
+            swal("Successfull", msg, "success");
+        </script>
     @endIf
+    @if ($status === false)
+        <?php //dd($status);
+        ?>
+        <script>
+            var msg = '<?php echo $message; ?>';
+            swal("Error", msg, "error");
+        </script>
+    @endIf
+    {{-- @endIf --}}
     {{-- <style type="text/css">
     body {
         font-family: 'Segoe UI';
@@ -167,141 +175,155 @@
                                 <!-- FOR AEPS Transaction -->
                                 <div class="tab-pane fade show active" id="AepsTransaction" role="tabpanel"
                                     aria-labelledby="pills-prepaid">
-                                    <div class="row m-4">
-
-                                        <div class="form-group col-6">
-                                            <label class="col-form-label">Services
-                                            </label><span class="text-danger fa-lg font-weight-500">
-                                                *</span>
-                                            <div class="input-group">
-                                                <select name="transType" id="transType" class="form-select">
-                                                    <option value="">--Select--</option>
-                                                    <option value="BE">Balance Enquiry</option>
-                                                    <option value="CW">Cash Withdrawal</option>
-                                                    <option value="MS">Mini Statement</option>
-                                                </select>
-                                                <div class="input-group-append">
-                                                    <div class="form-group col-1 mb-0"> <img
-                                                            src="{{ asset(''.config('constant.ASSET').'images/loader-5.gif') }}" alt=""
-                                                            width="45" id="perpaidOperatorLoading"
-                                                            style="display:none;">
+                                    <form method="POST" action="{{ route('aeps') }}" id="formSubmit"
+                                        enctype='multipart/form-data'>
+                                        <div class="row m-4">
+                                            @csrf
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">Services
+                                                </label><span class="text-danger fa-lg font-weight-500">
+                                                    *</span>
+                                                <div class="input-group">
+                                                    <select name="transType" id="transType" class="form-select">
+                                                        <option value="">--Select--</option>
+                                                        <option value="BE">Balance Enquiry</option>
+                                                        <option value="CW">Cash Withdrawal</option>
+                                                        <option value="MS">Mini Statement</option>
+                                                    </select>
+                                                    <div class="input-group-append">
+                                                        <div class="form-group col-1 mb-0"> <img
+                                                                src="{{ asset('' . config('constant.ASSET') . 'images/loader-5.gif') }}"
+                                                                alt="" width="45" id="perpaidOperatorLoading"
+                                                                style="display:none;">
+                                                        </div>
                                                     </div>
                                                 </div>
+
                                             </div>
 
-                                        </div>
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label"> Mobile No.</label><span
+                                                    class="text-danger fa-lg font-weight-500">
+                                                    *</span>
+                                                <input name="cstmrMobNo" id="cstmrMobNo" class="form-control" type="number"
+                                                    placeholder="Enter Customer Mobile No." autocomplete="off">
 
-                                        <div class="form-group col-6">
-                                            <label class="col-form-label"> Mobile No.</label><span
-                                                class="text-danger fa-lg font-weight-500">
-                                                *</span>
-                                            <input name="cstmrMobNo" id="cstmrMobNo" class="form-control" type="number"
-                                                placeholder="Enter Customer Mobile No." autocomplete="off">
+                                            </div>
 
-                                        </div>
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">Name</label><span
+                                                    class="text-danger fa-lg font-weight-500">
+                                                    *</span>
+                                                <input name="cstmrName" id="cstmrName" class="form-control" type="text"
+                                                    placeholder="Enter Customer Name" autocomplete="off">
 
-                                        <div class="form-group col-6">
-                                            <label class="col-form-label">Name</label><span
-                                                class="text-danger fa-lg font-weight-500">
-                                                *</span>
-                                            <input name="cstmrName" id="cstmrName" class="form-control" type="text"
-                                                placeholder="Enter Customer Name" autocomplete="off">
+                                            </div>
 
-                                        </div>
-
-                                        <div class="form-group col-6">
-                                            <label class="col-form-label">Bank Name
-                                            </label><span class="text-danger fa-lg font-weight-500">
-                                                *</span>
-                                            <div class="input-group">
-                                                <select name="bankName" id="bankName" class="form-select">
-                                                    <option value="">--Select Bank--</option>
-                                                </select>
-                                                <div class="input-group-append">
-                                                    <div class="form-group col-1 mb-0"> <img
-                                                            src="{{ asset(''.config('constant.ASSET').'images/loader-5.gif') }}" alt=""
-                                                            width="45" id="perpaidOperatorLoading"
-                                                            style="display:none;">
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">Bank Name
+                                                </label><span class="text-danger fa-lg font-weight-500">
+                                                    *</span>
+                                                <div class="input-group">
+                                                    <select name="bankName" id="bankName" class="form-select">
+                                                        <option value="">--Select Bank--</option>
+                                                    </select>
+                                                    <div class="input-group-append">
+                                                        <div class="form-group col-1 mb-0"> <img
+                                                                src="{{ asset('' . config('constant.ASSET') . 'images/loader-5.gif') }}"
+                                                                alt="" width="45" id="perpaidOperatorLoading"
+                                                                style="display:none;">
+                                                        </div>
                                                     </div>
                                                 </div>
+
                                             </div>
 
-                                        </div>
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">Aadhar Number</label><span
+                                                    class="text-danger fa-lg font-weight-500">
+                                                    *</span>
+                                                <input name="aadharNo" id="aadharNo" class="form-control"
+                                                    type="number" placeholder="Enter Aadhar Number" autocomplete="off">
+                                                <input name="lat" id="lat" class="form-control"
+                                                    type="hidden">
+                                                <input name="long" id="long" class="form-control"
+                                                    type="hidden">
 
-                                        <div class="form-group col-6">
-                                            <label class="col-form-label">Aadhar Number</label><span
-                                                class="text-danger fa-lg font-weight-500">
-                                                *</span>
-                                            <input name="aadharNo" id="aadharNo" class="form-control" type="number"
-                                                placeholder="Enter Aadhar Number" autocomplete="off">
-                                            <input name="lat" id="lat" class="form-control" type="hidden">
-                                            <input name="long" id="long" class="form-control" type="hidden">
-
-                                        </div>
-                                        <div class="form-group col-6" id="amountDiv" style="display:none">
-                                            <label class="col-form-label">Amount</label><span
-                                                class="text-danger fa-lg font-weight-500">
-                                                *</span>
-                                            <input name="amount" id="amount" class="form-control" type="number"
-                                                placeholder="Enter Amount" autocomplete="off">
-                                        </div>
-
-                                        <div class="form-group mt-4">
-                                            <button class="btn btn-info" id="checkDeviceBtn"
-                                                onclick="discoverAvdm();">CHECK
-                                                DEVICE</button>
-                                            <button type="button" class="btn btn-warning" style="display:none"
-                                                id="scanFingerBtn" onclick="CaptureAvdm();">Scan Finger</button>
-                                            <button class="btn btn-primary" id="submitAepsForm">Submit</button>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="tab-pane fade " id="kyc" role="tabpanel"
-                                    aria-labelledby="pills-prepaid">
-                                    <div class="row m-4">
-                                        <div class="col-3">
-                                            <a class="btn btn-primary" href="{{ $redirectUrl }}"><i
-                                                    class="myicon-log-in"></i> CLICK FOR KYC</a>
-                                        </div>
+                                            </div>
+                                            <div class="form-group col-6" id="amountDiv" style="display:none">
+                                                <label class="col-form-label">Amount</label><span
+                                                    class="text-danger fa-lg font-weight-500">
+                                                    *</span>
+                                                <input name="amount" id="amount" class="form-control" type="number"
+                                                    placeholder="Enter Amount" autocomplete="off">
+                                            </div>
+                                            <input id="method" type="hidden" value="">
+                                            <input id="info" type="hidden" value="">
+                                            <input type="hidden" name="txtWadh" id="txtWadh">
+                                            <textarea id="txtDeviceInfo" rows="10" cols="50" height="1000" style="display:none"></textarea>
+                                            <textarea id="txtPidData" rows="20" cols="100" height="1000" style="display:none" name="txtPidData"></textarea>
+                                            <input type="hidden" name="btnSearchSubmit" value="1">
+                                    </form>
+                                    <div class="form-group mt-4">
+                                        <a class="btn btn-info" id="checkDeviceBtn" onclick="discoverAvdm();">CHECK
+                                            DEVICE</a>
+                                        <a type="button" class="btn btn-warning" style="display:none"
+                                            id="scanFingerBtn" onclick="CaptureAvdm();">Scan Finger</a>
+                                        <a class="btn btn-primary" id="submitAepsForm">Submit</a>
                                     </div>
 
                                 </div>
 
                             </div>
+
+                            <div class="tab-pane fade " id="kyc" role="tabpanel" aria-labelledby="pills-prepaid">
+                                <div class="row m-4">
+                                    <div class="col-3">
+                                        <a class="btn btn-primary" href="{{ $redirectUrl }}"><i
+                                                class="myicon-log-in"></i> CLICK FOR KYC</a>
+                                    </div>
+                                </div>
+
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        {{-- <div > --}}
-        <div class="table-responsive" id="miniStateDiv" style="display:none">
-            <table class="table" id="beneficiaryList">
-                <thead>
+    </div>
+    <?php  if(count($ministatement) != 0){ ?>
+    <div class="table-responsive" id="miniStateDiv">
+        <table class="table" id="beneficiaryList">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">TxnType</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Narration</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($ministatement as $ky => $StatementData)
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">TxnType</th>
-                        <th scope="col">Amount</th>
-                        <th scope="col">Narration</th>
+                        <td scope="row">{{ $ky + 1 }}</td>
+                        <td>{{ $StatementData['date'] }}</td>
+                        <td>{{ $StatementData['txnType'] }}</td>
+                        <td>{{ $StatementData['amount'] }}</td>
+                        <td>{{ $StatementData['narration'] }}</td>
                     </tr>
-                </thead>
-                <tbody >
-                    
+                @endforeach
 
-                </tbody>
-            </table>
-        </div>
-        {{-- </div> --}}
+            </tbody>
+        </table>
+    </div>
+    <?php } ?>
+
+
     </div>
 
-    <input id="method" type="hidden" value="">
-    <input id="info" type="hidden" value="">
-    <input type="hidden" name="txtWadh" id="txtWadh">
-    <textarea id="txtDeviceInfo" rows="10" cols="50" height="1000" style="display:none"></textarea>
-    <textarea id="txtPidData" rows="20" cols="100" height="1000" style="display:none"></textarea>
+
 
 
     <!-- Container-fluid Ends-->
@@ -387,50 +409,50 @@
                     return false;
                 }
                 $('.pageLoader').show();
+                $('#formSubmit').submit();
+                // $.ajax({
+                //     url: "{{ url('/getBEAeps') }}",
+                //     data: {
+                //         'transType': transType,
+                //         'cstmrMobNo': cstmrMobNo,
+                //         'cstmrName': cstmrName,
+                //         'bankName': bankName,
+                //         'aadharNo': aadharNo,
+                //         'txtPidData': txtPidData,
+                //         'amount': amount,
+                //         'lat': lat,
+                //         'long': long
 
-                $.ajax({
-                    url: "{{ url('/getBEAeps') }}",
-                    data: {
-                        'transType': transType,
-                        'cstmrMobNo': cstmrMobNo,
-                        'cstmrName': cstmrName,
-                        'bankName': bankName,
-                        'aadharNo': aadharNo,
-                        'txtPidData': txtPidData,
-                        'amount': amount,
-                        'lat': lat,
-                        'long': long
+                //     },
+                //     success: function(res) {
+                //         $('.pageLoader').hide();
+                //         $('#miniStateDiv').hide();
+                //         if (res.status == false) {
+                //             swal("Error", res.message, "error");
+                //         } else {
 
-                    },
-                    success: function(res) {
-                        $('.pageLoader').hide();
-                        $('#miniStateDiv').hide();
-                        if (res.status == false) {
-                            swal("Error", res.message, "error");
-                        } else {
-                           
-                            if (res.transType == "BE") {
-                                swal("Successfull", 'Your Avaliable Balance is: Rs ' + res
-                                    .balance + '', "success");
-                            } else if (res.transType == "CW") {
-                                swal("Successfull", '' + res.message + ' of Rs. ' + res
-                                    .balance + '', "success");
-                            } else if (res.transType == "MS") {
-                                swal("Successfull", 'Mini-Statement Generated successfully.',
-                                    "success");
-                                var StatementCount = res.ministatement.length
-                                var StatementData = res.ministatement
-                                var staArr = '';
-                                for (var i = 0; i < StatementCount; i++) {
-                                    staArr += '<tr><td scope="row">'+(i+1)+'</td><td>'+StatementData[i].date+'</td><td>'+StatementData[i].txnType+'</td><td>'+StatementData[i].amount+'</td><td>'+StatementData[i].narration+'</td> </tr>';
-                                    
-                                }
-                                $('#beneficiaryList tbody').append(staArr);
-                                $('#miniStateDiv').show();
-                            }
-                        }
-                    }
-                });
+                //             if (res.transType == "BE") {
+                //                 swal("Successfull", 'Your Avaliable Balance is: Rs ' + res
+                //                     .balance + '', "success");
+                //             } else if (res.transType == "CW") {
+                //                 swal("Successfull", '' + res.message + ' of Rs. ' + res
+                //                     .balance + '', "success");
+                //             } else if (res.transType == "MS") {
+                //                 swal("Successfull", 'Mini-Statement Generated successfully.',
+                //                     "success");
+                //                 var StatementCount = res.ministatement.length
+                //                 var StatementData = res.ministatement
+                //                 var staArr = '';
+                //                 for (var i = 0; i < StatementCount; i++) {
+                //                     staArr += '<tr><td scope="row">'+(i+1)+'</td><td>'+StatementData[i].date+'</td><td>'+StatementData[i].txnType+'</td><td>'+StatementData[i].amount+'</td><td>'+StatementData[i].narration+'</td> </tr>';
+
+                //                 }
+                //                 $('#beneficiaryList tbody').append(staArr);
+                //                 $('#miniStateDiv').show();
+                //             }
+                //         }
+                //     }
+                // });
 
 
             });
@@ -743,7 +765,6 @@
                         httpStaus: httpStaus,
                         data: xmlString
                     };
-
                     $('#txtPidData').val(xmlString);
 
                     var $doc = data;
