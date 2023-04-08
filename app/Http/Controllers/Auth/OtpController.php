@@ -160,7 +160,7 @@ class OtpController extends Controller
     {
 
         $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $userId = "ABP" . substr(str_shuffle(str_repeat($pool, 3)), 0, 6) . $id;
+        $userId = "APAY" . substr(str_shuffle(str_repeat($pool, 3)), 0, 6) . $id;
         return $userId;
     }
     public function password()

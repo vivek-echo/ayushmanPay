@@ -68,7 +68,12 @@ class AepsController extends Controller
                     'Token' => $token
                 ])->withBody(json_encode($param), 'application/json')
                     ->post($apiUrl)->json();
-
+                    Log::channel('apiLog')->info('success', [
+                        'url' =>  $apiUrl,
+                        'data'=>$datapost,
+                        'body' =>   $param,
+                        'response' => $runApi
+                    ]);
                     
                 if ($getData['transType'] == "BE") {
                     if ($runApi['status'] == false) {
@@ -125,6 +130,11 @@ class AepsController extends Controller
             'Token' => $token
         ])->withBody(json_encode($params), 'application/json')
             ->post('https://paysprint.in/service-api/api/v1/service/onboard/onboardnew/getonboardurl')->json();
+            Log::channel('apiLog')->info('success', [
+                'url' =>  "https://paysprint.in/service-api/api/v1/service/onboard/onboardnew/getonboardurl",
+                'body' =>   $params,
+                'response' => $payBill
+            ]);
         if ($payBill) {
             $redirect = $payBill['redirecturl'];
         } else {

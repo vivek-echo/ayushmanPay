@@ -681,7 +681,7 @@
                                 url: "{{ url('/deletebeneficiary') }}",
                                 data: {
                                     bene_id: bene_id,
-                                    remiterMobile: $('#remiterMobile').val()
+                                    remiterMobile: $('#searchBenMobile').val()
                                 },
                                 success: function(res) {
                                     $('.pageLoader').fadeOut();

@@ -269,9 +269,11 @@
                                                 <li><a href="#">Settlement</a></li> --}}
                                             </ul>
                                         </li>
+                                        @if(Auth::user()->memberType == 3)
                                         <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav"
                                                 id="memberLink" href="{{ url('/member/memberlist') }}"><i
                                                     data-feather="users"> </i><span>Members List</span></a></li>
+                                                    @endif
 
                                 </li>
                             </ul>
