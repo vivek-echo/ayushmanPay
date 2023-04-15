@@ -25,6 +25,7 @@ class DrivingLicController extends Controller
 
     public function fetchDrivingLic()
     {
+        $imageSrc = "";
         $user = Auth::user();
         $getData = request()->all();
         $apiKey = config('constant.API_KEY');
@@ -32,27 +33,29 @@ class DrivingLicController extends Controller
         $params['refid'] = mt_rand(10000000, 99999999);
         $params['license_number'] = $getData['dlno'];
         $params['dob'] = date('Y-m-d', strtotime($getData['dob']));
-        $generateUrl =  Http::withHeaders([
-            'accept' => 'application/json',
-            'Authorisedkey' => $apiKey,
-            'Token' => $token
-        ])->withBody(json_encode($params), 'application/json')
-            ->post('https://paysprint.in/service-api/api/v1/service/verification/drivinglicense/validate')->json();
-            Log::channel('apiLog')->info('success',[
-                'url'=> 'https://paysprint.in/service-api/api/v1/service/verification/drivinglicense/validate',
-                'body'=>  $params,
-                'response' => $generateUrl
-            ]);
-        $image = $generateUrl['data']['profile_image'];
-        $imageName =  $user->id."/".$params['refid'].".png";
-        Storage::disk('public')->put($imageName, base64_decode($image));
-        $imageSrc = "DrivingLic/".$imageName;
+        $generateUrl =   Controller::getHeaders()->withBody(json_encode($params), 'application/json')
+            ->post('' . config('constant.SERVICE_URL') . 'api/v1/service/verification/drivinglicense/validate')->json();
+        Log::channel('apiLog')->info('success', [
+            'url' => '' . config('constant.SERVICE_URL') . 'api/v1/service/verification/drivinglicense/validate',
+            'body' =>  $params,
+            'response' => $generateUrl
+        ]);
+        if ($generateUrl['status'] == true) {
+            $image = $generateUrl['data']['profile_image'];
+            $imageName =  $user->id . "/" . $params['refid'] . ".png";
+            Storage::disk('public')->put($imageName, base64_decode($image));
+            $imageSrc = "DrivingLic/" . $imageName;
+           
+        }
+        $status=$generateUrl['status'];
         return response()->json([
-            'image'=>$imageSrc
+            'image' => $imageSrc,
+            'status'=> $status
         ]);
     }
 
-    public function downloadDrivingLic(){
+    public function downloadDrivingLic()
+    {
         $user = Auth::user();
         $getData = request()->all();
         $apiKey = config('constant.API_KEY');
@@ -60,19 +63,15 @@ class DrivingLicController extends Controller
         $params['refid'] = mt_rand(10000000, 99999999);
         $params['license_number'] = $getData['pdfDl'];
         $params['dob'] = date('Y-m-d', strtotime($getData['pdfDob']));
-        $generateUrl =  Http::withHeaders([
-            'accept' => 'application/json',
-            'Authorisedkey' => $apiKey,
-            'Token' => $token
-        ])->withBody(json_encode($params), 'application/json')
-            ->post('https://paysprint.in/service-api/api/v1/service/verification/drivinglicense/validate')->json();
+        $generateUrl =   Controller::getHeaders()->withBody(json_encode($params), 'application/json')
+            ->post('' . config('constant.SERVICE_URL') . 'api/v1/service/verification/drivinglicense/validate')->json();
         $image = $generateUrl['data']['profile_image'];
-        $imageName =  $user->id."/".$params['refid'].".png";
+        $imageName =  $user->id . "/" . $params['refid'] . ".png";
         Storage::disk('public')->put($imageName, base64_decode($image));
-        $imageSrc ="DrivingLic/".$imageName;
+        $imageSrc = "DrivingLic/" . $imageName;
         $res['data'] = $generateUrl['data'];
         $res['imageSrc'] = $imageSrc;
-        $pdf = \PDF::loadView('PDF.DrivingLic',$res);
+        $pdf = \PDF::loadView('PDF.DrivingLic', $res);
         return $pdf->download('DrivingLic.pdf');
     }
 }

@@ -24,14 +24,9 @@ class CommonController extends Controller
         $apiKey = config('constant.API_KEY');
         $token = Controller::getToken();
 
-        $operatorList =  Http::withHeaders([
-            'accept' => 'application/json',
-            'Authorisedkey' => $apiKey,
-            'Token' => $token
-        ])
-            ->post('https://paysprint.in/service-api/api/v1/service/recharge/recharge/getoperator')->json();
+        $operatorList =   Controller::getHeaders()->post(''.config('constant.SERVICE_URL').'api/v1/service/recharge/recharge/getoperator')->json();
             Log::channel('apiLog')->info('success',[
-                'url'=> "https://paysprint.in/service-api/api/v1/service/recharge/recharge/getoperator",
+                'url'=> ''.config('constant.SERVICE_URL').'api/v1/service/recharge/recharge/getoperator',
                 
                 'response' => $operatorList
             ]);
@@ -49,12 +44,8 @@ class CommonController extends Controller
         $token = Controller::getToken();
         $param['circle'] = $getData['circle'];
         $param['op'] = $getData['op'];
-        $plans =  Http::withHeaders([
-            'accept' => 'application/json',
-            'Authorisedkey' => $apiKey,
-            'Token' => $token
-        ])->withBody(json_encode($param), 'application/json')
-            ->post('https://paysprint.in/service-api/api/v1/service/recharge/hlrapi/browseplan')->json();
+        $plans =   Controller::getHeaders()->withBody(json_encode($param), 'application/json')
+            ->post(''.config('constant.SERVICE_URL').'api/v1/service/recharge/hlrapi/browseplan')->json();
         $mainmenu = array_keys($plans['info']);
         return response()->json([
             'status' => $plans['status'],
@@ -82,14 +73,9 @@ class CommonController extends Controller
     {
         $apiKey = config('constant.API_KEY');
         $token = Controller::getToken();
-        $billOperator =  Http::withHeaders([
-            'accept' => 'application/json',
-            'Authorisedkey' => $apiKey,
-            'Token' => $token
-        ])
-            ->post('https://paysprint.in/service-api/api/v1/service/bill-payment/bill/getoperator')->json();
+        $billOperator =  Controller::getHeaders()->post(''.config('constant.SERVICE_URL').'api/v1/service/bill-payment/bill/getoperator')->json();
             Log::channel('apiLog')->info('success',[
-                'url'=> "https://paysprint.in/service-api/api/v1/service/bill-payment/bill/getoperator",
+                'url'=> ''.config('constant.SERVICE_URL').'api/v1/service/bill-payment/bill/getoperator',
                 
                 'response' => $billOperator
             ]);

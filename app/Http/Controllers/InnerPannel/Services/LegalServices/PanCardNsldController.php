@@ -38,10 +38,10 @@ class PanCardNsldController extends Controller
         // // dd($params);
         // $generateUrl =  Http::withHeaders([
         //     'accept' => 'application/json',
-        //     'Authorisedkey' => $apiKey,
+        //    //'Authorisedkey' => $apiKey,
         //     'Token' => $token
         // ])->withBody(json_encode($params), 'application/json')
-        // ->post('https://paysprint.in/service-api/api/v1/service/pan/V2/generateurl')->json();
+        // ->post(''.config('constant.SERVICE_URL').'api/v1/service/pan/V2/generateurl')->json();
         // // dd($generateUrl);
         // $res['url'] = $generateUrl['data']['url'];
         // $res['encdata'] = $generateUrl['data']['encdata'];
@@ -61,14 +61,10 @@ class PanCardNsldController extends Controller
         $params['mode'] = $getData['mode'];
         $params['gender'] = $getData['gender'];
         $params['email'] = $getData['email'];
-          $generateUrl =  Http::withHeaders([
-            'accept' => 'application/json',
-            'Authorisedkey' => $apiKey,
-            'Token' => $token
-        ])->withBody(json_encode($params), 'application/json')
-        ->post('https://paysprint.in/service-api/api/v1/service/pan/V2/generateurl')->json();
+          $generateUrl =   Controller::getHeaders()->withBody(json_encode($params), 'application/json')
+        ->post(''.config('constant.SERVICE_URL').'api/v1/service/pan/V2/generateurl')->json();
         Log::channel('apiLog')->info('success',[
-            'url'=> 'https://paysprint.in/service-api/api/v1/service/pan/V2/generateurl',
+            'url'=> ''.config('constant.SERVICE_URL').'api/v1/service/pan/V2/generateurl',
             'body'=>  $params,
             'response' => $generateUrl
         ]);
@@ -92,14 +88,10 @@ class PanCardNsldController extends Controller
         $apiKey = config('constant.API_KEY');
         $token = Controller::getToken();
         $params['refid']= $getData['refid'];
-        $runApi =  Http::withHeaders([
-            'accept' => 'application/json',
-            'Authorisedkey' => $apiKey,
-            'Token' => $token
-        ])->withBody(json_encode($params), 'application/json')
-        ->post('https://paysprint.in/service-api/api/v1/service/pan/V2/pan_status')->json();
+        $runApi =   Controller::getHeaders()->withBody(json_encode($params), 'application/json')
+        ->post(''.config('constant.SERVICE_URL').'api/v1/service/pan/V2/pan_status')->json();
         Log::channel('apiLog')->info('success',[
-            'url'=> 'https://paysprint.in/service-api/api/v1/service/pan/V2/pan_status',
+            'url'=> ''.config('constant.SERVICE_URL').'api/v1/service/pan/V2/pan_status',
             'body'=>  $params,
             'response' => $runApi
         ]);
@@ -113,14 +105,10 @@ class PanCardNsldController extends Controller
         $apiKey = config('constant.API_KEY');
         $token = Controller::getToken();
         $params['refid']= $getData['refidTrans'];
-        $runApi =  Http::withHeaders([
-            'accept' => 'application/json',
-            'Authorisedkey' => $apiKey,
-            'Token' => $token
-        ])->withBody(json_encode($params), 'application/json')
-        ->post('https://paysprint.in/service-api/api/v1/service/pan/V2/txn_status')->json();
+        $runApi =   Controller::getHeaders()->withBody(json_encode($params), 'application/json')
+        ->post(''.config('constant.SERVICE_URL').'api/v1/service/pan/V2/txn_status')->json();
         Log::channel('apiLog')->info('success',[
-            'url'=> 'https://paysprint.in/service-api/api/v1/service/pan/V2/txn_status',
+            'url'=> ''.config('constant.SERVICE_URL').'api/v1/service/pan/V2/txn_status',
             'body'=>  $params,
             'response' => $runApi
         ]);

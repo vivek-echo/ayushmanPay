@@ -23,14 +23,10 @@ class PanCardUtiController extends Controller
         $params['refid'] = (string)mt_rand(10000000, 99999999);
         $params['redirect_url'] = url('/services/b2bServices/PanCardUti');
         // dd($params);
-        $generateUrl =  Http::withHeaders([
-            'accept' => 'application/json',
-            'Authorisedkey' => $apiKey,
-            'Token' => $token
-        ])->withBody(json_encode($params), 'application/json')
-        ->post('https://paysprint.in/service-api/api/v1/service/pan/generateurl')->json();
+        $generateUrl =  Controller::getHeaders()->withBody(json_encode($params), 'application/json')
+        ->post(''.config('constant.SERVICE_URL').'api/v1/service/pan/generateurl')->json();
         Log::channel('apiLog')->info('success',[
-            'url'=> 'https://paysprint.in/service-api/api/v1/service/pan/generateurl',
+            'url'=> ''.config('constant.SERVICE_URL').'api/v1/service/pan/generateurl',
             'body'=>  $params,
             'response' => $generateUrl
         ]);

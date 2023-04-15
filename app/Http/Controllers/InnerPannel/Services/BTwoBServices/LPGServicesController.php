@@ -20,14 +20,9 @@ class LPGServicesController extends Controller
     {
         $apiKey = config('constant.API_KEY');
         $token = Controller::getToken();
-        $operatorList =  Http::withHeaders([
-            'accept' => 'application/json',
-            'Authorisedkey' => $apiKey,
-            'Token' => $token
-        ])
-            ->post('' . config('constant.SERVICE_URL') . 'bill-payment/lpg/getoperator')->json();
+        $operatorList =   Controller::getHeaders() ->post('' . config('constant.SERVICE_URL') . 'api/v1/service/bill-payment/lpg/getoperator')->json();
             Log::channel('apiLog')->info('success',[
-                'url'=> config('constant.SERVICE_URL')."bill-payment/lpg/getoperator",
+                'url'=> config('constant.SERVICE_URL')."api/v1/service/bill-payment/lpg/getoperator",
                 'response' => $operatorList
             ]);
         return response()->json([
@@ -44,14 +39,10 @@ class LPGServicesController extends Controller
         $token = Controller::getToken();
         $params['operator'] = $getData['operator'];
         $params['canumber'] = $getData['canumber'];
-        $fetchBill =  Http::withHeaders([
-            'accept' => 'application/json',
-            'Authorisedkey' => $apiKey,
-            'Token' => $token
-        ])->withBody(json_encode($params), 'application/json')
-            ->post('' . config('constant.SERVICE_URL') . 'bill-payment/lpg/fetchbill')->json();
+        $fetchBill =   Controller::getHeaders()->withBody(json_encode($params), 'application/json')
+            ->post('' . config('constant.SERVICE_URL') . 'api/v1/service/bill-payment/lpg/fetchbill')->json();
             Log::channel('apiLog')->info('success',[
-                'url'=> config('constant.SERVICE_URL')."bill-payment/lpg/fetchbill",
+                'url'=> config('constant.SERVICE_URL')."api/v1/service/bill-payment/lpg/fetchbill",
                 'body'=>  $params,
                 'response' => $fetchBill
             ]);
@@ -87,14 +78,10 @@ class LPGServicesController extends Controller
         $params['latitude'] = $getData['latitude'];
         $params['longitude'] = $getData['longitude'];
         $params['referenceid'] = mt_rand(10000000, 99999999);
-        $payBill =  Http::withHeaders([
-            'accept' => 'application/json',
-            'Authorisedkey' => $apiKey,
-            'Token' => $token
-        ])->withBody(json_encode($params), 'application/json')
-            ->post('' . config('constant.SERVICE_URL') . 'bill-payment/lpg/paybill')->json();
+        $payBill =  Controller::getHeaders()->withBody(json_encode($params), 'application/json')
+            ->post('' . config('constant.SERVICE_URL') . 'api/v1/service/bill-payment/lpg/paybill')->json();
             Log::channel('apiLog')->info('success',[
-                'url'=> config('constant.SERVICE_URL')."bill-payment/lpg/paybill",
+                'url'=> config('constant.SERVICE_URL')."api/v1/service/bill-payment/lpg/paybill",
                 'body'=>  $params,
                 'response' => $payBill
             ]);

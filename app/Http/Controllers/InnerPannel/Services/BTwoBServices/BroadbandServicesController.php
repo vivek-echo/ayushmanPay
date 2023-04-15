@@ -22,14 +22,10 @@ class BroadbandServicesController extends Controller
         $token = Controller::getToken();
         $params['operator'] = $getData['operator'];
         $params['canumber'] = $getData['canumber'];
-        $fetchBill =  Http::withHeaders([
-            'accept' => 'application/json',
-            'Authorisedkey' => $apiKey,
-            'Token' => $token
-        ])->withBody(json_encode($params),'application/json')
-            ->post(''.config('constant.SERVICE_URL').'bill-payment/bill/fetchbill')->json();
+        $fetchBill =  Controller::getHeaders()->withBody(json_encode($params),'application/json')
+            ->post(''.config('constant.SERVICE_URL').'api/v1/service/bill-payment/bill/fetchbill')->json();
             Log::channel('apiLog')->info('success',[
-                'url'=> config('constant.SERVICE_URL')."bill-payment/bill/fetchbill",
+                'url'=> config('constant.SERVICE_URL')."api/v1/service/bill-payment/bill/fetchbill",
                 'body'=>  $params,
                 'response' => $fetchBill
             ]);
@@ -72,14 +68,10 @@ class BroadbandServicesController extends Controller
         $params['latitude'] = $getData['latitude'];
         $params['longitude'] = $getData['longitude'];
         $params['bill_fetch'] = $getData['billfetch'];
-        $payBill =  Http::withHeaders([
-            'accept' => 'application/json',
-            'Authorisedkey' => $apiKey,
-            'Token' => $token
-        ])->withBody(json_encode($params),'application/json')
-            ->post(''.config('constant.SERVICE_URL').'bill-payment/bill/paybill')->json();
+        $payBill =  Controller::getHeaders()->withBody(json_encode($params),'application/json')
+            ->post(''.config('constant.SERVICE_URL').'api/v1/service/bill-payment/bill/paybill')->json();
             Log::channel('apiLog')->info('success',[
-                'url'=> config('constant.SERVICE_URL')."bill-payment/bill/paybill",
+                'url'=> config('constant.SERVICE_URL')."api/v1/service/bill-payment/bill/paybill",
                 'body'=>  $params,
                 'response' => $payBill
             ]);

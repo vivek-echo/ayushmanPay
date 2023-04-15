@@ -20,14 +20,9 @@ class FastTagServicesController extends Controller
 
         $apiKey = config('constant.API_KEY');
         $token = Controller::getToken();
-        $operatorList =  Http::withHeaders([
-            'accept' => 'application/json',
-            'Authorisedkey' => $apiKey,
-            'Token' => $token
-        ])
-            ->post('' . config('constant.SERVICE_URL') . 'fastag/Fastag/operatorsList')->json();
+        $operatorList =   Controller::getHeaders()->post('' . config('constant.SERVICE_URL') . 'api/v1/service/fastag/Fastag/operatorsList')->json();
             Log::channel('apiLog')->info('success',[
-                'url'=> config('constant.SERVICE_URL')."fastag/Fastag/operatorsList",
+                'url'=> config('constant.SERVICE_URL')."api/v1/service/fastag/Fastag/operatorsList",
                 
                 'response' => $operatorList
             ]);
@@ -44,14 +39,10 @@ class FastTagServicesController extends Controller
         $token = Controller::getToken();
         $params['operator'] = $getData['operator'];
         $params['canumber'] = $getData['canumber'];
-        $fetchBill =  Http::withHeaders([
-            'accept' => 'application/json',
-            'Authorisedkey' => $apiKey,
-            'Token' => $token
-        ])->withBody(json_encode($params), 'application/json')
-            ->post('' . config('constant.SERVICE_URL') . 'fastag/Fastag/fetchConsumerDetails')->json();
+        $fetchBill =   Controller::getHeaders()->withBody(json_encode($params), 'application/json')
+            ->post('' . config('constant.SERVICE_URL') . 'api/v1/service/fastag/Fastag/fetchConsumerDetails')->json();
             Log::channel('apiLog')->info('success',[
-                'url'=> config('constant.SERVICE_URL')."fastag/Fastag/fetchConsumerDetails",
+                'url'=> config('constant.SERVICE_URL')."api/v1/service/fastag/Fastag/fetchConsumerDetails",
                 'body'=>  $params,
                 'response' => $fetchBill
             ]);
@@ -92,14 +83,10 @@ class FastTagServicesController extends Controller
         $params['latitude'] = $getData['latitude'];
         $params['longitude'] = $getData['longitude'];
         $params['bill_fetch'] = $getData['billfetch'];
-        $payBill =  Http::withHeaders([
-            'accept' => 'application/json',
-            'Authorisedkey' => $apiKey,
-            'Token' => $token
-        ])->withBody(json_encode($params), 'application/json')
-            ->post('' . config('constant.SERVICE_URL') . 'fastag/Fastag/recharge')->json();
+        $payBill =   Controller::getHeaders()->withBody(json_encode($params), 'application/json')
+            ->post('' . config('constant.SERVICE_URL') . 'api/v1/service/fastag/Fastag/recharge')->json();
             Log::channel('apiLog')->info('success',[
-                'url'=> config('constant.SERVICE_URL')."fastag/Fastag/recharge",
+                'url'=> config('constant.SERVICE_URL')."api/v1/service/fastag/Fastag/recharge",
                 'body'=>  $params,
                 'response' => $payBill
             ]);

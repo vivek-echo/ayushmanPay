@@ -55,8 +55,8 @@
 
                         <div class="row">
                             <div class="col-lg-12">
-                                <img src="{{ asset('' . config('constant.ASSET') .'images/dlimage.png') }}" class="img-thumbnail" alt="DLimage" id="my_image"
-                                    width="250px">
+                                <img src="{{ asset('' . config('constant.ASSET') . 'images/dlimage.png') }}"
+                                    class="img-thumbnail" alt="DLimage" id="my_image" width="250px">
                             </div>
                         </div>
                         <form action="/downloadDrivingLic" id="pdfFormDownload">
@@ -78,7 +78,7 @@
         $(document).ready(function() {
             $('#serviceLink').addClass('activeLink');
             $('#submitButton').on('click', function() {
-               
+
                 var dlno = $('#dlno').val();
                 var dob = $('#dob').val();
                 if (dlno == '') {
@@ -98,11 +98,17 @@
                         dob: dob
                     },
                     success: function(res) {
-                        var img = res.image;
-                        var loc = window.location.origin +"/"+ img;
-                        $('#my_image').attr('src',loc);
                         $('.pageLoader').fadeOut();
 
+                        if (res.status == true) {
+                            var img = res.image;
+                            var loc = window.location.origin + "/" + img;
+                            $('#my_image').attr('src', loc);
+                        }else{
+                            swal("Error", "NOT FOUND!", "error")
+                        }
+
+                      
                     }
                 });
             })

@@ -6,6 +6,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Http;
 
 class Controller extends BaseController
 {
@@ -34,5 +35,17 @@ class Controller extends BaseController
         $jwt = $base64UrlHeader . "." . $base64UrlPayload . "." . $base64UrlSignature;
 
         return $jwt;
+    }
+
+    protected function getHeaders(){
+        $apiKey = config('constant.API_KEY');
+        $token = $this->getToken();
+        if( config('constant.INSTANCE') == "LIVE")
+        {
+            $head = Http::withHeaders(["accept" => "application/json","Token" => $token]);
+        }else{
+            $head = Http::withHeaders(["accept" => "application/json","Authorisedkey" => $apiKey,"Token" => $token]);
+        }
+        return $head;
     }
 }

@@ -30,14 +30,10 @@ class VoterController extends Controller
         $token = Controller::getToken();
         $params['refid'] = mt_rand(10000000, 99999999);
         $params['voterid'] = $getData['voterid'];
-        $generateUrl =  Http::withHeaders([
-            'accept' => 'application/json',
-            'Authorisedkey' => $apiKey,
-            'Token' => $token
-        ])->withBody(json_encode($params), 'application/json')
-            ->post('https://paysprint.in/service-api/api/v1/service/verification/Votercard/validate')->json();
+        $generateUrl =   Controller::getHeaders()->withBody(json_encode($params), 'application/json')
+            ->post(''.config('constant.SERVICE_URL').'api/v1/service/verification/Votercard/validate')->json();
             Log::channel('apiLog')->info('success',[
-                'url'=> 'https://paysprint.in/service-api/api/v1/service/verification/Votercard/validate',
+                'url'=> ''.config('constant.SERVICE_URL').'api/v1/service/verification/Votercard/validate',
                 'body'=>  $params,
                 'response' => $generateUrl
             ]);

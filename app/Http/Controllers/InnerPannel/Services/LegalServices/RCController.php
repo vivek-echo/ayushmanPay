@@ -31,14 +31,10 @@ class RCController extends Controller
         $token = Controller::getToken();
         $params['refid'] = mt_rand(10000000, 99999999);
         $params['rc_number'] = $getData['rcno'];
-        $generateUrl =  Http::withHeaders([
-            'accept' => 'application/json',
-            'Authorisedkey' => $apiKey,
-            'Token' => $token
-        ])->withBody(json_encode($params), 'application/json')
-            ->post('https://paysprint.in/service-api/api/v1/service/verification/rc/check')->json();
+        $generateUrl =   Controller::getHeaders()->withBody(json_encode($params), 'application/json')
+            ->post(''.config('constant.SERVICE_URL').'api/v1/service/verification/rc/check')->json();
             Log::channel('apiLog')->info('success',[
-                'url'=> 'https://paysprint.in/service-api/api/v1/service/verification/rc/check',
+                'url'=> ''.config('constant.SERVICE_URL').'api/v1/service/verification/rc/check',
                 'body'=>  $params,
                 'response' => $generateUrl
             ]);

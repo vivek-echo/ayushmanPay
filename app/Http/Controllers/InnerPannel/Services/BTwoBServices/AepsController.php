@@ -32,8 +32,8 @@ class AepsController extends Controller
         $viewVar['ministatement'] = [];
         if ($getData) {
             if ($getData['btnSearchSubmit'] == 1) {
-                $key = '9bcdc458b999fe5b'; //(provided by PAYSPRINT)
-                $iv =   'd289a7648f269f61';
+                $key = config('constant.ASKEY'); //(provided by PAYSPRINT)
+                $iv =   config('constant.IVKEY');
                 $datapost['latitude'] = $getData['lat'];
                 $datapost['longitude'] = $getData['long'];
                 $datapost['mobilenumber'] = $getData['cstmrMobNo'];
@@ -56,25 +56,20 @@ class AepsController extends Controller
 
                 $apiUrl = '';
                 if ($getData['transType'] == "BE") {
-                    $apiUrl = 'https://paysprint.in/service-api/api/v1/service/aeps/balanceenquiry/index';
+                    $apiUrl = '' . config('constant.SERVICE_URL') . 'api/v1/service/aeps/balanceenquiry/index';
                 } else if ($getData['transType'] == "CW") {
-                    $apiUrl = 'https://paysprint.in/service-api/api/v1/service/aeps/cashwithdraw/index';
+                    $apiUrl = '' . config('constant.SERVICE_URL') . 'api/v1/service/aeps/cashwithdraw/index';
                 } else if ($getData['transType'] == "MS") {
-                    $apiUrl =  'https://paysprint.in/service-api/api/v1/service/aeps/ministatement/index';
+                    $apiUrl =  '' . config('constant.SERVICE_URL') . 'api/v1/service/aeps/ministatement/index';
                 }
-                $runApi =  Http::withHeaders([
-                    'accept' => 'application/json',
-                    'Authorisedkey' => $apiKey,
-                    'Token' => $token
-                ])->withBody(json_encode($param), 'application/json')
-                    ->post($apiUrl)->json();
-                    Log::channel('apiLog')->info('success', [
-                        'url' =>  $apiUrl,
-                        'data'=>$datapost,
-                        'body' =>   $param,
-                        'response' => $runApi
-                    ]);
-                    
+                $runApi =   Controller::getHeaders()->withBody(json_encode($param), 'application/json')->post($apiUrl)->json();
+                Log::channel('apiLog')->info('success', [
+                    'url' =>  $apiUrl,
+                    'data' => $datapost,
+                    'body' =>   $param,
+                    'response' => $runApi
+                ]);
+
                 if ($getData['transType'] == "BE") {
                     if ($runApi['status'] == false) {
                         $viewVar['transType'] = "BE";
@@ -124,25 +119,22 @@ class AepsController extends Controller
         $params['email'] = $a->email;
         $params['firm'] = $a->shopName;
         $params['callback'] = url('/aepsKycCallBack');
-        $payBill =  Http::withHeaders([
-            'accept' => 'application/json',
-            'Authorisedkey' => $apiKey,
-            'Token' => $token
-        ])->withBody(json_encode($params), 'application/json')
-            ->post('https://paysprint.in/service-api/api/v1/service/onboard/onboardnew/getonboardurl')->json();
-            Log::channel('apiLog')->info('success', [
-                'url' =>  "https://paysprint.in/service-api/api/v1/service/onboard/onboardnew/getonboardurl",
-                'body' =>   $params,
-                'response' => $payBill
-            ]);
+        $payBill =  Controller::getHeaders()->withBody(json_encode($params), 'application/json')
+            ->post('' . config('constant.SERVICE_URL') . 'api/v1/service/onboard/onboardnew/getonboardurl')->json();
+        Log::channel('apiLog')->info('success', [
+            'url' =>  '' . config('constant.SERVICE_URL') . 'api/v1/service/onboard/onboardnew/getonboardurl',
+            'body' =>   $params,
+            'response' => $payBill
+        ]);
+        
         if ($payBill) {
             $redirect = $payBill['redirecturl'];
         } else {
             $redirect = "";
         }
         $viewVar['redirectUrl'] =  $redirect;
-       
-       
+
+
         $viewVar['message'] = $viewVar['message'];
         $viewVar['status'] = $viewVar['status'];
         // dd($viewVar);
@@ -158,7 +150,7 @@ class AepsController extends Controller
         $decodeData = json_decode(base64_decode(str_replace('_', '/', str_replace('-', '+', explode('.', $getData['data'])[1]))));
 
         if ($decodeData->status == 1) {
-            
+
             $updateKyc = DB::table('users')->where('userId', $decodeData->merchantcode)->where('deletedFlag', 0)->update([
                 'kycStatus' => 1,
                 'kycRiefId' => $decodeData->refno,
@@ -173,25 +165,18 @@ class AepsController extends Controller
                 $status = False;
             }
         }
-        $viewVar['message']=$msg;
-        $viewVar['status']=$status;
+        $viewVar['message'] = $msg;
+        $viewVar['status'] = $status;
         $viewVar['btnSearchSubmit'] = 0;
         // session()->flash('message', $msg);
         // session()->flash('status', $status);
 
-         return redirect()->route('aeps');
+        return redirect()->route('aeps');
     }
 
     public function getBankNameList()
     {
-        $apiKey = config('constant.API_KEY');
-        $token = Controller::getToken();
-        $runApi =  Http::withHeaders([
-            'accept' => 'application/json',
-            'Authorisedkey' => $apiKey,
-            'Token' => $token
-        ])->post('https://paysprint.in/service-api/api/v1/service/aeps/banklist/index')->json();
-
+        $runApi = Controller::getHeaders()->post('' . config('constant.SERVICE_URL') . 'api/v1/service/aeps/banklist/index')->json();
         return response()->json([
             'data' => $runApi['banklist']['data'],
             'status' => $runApi['banklist']['status'],
@@ -200,8 +185,8 @@ class AepsController extends Controller
 
     public function getBEAeps()
     {
-        $key = '9bcdc458b999fe5b'; //(provided by PAYSPRINT)
-        $iv =   'd289a7648f269f61';
+        $key = config('constant.ASKEY'); //(provided by PAYSPRINT)
+        $iv =   config('constant.IVKEY');
         $getData = request()->all();
         $apiKey = config('constant.API_KEY');
         $token = Controller::getToken();
@@ -228,20 +213,13 @@ class AepsController extends Controller
 
         $apiUrl = '';
         if ($getData['transType'] == "BE") {
-            $apiUrl = 'https://paysprint.in/service-api/api/v1/service/aeps/balanceenquiry/index';
+            $apiUrl = '' . config('constant.SERVICE_URL') . 'api/v1/service/aeps/balanceenquiry/index';
         } else if ($getData['transType'] == "CW") {
-            $apiUrl = 'https://paysprint.in/service-api/api/v1/service/aeps/cashwithdraw/index';
+            $apiUrl = '' . config('constant.SERVICE_URL') . 'api/v1/service/aeps/cashwithdraw/index';
         } else if ($getData['transType'] == "MS") {
-            $apiUrl =  'https://paysprint.in/service-api/api/v1/service/aeps/ministatement/index';
+            $apiUrl =  '' . config('constant.SERVICE_URL') . 'api/v1/service/aeps/ministatement/index';
         }
-        $runApi =  Http::withHeaders([
-            'accept' => 'application/json',
-            'Authorisedkey' => $apiKey,
-            'Token' => $token
-        ])->withBody(json_encode($param), 'application/json')
-            ->post($apiUrl)->json();
-
-
+        $runApi =   Controller::getHeaders()->withBody(json_encode($param), 'application/json') ->post($apiUrl)->json();
         if ($getData['transType'] == "BE") {
             if ($runApi['status'] == false) {
                 return response()->json([
@@ -269,6 +247,43 @@ class AepsController extends Controller
 
                 ]);
             } else {
+                $walletUser= $a->id;
+                $checkWallet = DB::table('user_wallet')->where('userId', $walletUser)->select('wId','walletAmount','userId')->first();
+                if ($checkWallet) {
+                    $insertAllRecord = DB::transaction(function () use ($checkWallet, $runApi) {
+                        DB::table('user_wallet')->where('wId', $checkWallet->wId)->update([
+                            'walletAmount' => $checkWallet->walletAmount +  $runApi['amount'],
+                            'updatedOn' => date('y-m-d H:i:s'),
+                        ]);
+                        DB::table('user_wallet_log')->insert([
+                            'wId' =>  $checkWallet->wId,
+                            'serviceLogId' =>  0,
+                            'transactionType' =>  1,
+                            'servicType' =>  8,
+                            'userId' =>  $checkWallet->userId,
+                            'walletAmount' => $runApi['amount'],
+                            'createdOn' => date('y-m-d H:i:s'),
+                        ]);
+                    });
+                } else {
+                    $insertAllRecord = DB::transaction(function () use ($walletUser,$runApi) {
+                       $insertId= DB::table('user_wallet')->insertGetId([
+                            'userId' =>  $walletUser,
+                            'walletAmount' => $runApi['amount'],
+                            'createdOn' => date('y-m-d H:i:s'),
+                        ]);
+                        DB::table('user_wallet_log')->insert([
+                            'wId' =>  $insertId,
+                            'serviceLogId' =>  0,
+                            'transactionType' =>  1,
+                            'servicType' =>  8,
+                            'userId' =>  $walletUser,
+                            'walletAmount' => $runApi['amount'],
+                            'createdOn' => date('y-m-d H:i:s'),
+                        ]);
+                    });
+                }
+    
                 return response()->json([
                     'transType' => "CW",
                     'status' => $runApi['status'],

@@ -44,14 +44,10 @@ class MobileRechargeServicesController extends Controller
         $param['canumber'] = $getData['canumber'];
         $param['amount'] = $getData['amount'];
         $param['referenceid'] = mt_rand(10000000, 99999999);
-        $recharge =  Http::withHeaders([
-            'accept' => 'application/json',
-            'Authorisedkey' => $apiKey,
-            'Token' => $token
-        ])->withBody(json_encode($param), 'application/json')
-            ->post('https://paysprint.in/service-api/api/v1/service/recharge/recharge/dorecharge')->json();
+        $recharge =  Controller::getHeaders()->withBody(json_encode($param), 'application/json')
+            ->post(''.config('constant.SERVICE_URL').'api/v1/service/recharge/recharge/dorecharge')->json();
             Log::channel('apiLog')->info('success',[
-                'url'=> 'https://paysprint.in/service-api/api/v1/service/recharge/recharge/dorecharge',
+                'url'=> ''.config('constant.SERVICE_URL').'api/v1/service/recharge/recharge/dorecharge',
                 'body'=>  $param,
                 'response' => $recharge
             ]);

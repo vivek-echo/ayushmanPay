@@ -18,15 +18,7 @@ class WalletSummaryController extends Controller
         $getData = request()->all();
         $resp=[];
         $view['searchView'] = 0;
-        $service = [
-            '1' => "Wallet Updated",
-            '2' => "Mobile Recharge Service",
-            '3' => "Money Transfer Service",
-            '4' => "LPG Booking Service",
-            '5' => "Emi Bill Service",
-            '6' => "Fast Tag Service",
-            '7' => "BroadBand Service"
-        ];
+        $service = config('constant.SERVICETRANS');
         $data = [];
         $user = Auth::user();
         if (isset($getData['btnSearchSubmit']) == 1) {
@@ -69,16 +61,7 @@ class WalletSummaryController extends Controller
         $getData = request()->all();
         $resp = [];
         $data = [];
-        $service = [
-            '1' => "Wallet Updated",
-            '2' => "Mobile Recharge Service",
-            '3' => "Money Transfer Service",
-            '4' => "LPG Booking Service",
-            '5' => "Emi Bill Service",
-            '6' => "Fast Tag Service",
-            '7' => "BroadBand Service"
-
-        ];
+        $service = config('constant.SERVICETRANS');
         
         $user = Auth::user();
         $queryData = DB::table('user_wallet_log')->where('userId', $user->id);

@@ -900,6 +900,7 @@
             $.ajax({
                 url: "{{ url('/sendMoney') }}",
                 data: {
+                    mobile: $('#universalMobileNumber').val(),
                     beneId: beneId,
                     gstState: gstState,
                     taxType: taxType,
