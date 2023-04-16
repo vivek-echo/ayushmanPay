@@ -22,7 +22,7 @@ class WalletSummaryController extends Controller
         $data = [];
         $user = Auth::user();
         if (isset($getData['btnSearchSubmit']) == 1) {
-            $queryData = DB::table('user_wallet_log')->where('userId', $user->id);
+            $queryData = DB::table('user_wallet_log')->where('deletedFlag',0)->where('userId', $user->id);
 
             if (!empty($getData['fromDate'])) {
                 $queryData =  $queryData->whereDate('createdOn', '>=', $getData['fromDate']);
@@ -64,7 +64,7 @@ class WalletSummaryController extends Controller
         $service = config('constant.SERVICETRANS');
         
         $user = Auth::user();
-        $queryData = DB::table('user_wallet_log')->where('userId', $user->id);
+        $queryData = DB::table('user_wallet_log')->where('deletedFlag',0)->where('userId', $user->id);
         if (!empty($getData['fromDate'])) {
             $queryData =  $queryData->whereDate('createdOn', '>=', $getData['fromDate']);
         }

@@ -170,6 +170,7 @@
                                     </button>
                                 </li>
                             </ul>
+                            <hr>
                             <div class="tab-content mt-4" id="pills-tabContent">
 
                                 <!-- FOR AEPS Transaction -->

@@ -24,30 +24,38 @@
         integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- ico-font-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('' . config('constant.ASSET') . 'css/vendors/icofont.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('' . config('constant.ASSET') . 'css/vendors/icofont.css') }}">
     <!-- Flag icon-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('' . config('constant.ASSET') . 'css/vendors/flag-icon.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('' . config('constant.ASSET') . 'css/vendors/flag-icon.css') }}">
     <!-- Feather icon-->
     <link rel="stylesheet" type="text/css"
         href="{{ asset('' . config('constant.ASSET') . 'css/vendors/feather-icon.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('' . config('constant.ASSET') . 'css/vendors/photoswipe.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('' . config('constant.ASSET') . 'css/vendors/photoswipe.css') }}">
     <!-- icomoon icon-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('' . config('constant.ASSET') . 'custom-icomoon/style.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('' . config('constant.ASSET') . 'custom-icomoon/style.css') }}">
     <!-- Datatable-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('' . config('constant.ASSET') . 'css/vendors/datatables.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('' . config('constant.ASSET') . 'css/vendors/datatables.css') }}">
     <link rel="stylesheet" type="text/css"
         href="{{ asset('' . config('constant.ASSET') . 'css/vendors/datatable-extension.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('' . config('constant.ASSET') . 'css/vendors/scrollbar.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('' . config('constant.ASSET') . 'css/vendors/animate.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('' . config('constant.ASSET') . 'css/vendors/scrollbar.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('' . config('constant.ASSET') . 'css/vendors/animate.css') }}">
     <link rel="stylesheet" type="text/css"
         href="{{ asset('' . config('constant.ASSET') . 'css/vendors/date-picker.css') }}">
     <link rel="stylesheet" type="text/css"
         href="{{ asset('' . config('constant.ASSET') . 'css/vendors/owlcarousel.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('' . config('constant.ASSET') . 'css/vendors/prism.css') }}">
     <!-- Bootstrap css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('' . config('constant.ASSET') . 'css/vendors/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('' . config('constant.ASSET') . 'css/vendors/bootstrap.css') }}">
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('' . config('constant.ASSET') . 'css/style.css') }}">
     <!-- Responsive css-->
@@ -221,7 +229,8 @@
             <div class="sidebar-wrapper">
                 <div>
                     <div class="logo-wrapper"><a href="{{ url('/dashboard') }}"><img class="w-75"
-                                src="{{ asset('' . config('constant.ASSET') .'images/logo/ayp-logo-new-white.png') }}" alt=""></a>
+                                src="{{ asset('' . config('constant.ASSET') . 'images/logo/ayp-logo-new-white.png') }}"
+                                alt=""></a>
                         <div class="back-btn"><i data-feather="grid"></i></div>
                         <div class="toggle-sidebar icon-box-sidebar"><i class="status_toggle middle sidebar-toggle"
                                 data-feather="grid"> </i></div>
@@ -253,6 +262,7 @@
                                                 <li><a href="{{ url('/wallet/walletsummary') }}">Wallet Summary</a>
                                                 </li>
                                                 <li><a href="{{ url('/wallet/UpdateWallet') }}">Wallet Update</a></li>
+                                                <li><a href="{{ url('/wallet/payoutWallet') }}">Wallet PayOut</a></li>
                                                 {{-- <li><a href="{{ url('/walletsection/printMyQR') }}">Print My QR</a></li> --}}
                                             </ul>
                                         </li>
@@ -269,11 +279,11 @@
                                                 <li><a href="#">Settlement</a></li> --}}
                                             </ul>
                                         </li>
-                                        @if(Auth::user()->memberType == 3)
-                                        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav"
-                                                id="memberLink" href="{{ url('/member/memberlist') }}"><i
-                                                    data-feather="users"> </i><span>Members List</span></a></li>
-                                                    @endif
+                                        @if (Auth::user()->memberType == 3)
+                                            <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav"
+                                                    id="memberLink" href="{{ url('/member/memberlist') }}"><i
+                                                        data-feather="users"> </i><span>Members List</span></a></li>
+                                        @endif
 
                                 </li>
                             </ul>
@@ -336,39 +346,49 @@
 
     <!-- Datatable-->
     <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.buttons.min.js') }}">
+    <script
+        src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.buttons.min.js') }}">
     </script>
     <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/jszip.min.js') }}"></script>
     <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/buttons.colVis.min.js') }}">
     </script>
     <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/pdfmake.min.js') }}"></script>
     <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.autoFill.min.js') }}">
+    <script
+        src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.autoFill.min.js') }}">
     </script>
     <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.select.min.js') }}">
     </script>
-    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/buttons.bootstrap4.min.js') }}">
+    <script
+        src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/buttons.bootstrap4.min.js') }}">
     </script>
     <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/buttons.html5.min.js') }}">
     </script>
     <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/buttons.print.min.js') }}">
     </script>
-    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.bootstrap4.min.js') }}">
+    <script
+        src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.bootstrap4.min.js') }}">
     </script>
-    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.responsive.min.js') }}">
+    <script
+        src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.responsive.min.js') }}">
     </script>
-    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/responsive.bootstrap4.min.js') }}">
+    <script
+        src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/responsive.bootstrap4.min.js') }}">
     </script>
-    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.keyTable.min.js') }}">
+    <script
+        src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.keyTable.min.js') }}">
     </script>
-    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.colReorder.min.js') }}">
+    <script
+        src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.colReorder.min.js') }}">
     </script>
     <script
         src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.fixedHeader.min.js') }}">
     </script>
-    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.rowReorder.min.js') }}">
+    <script
+        src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.rowReorder.min.js') }}">
     </script>
-    <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.scroller.min.js') }}">
+    <script
+        src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/dataTables.scroller.min.js') }}">
     </script>
     <script src="{{ asset('' . config('constant.ASSET') . 'js/datatable/datatable-extension/custom.js') }}"></script>
     <script src="{{ asset('' . config('constant.ASSET') . 'js/tooltip-init.js') }}"></script>

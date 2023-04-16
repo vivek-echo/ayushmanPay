@@ -93,6 +93,9 @@ Route::group(['middleware' => 'auth'], function () {
     //walletsummary
     Route::match(['GET', 'POST'], '/wallet/walletsummary', [App\Http\Controllers\InnerPannel\Wallet\WalletSummaryController::class, 'index']);
     Route::match(['GET', 'POST'], '/getWalletLogs', [App\Http\Controllers\InnerPannel\Wallet\WalletSummaryController::class, 'getWalletLogs']);
+    Route::match(['GET', 'POST'], '/wallet/payoutWallet', [App\Http\Controllers\InnerPannel\Wallet\WalletPayoutController::class, 'index']);
+    Route::match(['GET', 'POST'], '/addAccountPayout', [App\Http\Controllers\InnerPannel\Wallet\WalletPayoutController::class, 'addAccountPayout']);
+    Route::match(['GET', 'POST'], '/uploadPayoutDoc', [App\Http\Controllers\InnerPannel\Wallet\WalletPayoutController::class, 'uploadPayoutDoc'])->name('uploadPayoutDoc');
 
     //rc
     Route::match(['GET', 'POST'], '/services/legalServices/Rc', [App\Http\Controllers\InnerPannel\Services\LegalServices\RCController::class, 'index']);

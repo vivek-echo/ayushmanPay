@@ -248,10 +248,10 @@ class AepsController extends Controller
                 ]);
             } else {
                 $walletUser= $a->id;
-                $checkWallet = DB::table('user_wallet')->where('userId', $walletUser)->select('wId','walletAmount','userId')->first();
+                $checkWallet = DB::table('user_wallet')->where('userId', $walletUser)->select('wId','walletAmount','userId')->where('deletedFlag',0)->first();
                 if ($checkWallet) {
                     $insertAllRecord = DB::transaction(function () use ($checkWallet, $runApi) {
-                        DB::table('user_wallet')->where('wId', $checkWallet->wId)->update([
+                        DB::table('user_wallet')->where('wId', $checkWallet->wId)->where('deletedFlag',0)->update([
                             'walletAmount' => $checkWallet->walletAmount +  $runApi['amount'],
                             'updatedOn' => date('y-m-d H:i:s'),
                         ]);

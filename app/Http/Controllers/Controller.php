@@ -38,6 +38,7 @@ class Controller extends BaseController
     }
 
     protected function getHeaders(){
+
         $apiKey = config('constant.API_KEY');
         $token = $this->getToken();
         if( config('constant.INSTANCE') == "LIVE")

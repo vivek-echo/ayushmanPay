@@ -19,137 +19,234 @@
 
 
     <div class="container-fluid">
-        <div class="row project-cards">
-            <div class="col-md-12 project-list">
-                <div class="card">
-                    <div class="row">
-                        <div class="col-md-6 p-0 d-flex">
-                            <ul class="nav nav-tabs border-tab" id="top-tab" role="tablist">
-                                <li class="nav-item"><a class="nav-link active" id="B2Bservices-tab" data-bs-toggle="tab"
-                                        href="#B2Bservices" role="tab" aria-controls="B2Bservices"
-                                        aria-selected="true"><i data-feather="target"></i>B2B Services</a></li>
-                                <li class="nav-item"><a class="nav-link" id="Legalservices-tab" data-bs-toggle="tab"
-                                        href="#Legalservices" role="tab" aria-controls="Legalservices"
-                                        aria-selected="false"><i data-feather="target"></i>Legal Services</a></li>
-                            </ul>
-                        </div>
-                    </div>
+        <div class="row ">
+            <div class="card">
+                {{-- <div class="card card1" style="display:none"> --}}
+                <div class="card-header">
+                    <h4>BANKING SERVICES</h4>
+                </div>
+                <div class="card-boay">
+
+
+                    <ul class="quick-file d-flex flex-row">
+
+
+                        <li class="p-3">
+                            <a href="/services/b2bServices/MoneyTransfer">
+                                <div class="quick-box"><i class="myicon-online-banking-2"></i></div>
+                                <h6>Money<br> Transfer</h6>
+                            </a>
+                        </li>
+                        <li class="p-3">
+                            <a href="/services/b2bServices/aepsservice">
+                                <div class="quick-box"><i class="myicon-identification"></i></div>
+                                <h6>AEPS<br> Withdrawal</h6>
+                            </a>
+                        </li>
+                        <li class="p-3">
+                            <a href="/services/b2bServices/aepsservice">
+                                <div class="quick-box"><i class="myicon-file-text1"></i></div>
+                                <h6>AEPS<br> MiniStatement</h6>
+                            </a>
+                        </li>
+                        <li class="p-3">
+                            <a href="/services/b2bServices/aepsservice">
+                                <div class="quick-box"><i class="myicon-pay"></i></div>
+                                <h6>AEPS<br> Balance </h6>
+                            </a>
+                        </li>
+
+                    </ul>
+
                 </div>
             </div>
-            <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="tab-content" id="top-tabContent">
-                            <div class="tab-pane fade show active" id="B2Bservices" role="tabpanel"
-                                aria-labelledby="B2Bservices-tab">
-                                <div class="mb-3">
-                                    <h4>B2B Services</h4>
-                                </div>
 
-                                <div class="file-manager">
-                                    <ul class="quick-file d-flex flex-row">
-                                        <li>
-                                            <a href="{{ url('/services/b2bServices/mobileRechare') }}"><div class="quick-box"><i class="myicon-payment-gateway-2"></i></div>
-                                            <h6>Recharge</h6></a>   
-                                        </li>
-                                        <li>
-                                            <a href="/services/b2bServices/MoneyTransfer"><div class="quick-box"><i class="myicon-online-banking-2"></i></div>
-                                            <h6>Money<br> Transfer</h6></a>
-                                        </li>
-                                        <li>
-                                            <a href="/services/b2bServices/fasttag"><div class="quick-box"><i class="myicon-barrier"></i></div>
-                                            <h6>Fast Tag</h6></a>
-                                        </li>
-                                        <li>
-                                            <a href="/services/b2bServices/EmiBill"><div class="quick-box"><i class="myicon-correct"></i></div>
-                                            <h6>EMI Bill Pay</h6></a>
-                                        </li>
-                                        {{-- <li>
-                                            <a href="/services/hospital"><div class="quick-box"><i class="myicon-plus1"></i></div>
-                                            <h6>Hospital</h6></a>
-                                        </li> --}}
-                                        <li>
-                                            <a href="/services/broadband"><div class="quick-box"><i class="myicon-wifi"></i></div>
-                                            <h6>Broadband</h6></a>
-                                        </li>
-                                        {{-- <li>
-                                            <a href="/services/irctcservice"><div class="quick-box"><i class="myicon-train"></i></div>
-                                            <h6>IRCTC</h6></a>
-                                        </li> --}}
-                                        <li>
-                                            <a href="/services/b2bServices/PanCardUti"><div class="quick-box"><i class="myicon-membership"></i></div>
-                                            <h6>Pan Card(UTI)</h6></a>
-                                        </li>
-                                        <li>
-                                            <a href="/services/b2bServices/LPG"><div class="quick-box"><i class="myicon-gas"></i></div>
-                                            <h6>LPG Gas</h6></a>
-                                        </li>
-                                        <li>
-                                            <a href="/services/lifeinsurance"><div class="quick-box"><i class="myicon-family-insurance"></i></div>
-                                            <h6>LIC</h6></a>
-                                        </li>
-
-                                        {{-- <li>
-                                            <a href="/services/fixeddepositservice"><div class="quick-box"><i class="myicon-fd"></i></div>
-                                            <h6>Fixed Deposit</h6></a>
-                                        </li> --}}
-                                        <li>
-                                            <a href="/services/b2bServices/aepsservice"><div class="quick-box"><i class="myicon-identification"></i></div>
-                                            <h6>AEPS</h6></a>
-                                        </li>
-                                        {{-- <li>
-                                            <a href="#"><div class="quick-box"><i class="myicon-health-insurance"></i></div>
-                                            <h6>Health<br> Insurance</h6></a>
-                                        </li> --}}
-                                        {{-- <li>
-                                            <a href="#"><div class="quick-box"><i class="myicon-mobile-payment"></i></div>
-                                            <h6>Payments</h6></a>
-                                        </li> --}}
-                                    </ul>
-                                </div>
-
-                            </div>
+            <div class="card">
+                {{-- <div class="card card2" style="display:none"> --}}
+                <div class="card-header">
+                    <h4>E-GOVERNANCE & OTHER SERVICES</h4>
+                </div>
+                <div class="card-boay">
 
 
-                            <div class="tab-pane fade" id="Legalservices" role="tabpanel"
-                                aria-labelledby="Legalservices-tab">
-                                <div class="mb-3">
-                                    <h4>Legal Services</h4>
-                                </div>
+                    <ul class="quick-file d-flex flex-row">
+                        <li class="p-3">
+                            <a href="/services/birthcertificate">
+                                <div class="quick-box"><i class="myicon-bc"></i></div>
+                                <h6>Birth<br> Certificate</h6>
+                            </a>
+                        </li>
+                        <li class="p-3">
+                            <a href="/services/deathcertificate">
+                                <div class="quick-box"><i class="myicon-dc"></i></div>
+                                <h6>Death<br> Certificate</h6>
+                            </a>
+                        </li>
+                        <li class="p-3">
+                            <a href="/services/b2bServices/PanCardUti">
+                                <div class="quick-box"><i class="myicon-membership"></i></div>
+                                <h6>Pan Card(UTI)</h6>
+                            </a>
+                        </li>
 
-                                <div class="file-manager">
-                                    <ul class="quick-file d-flex flex-row">
-                                        {{-- <li>
-                                            <a href="/services/birthcertificate"><div class="quick-box"><i class="myicon-bc"></i></div>
-                                            <h6>Birth<br> Certificate</h6></a>
-                                        </li>
-                                        <li>
-                                            <a href="/services/deathcertificate"><div class="quick-box"><i class="myicon-dc"></i></div>
-                                            <h6>Death<br> Certificate</h6></a>
-                                        </li> --}}
-                                        <li>
-                                            <a href="/services/legalServices/PanCardNsld"><div class="quick-box"><i class="myicon-nsdl"></i></div>
-                                            <h6>NSDL Pan<br> Center</h6></a>
-                                        </li>
-                                        <li>
-                                            <a href="/services/legalServices/drivinglicence"><div class="quick-box"><i class="myicon-dl"></i></div>
-                                            <h6>Driving<br> Licence</h6></a>
-                                        </li>
-                                        <li>
-                                            <a href="/services/legalServices/Rc"><div class="quick-box"><i class="myicon-rc"></i></div>
-                                            <h6>RC<br> Registration</h6></a>
-                                        </li>
-                                        <li>
-                                            <a href="/services/legalServices/voterIdCard"><div class="quick-box"><i class="myicon-rc"></i></div>
-                                            <h6>Voter Id<br> Card</h6></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <li class="p-3">
+                            <a href="/services/legalServices/PanCardNsld">
+                                <div class="quick-box"><i class="myicon-nsdl"></i></div>
+                                <h6>NSDL Pan<br> Center</h6>
+                            </a>
+                        </li>
+                        <li class="p-3">
+                            <a href="/services/legalServices/drivinglicence">
+                                <div class="quick-box"><i class="myicon-dl"></i></div>
+                                <h6>Driving<br> Licence</h6>
+                            </a>
+                        </li>
+                        <li class="p-3">
+                            <a href="/services/legalServices/Rc">
+                                <div class="quick-box"><i class="myicon-rc"></i></div>
+                                <h6>RC<br> Registration</h6>
+                            </a>
+                        </li>
+                        <li class="p-3">
+                            <a href="/services/legalServices/voterIdCard">
+                                <div class="quick-box"><i class="myicon-rc"></i></div>
+                                <h6>Voter Id<br> Card</h6>
+                            </a>
+                        </li>
+                    </ul>
+
                 </div>
             </div>
+            <div class="card">
+                {{-- <div class="card card3" style="display:none"> --}}
+                <div class="card-header">
+                    <h4>UTILITY SERVICES</h4>
+                </div>
+                <div class="card-boay">
+
+                    <ul class="quick-file d-flex flex-row">
+                        <li class="p-3">
+                            <a href="{{ url('/services/b2bServices/mobileRechare') }}">
+                                <div class="quick-box"><i class="myicon-payment-gateway-2"></i></div>
+                                <h6>Recharge</h6>
+                            </a>
+                        </li>
+
+                        <li class="p-3">
+                            <a href="/services/b2bServices/fasttag">
+                                <div class="quick-box"><i class="myicon-barrier"></i></div>
+                                <h6>Fast Tag</h6>
+                            </a>
+                        </li>
+                        <li class="p-3">
+                            <a href="/services/b2bServices/EmiBill">
+                                <div class="quick-box"><i class="myicon-correct"></i></div>
+                                <h6>EMI Bill Pay</h6>
+                            </a>
+                        </li class="p-3">
+
+                        <li class="p-3">
+                            <a href="/services/broadband">
+                                <div class="quick-box"><i class="myicon-wifi"></i></div>
+                                <h6>Broadband</h6>
+                            </a>
+                        </li>
+
+                        <li class="p-3">
+                            <a href="/services/b2bServices/LPG">
+                                <div class="quick-box"><i class="myicon-gas"></i></div>
+                                <h6>LPG Gas</h6>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+            <div class="card">
+                {{-- <div class="card card4" style="display:none"> --}}
+                <div class="card-header">
+                    <h4>INSURANCE SERVICES</h4>
+                </div>
+                <div class="card-boay">
+
+
+                    <ul class="quick-file d-flex flex-row">
+                        <li class="p-3">
+                            <a href="/services/lifeinsurance">
+                                <div class="quick-box"><i class="myicon-family-insurance"></i></div>
+                                <h6>LIC</h6>
+                            </a>
+                        </li>
+
+                        <li class="p-3">
+                            {{-- <a href="/services/fixeddepositservice"><div class="quick-box"><i class="myicon-fd"></i></div> --}}
+                            <a href="#">
+                                <div class="quick-box"><i class="myicon-fd"></i></div>
+                                <h6>Fixed Deposit</h6>
+                            </a>
+                        </li>
+
+                        <li class="p-3">
+                            <a href="#">
+                                <div class="quick-box"><i class="myicon-health-insurance"></i></div>
+                                <h6>Health<br> Insurance</h6>
+                            </a>
+                        </li>
+                        <li class="p-3">
+                            <a href="#">
+                                <div class="quick-box"><i class="myicon-mobile-payment"></i></div>
+                                <h6>Payments</h6>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <div class="card">
+                {{-- <div class="card card5" style="display:none"> --}}
+                <div class="card-header">
+                    <h4>TRAVEL SERVICES</h4>
+                </div>
+                <div class="card-boay">
+
+
+                    <ul class="quick-file d-flex flex-row">
+
+
+                        <li class="p-3">
+                            <a href="#">
+                                <div class="quick-box"><i class="myicon-office"></i></div>
+                                <h6>Hotel<br> Booking</h6>
+                            </a>
+                        </li>
+                        <li class="p-3">
+                            <a href="#">
+                                <div class="quick-box"><i class="myicon-train"></i></div>
+                                <h6>Train<br> Booking</h6>
+                            </a>
+                        </li>
+                        <li class="p-3">
+                            <a href="#">
+                                <div class="quick-box"><i class="myicon-truck1"></i></div>
+                                <h6>Bus<br> Ticketing</h6>
+                            </a>
+                        </li>
+                        <li class="p-3">
+                            <a href="#">
+                                <div class="quick-box"><i class="myicon-airplane"></i></div>
+                                <h6>Air<br> Ticketing </h6>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+
+
+
         </div>
     </div>
 
@@ -157,7 +254,11 @@
     <script>
         $(document).ready(function() {
             $('#serviceLink').addClass('activeLink');
-
+            // $('.card1').slideDown('500');
+            // $('.card2').slideDown('500');
+            // $('.card3').slideDown('500');
+            // $('.card4').slideDown('500');
+            // $('.card5').slideDown('500');
         });
     </script>
 @endsection

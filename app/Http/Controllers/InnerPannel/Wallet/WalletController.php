@@ -26,10 +26,10 @@ class WalletController extends Controller
         try {
             $trans = DB::beginTransaction();
             $userId = Crypt::decryptString($getData['userId']);
-            $checkWallet = DB::table('user_wallet')->where('userId', $userId)->select('wId','walletAmount','userId')->first();
+            $checkWallet = DB::table('user_wallet')->where('userId', $userId)->select('wId','walletAmount','userId')->where('deletedFlag',0)->first();
             if ($checkWallet) {
                 $insertAllRecord = DB::transaction(function () use ($checkWallet, $getData) {
-                    DB::table('user_wallet')->where('wId', $checkWallet->wId)->update([
+                    DB::table('user_wallet')->where('wId', $checkWallet->wId)->where('deletedFlag',0)->update([
                         'walletAmount' => $checkWallet->walletAmount + $getData['amount'],
                         'updatedOn' => date('y-m-d H:i:s'),
                     ]);
