@@ -46,6 +46,7 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick.css" />
     <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick-theme.css" />
     <link rel="stylesheet" type="text/css" href="../assets/css/vendors/prism.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/datatables.css">
     <!-- Plugins css Ends-->
     <!-- Bootstrap css-->
     <link rel="stylesheet" type="text/css" href="../assets/css/vendors/bootstrap.css" />
@@ -1103,7 +1104,7 @@
                                       </svg>
                                     </div>
                                     <div class="flex-grow-1">
-                                      <h6>New Orders</h6>
+                                      <a href="javascript:void(0);" onclick="orderDiv('New Orders')"><h6>New Orders</h6></a>
                                       <h5>6981<span class="font-roboto font-primary f-w-700"><i class="icofont icofont-arrow-up"></i> &nbsp; (68%)</span></h5>
                                     </div>
                                   </div>
@@ -1118,7 +1119,7 @@
                                       </svg>
                                     </div>
                                     <div class="flex-grow-1">
-                                      <h6>Later Orders</h6>
+                                      <a href="javascript:void(0);" onclick="orderDiv('Later Orders')"> <h6>Later Orders</h6></a>
                                       <h5>783<span class="font-roboto font-warning f-w-700"><i class="icofont icofont-arrow-down"></i> &nbsp; (12%)</span></h5>
                                     </div>
                                   </div>
@@ -1133,7 +1134,8 @@
                                       </svg>
                                     </div>
                                     <div class="flex-grow-1">
-                                      <h6>Delivered Orders</h6>
+                                      <a href="javascript:void(0);" onclick="orderDiv('Delivered Orders')">  <h6>Delivered Orders</h6></a>
+                                     
                                       <h5>647<span class="font-roboto font-success f-w-700"><i class="icofont icofont-arrow-up"></i> &nbsp; (50%)</span></h5>
                                     </div>
                                   </div>
@@ -1148,12 +1150,169 @@
                                       </svg>
                                     </div>
                                     <div class="flex-grow-1">
-                                      <h6>Cancelled Orders</h6>
+                                      <a href="javascript:void(0);" onclick="orderDiv('Cancelled Orders')"> <h6>Cancelled Orders</h6></a>
+                                      
                                       <h5>69<span class="font-roboto font-danger f-w-700"><i class="icofont icofont-arrow-up"></i>&nbsp; (20%)</span></h5>
                                     </div>
                                   </div>
                                 </div>
                               </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-12" style="display: none;" id="orderDivDiv" >
+                        <div class="card">
+                          <div class="card-header d-flex justify-content-between pb-0">
+                            <h5 class="mb-3" id="orderDivDivHead"></h5>
+                            <a href="javascript:void(0);" onclick="closeOrderDiv()"><h5><i data-feather="x"></i></h5></a>
+                          </div>
+                          <div class="card-body">
+                           
+                          
+                            <div class="table-responsive">
+                              <table class="display" id="datatable-range">
+                                <thead>
+                                  <tr>
+                                    <th>SLNO#</th>
+                                    <th>Order Number</th>
+                                    <th>Total Amount</th>
+                                    <th>Status</th>
+                                    <th>Payment Status</th>
+                                    <th>COD</th>
+                                    <th>Cash From Card</th>
+                                    <th>By Wallet</th>
+                                    <th>Store</th>
+                                    <th>Delivery Date</th>
+                                    <th>Time-slot</th>
+                                    <th>Action</th>
+                                    <th>Timer</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>1</td>
+                                    <td>#2450</td>
+                                    <td>72</td>
+                                    <td><span class="badge badge-light-primary">Order Confirmed</span></td>
+                                    <td><span class="badge badge-light-success">Success</span></td>
+                                    <td>ONLINE</td>
+                                    <td>0</td>
+                                    <td>72</td>
+                                    <td>AMAZONQATAR-Store 1</td>
+                                    <td>2023-04-13</td>
+                                    <td>09:00 - 10:00</td>
+                                    <td>
+                                      <a href="javascript:void(0);" ><i class="fa fa-eye"></i></a>
+
+                                    </td>
+                                    <td>
+
+                                      <p><span id="seconds">00</span>:<span id="tens">00</span></p><button id="button-start" class="btn-sm btn-info">Start</button>
+                                      <script>
+                                       window.onload = function () {
+  
+                                                  var seconds = 00; 
+                                                  var tens = 00; 
+                                                  var appendTens = document.getElementById("tens")
+                                                  var appendSeconds = document.getElementById("seconds")
+                                                  var buttonStart = document.getElementById('button-start');
+                                                  var buttonStop = document.getElementById('button-stop');
+                                                  var buttonReset = document.getElementById('button-reset');
+                                                  var Interval ;
+
+                                                  buttonStart.onclick = function() {
+                                                    buttonStart.style.display = "none";
+                                                    clearInterval(Interval);
+                                                    Interval = setInterval(startTimer, 10);
+                                                  }
+                                                  
+                                                  //   buttonStop.onclick = function() {
+                                                  //     clearInterval(Interval);
+                                                  // }
+                                                  
+
+                                                  // buttonReset.onclick = function() {
+                                                  //   clearInterval(Interval);
+                                                  //   tens = "00";
+                                                  //   seconds = "00";
+                                                  //   appendTens.innerHTML = tens;
+                                                  //   appendSeconds.innerHTML = seconds;
+                                                  // }
+                                                  
+                                                  
+                                                  
+                                                  function startTimer () {
+                                                    tens++; 
+                                                    
+                                                    if(tens <= 9){
+                                                      appendTens.innerHTML = "0" + tens;
+                                                    }
+                                                    
+                                                    if (tens > 9){
+                                                      appendTens.innerHTML = tens;
+                                                      
+                                                    } 
+                                                    
+                                                    if (tens > 99) {
+                                                      
+                                                      seconds++;
+                                                      appendSeconds.innerHTML = "0" + seconds;
+                                                      tens = 0;
+                                                      appendTens.innerHTML = "0" + 0;
+                                                    }
+                                                    
+                                                    if (seconds > 9){
+                                                      appendSeconds.innerHTML = seconds;
+                                                    }
+                                                    if(seconds == 5){
+                                                      clearInterval(Interval);
+                                                    }
+                                                  
+                                                  }
+                                                  
+
+                                                }
+                                      </script>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>2</td>
+                                    <td>#2450</td>
+                                    <td>72</td>
+                                    <td><span class="badge badge-light-success">Delivered</span></td>
+                                    <td><span class="badge badge-light-success">Success</span></td>
+                                    <td>ONLINE</td>
+                                    <td>0</td>
+                                    <td>72</td>
+                                    <td>AMAZONQATAR-Store 1</td>
+                                    <td>2023-04-13</td>
+                                    <td>09:00 - 10:00</td>
+                                    <td>
+                                      <a href="javascript:void(0);" ><i class="fa fa-eye"></i></a>
+                                      
+                                    </td>
+                                  </tr>
+                                 
+                                </tbody>
+                                <!-- <tfoot>
+                                  <tr>
+                                    <th>SLNO#</th>
+                                    <th>Order Number</th>
+                                    <th>Total Amount</th>
+                                    <th>Status</th>
+                                    <th>Payment Status</th>
+                                    <th>COD</th>
+                                    <th>Cash From Card</th>
+                                    <th>By Wallet</th>
+                                    <th>Store</th>
+                                    <th>Delivery Date</th>
+                                    <th>Time-slot</th>
+                                    <th>Action</th>
+                                  </tr>
+                                </tfoot> -->
+                              </table>
                             </div>
                           </div>
                         </div>
@@ -1174,8 +1333,8 @@
                                       <i class="fa fa-shopping-basket text-primary" ></i>
                                     </div>
                                     <div class="flex-grow-1">
-                                      <h6>Bakery</h6>
-                                      <h5>6,981<span class="font-roboto font-primary f-w-700"><i class="icofont icofont-arrow-up"></i> 68%</span></h5>
+                                      <a href="javascript:void(0);" onclick="productDiv('Bakery')"> <h6>Bakery</h6></a>
+                                      <h5>6,981<span class="font-roboto font-primary f-w-700"><i class="icofont icofont-arrow-up"></i>&nbsp; (68%)</span></h5>
                                     </div>
                                   </div>
                                 </div>
@@ -1187,8 +1346,9 @@
                                       <i class="fa fa-product-hunt text-warning"></i>
                                     </div>
                                     <div class="flex-grow-1">
-                                      <h6>Baby Care</h6>
-                                      <h5>783<span class="font-roboto font-warning f-w-700"><i class="icofont icofont-arrow-down"></i> 12%</span></h5>
+                                      <a href="javascript:void(0);" onclick="productDiv('Baby Care')"> <h6>Baby Care</h6></a>
+                                     
+                                      <h5>783<span class="font-roboto font-warning f-w-700"><i class="icofont icofont-arrow-down"></i>&nbsp; (12%)</span></h5>
                                     </div>
                                   </div>
                                 </div>
@@ -1200,8 +1360,8 @@
                                       <i class="fa fa-product-hunt text-success"></i>
                                     </div>
                                     <div class="flex-grow-1">
-                                      <h6>Bevrages</h6>
-                                      <h5>$647<span class="font-roboto font-success f-w-700"><i class="icofont icofont-arrow-up"></i> 50%</span></h5>
+                                      <a href="javascript:void(0);" onclick="productDiv('Bevrages')"> <h6>Bevrages</h6></a>
+                                      <h5>647<span class="font-roboto font-success f-w-700"><i class="icofont icofont-arrow-up"></i>&nbsp; (50%)</span></h5>
                                     </div>
                                   </div>
                                 </div>
@@ -1213,8 +1373,8 @@
                                       <i class="fa fa-product-hunt text-danger"></i>
                                     </div>
                                     <div class="flex-grow-1">
-                                      <h6>Can & Jars</h6>
-                                      <h5>69<span class="font-roboto font-danger f-w-700"><i class="icofont icofont-arrow-up"></i> 20%</span></h5>
+                                      <a href="javascript:void(0);" onclick="productDiv('Can & Jars')"> <h6>Can & Jars</h6></a>
+                                      <h5>69<span class="font-roboto font-danger f-w-700"><i class="icofont icofont-arrow-up"></i>&nbsp; (20%)</span></h5>
                                     </div>
                                   </div>
                                 </div>
@@ -1226,8 +1386,8 @@
                                       <i class="fa fa-shopping-basket text-primary" ></i>
                                     </div>
                                     <div class="flex-grow-1">
-                                      <h6>Dairy</h6>
-                                      <h5>6981<span class="font-roboto font-primary f-w-700"><i class="icofont icofont-arrow-up"></i> 68%</span></h5>
+                                      <a href="javascript:void(0);" onclick="productDiv('Dairy')"> <h6>Dairy</h6></a>
+                                      <h5>981<span class="font-roboto font-primary f-w-700"><i class="icofont icofont-arrow-up"></i>&nbsp; (68%)</span></h5>
                                     </div>
                                   </div>
                                 </div>
@@ -1239,8 +1399,8 @@
                                       <i class="fa fa-product-hunt text-warning"></i>
                                     </div>
                                     <div class="flex-grow-1">
-                                      <h6>Home</h6>
-                                      <h5>783<span class="font-roboto font-warning f-w-700"><i class="icofont icofont-arrow-down"></i> 12%</span></h5>
+                                      <a href="javascript:void(0);" onclick="productDiv('Home')"> <h6>Home</h6></a>
+                                      <h5>783<span class="font-roboto font-warning f-w-700"><i class="icofont icofont-arrow-down"></i>&nbsp; (12%)</span></h5>
                                     </div>
                                   </div>
                                 </div>
@@ -1252,8 +1412,8 @@
                                       <i class="fa fa-product-hunt text-success"></i>
                                     </div>
                                     <div class="flex-grow-1">
-                                      <h6>Frozen Food</h6>
-                                      <h5>$647<span class="font-roboto font-success f-w-700"><i class="icofont icofont-arrow-up"></i> 50%</span></h5>
+                                      <a href="javascript:void(0);" onclick="productDiv('Frozen Food')"> <h6>Frozen Food</h6></a>
+                                      <h5>647<span class="font-roboto font-success f-w-700"><i class="icofont icofont-arrow-up"></i>&nbsp; (50%)</span></h5>
                                     </div>
                                   </div>
                                 </div>
@@ -1265,8 +1425,8 @@
                                       <i class="fa fa-product-hunt text-danger"></i>
                                     </div>
                                     <div class="flex-grow-1">
-                                      <h6>Grains & Spices</h6>
-                                      <h5>69<span class="font-roboto font-danger f-w-700"><i class="icofont icofont-arrow-up"></i> 20%</span></h5>
+                                      <a href="javascript:void(0);" onclick="productDiv('Grains & Spices')"> <h6>Grains & Spices</h6></a>
+                                      <h5>69<span class="font-roboto font-danger f-w-700"><i class="icofont icofont-arrow-up"></i>&nbsp; (20%)</span></h5>
                                     </div>
                                   </div>
                                 </div>
@@ -1278,8 +1438,8 @@
                                       <i class="fa fa-shopping-basket text-primary" ></i>
                                     </div>
                                     <div class="flex-grow-1">
-                                      <h6>Hygine</h6>
-                                      <h5>6981<span class="font-roboto font-primary f-w-700"><i class="icofont icofont-arrow-up"></i> 68%</span></h5>
+                                      <a href="javascript:void(0);" onclick="productDiv('Hygine')"> <h6>Hygine</h6></a>
+                                      <h5>6981<span class="font-roboto font-primary f-w-700"><i class="icofont icofont-arrow-up"></i>&nbsp; (68%)</span></h5>
                                     </div>
                                   </div>
                                 </div>
@@ -1291,8 +1451,8 @@
                                       <i class="fa fa-product-hunt text-warning"></i>
                                     </div>
                                     <div class="flex-grow-1">
-                                      <h6>Meat & Egg</h6>
-                                      <h5>783<span class="font-roboto font-warning f-w-700"><i class="icofont icofont-arrow-down"></i> 12%</span></h5>
+                                      <a href="javascript:void(0);" onclick="productDiv('Meat & Egg')"> <h6>Meat & Egg</h6></a>
+                                      <h5>783<span class="font-roboto font-warning f-w-700"><i class="icofont icofont-arrow-down"></i>&nbsp; (12%)</span></h5>
                                     </div>
                                   </div>
                                 </div>
@@ -1304,8 +1464,8 @@
                                       <i class="fa fa-product-hunt text-success"></i>
                                     </div>
                                     <div class="flex-grow-1">
-                                      <h6>Oil</h6>
-                                      <h5>$647<span class="font-roboto font-success f-w-700"><i class="icofont icofont-arrow-up"></i> 50%</span></h5>
+                                      <a href="javascript:void(0);" onclick="productDiv('Oil')"> <h6>Oil</h6></a>
+                                      <h5>647<span class="font-roboto font-success f-w-700"><i class="icofont icofont-arrow-up"></i>&nbsp; (50%)</span></h5>
                                     </div>
                                   </div>
                                 </div>
@@ -1317,8 +1477,8 @@
                                       <i class="fa fa-product-hunt text-danger"></i>
                                     </div>
                                     <div class="flex-grow-1">
-                                      <h6>Pet Care</h6>
-                                      <h5>69<span class="font-roboto font-danger f-w-700"><i class="icofont icofont-arrow-up"></i> 20%</span></h5>
+                                      <a href="javascript:void(0);" onclick="productDiv('Oil')"> <h6>Pet Care</h6></a>
+                                      <h5>69<span class="font-roboto font-danger f-w-700"><i class="icofont icofont-arrow-up"></i>&nbsp; (20%)</span></h5>
                                     </div>
                                   </div>
                                 </div>
@@ -1328,7 +1488,90 @@
                         </div>
                       </div>
                        
+                      <div class="col-sm-12" style="display: none;" id="productDivDiv" >
+                        <div class="card">
+                          <div class="card-header d-flex justify-content-between pb-0">
+                            <h5 class="mb-3" id="productDivDivHead"></h5>
+                            <a href="javascript:void(0);" onclick="closeProductDiv()"><h5><i data-feather="x"></i></h5></a>
+                          </div>
+                          <div class="card-body">
+                            
+                            <div class="table-responsive">
+                              <table class="display" id="basic-1">
+                                <thead>
+                                  <tr>
+                                    <th>SLNO#</th>
+                                    <th>Order Number</th>
+                                    <th>Total Amount</th>
+                                    <th>Status</th>
+                                    <th>Payment Status</th>
+                                    <th>COD</th>
+                                    <th>Cash From Card</th>
+                                    <th>By Wallet</th>
+                                    <th>Store</th>
+                                    <th>Delivery Date</th>
+                                    <th>Time-slot</th>
+                                    <th>Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>1</td>
+                                    <td>#2450</td>
+                                    <td>72</td>
+                                    <td><span class="badge badge-light-primary">Order Confirmed</span></td>
+                                    <td><span class="badge badge-light-success">Success</span></td>
+                                    <td>ONLINE</td>
+                                    <td>0</td>
+                                    <td>72</td>
+                                    <td>AMAZONQATAR-Store 1</td>
+                                    <td>2023-04-13</td>
+                                    <td>09:00 - 10:00</td>
+                                    <td>
+                                      <a href="javascript:void(0);" ><i class="fa fa-eye"></i></a>
 
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>2</td>
+                                    <td>#2450</td>
+                                    <td>72</td>
+                                    <td><span class="badge badge-light-success">Delivered</span></td>
+                                    <td><span class="badge badge-light-success">Success</span></td>
+                                    <td>ONLINE</td>
+                                    <td>0</td>
+                                    <td>72</td>
+                                    <td>AMAZONQATAR-Store 1</td>
+                                    <td>2023-04-13</td>
+                                    <td>09:00 - 10:00</td>
+                                    <td>
+                                      <a href="javascript:void(0);" ><i class="fa fa-eye"></i></a>
+                                      
+                                    </td>
+                                  </tr>
+                                 
+                                </tbody>
+                                <!-- <tfoot>
+                                  <tr>
+                                    <th>SLNO#</th>
+                                    <th>Order Number</th>
+                                    <th>Total Amount</th>
+                                    <th>Status</th>
+                                    <th>Payment Status</th>
+                                    <th>COD</th>
+                                    <th>Cash From Card</th>
+                                    <th>By Wallet</th>
+                                    <th>Store</th>
+                                    <th>Delivery Date</th>
+                                    <th>Time-slot</th>
+                                    <th>Action</th>
+                                  </tr>
+                                </tfoot> -->
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     
 
 
@@ -1343,39 +1586,7 @@
 
 
 
-                        <!-- <div class="col-xl-12 col-md-6 xl-30">
-                          <div class="card">
-                            <div class="card-header pb-0">
-                              <h5>bar-chart2</h5>
-                            </div>
-                            <div class="card-body chart-block">
-                              <div id="bar-chart2"></div>
-                            </div>
-                          </div>
-                        </div> -->
-
-                        <!-- <div class="col-xl-4 col-md-6 xl-30">
-                            <div class="card">
-                                <div class="card-header pb-0">
-                                    <h5>Products</h5>
-                                </div>
-                                <div class="card-body p-0 chart-block">
-                                    <div class="chart-overflow" id="pie-chart1"></div>
-                                </div>
-                            </div>
-
-
-                        </div> -->
-                        <!-- <div class="col-xl-12 col-xl-6 box-col-6">
-                          <div class="card">
-                              <div class="card-header pb-0">
-                                  <h5>Column Chart <span>1 </span></h5>
-                              </div>
-                              <div class="card-body chart-block">
-                                  <div class="chart-overflow" id="product-chart"></div>
-                              </div>
-                          </div>
-                      </div> -->
+                       
                         <div class="col-xl-12 ">
                             <div class="card company-view">
                                 <div class="card-header card-no-border dflex justify-content-between p-b-0">
@@ -1775,12 +1986,33 @@
     <script src="../assets/js/counter/jquery.waypoints.min.js"></script>
     <script src="../assets/js/counter/jquery.counterup.min.js"></script>
     <script src="../assets/js/counter/counter-custom.js"></script>
+    <script src="../assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
+    <script src="../assets/js/datatable/datatables/datatable.custom.js"></script>
     <!-- <script src="https://code.highcharts.com/highcharts.js"></script>
         <script src="https://code.highcharts.com/modules/exporting.js"></script>
         <script src="https://code.highcharts.com/modules/export-data.js"></script>
         <script src="https://code.highcharts.com/modules/accessibility.js"></script> -->
     <script>
+      function orderDiv(e){
+        $(document).ready(function(){
+          $('#orderDivDiv').fadeIn();
+          $('#orderDivDivHead').html(e)
+        })    
+        }
 
+        function closeOrderDiv(){
+          $('#orderDivDiv').fadeOut();
+        }
+        function productDiv(e){
+        $(document).ready(function(){
+          $('#productDivDiv').fadeIn();
+          $('#productDivDivHead').html(e)
+        })    
+        }
+
+        function closeProductDiv(){
+          $('#productDivDiv').fadeOut();
+        }
 
 
 
