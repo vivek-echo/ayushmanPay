@@ -45,7 +45,7 @@
                         </li>
                         <li class="p-3">
                             <a href="/services/b2bServices/aepsservice">
-                                <div class="quick-box"><i class="myicon-file-text1"></i></div>
+                                <div class="quick-box"><i class="myicon-statement"></i></div>
                                 <h6>AEPS<br> MiniStatement</h6>
                             </a>
                         </li>
@@ -103,7 +103,7 @@
                         </li>
                         <li class="p-3">
                             <a href="/services/legalServices/Rc">
-                                <div class="quick-box"><i class="myicon-rc"></i></div>
+                                <div class="quick-box"><i class="myicon-registration"></i></div>
                                 <h6>RC<br> Registration</h6>
                             </a>
                         </li>
@@ -217,7 +217,7 @@
 
                         <li class="p-3">
                             <a href="#">
-                                <div class="quick-box"><i class="myicon-office"></i></div>
+                                <div class="quick-box"><i class="myicon-hotel"></i></div>
                                 <h6>Hotel<br> Booking</h6>
                             </a>
                         </li>
@@ -229,7 +229,7 @@
                         </li>
                         <li class="p-3">
                             <a href="#">
-                                <div class="quick-box"><i class="myicon-truck1"></i></div>
+                                <div class="quick-box"><i class="myicon-busbooking"></i></div>
                                 <h6>Bus<br> Ticketing</h6>
                             </a>
                         </li>

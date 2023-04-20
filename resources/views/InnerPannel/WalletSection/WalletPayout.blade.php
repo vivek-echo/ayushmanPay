@@ -1,6 +1,20 @@
 @extends('InnerPannel.Layouts.MainLayout')
 
 @section('content')
+    <link rel="stylesheet" type="text/css" href="{{ asset('' . config('constant.ASSET') . 'css/vendors/sweetalert2.css') }}">
+    <script src="{{ asset('' . config('constant.ASSET') . 'js/sweet-alert/sweetalert.min.js') }}"></script>
+    @if ($status === true)
+        <script type="text/javascript">
+            var msg = '<?php echo $message; ?>';
+            swal("Successfull", msg, "success");
+        </script>
+    @endIf
+    @if ($status === false)
+        <script>
+            var msg = '<?php echo $message; ?>';
+            swal("Error", msg, "error");
+        </script>
+    @endIf
     <div class="container-fluid">
         <div class="page-title">
             <div class="row">
@@ -91,17 +105,31 @@
                                                                 </td>
                                                                 <td>
                                                                     <?php
-                                                                    if ($item['status'] == 2) {
-                                                                        echo '<span class="text-success">VERIFIED</span>';
+                                                                    if ($item['status'] == 1) {
+                                                                        echo '<span class="text-success">DOCUMENTS UPLOADED</span>';
                                                                     } else {
-                                                                        echo '<span class="text-danger">NOT VERIFIED</span>';
+                                                                        echo '<span class="text-danger">NOT UPLOADED</span>';
                                                                     }
                                                                     ?>
                                                                 </td>
                                                                 <td>
                                                                     @if ($item['status'] == 2)
-                                                                        <a onclick="fileUpload({{ $item['beneid'] }})"> <i
-                                                                                data-feather="upload-cloud"></i> </a>
+                                                                        <a class="text-warning me-2"
+                                                                            title="Upload Documents" href="javascript:void(0);"
+                                                                            onclick="fileUpload({{ $item['beneid'] }})"> <i
+                                                                                data-feather="upload"></i> </a>
+                                                                    @endif
+
+
+                                                                    <a class="text-success"  title="Check Account Status" href="javascript:void(0);"
+                                                                        onclick="accountStatus({{ $item['beneid'] }})">
+                                                                        <i data-feather="check-square"></i></a>
+
+
+                                                                    @if ($item['verified'] == 1 && $item['status'] == 1)
+                                                                        <a class="text-success" title="Transfer Wallet" href="javascript:void(0);"
+                                                                            onclick="transferWalletMoney({{ $item['beneid'] }})">
+                                                                            <i data-feather="send"></i></a>
                                                                     @endif
                                                                 </td>
 
@@ -214,7 +242,7 @@
 
 
                 <div class="modal-body">
-                    <form method="POST" action="{{ route('uploadPayoutDoc') }}" id="formSubmitUploadDoc"
+                    <form method="POST" action="{{ url('wallet/payoutWallet') }}" id="formSubmitUploadDoc"
                         enctype='multipart/form-data'>
                         @csrf
                         <div class="row m-0">
@@ -307,7 +335,91 @@
     </div>
 
 
+    <div class="modal fade" id="TransferMoneyModal" tabindex="-1" aria-labelledby="TransferMoneyModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="TransferMoneyModalLabel">Transfer Wallet Money</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+
+            <div class="modal-body">
+                    <div class="row m-0">
+                        <div class="form-group col-6">
+                            <label class="col-form-label">Mode
+                            </label>
+                            <div class="input-group">
+                                <select name="modeMT" id="modeMT" class="form-select">
+                                    <option value="">--Select--</option>
+                                    <option value="IMPS">IMPS</option>
+                                    <option value="NEFT">NEFT</option>
+                                </select>
+
+                            </div>
+
+                        </div>
+                        <input type="hidden" id="beneIdMT">
+                        <div class="form-group col-6">
+                            <label class="col-form-label">Mode
+                            </label>
+                            <input type="text" id="amountMT" class="form-control" placeholder="Enter Amount">
+
+                        </div>
+                        <div class="form-group mt-4">
+
+                            <a class="btn btn-primary" id="submitTransferWalletMoney">Uplaod</a>
+                        </div>
+                    </div>
+                
+            </div>
+
+        </div>
+    </div>
+</div>
+
     <script>
+        function transferWalletMoney(e){
+            $('#beneIdMT').val(e);
+            $('#modeMT').val('');
+            $('#amountMT').val('');
+            $('#TransferMoneyModal').modal('show');
+        }
+
+        function accountStatus(beneid) {
+            $('.pageLoader').fadeIn();
+            $(document).ready(function() {
+                $.ajax({
+                    url: "{{ url('/accountStatusPayout') }}",
+                    data: {
+                        'beneid': beneid
+                    },
+                    success: function(res) {
+                        $('.pageLoader').fadeOut();
+                        if (res.api.status == true) {
+                            if (res.api.accountstatus == 0) {
+                                swal("Deactivated", "Account is Deactivated", "info");
+                            } else if (res.api.accountstatus == 1) {
+                                swal("Activated", "Account is Activated", "success");
+                            } else if (res.api.accountstatus == 2) {
+                                swal("Pending", "Document Upload Pending", "info");
+                            } else if (res.api.accountstatus == 3) {
+
+                                swal("Pending", "Document verifcation pending at admin end", "info");
+                            } else {
+                                swal("Deactivated", "Account is Deactivated", "info");
+                            }
+
+                        } else {
+                            swal("Error", res.api.message, "error");
+                        }
+                    }
+                });
+
+            });
+        }
+
         var loadFilePassbook = function(event) {
             var readerPan = new FileReader();
             readerPan.onload = function() {
@@ -361,6 +473,9 @@
                 $('#AadhaarDivFront').hide();
                 $('#AadhaarDivBack').hide();
                 $('#PanDiv').hide();
+                $('#PanDivPhoto').hide();
+                $('#AadharBackDivPhoto').hide();
+                $('#AadharFrontDivPhoto').hide();
                 var docTypeFileUpload = $('#docTypeFileUpload').val();
                 if (docTypeFileUpload == "AADHAAR") {
                     $('#AadhaarDivFront').show();
@@ -396,9 +511,42 @@
             })
         }
         $(document).ready(function() {
+            ///send money
+            $('#submitTransferWalletMoney').on('click',function(){
+                if ($('#modeMT').val() == "") {
+                    errorAlert("Required", "Please select Payment Mode", "modeMT");
+                    return false;
+                }
+                if ($('#amountMT').val() == "") {
+                    errorAlert("Required", "Please Enter Amount", "amountMT");
+                    return false;
+                }
+
+                $('.pageLoader').fadeIn();
+                $.ajax({
+                    url: "{{ url('/sendMoneyWalletPayout') }}",
+                    data: {
+                        "bene_id": $('#beneIdMT').val(),
+                        "amount": $('#amountMT').val(),
+                        "mode": $('#modeMT').val()
+                    },
+                    success: function(res) {
+                        $('.pageLoader').fadeOut();
+                        if (res.api.status == false) {
+                            swal("Error", res.api.message, "error")
+                        } else {
+                            swal("Successfull", res.api.message, "success")
+                        }
+                    }
+                });
+
+            })
 
             $('#submitUploadDoc').on('click', function() {
+                $('.pageLoader').fadeIn();
                 $('#formSubmitUploadDoc').submit();
+
+
             })
             // FOR ACTIVE SIDEBAR LINK
             $('#walletLink').addClass('activeLink');

@@ -7513,7 +7513,7 @@ input[type="file"] {
 }
 
 .loader-wrapper .dot:nth-child(1) {
-	background: rgba(46, 50, 162, 0.2)
+	background: #D36E15
 }
 
 .loader-wrapper .dot:nth-child(1)::before {
@@ -7522,7 +7522,7 @@ input[type="file"] {
 }
 
 .loader-wrapper .dot:nth-child(2) {
-	background: rgba(235, 123, 23, 0.4)
+	background: #EB7A17
 }
 
 .loader-wrapper .dot:nth-child(2)::before {
@@ -7531,7 +7531,7 @@ input[type="file"] {
 }
 
 .loader-wrapper .dot:nth-child(3) {
-	background: rgba(46, 50, 162, 0.6)
+	background: #EF9545
 }
 
 .loader-wrapper .dot:nth-child(3)::before {
@@ -7540,16 +7540,16 @@ input[type="file"] {
 }
 
 .loader-wrapper .dot:nth-child(4) {
-	background: rgba(235, 123, 23, 0.8)
+	background: #F5BD8B
 }
 
 .loader-wrapper .dot:nth-child(4)::before {
-	-webkit-animation-delay: .8s;
+	-webkit-animation-delay: .5s;
 	animation-delay: .8s
 }
 
 .loader-wrapper .dot:nth-child(5) {
-	background: #5c61f2
+	background:#F8D1AE
 }
 
 .loader-wrapper .dot:nth-child(5)::before {
@@ -7570,6 +7570,7 @@ input[type="file"] {
 	left: 0;
 	right: 0;
 	bottom: 0;
+	/* opacity: 0.5; */
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -7601,7 +7602,7 @@ input[type="file"] {
 }
 
 .pageLoader .dot:nth-child(1) {
-	background: rgba(46, 50, 162, 0.2)
+	background: #D36E15
 }
 
 .pageLoader .dot:nth-child(1)::before {
@@ -7610,7 +7611,7 @@ input[type="file"] {
 }
 
 .pageLoader .dot:nth-child(2) {
-	background: rgba(235, 123, 23, 0.4)
+	background: #EB7A17
 }
 
 .pageLoader .dot:nth-child(2)::before {
@@ -7619,7 +7620,7 @@ input[type="file"] {
 }
 
 .pageLoader .dot:nth-child(3) {
-	background: rgba(46, 50, 162, 0.6)
+	background: #EF9545
 }
 
 .pageLoader .dot:nth-child(3)::before {
@@ -7628,7 +7629,7 @@ input[type="file"] {
 }
 
 .pageLoader .dot:nth-child(4) {
-	background: rgba(235, 123, 23, 0.8)
+	background:#F5BD8B
 }
 
 .pageLoader .dot:nth-child(4)::before {
@@ -7637,7 +7638,7 @@ input[type="file"] {
 }
 
 .pageLoader .dot:nth-child(5) {
-	background: #2e32a2
+	background: #F8D1AE
 }
 
 .pageLoader .dot:nth-child(5)::before {

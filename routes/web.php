@@ -91,11 +91,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(['GET', 'POST'], '/getTransStatusNSDLFun', [App\Http\Controllers\InnerPannel\Services\LegalServices\PanCardNsldController::class, 'getTransStatusNSDLFun']);
 
     //walletsummary
-    Route::match(['GET', 'POST'], '/wallet/walletsummary', [App\Http\Controllers\InnerPannel\Wallet\WalletSummaryController::class, 'index']);
+    Route::match(['GET', 'POST'], '/wallet/walletsummary', [App\Http\Controllers\InnerPannel\Wallet\WalletSummaryController::class, 'index']) ;
     Route::match(['GET', 'POST'], '/getWalletLogs', [App\Http\Controllers\InnerPannel\Wallet\WalletSummaryController::class, 'getWalletLogs']);
     Route::match(['GET', 'POST'], '/wallet/payoutWallet', [App\Http\Controllers\InnerPannel\Wallet\WalletPayoutController::class, 'index']);
     Route::match(['GET', 'POST'], '/addAccountPayout', [App\Http\Controllers\InnerPannel\Wallet\WalletPayoutController::class, 'addAccountPayout']);
     Route::match(['GET', 'POST'], '/uploadPayoutDoc', [App\Http\Controllers\InnerPannel\Wallet\WalletPayoutController::class, 'uploadPayoutDoc'])->name('uploadPayoutDoc');
+    Route::match(['GET', 'POST'], '/accountStatusPayout', [App\Http\Controllers\InnerPannel\Wallet\WalletPayoutController::class, 'accountStatusPayout']);
+    Route::match(['GET', 'POST'], '/sendMoneyWalletPayout', [App\Http\Controllers\InnerPannel\Wallet\WalletPayoutController::class, 'sendMoneyWalletPayout']);
 
     //rc
     Route::match(['GET', 'POST'], '/services/legalServices/Rc', [App\Http\Controllers\InnerPannel\Services\LegalServices\RCController::class, 'index']);

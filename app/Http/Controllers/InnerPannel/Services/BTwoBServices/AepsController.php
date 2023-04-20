@@ -89,6 +89,50 @@ class AepsController extends Controller
                         $viewVar['message'] = $runApi['message'];
                         $viewVar['balance'] =  "";
                     } else {
+
+                        $walletUser = $a->id;
+                        $checkWallet = DB::table('user_wallet')->where('userId', $walletUser)->select('wId', 'walletAmount', 'userId')->where('deletedFlag', 0)->first();
+                        if ($checkWallet) {
+                            $insertAllRecord = DB::transaction(function () use ($checkWallet, $runApi) {
+                                DB::table('user_wallet')->where('wId', $checkWallet->wId)->where('deletedFlag', 0)->update([
+                                    'walletAmount' => $checkWallet->walletAmount +  $runApi['amount'],
+                                    'updatedOn' => date('y-m-d H:i:s'),
+                                ]);
+                                DB::table('user_wallet_log')->insert([
+                                    'wId' =>  $checkWallet->wId,
+                                    'serviceLogId' =>  0,
+                                    'transactionType' =>  1,
+                                    'servicType' =>  8,
+                                    'userId' =>  $checkWallet->userId,
+                                    'walletAmount' => $runApi['amount'],
+                                    'createdOn' => date('y-m-d H:i:s'),
+                                    'ackno' => $runApi['ackno'],
+                                    'riefId'=>$runApi['bankrrn'],
+                                    'message'=>$runApi['message']
+                                ]);
+                            });
+                        } else {
+                            $insertAllRecord = DB::transaction(function () use ($walletUser, $runApi) {
+                                $insertId = DB::table('user_wallet')->insertGetId([
+                                    'userId' =>  $walletUser,
+                                    'walletAmount' => $runApi['amount'],
+                                    'createdOn' => date('y-m-d H:i:s'),
+                                ]);
+                                DB::table('user_wallet_log')->insert([
+                                    'wId' =>  $insertId,
+                                    'serviceLogId' =>  0,
+                                    'transactionType' =>  1,
+                                    'servicType' =>  8,
+                                    'userId' =>  $walletUser,
+                                    'walletAmount' => $runApi['amount'],
+                                    'createdOn' => date('y-m-d H:i:s'),
+                                    'ackno' => $runApi['ackno'],
+                                    'riefId'=>$runApi['bankrrn'],
+                                    'message'=>$runApi['message']
+                                ]);
+                            });
+                        }
+
                         $viewVar['transType'] = "CW";
                         $viewVar['status'] = $runApi['status'];
                         $viewVar['message'] = $runApi['message'];
@@ -126,7 +170,7 @@ class AepsController extends Controller
             'body' =>   $params,
             'response' => $payBill
         ]);
-        
+
         if ($payBill) {
             $redirect = $payBill['redirecturl'];
         } else {
@@ -219,7 +263,7 @@ class AepsController extends Controller
         } else if ($getData['transType'] == "MS") {
             $apiUrl =  '' . config('constant.SERVICE_URL') . 'api/v1/service/aeps/ministatement/index';
         }
-        $runApi =   Controller::getHeaders()->withBody(json_encode($param), 'application/json') ->post($apiUrl)->json();
+        $runApi =   Controller::getHeaders()->withBody(json_encode($param), 'application/json')->post($apiUrl)->json();
         if ($getData['transType'] == "BE") {
             if ($runApi['status'] == false) {
                 return response()->json([
@@ -247,11 +291,11 @@ class AepsController extends Controller
 
                 ]);
             } else {
-                $walletUser= $a->id;
-                $checkWallet = DB::table('user_wallet')->where('userId', $walletUser)->select('wId','walletAmount','userId')->where('deletedFlag',0)->first();
+                $walletUser = $a->id;
+                $checkWallet = DB::table('user_wallet')->where('userId', $walletUser)->select('wId', 'walletAmount', 'userId')->where('deletedFlag', 0)->first();
                 if ($checkWallet) {
                     $insertAllRecord = DB::transaction(function () use ($checkWallet, $runApi) {
-                        DB::table('user_wallet')->where('wId', $checkWallet->wId)->where('deletedFlag',0)->update([
+                        DB::table('user_wallet')->where('wId', $checkWallet->wId)->where('deletedFlag', 0)->update([
                             'walletAmount' => $checkWallet->walletAmount +  $runApi['amount'],
                             'updatedOn' => date('y-m-d H:i:s'),
                         ]);
@@ -266,8 +310,8 @@ class AepsController extends Controller
                         ]);
                     });
                 } else {
-                    $insertAllRecord = DB::transaction(function () use ($walletUser,$runApi) {
-                       $insertId= DB::table('user_wallet')->insertGetId([
+                    $insertAllRecord = DB::transaction(function () use ($walletUser, $runApi) {
+                        $insertId = DB::table('user_wallet')->insertGetId([
                             'userId' =>  $walletUser,
                             'walletAmount' => $runApi['amount'],
                             'createdOn' => date('y-m-d H:i:s'),
@@ -283,7 +327,7 @@ class AepsController extends Controller
                         ]);
                     });
                 }
-    
+
                 return response()->json([
                     'transType' => "CW",
                     'status' => $runApi['status'],
