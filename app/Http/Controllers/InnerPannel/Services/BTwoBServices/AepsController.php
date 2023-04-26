@@ -65,7 +65,7 @@ class AepsController extends Controller
                 $runApi =   Controller::getHeaders()->withBody(json_encode($param), 'application/json')->post($apiUrl)->json();
                 Log::channel('apiLog')->info('success', [
                     'url' =>  $apiUrl,
-                    'data' => $datapost,
+                    // 'data' => $datapost,
                     'body' =>   $param,
                     'response' => $runApi
                 ]);
@@ -357,6 +357,27 @@ class AepsController extends Controller
                 ]);
             }
         }
+    }
+
+    public function checkAepsStatus(){
+        $getData = request()->all();
+        $key = config('constant.ASKEY'); //(provided by PAYSPRINT)
+        $iv =   config('constant.IVKEY');
+        $datapost['reference'] = $getData['RefrenceNoCheck'];
+        $datapost['status'] = $getData['statusCheck'];
+        $cipher  =   openssl_encrypt(json_encode($datapost, true), 'AES-128-CBC', $key, $options = OPENSSL_RAW_DATA, $iv);
+        $param['body'] =       base64_encode($cipher);
+        $apiUrl =  '' . config('constant.SERVICE_URL') . 'api/v1/service/aeps/threeway/threeway';
+        $runApi =   Controller::getHeaders()->withBody(json_encode($param), 'application/json')->post($apiUrl)->json();
+        Log::channel('apiLog')->info('success', [
+            'url' =>  $apiUrl,
+            'data'=>$datapost,
+            'body' =>   $param,
+            'response' => $runApi
+        ]);
+        return response()->json([
+            'api' =>  $runApi
+        ]);
     }
 
     public function get_client_ip()

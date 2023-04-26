@@ -121,6 +121,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(['GET', 'POST'], '/aepsKycCallBack', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\AepsController::class, 'aepsKycCallBack']);
     Route::match(['GET', 'POST'], '/getBankNameList', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\AepsController::class, 'getBankNameList']);
     Route::match(['GET', 'POST'], '/getBEAeps', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\AepsController::class, 'getBEAeps'])->name('aepsSubmit');
+    Route::match(['GET', 'POST'], '/checkAepsStatus', [App\Http\Controllers\InnerPannel\Services\BTwoBServices\AepsController::class, 'checkAepsStatus']);
 
     // members list 
     Route::match(['GET', 'POST'], '/member/memberlist', [App\Http\Controllers\InnerPannel\Member\MembersListController::class, 'index']);

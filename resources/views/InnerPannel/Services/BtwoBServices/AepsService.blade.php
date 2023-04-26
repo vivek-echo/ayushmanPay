@@ -21,105 +21,7 @@
             swal("Error", msg, "error");
         </script>
     @endIf
-    {{-- @endIf --}}
-    {{-- <style type="text/css">
-    body {
-        font-family: 'Segoe UI';
-        background-color: #DDDDDD;
-        margin: 0px 5px 5px 5px;
-        padding: 0px 5px 5px 5px;
-        color: #555;
-        font-size: 12px;
-    }
 
-    .panel {
-        background-color: #FFFFFF;
-        -moz-user-select: none;
-        background-image: none;
-        border: 1px solid transparent;
-        border-radius: 4px;
-        margin: 12px 12px;
-        padding: 6px 12px;
-    }
-
-    .btn {
-        display: inline-block;
-        padding: 6px 12px;
-        margin-bottom: 0px;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 1.42857;
-        text-align: center;
-        white-space: nowrap;
-        vertical-align: middle;
-        cursor: pointer;
-        -moz-user-select: none;
-        background-image: none;
-        border: 1px solid transparent;
-        border-radius: 4px;
-    }
-    .btn-50 {
-        width: 50px;
-    }
-    .btn-100 {
-        width: 100px;
-    }
-
-    .btn-150 {
-        width: 150px;
-    }
-
-    .btn-200 {
-        width: 205px;
-    }
-
-    .btn-primary {
-        color: #FFF;
-        background-color: #428BCA;
-        border-color: #357EBD;
-    }
-
-        .btn-primary:hover {
-            color: #FFF;
-            background-color: #357EBD;
-            border-color: #428BCA;
-        }
-
-    .form-control {
-        display: block;
-        width: 100%;
-        height: 24px;
-        padding: 3px 6px;
-        font-size: 12px;
-        /*line-height: 1.42857;*/
-        color: #555;
-        background-color: #FFF;
-        background-image: none;
-        border: 1px solid #bdbdbd;
-        border-radius: 4px;
-        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
-        transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
-    }
-
-    textarea.form-control {
-        height: auto;
-    }
-
-    .text-bold {
-        font-weight: bold;
-    }
-
-    .img {
-        min-width: 125px;
-        min-height: 155px;
-        width: 125px;
-        height: 155px;
-        border: 1px solid #CCC;
-        border-radius: 4px;
-        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
-        background-color: #FFFFFF;
-    }
-</style> --}}
     <div class="container-fluid">
         <div class="page-title">
             <div class="row">
@@ -169,6 +71,15 @@
                                         </span>
                                     </button>
                                 </li>
+                                <li class="nav-item me-2" role="presentation">
+                                    <button class="nav-link" id="check-tab" data-bs-toggle="pill" data-bs-target="#check"
+                                        type="button" role="tab" aria-controls="check" aria-selected="false">
+                                        <span class="d-flex">
+                                            <i data-feather="check-circle" class="fs-5 p-1"></i>
+                                            check Status
+                                        </span>
+                                    </button>
+                                </li>
                             </ul>
                             <hr>
                             <div class="tab-content mt-4" id="pills-tabContent">
@@ -215,8 +126,8 @@
                                                 <label class="col-form-label">Name</label><span
                                                     class="text-danger fa-lg font-weight-500">
                                                     *</span>
-                                                <input name="cstmrName" id="cstmrName" class="form-control" type="text"
-                                                    placeholder="Enter Customer Name" autocomplete="off">
+                                                <input name="cstmrName" id="cstmrName" class="form-control"
+                                                    type="text" placeholder="Enter Customer Name" autocomplete="off">
 
                                             </div>
 
@@ -283,6 +194,38 @@
                                         <a class="btn btn-primary" href="{{ $redirectUrl }}"><i
                                                 class="myicon-log-in"></i> CLICK FOR KYC</a>
                                     </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="tab-pane fade " id="check" role="tabpanel" aria-labelledby="pills-prepaid">
+                                <div class="row m-4">
+                                    <div class="form-group col-6">
+                                        <label class="col-form-label">Refrence Number</label><span
+                                            class="text-danger fa-lg font-weight-500">
+                                            *</span>
+                                        <input name="RefrenceNoCheck" id="RefrenceNoCheck" class="form-control"
+                                            type="number" placeholder="Enter Refrence Number" autocomplete="off">
+
+
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label class="col-form-label">Status</label><span
+                                            class="text-danger fa-lg font-weight-500">
+                                            *</span>
+                                        <select name="statusCheck" id="statusCheck" class="form-select">
+                                            <option value="">--Select--</option>
+                                            <option value="success">SUCCESS</option>
+                                            <option value="failed">FAIL</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group mt-4">
+
+                                        <a class="btn btn-primary" id="submitCheck">Submit</a>
+                                    </div>
+
                                 </div>
 
                             </div>
@@ -331,6 +274,39 @@
 
     <script>
         $(document).ready(function() {
+
+            //check status
+            $('#submitCheck').on('click', function() {
+                var RefrenceNoCheck = $('#RefrenceNoCheck').val();
+                var statusCheck = $('#statusCheck').val();
+
+                if (RefrenceNoCheck == "") {
+                    errorAlert("Required", "Please Enter refrence number", "RefrenceNoCheck");
+                    return false;
+                }
+
+                if (statusCheck == "") {
+                    errorAlert("Required", "Please select status", "statusCheck");
+                    return false;
+                }
+                $('.pageLoader').show();
+                $.ajax({
+                    url: "{{ url('/checkAepsStatus') }}",
+                    data: {
+                        RefrenceNoCheck: RefrenceNoCheck,
+                        statusCheck: statusCheck
+                    },
+                    success: function(res) {
+                        if (res.api.status == true) {
+                            swal("Successfull", res.api.message, "success");
+                        } else {
+                            swal("Error", res.api.message, "error");
+
+                        }
+                        $('.pageLoader').hide();
+                    }
+                });
+            })
             $('#serviceLink').addClass('activeLink');
             $('#transType').on('change', function() {
                 $('#amount').val('');
